@@ -61,14 +61,16 @@
         "tokens/ package",
         "CSS light and dark per scheme",
         "shadcn variable mapping",
-        "DTCG JSON"
+        "DTCG JSON",
+        "component keys read decision tokens; only the circle and capsule shapes read a primitive"
       ],
       "checks": [
         "tokens-style-dictionary",
         "tokens-built-all-schemes",
         "tokens-light-dark",
         "tokens-shadcn-mapping",
-        "tokens-component-keys-resolve"
+        "tokens-component-keys-resolve",
+        "component-keys-read-decisions"
       ]
     },
     {

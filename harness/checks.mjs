@@ -3030,6 +3030,33 @@ export const CHECKS = {
     },
   },
 
+  "component-keys-read-decisions": {
+    requires: ["schemes"],
+    run: (c) => {
+      // A component key reads a decision token, so its value carries an answer, a reason and a trace.
+      // Only geometry may skip the decision: a circle and a capsule are the same shape in every scheme.
+      const GEOMETRY = new Set(["radius.round", "radius.pill"]);
+      const offenders = [];
+      let geometry = 0;
+      for (const s of SCHEMES) {
+        const t = c.scheme(s).tokens;
+        const prim = flatten(t.primitive);
+        const sem = flatten(t.semantic);
+        for (const [key, tok] of Object.entries(flatten(t.component))) {
+          if (typeof tok.$value !== "string") continue;
+          for (const [, ref] of tok.$value.matchAll(/\{([^}]+)\}/g)) {
+            if (!(ref in prim) || ref in sem) continue;
+            if (GEOMETRY.has(ref)) geometry++;
+            else offenders.push(`${s}: ${key} reads the primitive ${ref}`);
+          }
+        }
+      }
+      return offenders.length
+        ? bad(`${offenders.slice(0, 8).join("; ")}. Point each at a decision token`)
+        : ok(`every component key reads a decision token; ${geometry} read the circle or capsule shape directly`);
+    },
+  },
+
   // Components
   "ui-components": {
     requires: ["ui/package.json"],
