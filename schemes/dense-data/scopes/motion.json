@@ -216,6 +216,10 @@
     }
   },
   "shorthand": {
+    "motion.duration.exit": {
+      "headline": "Gone fast.",
+      "line": "A closing layer leaves in the feedback time."
+    },
     "motion.duration.feedback": {
       "headline": "Instant.",
       "line": "Controls answer at once, so a long day stays fast."
@@ -224,9 +228,21 @@
       "headline": "No waiting.",
       "line": "Panels open as fast as feedback, for people in a hurry."
     },
+    "motion.easing.emphasize": {
+      "headline": "No bounce.",
+      "line": "A new message draws the eye by its change alone."
+    },
+    "motion.easing.enter": {
+      "headline": "Ready at once.",
+      "line": "A menu lands fast, so experts read it right away."
+    },
     "motion.easing.exit": {
       "headline": "Gone at once.",
       "line": "A closing layer stops fast and leaves the table clear."
+    },
+    "motion.easing.exit-offscreen": {
+      "headline": "Off screen at once.",
+      "line": "A closing sheet clears the view with no slow tail."
     },
     "motion.easing.standard": {
       "headline": "Quick and settled.",

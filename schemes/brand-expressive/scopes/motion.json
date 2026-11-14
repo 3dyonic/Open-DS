@@ -231,6 +231,10 @@
     }
   },
   "shorthand": {
+    "motion.duration.exit": {
+      "headline": "A fast exit.",
+      "line": "A closing layer leaves quicker than it came."
+    },
     "motion.duration.feedback": {
       "headline": "A snappy answer.",
       "line": "Controls spring back at once."
@@ -246,6 +250,10 @@
     "motion.easing.emphasize": {
       "headline": "A little bounce.",
       "line": "The one move that overshoots, for a moment to remember."
+    },
+    "motion.easing.enter": {
+      "headline": "Pop in, then settle.",
+      "line": "A menu lands fast and is readable at once."
     },
     "motion.easing.exit": {
       "headline": "Leave quickly.",

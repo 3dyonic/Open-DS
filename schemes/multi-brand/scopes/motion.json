@@ -216,6 +216,10 @@
     }
   },
   "shorthand": {
+    "motion.duration.exit": {
+      "headline": "A quick close.",
+      "line": "A closing layer takes the feedback time in every brand."
+    },
     "motion.duration.feedback": {
       "headline": "A quick answer.",
       "line": "Controls respond at once in every brand."
@@ -224,9 +228,21 @@
       "headline": "Panels open calmly.",
       "line": "Menus and sheets arrive at a pace people can follow."
     },
+    "motion.easing.emphasize": {
+      "headline": "No bounce.",
+      "line": "A new message shows by its change, not a spring."
+    },
+    "motion.easing.enter": {
+      "headline": "In place fast.",
+      "line": "A menu lands quickly, so customers read it at once."
+    },
     "motion.easing.exit": {
       "headline": "Leave quietly.",
       "line": "A closing layer slows to a stop in place."
+    },
+    "motion.easing.exit-offscreen": {
+      "headline": "Slide away cleanly.",
+      "line": "A closing sheet clears the view with no slow tail."
     },
     "motion.easing.standard": {
       "headline": "Change in place.",
