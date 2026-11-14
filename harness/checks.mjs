@@ -3131,6 +3131,30 @@ export const CHECKS = {
         : ok(`${SCHEMES.length} schemes and the grammar are split by scope; each split joins back to the same object`);
     },
   },
+  // A package folder holds the manifest, the overlay, the lockfile and the built file, and its hashes are checked.
+  "package-folder-round-trip": {
+    requires: ["cli/src/package-folder.mjs"],
+    run: async (c) => {
+      const { exportPackage, readPackageFolder } = await import(pathToFileURL(c.p("cli/src/package-folder.mjs")).href);
+      const out = mkdtempSync(join(tmpdir(), "ods-package-"));
+      try {
+        exportPackage({ schemeId: SCHEMES[0], out });
+        const pkg = readPackageFolder(out);
+        writeFileSync(join(out, pkg.manifest.files.built), "{}\n");
+        let caught = "";
+        try {
+          readPackageFolder(out);
+        } catch (error) {
+          caught = error.message;
+        }
+        return /does not match open-ds\.lock/.test(caught)
+          ? ok(`export writes ${Object.keys(pkg.manifest.files).length} files and a manifest; a changed built file fails the hash check`)
+          : bad("a changed built file in a package folder passes the hash check");
+      } finally {
+        rmSync(out, { recursive: true, force: true });
+      }
+    },
+  },
   // Every scheme's empty overlay passes the overlay schema, and an entry with no because fails it.
   "overlay-schema-guards": {
     requires: ["schema/overlay.schema.json", "cli/src/overlay.mjs", "cli/src/project.mjs"],

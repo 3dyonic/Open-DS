@@ -653,6 +653,8 @@ export function docsPages(
     all = false,
     robots = false,
     base = "/",
+    // The built tokens to read values from. A renamed scheme reads its source's.
+    tokensId = scheme.id,
   } = {},
 ) {
   // The data the page composites draw, written to _composites.json beside the pages.
@@ -747,7 +749,7 @@ export function docsPages(
       t.id,
       JSON.parse(
         readFileSync(
-          join(roots.tokens, scheme.id, `${t.id}.tokens.json`),
+          join(roots.tokens, tokensId, `${t.id}.tokens.json`),
           "utf8",
         ),
       ),

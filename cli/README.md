@@ -28,6 +28,8 @@ npx open-ds create my-ds --scheme dense-data
 
 Then `npm install` and `npm run storybook` or `npm run docs`. The code is copied into your project: you own it.
 
+`open-ds export --out <folder>` writes a scheme as a package folder (the manifest, the overlay, the lockfile and the built file). `open-ds create <dir> --from <folder>` makes a project from it after a hash check.
+
 ## Add it to an existing app
 
 ```bash

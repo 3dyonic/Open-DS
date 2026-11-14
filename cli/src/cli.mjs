@@ -13,7 +13,7 @@ import { agentsMd, skillSection } from "./agents.mjs";
 import { build } from "./build.mjs";
 import { traceScheme, traceText, traceToken, untraced, weakReasons } from "./trace.mjs";
 import { baseCss, componentsFor, packagesFor, withImports } from "./components.mjs";
-import { createProject } from "./create.mjs";
+import { createFromFolder, createProject } from "./create.mjs";
 import { buildProject, isOverlayProject, PROJECT_FILES, projectScheme, readLock } from "./project.mjs";
 import { compositeComponents, compositePackages, docSiteFiles } from "./doc-site.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
@@ -95,6 +95,12 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds create <dir> --scheme <id> [--brand <id>]
                                        write a full design system project: Style Dictionary tokens,
                                        components, Storybook, Docusaurus docs, agent files and CI
+  open-ds create <dir> --from <folder> [--brand <id>]
+                                       the same, from a package folder: its overlay on the installed
+                                       source; the lockfile's hashes are checked first
+  open-ds export [<scheme>] [--dir .] --out <folder>
+                                       write a package folder: manifest.json, overlay.json, open-ds.lock
+                                       and build/scheme.json; from a project, or from a scheme as it ships
   open-ds init <scheme> [--dir .] [--brand <id>] [--docs]
                                        copy tokens, components, AGENTS.md and the agent skill;
                                        --docs also writes the design system's docs pages to docs/
@@ -446,6 +452,17 @@ export async function run(argv) {
         );
       });
       return r.ok && !blocked ? 0 : 1;
+    }
+    if (cmd === "export") {
+      const { exportPackage } = await import("./package-folder.mjs");
+      const outDir = flag(args, "--out");
+      if (!outDir) throw new Error("export needs a folder to write: --out <folder>.");
+      const [schemeId] = args.filter((a, i) => !a.startsWith("--") && !args[i - 1]?.startsWith("--"));
+      const written = exportPackage({ schemeId, dir: resolve(flag(args, "--dir", ".")), out: resolve(outDir) });
+      out({ out: resolve(outDir), files: written }, () =>
+        console.log(`Wrote the package folder ${outDir}: ${written.join(", ")}. Make a project from it: open-ds create <dir> --from ${outDir}`),
+      );
+      return 0;
     }
     if (cmd === "upgrade") {
       const { upgradeProject } = await import("./upgrade.mjs");
@@ -947,16 +964,15 @@ export async function run(argv) {
           "create needs a folder: open-ds create <dir> --scheme <id>.",
         );
       const scheme = flag(args, "--scheme");
-      if (!scheme)
+      const from = flag(args, "--from");
+      if (!scheme && !from)
         throw new Error(
-          'create needs a scheme: --scheme <id>. Run "open-ds list" to see them.',
+          'create needs a scheme: --scheme <id>, or a package folder: --from <folder>. Run "open-ds list" to see the schemes.',
         );
+      if (scheme && from) throw new Error("create takes --scheme or --from, not both.");
       const dir = resolve(args[0]);
-      const record = createProject(scheme, dir, {
-        brand: flag(args, "--brand"),
-        openDs: flag(args, "--open-ds"),
-        overwrite: yes,
-      });
+      const options = { brand: flag(args, "--brand"), openDs: flag(args, "--open-ds"), overwrite: yes };
+      const record = from ? createFromFolder(resolve(from), dir, options) : createProject(scheme, dir, options);
       out(record, () => {
         console.log(
           `Created the ${record.scheme} design system in ${dir}: ${record.files.length} files.`,

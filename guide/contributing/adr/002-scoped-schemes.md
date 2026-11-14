@@ -5,7 +5,7 @@ description: "OD-288: split a scheme by owner (source, overlay, output), join it
 
 # ADR-002: Scheme layers, a build step, and distribution
 
-Status: decided (OD-288). Steps 1 to 3 of the order of work shipped (OD-289, OD-291, OD-292). Steps 4 to 7 are open (OD-311).
+Status: decided (OD-288). Steps 1 to 7 of the order of work shipped (OD-289, OD-291, OD-292, OD-311).
 
 ## Problem
 
