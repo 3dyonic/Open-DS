@@ -12,7 +12,7 @@ const COMMANDS = [
   "open-ds add <component>",
 ];
 
-/** The grammar's rules for options (OD-221), in one sentence for the agent context. */
+/** The grammar's rules for options, in one sentence for the agent context. */
 export const optionsRule = (g) =>
   [
     g.options?.rules?.length
@@ -23,7 +23,7 @@ export const optionsRule = (g) =>
     .filter(Boolean)
     .join(" ");
 
-/** OD-222: what sits on a fill comes from the fill's tone, generated from the grammar. */
+/** What sits on a fill comes from the fill's tone, generated from the grammar. */
 export const toneRule = (g) =>
   g.semantics?.tones
     ? "Text on a fill follows the fill's tone: `color.text.on-light` on a light fill, `color.text.on-dark` on a dark one, the same two colors in both modes. Each fill's tone is decided in the theme (`$extensions.open-ds.tone`). On the page's own surfaces, use `color.text.*`."
@@ -167,7 +167,7 @@ export function skillSection(scheme, { project = false } = {}) {
 }
 
 /**
- * AGENTS.md in a created project (OD-205): the read-once text and the rules that always apply,
+ * AGENTS.md in a created project: the read-once text and the rules that always apply,
  * within BUDGET.agents. The detail lives in context/, one booklet per component, color and task.
  */
 export function agentsCore(scheme, g, { brand, components }) {

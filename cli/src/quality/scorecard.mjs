@@ -1,4 +1,4 @@
-// The quality scorecard (OD-298): pure functions over snapshots. measureAll gives one snapshot's
+// The quality scorecard: pure functions over snapshots. measureAll gives one snapshot's
 // numbers; compareSnapshots puts a base and a candidate side by side; gateAgainstBaseline checks a
 // candidate's numbers against the recorded baseline. Each criterion: { id, base, candidate, delta,
 // direction, pass, details }.
@@ -123,7 +123,7 @@ export function relationTable(base, candidate) {
 export function baselineOf(snapshot, params = DEFAULT_PARAMS) {
   return {
     $description:
-      "The quality gate's baseline (OD-298): each criterion's value on the ref below, its value per part (scheme, scheme/theme or file), and the way it may move (down: may only go down; up: may only go up; report: not gated). gated: false is shown, not gated. Each part is gated on its own. Refresh on purpose: open-ds compare --base origin/master --write-baseline.",
+      "The quality gate's baseline: each criterion's value on the ref below, its value per part (scheme, scheme/theme or file), and the way it may move (down: may only go down; up: may only go up; report: not gated). gated: false is shown, not gated. Each part is gated on its own. Refresh on purpose: open-ds compare --base origin/master --write-baseline.",
     ref: snapshot.ref,
     sha: snapshot.sha,
     criteria: Object.fromEntries(measureAll(snapshot, params).map((m) => [m.id, { value: m.value, direction: m.direction, gated: m.gated, parts: m.parts }])),

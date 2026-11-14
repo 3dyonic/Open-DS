@@ -54,7 +54,7 @@ test("a decision that copies another one is on the map, and says which", () => {
 
 test("a decision lists its components, each with the token rows that read it", () => {
   const p = light.decisions["color.action.primary"];
-  assert.equal(p.components.length, 15); // 15 with Icon (OD-285).
+  assert.equal(p.components.length, 14); // With Icon.
   assert.deepEqual(p.components.find((c) => c.component === "button").rows.map((r) => r.id), ["component.button.primary.background"]);
 });
 

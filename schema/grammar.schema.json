@@ -252,7 +252,7 @@
           "replaced_by": {
             "type": "string",
             "pattern": "^[a-z-]+(/([a-z0-9-]+|@))+$",
-            "description": "A deprecated key: the key that replaces it. It stays one minor release as an alias of that key (OD-241)."
+            "description": "A deprecated key: the key that replaces it. It stays one minor release as an alias of that key."
           }
         }
       }
@@ -261,7 +261,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["description", "urgency", "tones", "keys"],
-      "description": "What each semantic key is for, written once for every scheme: intent, use, misuse with what to use instead, and the fills it may sit on with the contrast it must keep. Words only; values come from each scheme. The harness checks every rule.",
+      "description": "What each semantic key is for, written once for every scheme: intent, use, misuse with what to use instead, and the fills it may sit on with the contrast it must keep. Words only; values come from each scheme. Every rule is checked.",
       "properties": {
         "description": {
           "type": "string",
@@ -272,7 +272,7 @@
           "type": "object",
           "additionalProperties": false,
           "required": ["description", "items"],
-          "description": "How the tokens of a scope connect (OD-304): comes-from, pairs-with and stays-apart. The harness checks each one.",
+          "description": "How the tokens of a scope connect: comes-from, pairs-with and stays-apart. Each one is checked.",
           "properties": {
             "description": {
               "type": "string",
@@ -463,7 +463,7 @@
           "type": "object",
           "additionalProperties": false,
           "required": ["description", "steps", "grays"],
-          "description": "The neutral scale and the menu of grays it can point at (OD-228).",
+          "description": "The neutral scale and the menu of grays it can point at.",
           "properties": {
             "description": {
               "type": "string",
@@ -526,7 +526,7 @@
           "type": "object",
           "additionalProperties": false,
           "required": ["description", "sets", "fills"],
-          "description": "How foregrounds pair with fills (OD-222). Each fill states its tone, light or dark, per brand and mode. What sits on it comes from color.on-light or color.on-dark.",
+          "description": "How foregrounds pair with fills. Each fill states its tone, light or dark, per brand and mode. What sits on it comes from color.on-light or color.on-dark.",
           "properties": {
             "description": {
               "type": "string",
@@ -586,7 +586,7 @@
           "type": "object",
           "additionalProperties": false,
           "required": ["description", "tokens"],
-          "description": "The few colors that show a theme at a glance, listed on each scheme's Themes page (OD-223).",
+          "description": "The few colors that show a theme at a glance, listed on each scheme's Themes page.",
           "properties": {
             "description": {
               "type": "string",
@@ -722,7 +722,7 @@
           "type": "object",
           "additionalProperties": false,
           "required": ["description", "items"],
-          "description": "The meaning of each semantic name ending, such as subtle (OD-303).",
+          "description": "The meaning of each semantic name ending, such as subtle.",
           "properties": {
             "description": {
               "type": "string",
@@ -749,17 +749,17 @@
                   "step": {
                     "type": "string",
                     "pattern": "^[0-9]+$",
-                    "description": "The step of its hue scale the part sits at, such as 600 (OD-304)."
+                    "description": "The step of its hue scale the part sits at, such as 600."
                   },
                   "from": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "The part this one moves from, such as @ for hover (OD-304)."
+                    "description": "The part this one moves from, such as @ for hover."
                   },
                   "steps": {
                     "type": "integer",
                     "minimum": 1,
-                    "description": "How many steps on from the from part it sits (OD-304)."
+                    "description": "How many steps on from the from part it sits."
                   }
                 },
                 "description": "One name ending and its meaning."
@@ -772,7 +772,7 @@
           "type": "object",
           "additionalProperties": false,
           "required": ["description", "items"],
-          "description": "The meaning of each group of a semantic name, such as color.category (OD-303).",
+          "description": "The meaning of each group of a semantic name, such as color.category.",
           "properties": {
             "description": {
               "type": "string",
@@ -809,7 +809,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["description", "form", "parts"],
-      "description": "The form every reason takes (OD-294). The harness check reasons-say-why counts the reasons that miss a part, per scheme, and the count may only go down.",
+      "description": "The form every reason takes: the job, how the property does it, what people get and which decision sets it.",
       "properties": {
         "description": {
           "type": "string",
@@ -1154,7 +1154,7 @@
               },
               "anatomy": {
                 "type": "object",
-                "description": "The component's parts (OD-229): the drawing, every part with its roles, and the cards that follow each decision to its part. Its Anatomy reference page is generated from it."
+                "description": "The component's parts: the drawing, every part with its roles, and the cards that follow each decision to its part. Its Anatomy reference page is generated from it."
               }
             }
           }
@@ -1165,7 +1165,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["description", "rules"],
-      "description": "Rules every scheme's primitives (the options) follow, so each option looks clearly different from the others. The harness checks them and the agent context carries them.",
+      "description": "Rules every scheme's primitives (the options) follow, so each option looks clearly different from the others. The agent context carries them.",
       "properties": {
         "description": {
           "type": "string",
@@ -1176,7 +1176,7 @@
           "type": "object",
           "additionalProperties": false,
           "required": ["say", "why", "except"],
-          "description": "Only the options something reads (OD-222): every primitive outside the listed groups is read by a semantic, a theme, a component key or another primitive.",
+          "description": "Only the options something reads: every primitive outside the listed groups is read by a semantic, a theme, a component key or another primitive.",
           "properties": {
             "say": {
               "type": "string",
@@ -1242,7 +1242,7 @@
     },
     "anatomy": {
       "type": "object",
-      "description": "The parts layer (OD-229): the roles a part can play, as the questions they answer.",
+      "description": "The parts layer: the roles a part can play, as the questions they answer.",
       "required": ["description", "roles"],
       "properties": {
         "description": {
@@ -1278,7 +1278,7 @@
     },
     "mapping": {
       "type": "array",
-      "description": "The decision mapping (OD-303): each design property, the question that decides it, the semantic tokens it lives in and its jobs. A reason cites its token's deciding question from here; a token with no entry is untraced.",
+      "description": "The decision mapping: each design property, the question that decides it, the semantic tokens it lives in and its jobs. A reason cites its token's deciding question from here; a token with no entry is untraced.",
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -1360,7 +1360,7 @@
           },
           "roles": {
             "type": "array",
-            "description": "The roles this property serves (OD-304), in every scope on the decision graph, each with the parts of the reason form: role, job, how (from the job), what people get.",
+            "description": "The roles this property serves, in every scope on the decision graph, each with the parts of the reason form: role, job, how (from the job), what people get.",
             "items": {
               "type": "object",
               "additionalProperties": false,
@@ -1468,7 +1468,7 @@
         "considers": {
           "type": "array",
           "minItems": 1,
-          "description": "What every answer must weigh (OD-245). Each scheme's answer says, for each one, how its choice meets it.",
+          "description": "What every answer must weigh. Each scheme's answer says, for each one, how its choice meets it.",
           "items": {
             "type": "object",
             "additionalProperties": false,
@@ -1526,13 +1526,13 @@
             "type": "string",
             "pattern": "^[a-z0-9-]+$"
           },
-          "description": "The roles this option brings, by role id (OD-304). An empty list means the option shapes roles but brings none."
+          "description": "The roles this option brings, by role id. An empty list means the option shapes roles but brings none."
         },
         "explain": {
           "type": "object",
           "additionalProperties": false,
           "required": ["goal", "how", "gives"],
-          "description": "Plain words that explain the option on a docs page, such as How the scale is built (OD-307). {hue} stands for the name of the scale's color.",
+          "description": "Plain words that explain the option on a docs page, such as How the scale is built. {hue} stands for the name of the scale's color.",
           "properties": {
             "goal": {
               "type": "string",
@@ -1633,7 +1633,7 @@
           "items": {
             "$ref": "#/$defs/scope-question"
           },
-          "description": "One question per method, in method order. A follow-up question refines one method question and sits right after it (OD-299)."
+          "description": "One question per method, in method order. A follow-up question refines one method question and sits right after it."
         },
         "owns": {
           "type": "array",
@@ -1670,7 +1670,7 @@
           "type": "object",
           "additionalProperties": false,
           "required": ["description", "level", "relation", "reach"],
-          "description": "The spacing scope only (OD-294): the words that name a space token's use case. Every scheme's spacing record uses these words.",
+          "description": "The spacing scope only: the words that name a space token's use case. Every scheme's spacing record uses these words.",
           "properties": {
             "description": {
               "type": "string",
@@ -1694,7 +1694,7 @@
         "jobs": {
           "type": "array",
           "minItems": 1,
-          "description": "The spacing scope only (OD-294): the job of each spacing property and how the property does it. A token can serve more than one job; its reason names the first job that names it.",
+          "description": "The spacing scope only: the job of each spacing property and how the property does it. A token can serve more than one job; its reason names the first job that names it.",
           "items": {
             "type": "object",
             "additionalProperties": false,
@@ -1736,7 +1736,7 @@
         },
         "properties": {
           "type": "array",
-          "description": "The design properties this scope's tokens carry (OD-294), for example a corner or a shadow: the jobs each property does and how it does each. Every reason for one of its tokens names one of these jobs.",
+          "description": "The design properties this scope's tokens carry, for example a corner or a shadow: the jobs each property does and how it does each. Every reason for one of its tokens names one of these jobs.",
           "items": {
             "type": "object",
             "description": "One property: the tokens that carry it, how it works and its jobs.",
@@ -1817,7 +1817,7 @@
         },
         "relations": {
           "type": "array",
-          "description": "How each of this scope's tokens is set (OD-294): decided by answers, or derived from other tokens by a relation. Each scheme records which relation each token follows (scheme.relations), and cli/src/shape-elevation.mjs checks the record against the values.",
+          "description": "How each of this scope's tokens is set: decided by answers, or derived from other tokens by a relation. Each scheme records which relation each token follows (scheme.relations), and cli/src/shape-elevation.mjs checks the record against the values.",
           "items": {
             "type": "object",
             "additionalProperties": false,
@@ -1830,7 +1830,7 @@
               },
               "kind": {
                 "enum": ["comes-from", "pairs-with", "stays-apart"],
-                "description": "The decision graph's kind of connection (OD-304), for a relation that ties the token to another token. A relation without a kind is the token's rule."
+                "description": "The decision graph's kind of connection, for a relation that ties the token to another token. A relation without a kind is the token's rule."
               },
               "tokens": {
                 "type": "array",
@@ -1981,7 +1981,7 @@
                   "pattern": "^[a-z-]+(\\.[a-z0-9-]+)+$",
                   "description": "A shadow token, for example elevation.overlay."
                 },
-                "description": "For dark-same-shape: the layers that float (menus, popovers, dialogs, toasts, tooltips). Only these cast a shade in dark; every other layer casts none there (OD-297)."
+                "description": "For dark-same-shape: the layers that float (menus, popovers, dialogs, toasts, tooltips). Only these cast a shade in dark; every other layer casts none there."
               },
               "by_answer": {
                 "type": "object",
@@ -2050,7 +2050,7 @@
             "curves",
             "items"
           ],
-          "description": "The motion scope only (OD-297): the motion families, the move types and the curve kinds. A scheme's family follows one answer; each family limits each duration and allows curve kinds per move. cli/src/motion.mjs checks every scheme.",
+          "description": "The motion scope only: the motion families, the move types and the curve kinds. A scheme's family follows one answer; each family limits each duration and allows curve kinds per move. cli/src/motion.mjs checks every scheme.",
           "properties": {
             "description": {
               "type": "string",
@@ -2184,11 +2184,11 @@
         },
         "hints": {
           "type": "array",
-          "description": "Rules of thumb this scope's decisions taught (OD-230): hints for the next decision, for people and agents.",
+          "description": "Rules of thumb this scope's decisions taught: hints for the next decision, for people and agents.",
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["id", "when", "do", "why", "from"],
+            "required": ["id", "when", "do", "why"],
             "properties": {
               "id": {
                 "type": "string",
@@ -2208,22 +2208,12 @@
               "measure": {
                 "type": "string",
                 "minLength": 1,
-                "description": "What to measure, when the hint can be measured; the harness checks the measured ones."
+                "description": "What to measure, when the hint can be measured. A measured hint is checked."
               },
               "why": {
                 "type": "string",
                 "minLength": 1,
                 "description": "Why, in plain words."
-              },
-              "from": {
-                "type": "array",
-                "minItems": 1,
-                "items": {
-                  "type": "string",
-                  "pattern": "^OD-\\d+$",
-                  "description": "A ticket key."
-                },
-                "description": "The decisions the hint came from."
               }
             }
           }

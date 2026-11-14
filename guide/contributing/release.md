@@ -12,7 +12,7 @@ description: "The GitHub Actions that test every change and publish the CLI on a
 2. `test` runs on the PR. Merge only when it is green.
 3. When `RC1` is ready, open a PR from `RC1` into `master` and merge it the same way.
 4. A push to `master` runs `test` again. When it passes, `notify-ops` asks the private `open-ds-ops` repository to redeploy open-ds.dev.
-5. To publish the CLI, run `pnpm release <patch|minor|major>` in a release PR, then merge RC1 to master. The merge is the release: `publish` sees a version with no tag, publishes it to npmjs and GitHub Packages, then creates the tag `v<version>` and its GitHub release (OD-199).
+5. To publish the CLI, run `pnpm release <patch|minor|major>` in a release PR, then merge RC1 to master. The merge is the release: `publish` sees a version with no tag, publishes it to npmjs and GitHub Packages, then creates the tag `v<version>` and its GitHub release.
 
 ## Versions
 
@@ -35,7 +35,7 @@ This shows what changed and the smallest bump it needs.
 pnpm release patch
 ```
 
-This bumps `cli/package.json` and updates the snapshot together; use `minor` or `major` the same way. It refuses a bump that is too small. Commit both files in one release PR. The harness (`release-surface`) and `publish` fail if they disagree.
+This bumps `cli/package.json` and updates the snapshot together; use `minor` or `major` the same way. It refuses a bump that is too small. Commit both files in one release PR. The `release-surface` check and `publish` fail if they disagree.
 
 ## Workflows
 

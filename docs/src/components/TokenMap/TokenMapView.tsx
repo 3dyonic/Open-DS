@@ -20,7 +20,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Badge } from "@open-ds/ui/components/badge";
 import styles from "./styles.module.css";
 
-// The Token map page (OD-274). It reads left to right: area, scale, step, semantic group, decision,
+// The Token map page. It reads left to right: area, scale, step, semantic group, decision,
 // and the decision's components and copies. Every level keeps its other options in view and opens the
 // pressed one in place; after a press the view zooms to the pressed box and what it opened. The data
 // is cli/src/token-map-view.mjs, built per scheme and brand by scripts/generate.mjs.
@@ -46,10 +46,10 @@ type Decision = {
   via?: string | null;
   stepWhy?: string | null;
   mapping?: { property: string | null; says?: string | null; jobs: { title: string; how: string }[] };
-  // What each part of the name means, outermost first: the groups, then the last part (OD-303).
+  // What each part of the name means, outermost first: the groups, then the last part.
   meaning?: { level: "group" | "variant"; name: string; says: string }[];
   guide?: { intent: string | null; useFor: string[]; notFor: { when: string; use: string }[] };
-  // A color token's decision graph (OD-304): role → jobs → property → answers → rule → connections →
+  // A color token's decision graph: role → jobs → property → answers → rule → connections →
   // value, and the reason sentence the engine writes from those fields.
   graph?: Graph;
 };

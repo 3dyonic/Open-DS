@@ -20,7 +20,7 @@ export default function ScaleWhy({ data, children }: { data: ScaleWhyData; child
             const last = i === data.steps.length - 1;
             return (
               <li key={s.question} className="flex flex-col">
-                <div className={`rounded-[var(--radius-surface)] ${last ? "outline outline-[length:var(--border-width-focus)] outline-[var(--color-border-selected)]" : ""}`}>
+                <div className={`rounded-[var(--radius-surface)] ${last ? "outline outline-[length:var(--focus-ring-width)] outline-[var(--color-border-selected)]" : ""}`}>
                   <Frame variant={last ? "sunken" : "card"}>
                     <p className="m-0 text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-muted)]">
                       {s.group}: {s.text}
@@ -30,7 +30,7 @@ export default function ScaleWhy({ data, children }: { data: ScaleWhyData; child
                     {!s.repeatsLabel && <p className="m-0 text-[length:var(--type-caption-font-size)] text-[color:var(--color-text-secondary)]">{s.why}</p>}
                   </Frame>
                 </div>
-                {!last && <span aria-hidden="true" className="ml-[var(--space-gap-group)] h-[var(--space-gap-default)] w-[var(--border-width-focus)] bg-[var(--color-border-strong)]" />}
+                {!last && <span aria-hidden="true" className="ml-[var(--space-gap-group)] h-[var(--space-gap-default)] w-[var(--focus-ring-width)] bg-[var(--color-border-strong)]" />}
               </li>
             );
           })}

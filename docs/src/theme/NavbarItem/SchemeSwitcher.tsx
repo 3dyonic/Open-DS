@@ -5,7 +5,7 @@ import { useScheme } from "../../components/scheme";
 import { Picker } from "../../components/Picker";
 
 // Swaps the scheme and keeps the page: /dense-data/components/button becomes
-// /content-first/components/button. Every scheme has the same pages (the harness checks it), so the
+// /content-first/components/button. Every scheme has the same pages, so the
 // switch never lands on a missing one. Multi-brand also picks a brand.
 // The pickers are listboxes from the scheme's own tokens, never a native select (Picker).
 export default function SchemeSwitcher({ mobile }: { mobile?: boolean }) {

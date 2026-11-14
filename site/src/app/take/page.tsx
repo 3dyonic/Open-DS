@@ -39,7 +39,7 @@ const GET: [string, string, string[]][] = [
   ],
   [
     "Checks",
-    "The harness checks every layer against the instructions and the specs.",
+    "Checks test every layer against the instructions and the specs.",
     ["harness", "JSON Schema", "token resolve"],
   ],
 ];

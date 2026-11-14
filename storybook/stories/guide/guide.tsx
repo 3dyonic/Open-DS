@@ -1,6 +1,6 @@
-// The design system's own guide in Storybook (OD-178): the Introduction, the Foundations pages and the
+// The design system's own guide in Storybook: the Introduction, the Foundations pages and the
 // blocks of every component's docs page. Everything comes from the scheme (its answers, inventory,
-// usage rules, voice and tokens) and the grammar's component reference (OD-185), so each design
+// usage rules, voice and tokens) and the grammar's component reference, so each design
 // system shows its own text. Token values are read live from CSS variables, so the pages follow the
 // scheme, brand and mode chosen in the toolbar. useGuideData (./guide-data) says where the data lives:
 // the Open DS Storybook reads the active scheme; a created project reads its own scheme.json. open-ds create
@@ -167,7 +167,7 @@ function chain(s: Any, path: string) {
   return steps;
 }
 
-// ---------- Introduction (OD-179) ----------
+// ---------- Introduction ----------
 
 // A small number as a word, for headings ("Five design systems"); larger ones stay digits.
 const WORDS = [
@@ -197,7 +197,7 @@ export function Introduction() {
     <Frame>
       <div ref={ref}>
         {ABOUT_OPEN_DS && (
-          // OD-216: the Open DS Storybook first says what Open DS is, then shows the scheme picked. The
+          // The Open DS Storybook first says what Open DS is, then shows the scheme picked. The
           // scheme's robot changes with the toolbar; Shelf keeps the components. Night editions in dark.
           <section className="about" aria-labelledby="about-open-ds">
             <div className="about-text">
@@ -372,7 +372,7 @@ export function Introduction() {
   );
 }
 
-// ---------- Foundations (OD-180) ----------
+// ---------- Foundations ----------
 
 function Why({ s, scope }: { s: Any; scope: string }) {
   const a = answer(s, `${scope}.definition`);
@@ -602,7 +602,7 @@ export function FoundationsShape() {
   );
 }
 
-/** Every primitive, its value, and what points to it (OD-184). Unused primitives stay, dashed. */
+/** Every primitive, its value, and what points to it. Unused primitives stay, dashed. */
 function primitiveUse(s: Any) {
   const used: Record<string, string[]> = {};
   const scan = (node: Any, path: string, where: string) => {
@@ -637,7 +637,7 @@ const showValue = (v: Any) =>
       : String(v);
 
 /**
- * One primitive shown as itself (OD-220), as the docs show it: a corner as a rounded tile, a type size
+ * One primitive shown as itself, as the docs show it: a corner as a rounded tile, a type size
  * or weight as Aa, a line height as two lines, a shadow as a lifted box. Only space and size are bars.
  */
 function PrimSample({
@@ -684,7 +684,7 @@ function PrimSample({
       </div>
     );
   if (path.startsWith("font.line-height.")) {
-    // The line box (OD-221): one line of Ag at a fixed 16px on a band exactly one line height tall.
+    // The line box: one line of Ag at a fixed 16px on a band exactly one line height tall.
     const px = Math.round(Number(String(value).replace(/rem$/, "")) * 16);
     return (
       <div style={box}>
@@ -726,7 +726,7 @@ function PrimSample({
     );
   if (path.startsWith("shadow.")) {
     // A shadow belongs to a mode: show it on that mode's own canvas and raised surface, whichever mode
-    // Storybook is in (OD-220). The -dark shadows are the dark mode's; the rest are light.
+    // Storybook is in. The -dark shadows are the dark mode's; the rest are light.
     const stage = stages?.[/-dark$/.test(path) ? "dark" : "light"];
     return (
       <div style={{ ...box, background: stage?.canvas, borderRadius: 8, padding: 12, marginTop: 8 }}>
@@ -755,7 +755,7 @@ function PrimSample({
   return null;
 }
 
-/** The kinds of primitive, one Storybook page each (OD-195), the same as the docs' Primitives section. */
+/** The kinds of primitive, one Storybook page each, the same as the docs' Primitives section. */
 export const PRIMITIVE_KINDS: { id: string; title: string; match: (p: string) => boolean }[] = [
   { id: "color", title: "Color", match: (p) => p.startsWith("color.") },
   { id: "space-and-size", title: "Space and size", match: (p) => /^(space|size)\./.test(p) },
@@ -765,7 +765,7 @@ export const PRIMITIVE_KINDS: { id: string; title: string; match: (p: string) =>
   { id: "effects", title: "Effects", match: (p) => /^(opacity|shadow)\./.test(p) },
 ];
 
-// The scale view (OD-223), the same as the docs' color primitives page: for each hue, light and dark
+// The scale view, the same as the docs' color primitives page: for each hue, light and dark
 // tabs; in each, the lanes its tokens paint as whole scales, then one row per token. A row and its step
 // light up together. The map is cli/src/scale-map.mjs, the one the docs, the CLI and the MCP read too;
 // open-ds create copies it next to this file.
@@ -1101,7 +1101,7 @@ export function FoundationsMotion() {
   );
 }
 
-// ---------- Component docs page (OD-181) ----------
+// ---------- Component docs page ----------
 
 function useMeta(): Any {
   const resolved: Any = useOf("meta");
@@ -1133,7 +1133,7 @@ export function ComponentHeader() {
           <span className="chip">In {s.name}</span>
         </p>
       ) : (
-        // OD-192, OD-211: a component the scheme leaves out renders in its tokens like any other. Only
+        // A component the scheme leaves out renders in its tokens like any other. Only
         // the badge, its reason and what to use instead set it apart.
         <p style={{ marginTop: 10 }}>
           <span className="chip leftout-chip" style={{ marginRight: 8 }}>
@@ -1147,7 +1147,7 @@ export function ComponentHeader() {
   );
 }
 
-/** Icon's docs only (OD-285): the two ways to draw an icon, the same words as the docs page. */
+/** Icon's docs only: the two ways to draw an icon, the same words as the docs page. */
 export function IconWays() {
   const { s, item } = useComponent();
   if (item?.id !== "icon") return null;
@@ -1184,7 +1184,7 @@ export function WhenToUse() {
   return (
     <Frame>
       <h2>When to use it</h2>
-      {/* OD-211: a kept component's own use leads: where this scheme uses it. */}
+      {/* A kept component's own use leads: where this scheme uses it. */}
       {carried?.why && (
         <p style={{ marginBottom: 12 }}>
           <b>In {s.name}:</b> {carried.why}

@@ -1,4 +1,4 @@
-// A scheme stores the type and spacing decisions, not the values they generate (OD-301). The type
+// A scheme stores the type and spacing decisions, not the values they generate. The type
 // group stores its scale; withTypeAndSpace fills each role's font size and line height, and the font
 // size, line height and line box options. The space group stores its spacing record and the size group
 // its control scale; withTypeAndSpace fills the gaps, insets, control heights and the row, and adds any

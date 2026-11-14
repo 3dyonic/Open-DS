@@ -25,7 +25,7 @@ export function useScheme() {
   const { siteConfig } = useDocusaurusContext();
   const schemes = siteConfig.customFields?.schemes as Scheme[];
   const { pathname } = useLocation();
-  // Paths start with the site's base URL: "/" locally, "/docs/" on open-ds.dev (OD-210).
+  // Paths start with the site's base URL: "/" locally, "/docs/" on open-ds.dev.
   const inside = pathname.startsWith(siteConfig.baseUrl) ? pathname.slice(siteConfig.baseUrl.length) : pathname;
   const [first = "", ...rest] = inside.split("/");
   const current = schemes.find((s) => s.id === first) ?? null;

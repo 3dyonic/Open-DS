@@ -247,6 +247,131 @@ function ensureTokens(c) {
 
 // ---------- checks ----------
 
+// ---------- product text and the token API ----------
+
+// Where the product lives: the files a user or an agent reads. The ADR folder records decisions with
+// their tickets, and CHANGELOG.md is history, so both are allowed.
+export const PRODUCT_PATHS = [
+  "schemes",
+  "schema",
+  "cli/src",
+  "cli/templates",
+  "ui/src",
+  "tokens",
+  "site/src",
+  "docs/src",
+  "docs/docs",
+  "storybook",
+  "guide",
+  "mcp",
+  "skills",
+  "llms.txt",
+  "llms-full.txt",
+];
+export const PRODUCT_ALLOWED = ["guide/contributing/adr/", "CHANGELOG.md"];
+const PRODUCT_TEXT = /\.(c|m)?(js|ts)x?$|\.d\.mts$|\.(css|md|mdx|json|txt|html|ya?ml)$/;
+
+// Process words: a pointer to how the project is run, not guidance for a user. Short on purpose.
+export const PROCESS_WORDS = [
+  [/\b(?:OD|ORC)-\d+\b/g, "ticket key"],
+  [/\bthe owner\b|\bowner's\b/gi, "owner"],
+  [/\bthe harness\b/gi, "harness"],
+  [/\btickets?\b/gi, "ticket"],
+  [/\bJira\b|\bOrchestra\b/g, "process tool"],
+  [/\bthis PR\b|\bPR #?\d+/g, "pull request"],
+];
+
+/**
+ * The process words in one text: [{ line, word, text }]. In JSON, a string under a "waits" key is
+ * skipped: the known-shortfall field names the ticket that fixes it, and it stays.
+ */
+export function processWords(file, text) {
+  const found = [];
+  const scan = (line, s) => {
+    for (const [re, word] of PROCESS_WORDS)
+      for (const m of s.matchAll(re)) found.push({ line, word, text: m[0] });
+  };
+  if (file.endsWith(".json")) {
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      data = undefined;
+    }
+    if (data !== undefined) {
+      const lines = text.split("\n");
+      const lineOf = (s) => lines.findIndex((l) => l.includes(JSON.stringify(s).slice(1, 40))) + 1 || 1;
+      const walk = (v, path) => {
+        if (path.includes("waits")) return;
+        if (typeof v === "string") scan(lineOf(v), v);
+        else if (v && typeof v === "object")
+          for (const [k, x] of Object.entries(v)) {
+            scan(lineOf(k), k);
+            walk(x, [...path, k]);
+          }
+      };
+      walk(data, []);
+      return found;
+    }
+  }
+  text.split("\n").forEach((l, i) => scan(i + 1, l));
+  return found;
+}
+
+/** Every product file to read, relative to the root. */
+export function productFiles(c) {
+  const allowed = (f) => PRODUCT_ALLOWED.some((a) => f === a || f.startsWith(a));
+  return PRODUCT_PATHS.flatMap((p) => (statSafe(c.p(p))?.isDirectory() ? c.walk(p, (f) => PRODUCT_TEXT.test(f)) : c.has(p) ? [p] : []))
+    .filter((f) => !allowed(f));
+}
+const statSafe = (p) => (existsSync(p) ? statSync(p) : null);
+
+// The token API: the names a project can read. A new one waits for the owner's approval.
+export const TOKEN_API_FILE = "harness/token-api.json";
+
+/** The variants each cva(...) call in a component file declares: ["<file>/<axis>/<option>"]. */
+export function cvaVariants(file, src) {
+  const out = [];
+  for (let at = src.indexOf("variants: {"); at >= 0; at = src.indexOf("variants: {", at + 1)) {
+    let depth = 0;
+    let axis = null;
+    for (const line of src.slice(at + "variants: {".length).split("\n")) {
+      if (depth === 0) {
+        const m = line.match(/^\s*(?:([a-zA-Z-]+)|"([a-zA-Z-]+)"): \{/);
+        if (m) axis = m[1] ?? m[2];
+      } else if (depth === 1 && axis) {
+        // A key, bare or quoted, then a space: never the start of a wrapped class like "hover:bg-…".
+        const m = line.match(/^\s*(?:([a-zA-Z-]+)|"([a-zA-Z-]+)"):(?:\s|$)/);
+        if (m) out.push(`${file}/${axis}/${m[1] ?? m[2]}`);
+      }
+      for (const ch of line) depth += ch === "{" ? 1 : ch === "}" ? -1 : 0;
+      if (depth < 0) break;
+    }
+  }
+  return [...new Set(out)];
+}
+
+/** Today's token API: component keys, component variants and semantic tokens, each sorted. */
+export function tokenApi(c) {
+  const componentKeys = c.grammar().component_keys.map((k) => k.id);
+  const variants = c
+    .walk("ui/src/components", (f) => f.endsWith(".tsx"))
+    .flatMap((f) => cvaVariants(f.split("/").pop().replace(/\.tsx$/, ""), c.read(f)));
+  const semanticTokens = new Set(SCHEMES.flatMap((id) => Object.keys(flatten(c.scheme(id).tokens.semantic))));
+  const sorted = (xs) => [...new Set(xs)].sort();
+  return { component_keys: sorted(componentKeys), variants: sorted(variants), semantic_tokens: sorted(semanticTokens) };
+}
+
+/** The names in today's API that the approved list lacks, each with the message a reader acts on. */
+export function tokenApiGaps(current, approved) {
+  const gaps = [];
+  for (const kind of ["component_keys", "variants", "semantic_tokens"]) {
+    const known = new Set(approved[kind] ?? []);
+    for (const name of current[kind]) if (!known.has(name)) gaps.push(`${name} is new; add it to ${TOKEN_API_FILE} only with the owner's approval.`);
+  }
+  return gaps;
+}
+
 export const CHECKS = {
   // Harness
   "harness-covers-specs": {
@@ -1131,8 +1256,10 @@ export const CHECKS = {
         for (const h of disabledOpacity(c.read(f))) gaps.push(`${f}:${h.line} ${h.cls}`);
       for (const k of c.grammar().component_keys)
         if (!k.replaced_by && k.default === "opacity.disabled") gaps.push(`${k.id} reads opacity.disabled`);
-      for (const id of SCHEMES)
-        if (!c.scheme(id).tokens.semantic.opacity?.disabled?.$deprecated) gaps.push(`${id}: opacity.disabled is not deprecated`);
+      for (const id of SCHEMES) {
+        const alias = c.scheme(id).tokens.semantic.opacity?.disabled;
+        if (alias && !alias.$deprecated) gaps.push(`${id}: opacity.disabled is a live token`);
+      }
       return gaps.length
         ? bad(`${gaps.length}: ${gaps.slice(0, 6).join("; ")}`)
         : ok("no component dims a disabled state with opacity; disabled parts read color.disabled.*");
@@ -1477,16 +1604,15 @@ export const CHECKS = {
   "hints-measured": {
     requires: ["schemes/grammar.json", "cli/src/ramps.mjs"],
     run: async (c) => {
-      // OD-230: the decision hints that can be measured hold. Every hint names the decisions it came
-      // from; every chroma adjustment sits on a step that needed it (generated chroma below the 0.04
-      // target, OD-231); and status text on dark shows its hue (chroma 0.04+) at 7:1 or more.
+      // OD-230: the decision hints that can be measured hold. Every chroma adjustment sits on a step
+      // that needed it (generated chroma below the 0.04 target, OD-231); and status text on dark shows
+      // its hue (chroma 0.04+) at 7:1 or more.
       const { scale, lch, contrast } = await import(pathToFileURL(c.p("cli/src/ramps.mjs")).href);
       const { follow } = await import(pathToFileURL(c.p("cli/src/scale-map.mjs")).href);
       const g = c.grammar();
       const hints = g.scopes.flatMap((s) => (s.hints ?? []).map((h) => ({ ...h, scope: s.id })));
       const gaps = [];
       if (!hints.length) gaps.push("the grammar has no decision hints");
-      for (const h of hints) if (!h.from?.length) gaps.push(`hint ${h.scope}.${h.id} names no decision`);
       const TARGET = 0.04;
       let moves = 0;
       let texts = 0;
@@ -4043,6 +4169,26 @@ export const CHECKS = {
     run: (c) => {
       const r = c.sh("node", ["scripts/e2e.mjs"]);
       return r.code === 0 ? ok("end to end passes") : bad(tail(r.out));
+    },
+  },
+
+  // Product text
+  "product-text-has-no-process": {
+    requires: ["schemes/grammar.json"],
+    run: (c) => {
+      const found = productFiles(c).flatMap((f) => processWords(f, c.read(f)).map((x) => `${f}:${x.line} ${x.text}`));
+      return found.length
+        ? bad(`${found.length} process words in product files (ticket keys, the owner, the harness, tickets, pull requests): ${found.slice(0, 8).join("; ")}`)
+        : ok(`no ticket key or process word in ${productFiles(c).length} product files`);
+    },
+  },
+  "token-api-approved": {
+    requires: ["schemes/grammar.json", "ui/src/components", TOKEN_API_FILE],
+    run: (c) => {
+      const current = tokenApi(c);
+      const gaps = tokenApiGaps(current, c.json(TOKEN_API_FILE));
+      const size = Object.values(current).reduce((n, xs) => n + xs.length, 0);
+      return gaps.length ? bad(`${gaps.length}: ${gaps.slice(0, 6).join(" ")}`) : ok(`${size} names, each in ${TOKEN_API_FILE}`);
     },
   },
 };

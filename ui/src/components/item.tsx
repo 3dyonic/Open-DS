@@ -28,7 +28,7 @@ const itemVariants = cva(
     variants: {
       variant: {
         default: "bg-transparent",
-        // The edge rule (OD-300): a link or a button has only its edge to show it can be clicked.
+        // The edge rule: a link or a button has only its edge to show it can be clicked.
         outline:
           "border-[color:var(--item-outline-border)] [a]:border-[color:var(--item-outline-clickable-border)] [button]:border-[color:var(--item-outline-clickable-border)]",
         muted: "bg-[color:var(--item-muted-background)]",

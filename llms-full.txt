@@ -140,7 +140,7 @@ Themes: light, dark
 - theming.lands What changes when the theme changes? Colors only. Only colors change. (because theming.roles)
 - accessibility.roles Which states get their own visible value? All, including loading. Every state, including loading, gets its own value. (because people.q2)
 - accessibility.count How many signals carry each meaning? Three: color, icon and word. Never color alone. (because people.q2)
-- accessibility.definition What contrast floor do we hold? AAA for text. AAA for text you must read; AA for muted text, which must look secondary. Muted text on the canvas is the owner's recorded exception. (because people.q2)
+- accessibility.definition What contrast floor do we hold? AAA for text. AAA for text you must read; AA for muted text, which must look secondary. Muted text on the canvas is a recorded exception. (because people.q2)
 - accessibility.values What is the smallest target? Large. Large targets for tremor and touch. (because people.q1)
 - accessibility.lands Where are the floors hardest to hold? Forms. Forms are where people are blocked. (because content.q1)
 - naming.roles What gets a name? Tokens and component keys. Components get their own keys. (because team.q2)

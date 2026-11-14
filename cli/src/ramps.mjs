@@ -1,10 +1,10 @@
-// Whole color scales, generated in OKLCH (OD-223). Shared by the loader (scheme-generated.mjs), the scheme writer and the harness.
+// Whole color scales, generated in OKLCH. Shared by the loader (scheme-generated.mjs), the scheme writer and the checks.
 //
 // Every colored hue has a light scale and a dark scale, steps 50 to 950. Each is generated from one
 // key color, kept exact at 600: the light scale on a shared lightness curve around it, the dark scale
 // on its own curve, from just above the dark canvas to near white. A step can carry an adjustment, a
 // small recorded move in lightness or hue, for a step whose text must pass or two fills that must stay
-// apart. Grays are not generated: they are the neutral scale's options (OD-228).
+// apart. Grays are not generated: they are the neutral scale's options.
 
 export const STEPS = [
   "50",
@@ -154,7 +154,7 @@ export function adjusted(h, adj) {
     (H + (adj.H ?? 0) + 360) % 360,
   );
 }
-// The contrast-graded curve (OD-299). Contrast is a ratio of (luminance + 0.05), so a curve that is
+// The contrast-graded curve. Contrast is a ratio of (luminance + 0.05), so a curve that is
 // even in ln(luminance + 0.05) gives the same contrast for the same distance in steps. The curve keeps
 // three anchors of the shared curve: step 50, the key exact at 600, and step 950. Between them it runs
 // even in ln(luminance + 0.05) along an eased position: easing 0 is linear, and a higher easing blends
@@ -263,7 +263,7 @@ export function readableStepBetween(row, step, easing, texts = []) {
 }
 /**
  * A hue's scale for one mode, with its recorded adjustments. curve is null for the shared curve, or
- * { easing } for the contrast-graded curve (OD-299). A step the spec holds keeps the shared curve.
+ * { easing } for the contrast-graded curve. A step the spec holds keeps the shared curve.
  */
 export function scale(spec, mode, canvas, curve = null) {
   const shared = mode === "light" ? lightScale(spec.key) : darkScale(spec.key, canvas);

@@ -1630,7 +1630,7 @@
     {
       "question": "accessibility.definition",
       "option": "aaa-text",
-      "why": "AAA for text you must read; AA for muted text, which must look secondary. Muted text on the canvas is the owner's recorded exception.",
+      "why": "AAA for text you must read; AA for muted text, which must look secondary. Muted text on the canvas is a recorded exception.",
       "because": [
         "people.q2"
       ]
@@ -2526,7 +2526,7 @@
           "$description": "The blue hue: a light ramp, a dark ramp and its base value.",
           "$extensions": {
             "open-ds": {
-              "generated": "OD-223",
+              "generated": true,
               "light": {
                 "key": "#0B4FC0"
               },
@@ -2541,13 +2541,13 @@
           "$description": "The green hue: a light ramp, a dark ramp and its base value.",
           "$extensions": {
             "open-ds": {
-              "generated": "OD-223",
+              "generated": true,
               "light": {
                 "key": "#1F7A3A",
                 "adjust": {
                   "100": {
                     "C": 0.008,
-                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
                   }
                 },
                 "held": {
@@ -2566,14 +2566,14 @@
           "$description": "The amber hue: a light ramp, a dark ramp and its base value.",
           "$extensions": {
             "open-ds": {
-              "generated": "OD-223",
+              "generated": true,
               "light": {
                 "key": "#8A5600",
                 "adjust": {
                   "100": {
                     "L": -0.005,
                     "C": 0.013,
-                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
                   }
                 },
                 "held": {
@@ -2600,14 +2600,14 @@
           "$description": "The red hue: a light ramp, a dark ramp and its base value.",
           "$extensions": {
             "open-ds": {
-              "generated": "OD-223",
+              "generated": true,
               "light": {
                 "key": "#C42B2B",
                 "adjust": {
                   "100": {
                     "L": -0.03,
                     "C": 0.017,
-                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
                   }
                 },
                 "held": {
@@ -2644,13 +2644,13 @@
           "$description": "Teal ramp for the info status and categories. Same values as the multi-brand teal ramp: borrowed, not invented.",
           "$extensions": {
             "open-ds": {
-              "generated": "OD-223",
+              "generated": true,
               "light": {
                 "key": "#0B5B55",
                 "adjust": {
                   "100": {
                     "C": 0.023,
-                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed. (OD-231)"
+                    "why": "This step is the soft background of status messages in light mode and the status text in dark mode. As generated, the text looked white on dark backgrounds, so the step got a little more color, and blue and red a touch darker, until the color showed."
                   }
                 },
                 "held": {
@@ -2832,13 +2832,6 @@
             1
           ],
           "$description": "A strong ease-out: most of the way in the first third of the time, then a soft stop. For exits."
-        }
-      },
-      "opacity": {
-        "50": {
-          "$type": "number",
-          "$value": 0.5,
-          "$description": "An opacity option."
         }
       },
       "shadow": {
@@ -3554,7 +3547,7 @@
                   "$value": "{color.neutral.500}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.500: We use the quietest readable gray for hints and captions in order to keep muted text a step below secondary text (neutral.700). The step does this by reading 7.0:1 on surface.default and 6.54:1 on the canvas. The canvas pair falls under 7:1 by the owner's recorded exception: AA for muted text, as neutral.600 would read 1.34:1 from secondary and no longer look secondary. So a hint reads as a hint and every line you must read keeps AAA, because the floor is AAA for text you must read (accessibility.definition) and the neutral ramp sets the steps (color.definition).",
+                      "why": "neutral.500: We use the quietest readable gray for hints and captions in order to keep muted text a step below secondary text (neutral.700). The step does this by reading 7.0:1 on surface.default and 6.54:1 on the canvas. The canvas pair falls under 7:1 by a recorded exception: AA for muted text, as neutral.600 would read 1.34:1 from secondary and no longer look secondary. So a hint reads as a hint and every line you must read keeps AAA, because the floor is AAA for text you must read (accessibility.definition) and the neutral ramp sets the steps (color.definition).",
                       "because": [
                         "accessibility.definition",
                         "color.definition"
@@ -3783,7 +3776,7 @@
                         "generated": true
                       }
                     },
-                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
+                    "$description": "One step from the danger fill, so the pointer shows."
                   }
                 }
               },
@@ -4479,7 +4472,7 @@
                   "$value": "{color.neutral.600}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading 7.67:1 on surface.default and 6.09:1 on surface.floating, the lightest surface it meets. Floating layers fall under 7:1 by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition).",
+                      "why": "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading 7.67:1 on surface.default and 6.09:1 on surface.floating, the lightest surface it meets. Floating layers fall under 7:1 by the recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition).",
                       "because": [
                         "accessibility.definition",
                         "color.definition"
@@ -4710,7 +4703,7 @@
                         "generated": true
                       }
                     },
-                    "$description": "The same as the fill until whole ramps (OD-223) add the step between."
+                    "$description": "One step from the danger fill, so the pointer shows."
                   }
                 }
               },
@@ -5334,12 +5327,6 @@
           "$type": "dimension",
           "$value": "{theme.radius.surface}",
           "$description": "Corner of cards, menus and dialogs."
-        },
-        "container": {
-          "$type": "dimension",
-          "$value": "{radius.surface}",
-          "$description": "Deprecated: use radius.surface.",
-          "$deprecated": "Use radius.surface. Removed in the next minor release."
         }
       },
       "border-width": {
@@ -5356,18 +5343,6 @@
               ]
             }
           }
-        },
-        "focus": {
-          "$type": "dimension",
-          "$value": "{focus.ring.width}",
-          "$description": "Deprecated: use focus.ring.width.",
-          "$deprecated": "Use focus.ring.width. Removed in the next minor release."
-        },
-        "focus-offset": {
-          "$type": "dimension",
-          "$value": "{focus.ring.offset}",
-          "$description": "Deprecated: use focus.ring.offset.",
-          "$deprecated": "Use focus.ring.offset. Removed in the next minor release."
         }
       },
       "focus": {
@@ -5859,14 +5834,6 @@
           }
         }
       },
-      "opacity": {
-        "disabled": {
-          "$type": "number",
-          "$value": "{opacity.50}",
-          "$description": "Deprecated: disabled reads color.disabled.text, color.disabled.surface and color.disabled.border. Opacity is for loading and dragging only.",
-          "$deprecated": "Use color.disabled.text, color.disabled.surface and color.disabled.border. Removed in the next minor release."
-        }
-      },
       "color": {
         "neutral": {
           "0": {
@@ -6304,47 +6271,6 @@
       }
     },
     "component": {
-      "button": {
-        "canvas": {
-          "$value": "{button.focus-ring-offset}",
-          "$description": "Deprecated: use component.button.focus-ring-offset (OD-243). Canvas of the button.",
-          "$deprecated": "Use component.button.focus-ring-offset. Removed in the next minor release."
-        }
-      },
-      "input": {
-        "canvas": {
-          "$value": "{input.focus-ring-offset}",
-          "$description": "Deprecated: use component.input.focus-ring-offset (OD-243). Canvas of the input.",
-          "$deprecated": "Use component.input.focus-ring-offset. Removed in the next minor release."
-        },
-        "danger": {
-          "$value": "{input.border.invalid}",
-          "$description": "Deprecated: use component.input.border.invalid (OD-243). Danger of the input.",
-          "$deprecated": "Use component.input.border.invalid. Removed in the next minor release."
-        }
-      },
-      "control": {
-        "checked": {
-          "$value": "{color.action.primary.@}",
-          "$description": "Deprecated: use checkbox/background/checked (OD-243). Fill of a checked checkbox or an on switch.",
-          "$deprecated": "Use component.checkbox.background.checked. Removed in the next minor release."
-        },
-        "track": {
-          "$value": "{color.border.strong}",
-          "$description": "Deprecated: use switch/track/background/@ (OD-243). Track of an off switch.",
-          "$deprecated": "Use component.switch.track.background.@. Removed in the next minor release."
-        },
-        "thumb": {
-          "$value": "{color.surface.default}",
-          "$description": "Deprecated: use switch/thumb/background (OD-243). Switch thumb and checkmark color.",
-          "$deprecated": "Use component.switch.thumb.background. Removed in the next minor release."
-        },
-        "radius": {
-          "$value": "{radius.badge}",
-          "$description": "Deprecated: use checkbox/radius (OD-243). Checkbox corner radius.",
-          "$deprecated": "Use component.checkbox.radius. Removed in the next minor release."
-        }
-      },
       "badge": {
         "success": {
           "label": {
@@ -6391,1242 +6317,44 @@
           }
         }
       },
-      "tabs": {
-        "indicator": {
-          "$value": "{tabs.trigger.edge.current}",
-          "$description": "Deprecated: use component.tabs.trigger.edge.current (OD-243). Active tab indicator.",
-          "$deprecated": "Use component.tabs.trigger.edge.current. Removed in the next minor release."
-        },
-        "label": {
-          "@": {
-            "$value": "{tabs.trigger.label}",
-            "$description": "Deprecated: use component.tabs.trigger.label (OD-243). Inactive tab label.",
-            "$deprecated": "Use component.tabs.trigger.label. Removed in the next minor release."
-          },
-          "active": {
-            "$value": "{color.text.primary}",
-            "$description": "Deprecated: use tabs/trigger/label (OD-243). Active tab label.",
-            "$deprecated": "Use component.tabs.trigger.label. Removed in the next minor release."
-          }
-        },
-        "focus": {
-          "$value": "{tabs.trigger.focus-width}",
-          "$description": "Deprecated: use component.tabs.trigger.focus-width (OD-243). Focus of the tabs.",
-          "$deprecated": "Use component.tabs.trigger.focus-width. Removed in the next minor release."
-        },
-        "canvas": {
-          "$value": "{tabs.trigger.focus-ring-offset}",
-          "$description": "Deprecated: use component.tabs.trigger.focus-ring-offset (OD-243). Canvas of the tabs.",
-          "$deprecated": "Use component.tabs.trigger.focus-ring-offset. Removed in the next minor release."
-        }
-      },
-      "overlay": {
-        "scrim": {
-          "$value": "{color.surface.scrim}",
-          "$description": "Deprecated: use dialog/overlay/background (OD-243). Color that dims the page behind a dialog.",
-          "$deprecated": "Use component.dialog.overlay.background. Removed in the next minor release."
-        }
-      },
-      "tooltip": {
-        "background": {
-          "$value": "{tooltip.content.background}",
-          "$description": "Deprecated: use component.tooltip.content.background (OD-243). Tooltip fill.",
-          "$deprecated": "Use component.tooltip.content.background. Removed in the next minor release."
-        },
-        "label": {
-          "$value": "{tooltip.content.label}",
-          "$description": "Deprecated: use component.tooltip.content.label (OD-243). Tooltip text.",
-          "$deprecated": "Use component.tooltip.content.label. Removed in the next minor release."
-        }
-      },
-      "accordion": {
-        "divider": {
-          "$value": "{accordion.item.divider.@}",
-          "$description": "Deprecated: use component.accordion.item.divider.@ (OD-243). The line between items.",
-          "$deprecated": "Use component.accordion.item.divider.@. Removed in the next minor release."
-        },
-        "trigger": {
-          "disabled": {
-            "opacity": {
-              "$value": "{opacity.disabled}",
-              "$description": "Deprecated: use accordion/trigger/disabled/label (OD-297). How faint a disabled trigger is.",
-              "$deprecated": "Use component.accordion.trigger.disabled.label. Removed in the next minor release."
-            }
-          }
-        },
-        "focus-ring": {
-          "@": {
-            "$value": "{accordion.trigger.focus-ring.@}",
-            "$description": "Deprecated: use component.accordion.trigger.focus-ring.@ (OD-243). The focus ring's color.",
-            "$deprecated": "Use component.accordion.trigger.focus-ring.@. Removed in the next minor release."
-          },
-          "width": {
-            "$value": "{accordion.trigger.focus-ring.width}",
-            "$description": "Deprecated: use component.accordion.trigger.focus-ring.width (OD-243). The focus ring's width.",
-            "$deprecated": "Use component.accordion.trigger.focus-ring.width. Removed in the next minor release."
-          }
-        },
-        "disabled": {
-          "opacity": {
-            "$value": "{accordion.trigger.disabled.opacity}",
-            "$description": "Deprecated: use accordion/trigger/disabled/label (OD-243). How faint a disabled trigger is.",
-            "$deprecated": "Use component.accordion.trigger.disabled.label. Removed in the next minor release."
-          }
-        },
-        "focus-offset": {
-          "$value": "{accordion.trigger.focus-offset}",
-          "$description": "Deprecated: use component.accordion.trigger.focus-offset (OD-243). Gap between the accordion and its focus ring.",
-          "$deprecated": "Use component.accordion.trigger.focus-offset. Removed in the next minor release."
-        }
-      },
-      "attachment": {
-        "size": {
-          "$value": "{attachment.media.size}",
-          "$description": "Deprecated: use component.attachment.media.size (OD-243). Size of the attachment.",
-          "$deprecated": "Use component.attachment.media.size. Removed in the next minor release."
-        },
-        "radius-2": {
-          "$value": "{attachment.media.radius}",
-          "$description": "Deprecated: use component.attachment.media.radius (OD-243). Radius 2 of the attachment.",
-          "$deprecated": "Use component.attachment.media.radius. Removed in the next minor release."
-        },
-        "background-2": {
-          "$value": "{attachment.media.background}",
-          "$description": "Deprecated: use component.attachment.media.background (OD-243). Background 2 of the attachment.",
-          "$deprecated": "Use component.attachment.media.background. Removed in the next minor release."
-        },
-        "icon-size": {
-          "$value": "{attachment.media.icon.size}",
-          "$description": "Deprecated: use component.attachment.media.icon.size (OD-243). Icon size of the attachment.",
-          "$deprecated": "Use component.attachment.media.icon.size. Removed in the next minor release."
-        },
-        "label": {
-          "$value": "{attachment.meta.label}",
-          "$description": "Deprecated: use component.attachment.meta.label (OD-243). Label of the attachment.",
-          "$deprecated": "Use component.attachment.meta.label. Removed in the next minor release."
-        },
-        "font-weight": {
-          "$value": "{attachment.name.font-weight}",
-          "$description": "Deprecated: use component.attachment.name.font-weight (OD-243). Font weight of the attachment.",
-          "$deprecated": "Use component.attachment.name.font-weight. Removed in the next minor release."
-        },
-        "font-size-2": {
-          "$value": "{attachment.meta.font-size}",
-          "$description": "Deprecated: use component.attachment.meta.font-size (OD-243). Font size 2 of the attachment.",
-          "$deprecated": "Use component.attachment.meta.font-size. Removed in the next minor release."
-        },
-        "line-height-2": {
-          "$value": "{attachment.meta.line-height}",
-          "$description": "Deprecated: use component.attachment.meta.line-height (OD-243). Line height 2 of the attachment.",
-          "$deprecated": "Use component.attachment.meta.line-height. Removed in the next minor release."
-        }
-      },
-      "avatar": {
-        "fallback": {
-          "font-size-2": {
-            "$value": "{avatar.fallback.sm.font-size}",
-            "$description": "Deprecated: use component.avatar.fallback.sm.font-size (OD-243). Fallback font size 2 of the avatar.",
-            "$deprecated": "Use component.avatar.fallback.sm.font-size. Removed in the next minor release."
-          },
-          "line-height-2": {
-            "$value": "{avatar.fallback.sm.line-height}",
-            "$description": "Deprecated: use component.avatar.fallback.sm.line-height (OD-243). Fallback line height 2 of the avatar.",
-            "$deprecated": "Use component.avatar.fallback.sm.line-height. Removed in the next minor release."
-          }
-        },
-        "badge": {
-          "focus-ring": {
-            "$value": "{avatar.badge.ring}",
-            "$description": "Deprecated: use component.avatar.badge.ring (OD-243). Badge focus ring of the avatar.",
-            "$deprecated": "Use component.avatar.badge.ring. Removed in the next minor release."
-          }
-        },
-        "group": {
-          "focus-ring": {
-            "$value": "{avatar.group.ring}",
-            "$description": "Deprecated: use component.avatar.group.ring (OD-243). Group focus ring of the avatar.",
-            "$deprecated": "Use component.avatar.group.ring. Removed in the next minor release."
-          },
-          "count": {
-            "focus-ring": {
-              "$value": "{avatar.group.count.ring}",
-              "$description": "Deprecated: use component.avatar.group.count.ring (OD-243). Group count focus ring of the avatar.",
-              "$deprecated": "Use component.avatar.group.count.ring. Removed in the next minor release."
-            }
-          }
-        }
-      },
-      "breadcrumb": {
-        "list": {
-          "gap-2": {
-            "$value": "{breadcrumb.list.wide.gap}",
-            "$description": "Deprecated: use component.breadcrumb.list.wide.gap (OD-243). List gap 2 of the breadcrumb.",
-            "$deprecated": "Use component.breadcrumb.list.wide.gap. Removed in the next minor release."
-          }
-        },
-        "icon-size": {
-          "$value": "{breadcrumb.ellipsis.icon-size}",
-          "$description": "Deprecated: use component.breadcrumb.ellipsis.icon-size (OD-243). Icon size of the breadcrumb.",
-          "$deprecated": "Use component.breadcrumb.ellipsis.icon-size. Removed in the next minor release."
-        }
-      },
-      "bubble": {
-        "them": {
-          "background": {
-            "$value": "{bubble.body.them.background}",
-            "$description": "Deprecated: use component.bubble.body.them.background (OD-243). Them background of the bubble.",
-            "$deprecated": "Use component.bubble.body.them.background. Removed in the next minor release."
-          },
-          "label": {
-            "$value": "{bubble.body.them.label}",
-            "$description": "Deprecated: use component.bubble.body.them.label (OD-243). Them label of the bubble.",
-            "$deprecated": "Use component.bubble.body.them.label. Removed in the next minor release."
-          }
-        },
-        "me": {
-          "background": {
-            "$value": "{bubble.body.me.background}",
-            "$description": "Deprecated: use component.bubble.body.me.background (OD-243). Me background of the bubble.",
-            "$deprecated": "Use component.bubble.body.me.background. Removed in the next minor release."
-          },
-          "label": {
-            "$value": "{bubble.body.me.label}",
-            "$description": "Deprecated: use component.bubble.body.me.label (OD-243). Me label of the bubble.",
-            "$deprecated": "Use component.bubble.body.me.label. Removed in the next minor release."
-          }
-        },
-        "font-size": {
-          "$value": "{bubble.byline.font-size}",
-          "$description": "Deprecated: use component.bubble.byline.font-size (OD-243). Font size of the bubble.",
-          "$deprecated": "Use component.bubble.byline.font-size. Removed in the next minor release."
-        },
-        "line-height": {
-          "$value": "{bubble.byline.line-height}",
-          "$description": "Deprecated: use component.bubble.byline.line-height (OD-243). Line height of the bubble.",
-          "$deprecated": "Use component.bubble.byline.line-height. Removed in the next minor release."
-        },
-        "label": {
-          "$value": "{bubble.byline.label}",
-          "$description": "Deprecated: use component.bubble.byline.label (OD-243). Label of the bubble.",
-          "$deprecated": "Use component.bubble.byline.label. Removed in the next minor release."
-        }
-      },
-      "calendar": {
-        "disabled-opacity-disabled": {
-          "$value": "{opacity.disabled}",
-          "$description": "Deprecated: use calendar/nav/disabled/icon (OD-297). Disabled opacity disabled of the calendar.",
-          "$deprecated": "Use component.calendar.nav.disabled.icon. Removed in the next minor release."
-        },
-        "background-3": {
-          "$value": "{calendar.day.range.background}",
-          "$description": "Deprecated: use component.calendar.day.range.background (OD-243). Background 3 of the calendar.",
-          "$deprecated": "Use component.calendar.day.range.background. Removed in the next minor release."
-        },
-        "label-2": {
-          "$value": "{calendar.day.range.label}",
-          "$description": "Deprecated: use component.calendar.day.range.label (OD-243). Label 2 of the calendar.",
-          "$deprecated": "Use component.calendar.day.range.label. Removed in the next minor release."
-        },
-        "label-selected": {
-          "$value": "{color.text.muted}",
-          "$description": "Deprecated: use calendar/day/selected/label (OD-243). Label selected of the calendar.",
-          "$deprecated": "Use component.calendar.day.selected.label. Removed in the next minor release."
-        },
-        "disabled-opacity": {
-          "$value": "{calendar.day.disabled-opacity}",
-          "$description": "Deprecated: use calendar/day/disabled/label (OD-243). Disabled opacity of the calendar.",
-          "$deprecated": "Use component.calendar.day.disabled.label. Removed in the next minor release."
-        },
-        "background-4": {
-          "$value": "{calendar.day.range-ends.background}",
-          "$description": "Deprecated: use component.calendar.day.range-ends.background (OD-243). Background 4 of the calendar.",
-          "$deprecated": "Use component.calendar.day.range-ends.background. Removed in the next minor release."
-        },
-        "label-3": {
-          "$value": "{calendar.day.range-ends.label}",
-          "$description": "Deprecated: use component.calendar.day.range-ends.label (OD-243). Label 3 of the calendar.",
-          "$deprecated": "Use component.calendar.day.range-ends.label. Removed in the next minor release."
-        },
-        "background-selected": {
-          "$value": "{calendar.day.selected.background}",
-          "$description": "Deprecated: use component.calendar.day.selected.background (OD-243). Background selected of the calendar.",
-          "$deprecated": "Use component.calendar.day.selected.background. Removed in the next minor release."
-        },
-        "label-selected-2": {
-          "$value": "{calendar.day.selected.label}",
-          "$description": "Deprecated: use component.calendar.day.selected.label (OD-243). Label selected 2 of the calendar.",
-          "$deprecated": "Use component.calendar.day.selected.label. Removed in the next minor release."
-        },
-        "day": {
-          "disabled-opacity": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use calendar/day/disabled/label (OD-297). How faint a day that cannot be picked is.",
-            "$deprecated": "Use component.calendar.day.disabled.label. Removed in the next minor release."
-          }
-        }
-      },
-      "chart": {
-        "icon": {
-          "$value": "{chart.axis.label}",
-          "$description": "Deprecated: use component.chart.axis.label (OD-243). Icon of the chart.",
-          "$deprecated": "Use component.chart.axis.label. Removed in the next minor release."
-        },
-        "icon-2": {
-          "$value": "{chart.grid.line}",
-          "$description": "Deprecated: use component.chart.grid.line (OD-243). Icon 2 of the chart.",
-          "$deprecated": "Use component.chart.grid.line. Removed in the next minor release."
-        },
-        "icon-3": {
-          "$value": "{chart.track.fill}",
-          "$description": "Deprecated: use component.chart.track.fill (OD-243). Icon 3 of the chart.",
-          "$deprecated": "Use component.chart.track.fill. Removed in the next minor release."
-        },
-        "radius": {
-          "$value": "{chart.tooltip.radius}",
-          "$description": "Deprecated: use component.chart.tooltip.radius (OD-243). Radius of the chart.",
-          "$deprecated": "Use component.chart.tooltip.radius. Removed in the next minor release."
-        },
-        "border": {
-          "$value": "{chart.tooltip.border}",
-          "$description": "Deprecated: use component.chart.tooltip.border (OD-243). Border of the chart.",
-          "$deprecated": "Use component.chart.tooltip.border. Removed in the next minor release."
-        },
-        "background": {
-          "$value": "{chart.tooltip.background}",
-          "$description": "Deprecated: use component.chart.tooltip.background (OD-243). Background of the chart.",
-          "$deprecated": "Use component.chart.tooltip.background. Removed in the next minor release."
-        },
-        "padding-x": {
-          "$value": "{chart.tooltip.padding-x}",
-          "$description": "Deprecated: use component.chart.tooltip.padding-x (OD-243). Padding x of the chart.",
-          "$deprecated": "Use component.chart.tooltip.padding-x. Removed in the next minor release."
-        },
-        "padding-y": {
-          "$value": "{chart.tooltip.padding-y}",
-          "$description": "Deprecated: use component.chart.tooltip.padding-y (OD-243). Padding y of the chart.",
-          "$deprecated": "Use component.chart.tooltip.padding-y. Removed in the next minor release."
-        },
-        "shadow": {
-          "$value": "{chart.tooltip.shadow}",
-          "$description": "Deprecated: use component.chart.tooltip.shadow (OD-243). Shadow of the chart.",
-          "$deprecated": "Use component.chart.tooltip.shadow. Removed in the next minor release."
-        },
-        "gap-3": {
-          "$value": "{chart.legend.gap}",
-          "$description": "Deprecated: use component.chart.legend.gap (OD-243). Gap 3 of the chart.",
-          "$deprecated": "Use component.chart.legend.gap. Removed in the next minor release."
-        },
-        "padding-bottom": {
-          "$value": "{chart.legend.padding-bottom}",
-          "$description": "Deprecated: use component.chart.legend.padding-bottom (OD-243). Padding bottom of the chart.",
-          "$deprecated": "Use component.chart.legend.padding-bottom. Removed in the next minor release."
-        },
-        "padding-top": {
-          "$value": "{chart.legend.padding-top}",
-          "$description": "Deprecated: use component.chart.legend.padding-top (OD-243). Padding top of the chart.",
-          "$deprecated": "Use component.chart.legend.padding-top. Removed in the next minor release."
-        }
-      },
-      "checkbox": {
-        "disabled": {
-          "$value": "{opacity.disabled}",
-          "$description": "Deprecated: use checkbox/disabled-background (OD-297). Disabled of the checkbox.",
-          "$deprecated": "Use component.checkbox.disabled-background. Removed in the next minor release."
-        },
-        "canvas": {
-          "$value": "{checkbox.focus-ring-offset}",
-          "$description": "Deprecated: use component.checkbox.focus-ring-offset (OD-243). Canvas of the checkbox.",
-          "$deprecated": "Use component.checkbox.focus-ring-offset. Removed in the next minor release."
-        }
-      },
       "combobox": {
-        "content": {
-          "focus-ring": {
-            "$value": "{combobox.content.border}",
-            "$description": "Deprecated: use component.combobox.content.border (OD-243). Content focus ring of the combobox.",
-            "$deprecated": "Use component.combobox.content.border. Removed in the next minor release."
-          },
-          "height": {
-            "$value": "{combobox.input.height}",
-            "$description": "Deprecated: use component.combobox.input.height (OD-243). Content height of the combobox.",
-            "$deprecated": "Use component.combobox.input.height. Removed in the next minor release."
-          },
-          "background-2": {
-            "$value": "{combobox.input.background}",
-            "$description": "Deprecated: use component.combobox.input.background (OD-243). Content background 2 of the combobox.",
-            "$deprecated": "Use component.combobox.input.background. Removed in the next minor release."
-          }
-        },
-        "item": {
-          "background": {
-            "@": {
-              "$value": "{combobox.item.background.highlight}",
-              "$description": "Deprecated: use component.combobox.item.background.highlight (OD-243). Item background of the combobox.",
-              "$deprecated": "Use component.combobox.item.background.highlight. Removed in the next minor release."
-            }
-          },
-          "label": {
-            "@": {
-              "$value": "{combobox.item.label.highlight}",
-              "$description": "Deprecated: use component.combobox.item.label.highlight (OD-243). Item label of the combobox.",
-              "$deprecated": "Use component.combobox.item.label.highlight. Removed in the next minor release."
-            }
-          },
-          "disabled-opacity-disabled": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use combobox/item/disabled/label (OD-297). Item disabled opacity disabled of the combobox.",
-            "$deprecated": "Use component.combobox.item.disabled.label. Removed in the next minor release."
-          }
-        },
         "chips": {
           "radius": {
             "$value": "{radius.element}",
             "$description": "Chips radius of the combobox."
           },
-          "focus-ring-focus": {
-            "$value": "{combobox.chips.focus-ring.highlight}",
-            "$description": "Deprecated: use component.combobox.chips.focus-ring.highlight (OD-243). Chips focus ring focus of the combobox.",
-            "$deprecated": "Use component.combobox.chips.focus-ring.highlight. Removed in the next minor release."
-          },
           "focus-ring-invalid": {
             "$value": "{color.status.danger.@}",
             "$description": "Chips focus ring invalid of the combobox."
           }
-        },
-        "chip": {
-          "disabled-opacity": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use combobox/chip/disabled/label (OD-297). Chip disabled opacity of the combobox.",
-            "$deprecated": "Use component.combobox.chip.disabled.label. Removed in the next minor release."
-          }
-        },
-        "disabled-opacity": {
-          "$value": "{opacity.disabled}",
-          "$description": "Deprecated: use combobox/chip/remove/label (OD-243). Disabled opacity of the combobox.",
-          "$deprecated": "Use component.combobox.chip.remove.label. Removed in the next minor release."
-        }
-      },
-      "command": {
-        "input": {
-          "disabled-opacity-disabled": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use command/input/disabled/text (OD-297). Input disabled opacity disabled of the command.",
-            "$deprecated": "Use component.command.input.disabled.text. Removed in the next minor release."
-          }
-        },
-        "disabled-opacity": {
-          "$value": "{opacity.disabled}",
-          "$description": "Deprecated: use command/input/wrapper/icon (OD-243). Disabled opacity of the command.",
-          "$deprecated": "Use component.command.input.wrapper.icon. Removed in the next minor release."
-        },
-        "item": {
-          "disabled-opacity-disabled": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use command/item/disabled/label (OD-297). Item disabled opacity disabled of the command.",
-            "$deprecated": "Use component.command.item.disabled.label. Removed in the next minor release."
-          },
-          "background-selected": {
-            "$value": "{command.item.background.highlight}",
-            "$description": "Deprecated: use component.command.item.background.highlight (OD-241). Item background selected of the command.",
-            "$deprecated": "Use component.command.item.background.highlight. Removed in the next minor release."
-          },
-          "label-selected": {
-            "$value": "{command.item.label.highlight}",
-            "$description": "Deprecated: use component.command.item.label.highlight (OD-243). Item label selected of the command.",
-            "$deprecated": "Use component.command.item.label.highlight. Removed in the next minor release."
-          },
-          "label": {
-            "@": {
-              "$value": "{command.item.icon}",
-              "$description": "Deprecated: use component.command.item.icon (OD-243). Item label of the command.",
-              "$deprecated": "Use component.command.item.icon. Removed in the next minor release."
-            }
-          }
-        }
-      },
-      "context-menu": {
-        "sub": {
-          "trigger": {
-            "background-focus": {
-              "$value": "{context-menu.sub.trigger.background.highlight}",
-              "$description": "Deprecated: use component.context-menu.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the context menu.",
-              "$deprecated": "Use component.context-menu.sub.trigger.background.highlight. Removed in the next minor release."
-            },
-            "label": {
-              "$value": "{context-menu.sub.trigger.icon}",
-              "$description": "Deprecated: use component.context-menu.sub.trigger.icon (OD-243). Sub trigger label of the context menu.",
-              "$deprecated": "Use component.context-menu.sub.trigger.icon. Removed in the next minor release."
-            }
-          }
-        },
-        "item": {
-          "background-focus": {
-            "$value": "{context-menu.item.background.highlight}",
-            "$description": "Deprecated: use component.context-menu.item.background.highlight (OD-241). Item background focus of the context menu.",
-            "$deprecated": "Use component.context-menu.item.background.highlight. Removed in the next minor release."
-          },
-          "disabled-opacity-disabled": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use context-menu/item/disabled/label (OD-297). Item disabled opacity disabled of the context menu.",
-            "$deprecated": "Use component.context-menu.item.disabled.label. Removed in the next minor release."
-          },
-          "label": {
-            "@": {
-              "$value": "{context-menu.item.label.destructive}",
-              "$description": "Deprecated: use component.context-menu.item.label.destructive (OD-243). Item label of the context menu.",
-              "$deprecated": "Use component.context-menu.item.label.destructive. Removed in the next minor release."
-            }
-          },
-          "background-focus-2": {
-            "$value": "{context-menu.item.background.destructive-highlight}",
-            "$description": "Deprecated: use component.context-menu.item.background.destructive-highlight (OD-243). Item background focus 2 of the context menu.",
-            "$deprecated": "Use component.context-menu.item.background.destructive-highlight. Removed in the next minor release."
-          },
-          "label-focus-2": {
-            "$value": "{context-menu.item.label.destructive-highlight}",
-            "$description": "Deprecated: use component.context-menu.item.label.destructive-highlight (OD-243). Item label focus 2 of the context menu.",
-            "$deprecated": "Use component.context-menu.item.label.destructive-highlight. Removed in the next minor release."
-          },
-          "label-2": {
-            "$value": "{context-menu.item.icon}",
-            "$description": "Deprecated: use component.context-menu.item.icon (OD-243). Item label 2 of the context menu.",
-            "$deprecated": "Use component.context-menu.item.icon. Removed in the next minor release."
-          }
-        },
-        "checkbox": {
-          "item": {
-            "background-focus": {
-              "$value": "{context-menu.checkbox.item.background.highlight}",
-              "$description": "Deprecated: use component.context-menu.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the context menu.",
-              "$deprecated": "Use component.context-menu.checkbox.item.background.highlight. Removed in the next minor release."
-            },
-            "disabled-opacity-disabled": {
-              "$value": "{opacity.disabled}",
-              "$description": "Deprecated: use context-menu/checkbox/item/disabled/label (OD-297). Checkbox item disabled opacity disabled of the context menu.",
-              "$deprecated": "Use component.context-menu.checkbox.item.disabled.label. Removed in the next minor release."
-            }
-          }
-        },
-        "radio": {
-          "item": {
-            "background-focus": {
-              "$value": "{context-menu.radio.item.background.highlight}",
-              "$description": "Deprecated: use component.context-menu.radio.item.background.highlight (OD-241). Radio item background focus of the context menu.",
-              "$deprecated": "Use component.context-menu.radio.item.background.highlight. Removed in the next minor release."
-            },
-            "disabled-opacity-disabled": {
-              "$value": "{opacity.disabled}",
-              "$description": "Deprecated: use context-menu/radio/item/disabled/label (OD-297). Radio item disabled opacity disabled of the context menu.",
-              "$deprecated": "Use component.context-menu.radio.item.disabled.label. Removed in the next minor release."
-            }
-          }
-        }
-      },
-      "data-table": {
-        "background-hover": {
-          "$value": "{data-table.row.background.hover}",
-          "$description": "Deprecated: use component.data-table.row.background.hover (OD-241). Background hover of the data table.",
-          "$deprecated": "Use component.data-table.row.background.hover. Removed in the next minor release."
-        }
-      },
-      "dialog": {
-        "border-width": {
-          "$value": "{dialog.content.border-width}",
-          "$description": "Deprecated: use component.dialog.content.border-width (OD-243). Border width of the dialog.",
-          "$deprecated": "Use component.dialog.content.border-width. Removed in the next minor release."
-        },
-        "border": {
-          "$value": "{dialog.content.border}",
-          "$description": "Deprecated: use component.dialog.content.border (OD-243). Border of the dialog.",
-          "$deprecated": "Use component.dialog.content.border. Removed in the next minor release."
-        },
-        "radius": {
-          "$value": "{dialog.close.radius}",
-          "$description": "Deprecated: use component.dialog.close.radius (OD-243). Radius of the dialog.",
-          "$deprecated": "Use component.dialog.close.radius. Removed in the next minor release."
-        },
-        "padding": {
-          "$value": "{dialog.close.padding}",
-          "$description": "Deprecated: use component.dialog.close.padding (OD-243). Padding of the dialog.",
-          "$deprecated": "Use component.dialog.close.padding. Removed in the next minor release."
-        },
-        "label": {
-          "$value": "{dialog.description.label}",
-          "$description": "Deprecated: use component.dialog.description.label (OD-243). Label of the dialog.",
-          "$deprecated": "Use component.dialog.description.label. Removed in the next minor release."
-        },
-        "sunken": {
-          "$value": "{dialog.close.background.hover}",
-          "$description": "Deprecated: use component.dialog.close.background.hover (OD-241). Sunken of the dialog.",
-          "$deprecated": "Use component.dialog.close.background.hover. Removed in the next minor release."
-        },
-        "size": {
-          "$value": "{dialog.close.icon-size}",
-          "$description": "Deprecated: use component.dialog.close.icon-size (OD-243). Size of the dialog.",
-          "$deprecated": "Use component.dialog.close.icon-size. Removed in the next minor release."
-        },
-        "gap": {
-          "$value": "{dialog.header.gap}",
-          "$description": "Deprecated: use component.dialog.header.gap (OD-243). Gap of the dialog.",
-          "$deprecated": "Use component.dialog.header.gap. Removed in the next minor release."
-        },
-        "gap-2": {
-          "$value": "{dialog.footer.gap}",
-          "$description": "Deprecated: use component.dialog.footer.gap (OD-243). Gap 2 of the dialog.",
-          "$deprecated": "Use component.dialog.footer.gap. Removed in the next minor release."
-        },
-        "font-family": {
-          "$value": "{dialog.title.font-family}",
-          "$description": "Deprecated: use component.dialog.title.font-family (OD-243). Font family of the dialog.",
-          "$deprecated": "Use component.dialog.title.font-family. Removed in the next minor release."
-        },
-        "font-size": {
-          "$value": "{dialog.title.font-size}",
-          "$description": "Deprecated: use component.dialog.title.font-size (OD-243). Font size of the dialog.",
-          "$deprecated": "Use component.dialog.title.font-size. Removed in the next minor release."
-        },
-        "font-weight": {
-          "$value": "{dialog.title.font-weight}",
-          "$description": "Deprecated: use component.dialog.title.font-weight (OD-243). Font weight of the dialog.",
-          "$deprecated": "Use component.dialog.title.font-weight. Removed in the next minor release."
-        },
-        "font-size-2": {
-          "$value": "{dialog.description.font-size}",
-          "$description": "Deprecated: use component.dialog.description.font-size (OD-243). Font size 2 of the dialog.",
-          "$deprecated": "Use component.dialog.description.font-size. Removed in the next minor release."
-        }
-      },
-      "drawer": {
-        "radius": {
-          "$value": "{drawer.handle.radius}",
-          "$description": "Deprecated: use component.drawer.handle.radius (OD-243). Radius of the drawer.",
-          "$deprecated": "Use component.drawer.handle.radius. Removed in the next minor release."
-        },
-        "background": {
-          "$value": "{drawer.handle.background}",
-          "$description": "Deprecated: use component.drawer.handle.background (OD-243). Background of the drawer.",
-          "$deprecated": "Use component.drawer.handle.background. Removed in the next minor release."
-        }
-      },
-      "dropdown-menu": {
-        "item": {
-          "sunken": {
-            "$value": "{dropdown-menu.item.background.highlight}",
-            "$description": "Deprecated: use component.dropdown-menu.item.background.highlight (OD-241). Item sunken of the dropdown menu.",
-            "$deprecated": "Use component.dropdown-menu.item.background.highlight. Removed in the next minor release."
-          },
-          "disabled": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use dropdown-menu/item/disabled-label (OD-297). Item disabled of the dropdown menu.",
-            "$deprecated": "Use component.dropdown-menu.item.disabled-label. Removed in the next minor release."
-          }
-        },
-        "label": {
-          "$value": "{dropdown-menu.item.label.destructive}",
-          "$description": "Deprecated: use component.dropdown-menu.item.label.destructive (OD-241). Label of the dropdown menu.",
-          "$deprecated": "Use component.dropdown-menu.item.label.destructive. Removed in the next minor release."
-        },
-        "background": {
-          "$value": "{dropdown-menu.separator.background}",
-          "$description": "Deprecated: use component.dropdown-menu.separator.background (OD-241). Background of the dropdown menu.",
-          "$deprecated": "Use component.dropdown-menu.separator.background. Removed in the next minor release."
         }
       },
       "field": {
         "label": {
-          "disabled-opacity-disabled": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use field/label/disabled/text (OD-297). Label disabled opacity disabled of the field.",
-            "$deprecated": "Use component.field.label.disabled.text. Removed in the next minor release."
-          },
           "radius": {
             "$value": "{radius.element}",
             "$description": "Label radius of the field."
-          },
-          "@": {
-            "$value": "{color.text.muted}",
-            "$description": "Deprecated: use label/label (OD-243). Label of the field.",
-            "$deprecated": "Use component.label.label. Removed in the next minor release."
           }
-        },
-        "border-checked": {
-          "$value": "{color.action.primary.@}",
-          "$description": "Deprecated: use field/label/border/checked (OD-243). Border checked of the field.",
-          "$deprecated": "Use component.field.label.border.checked. Removed in the next minor release."
-        },
-        "background-checked": {
-          "$value": "{color.action.primary.@}",
-          "$description": "Deprecated: use field/label/background/checked (OD-243). Background checked of the field.",
-          "$deprecated": "Use component.field.label.background.checked. Removed in the next minor release."
-        },
-        "background": {
-          "$value": "{field.separator-content.background}",
-          "$description": "Deprecated: use component.field.separator-content.background (OD-243). Background of the field.",
-          "$deprecated": "Use component.field.separator-content.background. Removed in the next minor release."
-        },
-        "padding-x": {
-          "$value": "{field.separator-content.padding-x}",
-          "$description": "Deprecated: use component.field.separator-content.padding-x (OD-243). Padding x of the field.",
-          "$deprecated": "Use component.field.separator-content.padding-x. Removed in the next minor release."
         }
       },
       "input-group": {
-        "shadow": {
-          "$value": "{elevation.card}",
-          "$description": "Deprecated: use input-group/border/@ (OD-243). Shadow of the input group.",
-          "$deprecated": "Use component.input-group.border.@. Removed in the next minor release."
-        },
-        "border-2": {
-          "$value": "{input-group.border.focus}",
-          "$description": "Deprecated: use component.input-group.border.focus (OD-243). Border 2 of the input group.",
-          "$deprecated": "Use component.input-group.border.focus. Removed in the next minor release."
-        },
-        "focus-ring": {
-          "@": {
-            "$value": "{input-group.focus-ring.highlight}",
-            "$description": "Deprecated: use component.input-group.focus-ring.highlight (OD-243). Focus ring of the input group.",
-            "$deprecated": "Use component.input-group.focus-ring.highlight. Removed in the next minor release."
-          }
-        },
         "focus-ring-invalid": {
           "$value": "{color.status.danger.@}",
           "$description": "Focus ring invalid of the input group."
-        },
-        "gap": {
-          "$value": "{input-group.addon.gap}",
-          "$description": "Deprecated: use component.input-group.addon.gap (OD-243). Gap of the input group.",
-          "$deprecated": "Use component.input-group.addon.gap. Removed in the next minor release."
-        },
-        "padding-y": {
-          "$value": "{input-group.addon.padding-y}",
-          "$description": "Deprecated: use component.input-group.addon.padding-y (OD-243). Padding y of the input group.",
-          "$deprecated": "Use component.input-group.addon.padding-y. Removed in the next minor release."
-        },
-        "font-size": {
-          "$value": "{input-group.addon.font-size}",
-          "$description": "Deprecated: use component.input-group.addon.font-size (OD-243). Font size of the input group.",
-          "$deprecated": "Use component.input-group.addon.font-size. Removed in the next minor release."
-        },
-        "line-height": {
-          "$value": "{input-group.addon.line-height}",
-          "$description": "Deprecated: use component.input-group.addon.line-height (OD-243). Line height of the input group.",
-          "$deprecated": "Use component.input-group.addon.line-height. Removed in the next minor release."
-        },
-        "font-weight": {
-          "$value": "{input-group.addon.font-weight}",
-          "$description": "Deprecated: use component.input-group.addon.font-weight (OD-243). Font weight of the input group.",
-          "$deprecated": "Use component.input-group.addon.font-weight. Removed in the next minor release."
-        },
-        "label": {
-          "$value": "{input-group.addon.label}",
-          "$description": "Deprecated: use component.input-group.addon.label (OD-243). Label of the input group.",
-          "$deprecated": "Use component.input-group.addon.label. Removed in the next minor release."
-        },
-        "disabled-opacity-disabled": {
-          "$value": "{input-group.addon.disabled-opacity-disabled}",
-          "$description": "Deprecated: use input-group/addon/disabled/label (OD-243). Disabled opacity disabled of the input group.",
-          "$deprecated": "Use component.input-group.addon.disabled.label. Removed in the next minor release."
-        },
-        "icon-size": {
-          "$value": "{input-group.addon.icon-size}",
-          "$description": "Deprecated: use component.input-group.addon.icon-size (OD-243). Icon size of the input group.",
-          "$deprecated": "Use component.input-group.addon.icon-size. Removed in the next minor release."
-        },
-        "inline": {
-          "start": {
-            "padding-left": {
-              "$value": "{input-group.addon.inline.start.padding-left}",
-              "$description": "Deprecated: use component.input-group.addon.inline.start.padding-left (OD-243). Inline start padding left of the input group.",
-              "$deprecated": "Use component.input-group.addon.inline.start.padding-left. Removed in the next minor release."
-            }
-          },
-          "end": {
-            "padding-right": {
-              "$value": "{input-group.addon.inline.end.padding-right}",
-              "$description": "Deprecated: use component.input-group.addon.inline.end.padding-right (OD-243). Inline end padding right of the input group.",
-              "$deprecated": "Use component.input-group.addon.inline.end.padding-right. Removed in the next minor release."
-            }
-          }
-        },
-        "block": {
-          "start": {
-            "padding-x": {
-              "$value": "{input-group.addon.block.start.padding-x}",
-              "$description": "Deprecated: use component.input-group.addon.block.start.padding-x (OD-243). Block start padding x of the input group.",
-              "$deprecated": "Use component.input-group.addon.block.start.padding-x. Removed in the next minor release."
-            },
-            "padding-top": {
-              "$value": "{input-group.addon.block.start.padding-top}",
-              "$description": "Deprecated: use component.input-group.addon.block.start.padding-top (OD-243). Block start padding top of the input group.",
-              "$deprecated": "Use component.input-group.addon.block.start.padding-top. Removed in the next minor release."
-            },
-            "padding-top-2": {
-              "$value": "{input-group.addon.block.start.padding-top-2}",
-              "$description": "Deprecated: use component.input-group.addon.block.start.padding-top-2 (OD-243). Block start padding top 2 of the input group.",
-              "$deprecated": "Use component.input-group.addon.block.start.padding-top-2. Removed in the next minor release."
-            },
-            "padding-bottom": {
-              "$value": "{input-group.addon.block.start.padding-bottom}",
-              "$description": "Deprecated: use component.input-group.addon.block.start.padding-bottom (OD-243). Block start padding bottom of the input group.",
-              "$deprecated": "Use component.input-group.addon.block.start.padding-bottom. Removed in the next minor release."
-            }
-          },
-          "end": {
-            "padding-x": {
-              "$value": "{input-group.addon.block.end.padding-x}",
-              "$description": "Deprecated: use component.input-group.addon.block.end.padding-x (OD-243). Block end padding x of the input group.",
-              "$deprecated": "Use component.input-group.addon.block.end.padding-x. Removed in the next minor release."
-            },
-            "padding-bottom": {
-              "$value": "{input-group.addon.block.end.padding-bottom}",
-              "$description": "Deprecated: use component.input-group.addon.block.end.padding-bottom (OD-243). Block end padding bottom of the input group.",
-              "$deprecated": "Use component.input-group.addon.block.end.padding-bottom. Removed in the next minor release."
-            },
-            "padding-bottom-2": {
-              "$value": "{input-group.addon.block.end.padding-bottom-2}",
-              "$description": "Deprecated: use component.input-group.addon.block.end.padding-bottom-2 (OD-243). Block end padding bottom 2 of the input group.",
-              "$deprecated": "Use component.input-group.addon.block.end.padding-bottom-2. Removed in the next minor release."
-            },
-            "padding-top": {
-              "$value": "{input-group.addon.block.end.padding-top}",
-              "$description": "Deprecated: use component.input-group.addon.block.end.padding-top (OD-243). Block end padding top of the input group.",
-              "$deprecated": "Use component.input-group.addon.block.end.padding-top. Removed in the next minor release."
-            }
-          }
-        },
-        "addon": {
-          "disabled-opacity-disabled": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use input-group/addon/disabled/label (OD-243). Addon disabled-opacity-disabled of the input group.",
-            "$deprecated": "Use component.input-group.addon.disabled.label. Removed in the next minor release."
-          }
         }
       },
       "input-otp": {
-        "disabled-opacity": {
-          "$value": "{opacity.disabled}",
-          "$description": "Deprecated: use input-otp/slot/disabled/text (OD-243). Disabled opacity of the input otp.",
-          "$deprecated": "Use component.input-otp.slot.disabled.text. Removed in the next minor release."
-        },
         "slot": {
-          "shadow": {
-            "$value": "{elevation.card}",
-            "$description": "Deprecated: use input-otp/slot/border/@ (OD-243). Slot shadow of the input otp.",
-            "$deprecated": "Use component.input-otp.slot.border.@. Removed in the next minor release."
-          },
-          "border-2": {
-            "$value": "{input-otp.slot.border.highlight}",
-            "$description": "Deprecated: use component.input-otp.slot.border.highlight (OD-243). Slot border 2 of the input otp.",
-            "$deprecated": "Use component.input-otp.slot.border.highlight. Removed in the next minor release."
-          },
-          "focus-ring": {
-            "@": {
-              "$value": "{input-otp.slot.focus-ring.highlight}",
-              "$description": "Deprecated: use component.input-otp.slot.focus-ring.highlight (OD-243). Slot focus ring of the input otp.",
-              "$deprecated": "Use component.input-otp.slot.focus-ring.highlight. Removed in the next minor release."
-            }
-          },
           "focus-ring-invalid": {
             "$value": "{color.status.danger.@}",
             "$description": "Slot focus ring invalid of the input otp."
           }
-        },
-        "height": {
-          "$value": "{input-otp.caret.height}",
-          "$description": "Deprecated: use component.input-otp.caret.height (OD-243). Height of the input otp.",
-          "$deprecated": "Use component.input-otp.caret.height. Removed in the next minor release."
-        },
-        "background": {
-          "$value": "{input-otp.caret.background}",
-          "$description": "Deprecated: use component.input-otp.caret.background (OD-243). Background of the input otp.",
-          "$deprecated": "Use component.input-otp.caret.background. Removed in the next minor release."
-        },
-        "duration": {
-          "$value": "{input-otp.caret.duration}",
-          "$description": "Deprecated: use component.input-otp.caret.duration (OD-243). Duration of the input otp.",
-          "$deprecated": "Use component.input-otp.caret.duration. Removed in the next minor release."
-        }
-      },
-      "item": {
-        "gap": {
-          "$value": "{item.media.gap}",
-          "$description": "Deprecated: use component.item.media.gap (OD-243). Gap of the item.",
-          "$deprecated": "Use component.item.media.gap. Removed in the next minor release."
-        },
-        "icon": {
-          "size": {
-            "$value": "{item.media.icon.size}",
-            "$description": "Deprecated: use component.item.media.icon.size (OD-243). Icon size of the item.",
-            "$deprecated": "Use component.item.media.icon.size. Removed in the next minor release."
-          },
-          "radius": {
-            "$value": "{item.media.icon.radius}",
-            "$description": "Deprecated: use component.item.media.icon.radius (OD-243). Icon radius of the item.",
-            "$deprecated": "Use component.item.media.icon.radius. Removed in the next minor release."
-          },
-          "background": {
-            "$value": "{item.media.icon.background}",
-            "$description": "Deprecated: use component.item.media.icon.background (OD-243). Icon background of the item.",
-            "$deprecated": "Use component.item.media.icon.background. Removed in the next minor release."
-          },
-          "icon-size": {
-            "$value": "{item.media.icon.icon-size}",
-            "$description": "Deprecated: use component.item.media.icon.icon-size (OD-243). Icon icon size of the item.",
-            "$deprecated": "Use component.item.media.icon.icon-size. Removed in the next minor release."
-          }
-        },
-        "image": {
-          "radius": {
-            "$value": "{item.media.image.radius}",
-            "$description": "Deprecated: use component.item.media.image.radius (OD-243). Image radius of the item.",
-            "$deprecated": "Use component.item.media.image.radius. Removed in the next minor release."
-          }
-        }
-      },
-      "kbd": {
-        "background-2": {
-          "$value": "{kbd.inverse.background}",
-          "$description": "Deprecated: use component.kbd.inverse.background (OD-243). Background 2 of the kbd.",
-          "$deprecated": "Use component.kbd.inverse.background. Removed in the next minor release."
-        },
-        "label-2": {
-          "$value": "{kbd.inverse.label}",
-          "$description": "Deprecated: use component.kbd.inverse.label (OD-243). Label 2 of the kbd.",
-          "$deprecated": "Use component.kbd.inverse.label. Removed in the next minor release."
-        }
-      },
-      "marker": {
-        "background": {
-          "$value": "{marker.line.background}",
-          "$description": "Deprecated: use component.marker.line.background (OD-243). Background of the marker.",
-          "$deprecated": "Use component.marker.line.background. Removed in the next minor release."
-        }
-      },
-      "menubar": {
-        "trigger": {
-          "background-focus": {
-            "$value": "{menubar.trigger.background.highlight}",
-            "$description": "Deprecated: use component.menubar.trigger.background.highlight (OD-241). Trigger background focus of the menubar.",
-            "$deprecated": "Use component.menubar.trigger.background.highlight. Removed in the next minor release."
-          }
-        },
-        "item": {
-          "background-focus": {
-            "$value": "{menubar.item.background.highlight}",
-            "$description": "Deprecated: use component.menubar.item.background.highlight (OD-241). Item background focus of the menubar.",
-            "$deprecated": "Use component.menubar.item.background.highlight. Removed in the next minor release."
-          },
-          "disabled-opacity-disabled": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use menubar/item/disabled/label (OD-297). Item disabled opacity disabled of the menubar.",
-            "$deprecated": "Use component.menubar.item.disabled.label. Removed in the next minor release."
-          },
-          "label": {
-            "@": {
-              "$value": "{menubar.item.label.destructive}",
-              "$description": "Deprecated: use component.menubar.item.label.destructive (OD-243). Item label of the menubar.",
-              "$deprecated": "Use component.menubar.item.label.destructive. Removed in the next minor release."
-            }
-          },
-          "background-focus-2": {
-            "$value": "{menubar.item.background.destructive-highlight}",
-            "$description": "Deprecated: use component.menubar.item.background.destructive-highlight (OD-243). Item background focus 2 of the menubar.",
-            "$deprecated": "Use component.menubar.item.background.destructive-highlight. Removed in the next minor release."
-          },
-          "label-focus-2": {
-            "$value": "{menubar.item.label.destructive-highlight}",
-            "$description": "Deprecated: use component.menubar.item.label.destructive-highlight (OD-243). Item label focus 2 of the menubar.",
-            "$deprecated": "Use component.menubar.item.label.destructive-highlight. Removed in the next minor release."
-          },
-          "label-2": {
-            "$value": "{menubar.item.icon}",
-            "$description": "Deprecated: use component.menubar.item.icon (OD-243). Item label 2 of the menubar.",
-            "$deprecated": "Use component.menubar.item.icon. Removed in the next minor release."
-          }
-        },
-        "checkbox": {
-          "item": {
-            "background-focus": {
-              "$value": "{menubar.checkbox.item.background.highlight}",
-              "$description": "Deprecated: use component.menubar.checkbox.item.background.highlight (OD-241). Checkbox item background focus of the menubar.",
-              "$deprecated": "Use component.menubar.checkbox.item.background.highlight. Removed in the next minor release."
-            },
-            "disabled-opacity-disabled": {
-              "$value": "{opacity.disabled}",
-              "$description": "Deprecated: use menubar/checkbox/item/disabled/label (OD-297). Checkbox item disabled opacity disabled of the menubar.",
-              "$deprecated": "Use component.menubar.checkbox.item.disabled.label. Removed in the next minor release."
-            }
-          }
-        },
-        "radio": {
-          "item": {
-            "background-focus": {
-              "$value": "{menubar.radio.item.background.highlight}",
-              "$description": "Deprecated: use component.menubar.radio.item.background.highlight (OD-241). Radio item background focus of the menubar.",
-              "$deprecated": "Use component.menubar.radio.item.background.highlight. Removed in the next minor release."
-            },
-            "disabled-opacity-disabled": {
-              "$value": "{opacity.disabled}",
-              "$description": "Deprecated: use menubar/radio/item/disabled/label (OD-297). Radio item disabled opacity disabled of the menubar.",
-              "$deprecated": "Use component.menubar.radio.item.disabled.label. Removed in the next minor release."
-            }
-          }
-        },
-        "sub": {
-          "trigger": {
-            "background-focus": {
-              "$value": "{menubar.sub.trigger.background.highlight}",
-              "$description": "Deprecated: use component.menubar.sub.trigger.background.highlight (OD-241). Sub trigger background focus of the menubar.",
-              "$deprecated": "Use component.menubar.sub.trigger.background.highlight. Removed in the next minor release."
-            }
-          }
-        }
-      },
-      "message": {
-        "gap-2": {
-          "$value": "{message.content.gap}",
-          "$description": "Deprecated: use component.message.content.gap (OD-243). Gap 2 of the message.",
-          "$deprecated": "Use component.message.content.gap. Removed in the next minor release."
-        },
-        "gap-x": {
-          "$value": "{message.header.gap}",
-          "$description": "Deprecated: use component.message.header.gap (OD-243). Gap x of the message.",
-          "$deprecated": "Use component.message.header.gap. Removed in the next minor release."
         }
       },
       "native-select": {
-        "disabled-opacity": {
-          "$value": "{native-select.wrapper.disabled-opacity}",
-          "$description": "Deprecated: use native-select/disabled/text (OD-243). Disabled opacity of the native select.",
-          "$deprecated": "Use component.native-select.disabled.text. Removed in the next minor release."
-        },
-        "shadow": {
-          "$value": "{elevation.card}",
-          "$description": "Deprecated: use native-select/border (OD-243). Shadow of the native select.",
-          "$deprecated": "Use component.native-select.border. Removed in the next minor release."
-        },
-        "background": {
-          "$value": "{native-select.selection.background}",
-          "$description": "Deprecated: use component.native-select.selection.background (OD-243). Background of the native select.",
-          "$deprecated": "Use component.native-select.selection.background. Removed in the next minor release."
-        },
-        "label": {
-          "$value": "{native-select.selection.label}",
-          "$description": "Deprecated: use component.native-select.selection.label (OD-243). Label of the native select.",
-          "$deprecated": "Use component.native-select.selection.label. Removed in the next minor release."
-        },
-        "padding-y-2": {
-          "$value": "{native-select.sm.padding-y}",
-          "$description": "Deprecated: use component.native-select.sm.padding-y (OD-243). Padding y 2 of the native select.",
-          "$deprecated": "Use component.native-select.sm.padding-y. Removed in the next minor release."
-        },
         "focus-ring-invalid": {
           "$value": "{color.status.danger.@}",
           "$description": "Focus ring invalid of the native select."
-        },
-        "label-2": {
-          "$value": "{native-select.icon.label}",
-          "$description": "Deprecated: use component.native-select.icon.label (OD-243). Label 2 of the native select.",
-          "$deprecated": "Use component.native-select.icon.label. Removed in the next minor release."
-        },
-        "wrapper": {
-          "disabled-opacity": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use native-select/disabled/text (OD-243). The whole select dims when it can't be used.",
-            "$deprecated": "Use component.native-select.disabled.text. Removed in the next minor release."
-          }
-        }
-      },
-      "navigation-menu": {
-        "radius": {
-          "$value": "{navigation-menu.trigger.radius}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.radius (OD-243). Radius of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.radius. Removed in the next minor release."
-        },
-        "background": {
-          "$value": "{navigation-menu.trigger.background.@}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.background (OD-243). Background of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.background. Removed in the next minor release."
-        },
-        "padding-x": {
-          "$value": "{navigation-menu.trigger.padding-x}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.padding-x (OD-243). Padding x of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.padding-x. Removed in the next minor release."
-        },
-        "padding-y": {
-          "$value": "{navigation-menu.trigger.padding-y}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.padding-y (OD-243). Padding y of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.padding-y. Removed in the next minor release."
-        },
-        "font-size": {
-          "$value": "{navigation-menu.trigger.font-size}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.font-size (OD-243). Font size of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.font-size. Removed in the next minor release."
-        },
-        "line-height": {
-          "$value": "{navigation-menu.trigger.line-height}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.line-height (OD-243). Line height of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.line-height. Removed in the next minor release."
-        },
-        "font-weight": {
-          "$value": "{navigation-menu.trigger.font-weight}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.font-weight (OD-243). Font weight of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.font-weight. Removed in the next minor release."
-        },
-        "background-hover": {
-          "$value": "{navigation-menu.trigger.background.hover}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.background.hover (OD-241). Background hover of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.background.hover. Removed in the next minor release."
-        },
-        "label-hover": {
-          "$value": "{navigation-menu.trigger.label.hover}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.label.hover (OD-243). Label hover of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.label.hover. Removed in the next minor release."
-        },
-        "background-focus": {
-          "$value": "{navigation-menu.trigger.background.highlight}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.background.highlight (OD-241). Background focus of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.background.highlight. Removed in the next minor release."
-        },
-        "label-focus": {
-          "$value": "{navigation-menu.trigger.label.highlight}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.label.highlight (OD-243). Label focus of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.label.highlight. Removed in the next minor release."
-        },
-        "disabled-opacity-disabled": {
-          "$value": "{navigation-menu.trigger.disabled-opacity}",
-          "$description": "Deprecated: use navigation-menu/trigger/disabled/label (OD-243). Disabled opacity disabled of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.disabled.label. Removed in the next minor release."
-        },
-        "background-open": {
-          "$value": "{navigation-menu.trigger.background.open}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.background.open (OD-241). Background open of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.background.open. Removed in the next minor release."
-        },
-        "label-open": {
-          "$value": "{navigation-menu.trigger.label.open}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.label.open (OD-243). Label open of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.label.open. Removed in the next minor release."
-        },
-        "background-open-hover": {
-          "$value": "{navigation-menu.trigger.background.open-hover}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.background.open-hover (OD-241). Background open hover of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.background.open-hover. Removed in the next minor release."
-        },
-        "background-open-focus": {
-          "$value": "{navigation-menu.trigger.background.open-highlight}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.background.open-highlight (OD-241). Background open focus of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.background.open-highlight. Removed in the next minor release."
-        },
-        "focus": {
-          "$value": "{navigation-menu.trigger.focus-width}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.focus-width (OD-243). Focus of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.focus-width. Removed in the next minor release."
-        },
-        "focus-ring-focus": {
-          "$value": "{navigation-menu.trigger.focus-ring}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.focus-ring (OD-243). Focus ring focus of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.focus-ring. Removed in the next minor release."
-        },
-        "focus-ring-offset-focus": {
-          "$value": "{navigation-menu.trigger.focus-ring-offset}",
-          "$description": "Deprecated: use component.navigation-menu.trigger.focus-ring-offset (OD-243). Focus ring offset focus of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.trigger.focus-ring-offset. Removed in the next minor release."
-        },
-        "background-2": {
-          "$value": "{navigation-menu.content.background}",
-          "$description": "Deprecated: use component.navigation-menu.content.background (OD-243). Background 2 of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.content.background. Removed in the next minor release."
-        },
-        "label": {
-          "$value": "{navigation-menu.content.label}",
-          "$description": "Deprecated: use component.navigation-menu.content.label (OD-243). Label of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.content.label. Removed in the next minor release."
-        },
-        "shadow": {
-          "$value": "{navigation-menu.content.shadow}",
-          "$description": "Deprecated: use component.navigation-menu.content.shadow (OD-243). Shadow of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.content.shadow. Removed in the next minor release."
-        },
-        "link": {
-          "background-focus": {
-            "$value": "{navigation-menu.link.background.highlight}",
-            "$description": "Deprecated: use component.navigation-menu.link.background.highlight (OD-241). Link background focus of the navigation menu.",
-            "$deprecated": "Use component.navigation-menu.link.background.highlight. Removed in the next minor release."
-          },
-          "background": {
-            "@": {
-              "$value": "{navigation-menu.link.background.current}",
-              "$description": "Deprecated: use component.navigation-menu.link.background.current (OD-241). Link background of the navigation menu.",
-              "$deprecated": "Use component.navigation-menu.link.background.current. Removed in the next minor release."
-            }
-          },
-          "focus": {
-            "$value": "{navigation-menu.link.focus-width}",
-            "$description": "Deprecated: use component.navigation-menu.link.focus-width (OD-243). Link focus of the navigation menu.",
-            "$deprecated": "Use component.navigation-menu.link.focus-width. Removed in the next minor release."
-          },
-          "selected": {
-            "$value": "{navigation-menu.link.edge.current}",
-            "$description": "Deprecated: use component.navigation-menu.link.edge.current (OD-243). Link selected of the navigation menu.",
-            "$deprecated": "Use component.navigation-menu.link.edge.current. Removed in the next minor release."
-          },
-          "label": {
-            "@": {
-              "$value": "{navigation-menu.link.label.current}",
-              "$description": "Deprecated: use component.navigation-menu.link.label.current (OD-243). Link label of the navigation menu.",
-              "$deprecated": "Use component.navigation-menu.link.label.current. Removed in the next minor release."
-            }
-          },
-          "label-2": {
-            "$value": "{navigation-menu.link.icon}",
-            "$description": "Deprecated: use component.navigation-menu.link.icon (OD-243). Link label 2 of the navigation menu.",
-            "$deprecated": "Use component.navigation-menu.link.icon. Removed in the next minor release."
-          }
-        },
-        "background-3": {
-          "$value": "{navigation-menu.indicator.background}",
-          "$description": "Deprecated: use component.navigation-menu.indicator.background (OD-243). Background 3 of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.indicator.background. Removed in the next minor release."
-        },
-        "shadow-2": {
-          "$value": "{navigation-menu.indicator.shadow}",
-          "$description": "Deprecated: use component.navigation-menu.indicator.shadow (OD-243). Shadow 2 of the navigation menu.",
-          "$deprecated": "Use component.navigation-menu.indicator.shadow. Removed in the next minor release."
-        },
-        "trigger": {
-          "disabled-opacity": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use navigation-menu/trigger/disabled/label (OD-297). Trigger opacity when disabled, of the navigation menu.",
-            "$deprecated": "Use component.navigation-menu.trigger.disabled.label. Removed in the next minor release."
-          }
-        }
-      },
-      "pagination": {
-        "gap": {
-          "$value": "{pagination.link.gap}",
-          "$description": "Deprecated: use component.pagination.link.gap (OD-243). Gap of the pagination.",
-          "$deprecated": "Use component.pagination.link.gap. Removed in the next minor release."
-        },
-        "padding-x": {
-          "$value": "{pagination.link.padding-x}",
-          "$description": "Deprecated: use component.pagination.link.padding-x (OD-243). Padding x of the pagination.",
-          "$deprecated": "Use component.pagination.link.padding-x. Removed in the next minor release."
-        },
-        "padding-left": {
-          "$value": "{pagination.previous.padding-left}",
-          "$description": "Deprecated: use component.pagination.previous.padding-left (OD-243). Padding left of the pagination.",
-          "$deprecated": "Use component.pagination.previous.padding-left. Removed in the next minor release."
-        },
-        "padding-right": {
-          "$value": "{pagination.next.padding-right}",
-          "$description": "Deprecated: use component.pagination.next.padding-right (OD-243). Padding right of the pagination.",
-          "$deprecated": "Use component.pagination.next.padding-right. Removed in the next minor release."
-        },
-        "icon-size": {
-          "$value": "{pagination.ellipsis.icon-size}",
-          "$description": "Deprecated: use component.pagination.ellipsis.icon-size (OD-243). Icon size of the pagination.",
-          "$deprecated": "Use component.pagination.ellipsis.icon-size. Removed in the next minor release."
         }
       },
       "radio-group": {
@@ -7634,135 +6362,19 @@
           "radius": {
             "$value": "{radius.round}",
             "$description": "Item radius of the radio group."
-          },
-          "disabled-opacity-disabled": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use radio-group/item/disabled/background (OD-297). Item disabled opacity disabled of the radio group.",
-            "$deprecated": "Use component.radio-group.item.disabled.background. Removed in the next minor release."
           }
-        }
-      },
-      "resizable": {
-        "height": {
-          "$value": "{resizable.grip.height}",
-          "$description": "Deprecated: use component.resizable.grip.height (OD-243). Height of the resizable.",
-          "$deprecated": "Use component.resizable.grip.height. Removed in the next minor release."
-        },
-        "radius": {
-          "$value": "{resizable.grip.radius}",
-          "$description": "Deprecated: use component.resizable.grip.radius (OD-243). Radius of the resizable.",
-          "$deprecated": "Use component.resizable.grip.radius. Removed in the next minor release."
-        },
-        "background": {
-          "$value": "{resizable.grip.background}",
-          "$description": "Deprecated: use component.resizable.grip.background (OD-243). Background of the resizable.",
-          "$deprecated": "Use component.resizable.grip.background. Removed in the next minor release."
-        }
-      },
-      "select": {
-        "focus": {
-          "$value": "{select.trigger.focus-width}",
-          "$description": "Deprecated: use component.select.trigger.focus-width (OD-243). Focus of the select.",
-          "$deprecated": "Use component.select.trigger.focus-width. Removed in the next minor release."
-        },
-        "canvas": {
-          "$value": "{select.trigger.focus-ring-offset}",
-          "$description": "Deprecated: use component.select.trigger.focus-ring-offset (OD-243). Canvas of the select.",
-          "$deprecated": "Use component.select.trigger.focus-ring-offset. Removed in the next minor release."
-        },
-        "item": {
-          "sunken": {
-            "$value": "{select.item.background.highlight}",
-            "$description": "Deprecated: use component.select.item.background.highlight (OD-241). Item sunken of the select.",
-            "$deprecated": "Use component.select.item.background.highlight. Removed in the next minor release."
-          },
-          "disabled": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use select/item/disabled-label (OD-297). Item disabled of the select.",
-            "$deprecated": "Use component.select.item.disabled-label. Removed in the next minor release."
-          }
-        }
-      },
-      "sheet": {
-        "radius": {
-          "$value": "{sheet.close.radius}",
-          "$description": "Deprecated: use component.sheet.close.radius (OD-243). Radius of the sheet.",
-          "$deprecated": "Use component.sheet.close.radius. Removed in the next minor release."
-        },
-        "focus-ring-offset": {
-          "$value": "{sheet.close.focus-ring.offset-color}",
-          "$description": "Deprecated: use component.sheet.close.focus-ring.offset-color (OD-243). Focus ring offset of the sheet.",
-          "$deprecated": "Use component.sheet.close.focus-ring.offset-color. Removed in the next minor release."
-        },
-        "focus": {
-          "$value": "{sheet.close.focus-ring.width}",
-          "$description": "Deprecated: use component.sheet.close.focus-ring.width (OD-243). Focus of the sheet.",
-          "$deprecated": "Use component.sheet.close.focus-ring.width. Removed in the next minor release."
-        },
-        "focus-ring-focus": {
-          "$value": "{sheet.close.focus-ring.color}",
-          "$description": "Deprecated: use component.sheet.close.focus-ring.color (OD-243). Focus ring focus of the sheet.",
-          "$deprecated": "Use component.sheet.close.focus-ring.color. Removed in the next minor release."
-        },
-        "background-open": {
-          "$value": "{sheet.close.background.hover}",
-          "$description": "Deprecated: use component.sheet.close.background.hover (OD-243). Background open of the sheet.",
-          "$deprecated": "Use component.sheet.close.background.hover. Removed in the next minor release."
-        },
-        "icon-size": {
-          "$value": "{sheet.close.icon-size}",
-          "$description": "Deprecated: use component.sheet.close.icon-size (OD-243). Icon size of the sheet.",
-          "$deprecated": "Use component.sheet.close.icon-size. Removed in the next minor release."
         }
       },
       "sidebar": {
-        "gap": {
-          "@": {
-            "$value": "{space.gap.default}",
-            "$description": "Deprecated: use sidebar/content/gap (OD-243). Gap of the sidebar.",
-            "$deprecated": "Use component.sidebar.content.gap. Removed in the next minor release."
-          }
-        },
-        "padding": {
-          "$value": "{sidebar.menu-button.padding}",
-          "$description": "Deprecated: use component.sidebar.menu-button.padding (OD-243). Padding of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.padding. Removed in the next minor release."
-        },
-        "rail": {
-          "background-hover": {
-            "$value": "{sidebar.rail.line.hover}",
-            "$description": "Deprecated: use component.sidebar.rail.line.hover (OD-241). Rail background hover of the sidebar.",
-            "$deprecated": "Use component.sidebar.rail.line.hover. Removed in the next minor release."
-          }
-        },
-        "background-hover": {
-          "$value": "{sidebar.rail.background.hover}",
-          "$description": "Deprecated: use component.sidebar.rail.background.hover (OD-241). Background hover of the sidebar.",
-          "$deprecated": "Use component.sidebar.rail.background.hover. Removed in the next minor release."
-        },
         "group": {
           "label": {
             "radius": {
               "$value": "{radius.element}",
               "$description": "Group label radius of the sidebar."
             }
-          },
-          "action": {
-            "label-hover": {
-              "$value": "{color.text.primary}",
-              "$description": "Deprecated: use sidebar/group/action/label (OD-243). Group action label hover of the sidebar.",
-              "$deprecated": "Use component.sidebar.group.action.label. Removed in the next minor release."
-            }
           }
         },
         "menu": {
-          "action": {
-            "label-hover": {
-              "$value": "{color.text.primary}",
-              "$description": "Deprecated: use sidebar/menu/action/label (OD-243). Menu action label hover of the sidebar.",
-              "$deprecated": "Use component.sidebar.menu.action.label. Removed in the next minor release."
-            }
-          },
           "badge": {
             "radius": {
               "$value": "{radius.badge}",
@@ -7780,225 +6392,11 @@
               "radius": {
                 "$value": "{radius.element}",
                 "$description": "Menu sub button radius of the sidebar."
-              },
-              "label-hover": {
-                "$value": "{color.text.primary}",
-                "$description": "Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label hover of the sidebar.",
-                "$deprecated": "Use component.sidebar.menu.sub.button.label. Removed in the next minor release."
-              },
-              "background-active": {
-                "$value": "{sidebar.menu.sub.button.background.pressed}",
-                "$description": "Deprecated: use component.sidebar.menu.sub.button.background.pressed (OD-241). Menu sub button background active of the sidebar.",
-                "$deprecated": "Use component.sidebar.menu.sub.button.background.pressed. Removed in the next minor release."
-              },
-              "label-active": {
-                "$value": "{color.text.primary}",
-                "$description": "Deprecated: use sidebar/menu/sub/button/label (OD-243). Menu sub button label active of the sidebar.",
-                "$deprecated": "Use component.sidebar.menu.sub.button.label. Removed in the next minor release."
-              },
-              "disabled-opacity-disabled": {
-                "$value": "{opacity.disabled}",
-                "$description": "Deprecated: use sidebar/menu/sub/button/disabled/label (OD-297). Menu sub button disabled opacity disabled of the sidebar.",
-                "$deprecated": "Use component.sidebar.menu.sub.button.disabled.label. Removed in the next minor release."
               }
             }
           }
         },
-        "radius": {
-          "$value": "{sidebar.menu-button.radius}",
-          "$description": "Deprecated: use component.sidebar.menu-button.radius (OD-243). Radius of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.radius. Removed in the next minor release."
-        },
-        "font-size": {
-          "$value": "{sidebar.menu-button.font-size}",
-          "$description": "Deprecated: use component.sidebar.menu-button.font-size (OD-243). Font size of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.font-size. Removed in the next minor release."
-        },
-        "line-height": {
-          "$value": "{sidebar.menu-button.line-height}",
-          "$description": "Deprecated: use component.sidebar.menu-button.line-height (OD-243). Line height of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.line-height. Removed in the next minor release."
-        },
-        "focus-ring": {
-          "$value": "{color.border.focus}",
-          "$description": "Deprecated: use sidebar/menu-button/focus-ring (OD-243). Focus ring of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.focus-ring. Removed in the next minor release."
-        },
-        "padding-right": {
-          "$value": "{sidebar.menu-button.padding-right}",
-          "$description": "Deprecated: use component.sidebar.menu-button.padding-right (OD-243). Padding right of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.padding-right. Removed in the next minor release."
-        },
-        "size": {
-          "$value": "{sidebar.menu-button.collapsed-size}",
-          "$description": "Deprecated: use component.sidebar.menu-button.collapsed-size (OD-243). Size of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.collapsed-size. Removed in the next minor release."
-        },
-        "background-hover-2": {
-          "$value": "{sidebar.menu-button.background.hover}",
-          "$description": "Deprecated: use component.sidebar.menu-button.background.hover (OD-241). Background hover 2 of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.background.hover. Removed in the next minor release."
-        },
-        "label-hover": {
-          "$value": "{color.text.primary}",
-          "$description": "Deprecated: use sidebar/label (OD-243). Label hover of the sidebar.",
-          "$deprecated": "Use component.sidebar.label. Removed in the next minor release."
-        },
-        "background-active": {
-          "$value": "{sidebar.menu-button.background.pressed}",
-          "$description": "Deprecated: use component.sidebar.menu-button.background.pressed (OD-241). Background active of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.background.pressed. Removed in the next minor release."
-        },
-        "label-active": {
-          "$value": "{color.text.primary}",
-          "$description": "Deprecated: use sidebar/label (OD-243). Label active of the sidebar.",
-          "$deprecated": "Use component.sidebar.label. Removed in the next minor release."
-        },
-        "disabled-opacity-disabled": {
-          "$value": "{sidebar.menu-button.opacity.disabled}",
-          "$description": "Deprecated: use sidebar/menu-button/disabled/label (OD-243). Disabled opacity disabled of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.disabled.label. Removed in the next minor release."
-        },
-        "background-2": {
-          "$value": "{sidebar.menu-button.background.current}",
-          "$description": "Deprecated: use component.sidebar.menu-button.background.current (OD-241). Background 2 of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.background.current. Removed in the next minor release."
-        },
-        "font-weight": {
-          "$value": "{sidebar.menu-button.font-weight.current}",
-          "$description": "Deprecated: use component.sidebar.menu-button.font-weight.current (OD-243). Font weight of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.font-weight.current. Removed in the next minor release."
-        },
-        "focus": {
-          "$value": "{sidebar.menu-button.focus-width}",
-          "$description": "Deprecated: use component.sidebar.menu-button.focus-width (OD-243). Focus of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.focus-width. Removed in the next minor release."
-        },
-        "selected": {
-          "$value": "{sidebar.menu-button.edge.current}",
-          "$description": "Deprecated: use component.sidebar.menu-button.edge.current (OD-243). Selected of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.edge.current. Removed in the next minor release."
-        },
-        "background-open-hover": {
-          "$value": "{sidebar.menu-button.background.open-hover}",
-          "$description": "Deprecated: use component.sidebar.menu-button.background.open-hover (OD-243). Background open hover of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.background.open-hover. Removed in the next minor release."
-        },
-        "label-open-hover": {
-          "$value": "{color.text.primary}",
-          "$description": "Deprecated: use sidebar/label (OD-243). Label open hover of the sidebar.",
-          "$deprecated": "Use component.sidebar.label. Removed in the next minor release."
-        },
-        "icon-size": {
-          "$value": "{sidebar.menu-button.icon-size}",
-          "$description": "Deprecated: use component.sidebar.menu-button.icon-size (OD-243). Icon size of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.icon-size. Removed in the next minor release."
-        },
-        "focus-ring-focus": {
-          "$value": "{sidebar.menu-button.focus-ring}",
-          "$description": "Deprecated: use component.sidebar.menu-button.focus-ring (OD-243). Focus ring focus of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.focus-ring. Removed in the next minor release."
-        },
-        "focus-ring-offset-focus": {
-          "$value": "{sidebar.menu-button.focus-ring-offset}",
-          "$description": "Deprecated: use component.sidebar.menu-button.focus-ring-offset (OD-243). Focus ring offset focus of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu-button.focus-ring-offset. Removed in the next minor release."
-        },
-        "default": {
-          "label-hover": {
-            "$value": "{color.text.primary}",
-            "$description": "Deprecated: use sidebar/label (OD-243). Default label hover of the sidebar.",
-            "$deprecated": "Use component.sidebar.label. Removed in the next minor release."
-          },
-          "height": {
-            "$value": "{sidebar.menu-button.default.height}",
-            "$description": "Deprecated: use component.sidebar.menu-button.default.height (OD-243). Default height of the sidebar.",
-            "$deprecated": "Use component.sidebar.menu-button.default.height. Removed in the next minor release."
-          },
-          "font-size": {
-            "$value": "{sidebar.menu-button.default.font-size}",
-            "$description": "Deprecated: use component.sidebar.menu-button.default.font-size (OD-243). Default font size of the sidebar.",
-            "$deprecated": "Use component.sidebar.menu-button.default.font-size. Removed in the next minor release."
-          },
-          "line-height": {
-            "$value": "{sidebar.menu-button.default.line-height}",
-            "$description": "Deprecated: use component.sidebar.menu-button.default.line-height (OD-243). Default line height of the sidebar.",
-            "$deprecated": "Use component.sidebar.menu-button.default.line-height. Removed in the next minor release."
-          },
-          "background": {
-            "hover": {
-              "$value": "{color.surface.highlight}",
-              "$description": "Deprecated: use sidebar/menu-button/background/hover (OD-243). Default menu button background under the pointer, of the sidebar.",
-              "$deprecated": "Use component.sidebar.menu-button.background.hover. Removed in the next minor release."
-            }
-          }
-        },
-        "outline": {
-          "background": {
-            "@": {
-              "$value": "{sidebar.menu-button.outline.background.@}",
-              "$description": "Deprecated: use component.sidebar.menu-button.outline.background.@ (OD-243). Outline background of the sidebar.",
-              "$deprecated": "Use component.sidebar.menu-button.outline.background.@. Removed in the next minor release."
-            },
-            "hover": {
-              "$value": "{sidebar.menu-button.outline.background.hover}",
-              "$description": "Deprecated: use component.sidebar.menu-button.outline.background.hover (OD-243). Outline menu button background under the pointer, of the sidebar.",
-              "$deprecated": "Use component.sidebar.menu-button.outline.background.hover. Removed in the next minor release."
-            }
-          },
-          "label-hover": {
-            "$value": "{color.text.primary}",
-            "$description": "Deprecated: use sidebar/label (OD-243). Outline label hover of the sidebar.",
-            "$deprecated": "Use component.sidebar.label. Removed in the next minor release."
-          }
-        },
-        "sm": {
-          "font-size": {
-            "$value": "{sidebar.menu-button.sm.font-size}",
-            "$description": "Deprecated: use component.sidebar.menu-button.sm.font-size (OD-243). Sm font size of the sidebar.",
-            "$deprecated": "Use component.sidebar.menu-button.sm.font-size. Removed in the next minor release."
-          },
-          "line-height": {
-            "$value": "{sidebar.menu-button.sm.line-height}",
-            "$description": "Deprecated: use component.sidebar.menu-button.sm.line-height (OD-243). Sm line height of the sidebar.",
-            "$deprecated": "Use component.sidebar.menu-button.sm.line-height. Removed in the next minor release."
-          }
-        },
-        "lg": {
-          "font-size": {
-            "$value": "{sidebar.menu-button.lg.font-size}",
-            "$description": "Deprecated: use component.sidebar.menu-button.lg.font-size (OD-243). Lg font size of the sidebar.",
-            "$deprecated": "Use component.sidebar.menu-button.lg.font-size. Removed in the next minor release."
-          },
-          "line-height": {
-            "$value": "{sidebar.menu-button.lg.line-height}",
-            "$description": "Deprecated: use component.sidebar.menu-button.lg.line-height (OD-243). Lg line height of the sidebar.",
-            "$deprecated": "Use component.sidebar.menu-button.lg.line-height. Removed in the next minor release."
-          }
-        },
-        "height": {
-          "$value": "{sidebar.menu.skeleton.text-height}",
-          "$description": "Deprecated: use component.sidebar.menu.skeleton.text-height (OD-243). Height of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu.skeleton.text-height. Removed in the next minor release."
-        },
-        "font-size-2": {
-          "$value": "{sidebar.menu.sub.button.sm.font-size}",
-          "$description": "Deprecated: use component.sidebar.menu.sub.button.sm.font-size (OD-243). Font size 2 of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu.sub.button.sm.font-size. Removed in the next minor release."
-        },
-        "line-height-2": {
-          "$value": "{sidebar.menu.sub.button.sm.line-height}",
-          "$description": "Deprecated: use component.sidebar.menu.sub.button.sm.line-height (OD-243). Line height 2 of the sidebar.",
-          "$deprecated": "Use component.sidebar.menu.sub.button.sm.line-height. Removed in the next minor release."
-        },
         "menu-button": {
-          "opacity": {
-            "disabled": {
-              "$value": "{opacity.disabled}",
-              "$description": "Deprecated: use sidebar/menu-button/disabled/label (OD-297). Opacity of a menu button that cannot be used, of the sidebar.",
-              "$deprecated": "Use component.sidebar.menu-button.disabled.label. Removed in the next minor release."
-            }
-          },
           "radius": {
             "$value": "{radius.element}",
             "$description": "Corner of the menu button, of the sidebar."
@@ -8006,70 +6404,15 @@
         }
       },
       "slider": {
-        "disabled-opacity-disabled": {
-          "$value": "{opacity.disabled}",
-          "$description": "Deprecated: use slider/disabled/range (OD-297). Disabled opacity disabled of the slider.",
-          "$deprecated": "Use component.slider.disabled.range. Removed in the next minor release."
-        },
         "thumb": {
           "radius": {
             "$value": "{radius.round}",
             "$description": "Thumb radius of the slider."
-          },
-          "focus-ring": {
-            "$value": "{color.border.focus}",
-            "$description": "Deprecated: use slider/thumb/focus-ring-focus (OD-243). Thumb focus ring of the slider.",
-            "$deprecated": "Use component.slider.thumb.focus-ring-focus. Removed in the next minor release."
-          },
-          "disabled-opacity-disabled": {
-            "$value": "{opacity.disabled}",
-            "$description": "Deprecated: use slider/thumb/disabled/background (OD-297). Thumb disabled opacity disabled of the slider.",
-            "$deprecated": "Use component.slider.thumb.disabled.background. Removed in the next minor release."
           }
         }
       },
       "switch": {
-        "height": {
-          "$value": "{size.icon}",
-          "$description": "Deprecated: use switch/thumb/size (OD-300). Height of the switch.",
-          "$deprecated": "Use component.switch.thumb.size. Removed in the next minor release."
-        },
-        "width": {
-          "$value": "{size.icon}",
-          "$description": "Deprecated: use switch/thumb/size (OD-300). Width of the switch.",
-          "$deprecated": "Use component.switch.thumb.size. Removed in the next minor release."
-        },
-        "padding": {
-          "$value": "{component-spacing-map.hairline}",
-          "$description": "Deprecated: use switch/thumb/offset (OD-300). Padding of the switch: the gap between the track's edge and the thumb, on every side.",
-          "$deprecated": "Use component.switch.thumb.offset. Removed in the next minor release."
-        },
-        "disabled": {
-          "$value": "{opacity.disabled}",
-          "$description": "Deprecated: use switch/disabled-track (OD-297). Disabled of the switch.",
-          "$deprecated": "Use component.switch.disabled-track. Removed in the next minor release."
-        },
-        "canvas": {
-          "$value": "{switch.focus-ring-offset}",
-          "$description": "Deprecated: use component.switch.focus-ring-offset (OD-243). Canvas of the switch.",
-          "$deprecated": "Use component.switch.focus-ring-offset. Removed in the next minor release."
-        },
-        "size": {
-          "$value": "{switch.thumb.size}",
-          "$description": "Deprecated: use component.switch.thumb.size (OD-243). Size of the switch.",
-          "$deprecated": "Use component.switch.thumb.size. Removed in the next minor release."
-        },
-        "icon": {
-          "$value": "{switch.thumb.travel}",
-          "$description": "Deprecated: use switch/thumb/size (OD-243). Icon of the switch.",
-          "$deprecated": "Use component.switch.thumb.size. Removed in the next minor release."
-        },
         "thumb": {
-          "travel": {
-            "$value": "{size.icon}",
-            "$description": "Deprecated: use switch/thumb/size (OD-300). How far the thumb moves when the switch turns on: one thumb's width.",
-            "$deprecated": "Use component.switch.thumb.size. Removed in the next minor release."
-          },
           "radius": {
             "$value": "{radius.round}",
             "$description": "Corner of the switch's thumb: round, as the track is."
@@ -8077,94 +6420,9 @@
         }
       },
       "textarea": {
-        "shadow": {
-          "$value": "{elevation.card}",
-          "$description": "Deprecated: use textarea/border (OD-243). Shadow of the textarea.",
-          "$deprecated": "Use component.textarea.border. Removed in the next minor release."
-        },
-        "disabled-opacity-disabled": {
-          "$value": "{opacity.disabled}",
-          "$description": "Deprecated: use textarea/disabled/text (OD-243). Disabled opacity disabled of the textarea.",
-          "$deprecated": "Use component.textarea.disabled.text. Removed in the next minor release."
-        },
         "focus-ring-invalid": {
           "$value": "{color.status.danger.@}",
           "$description": "Focus ring invalid of the textarea."
-        }
-      },
-      "toast": {
-        "success": {
-          "border-2": {
-            "$value": "{toast.success.edge}",
-            "$description": "Deprecated: use component.toast.success.edge (OD-243). Success border 2 of the toast.",
-            "$deprecated": "Use component.toast.success.edge. Removed in the next minor release."
-          }
-        },
-        "danger": {
-          "border-2": {
-            "$value": "{toast.danger.edge}",
-            "$description": "Deprecated: use component.toast.danger.edge (OD-243). Danger border 2 of the toast.",
-            "$deprecated": "Use component.toast.danger.edge. Removed in the next minor release."
-          }
-        },
-        "gap-2": {
-          "$value": "{toast.content.gap}",
-          "$description": "Deprecated: use component.toast.content.gap (OD-243). Gap 2 of the toast.",
-          "$deprecated": "Use component.toast.content.gap. Removed in the next minor release."
-        },
-        "font-weight": {
-          "$value": "{toast.title.font-weight}",
-          "$description": "Deprecated: use component.toast.title.font-weight (OD-243). Font weight of the toast.",
-          "$deprecated": "Use component.toast.title.font-weight. Removed in the next minor release."
-        },
-        "font-size": {
-          "$value": "{toast.title.font-size}",
-          "$description": "Deprecated: use component.toast.title.font-size (OD-243). Font size of the toast.",
-          "$deprecated": "Use component.toast.title.font-size. Removed in the next minor release."
-        },
-        "label-2": {
-          "$value": "{toast.description.label}",
-          "$description": "Deprecated: use component.toast.description.label (OD-243). Label 2 of the toast.",
-          "$deprecated": "Use component.toast.description.label. Removed in the next minor release."
-        },
-        "font-size-2": {
-          "$value": "{toast.description.font-size}",
-          "$description": "Deprecated: use component.toast.description.font-size (OD-243). Font size 2 of the toast.",
-          "$deprecated": "Use component.toast.description.font-size. Removed in the next minor release."
-        }
-      },
-      "toggle": {
-        "label-hover": {
-          "$value": "{color.text.muted}",
-          "$description": "Deprecated: use toggle/label (OD-243). Label hover of the toggle.",
-          "$deprecated": "Use component.toggle.label. Removed in the next minor release."
-        },
-        "border-focus": {
-          "$value": "{color.border.focus}",
-          "$description": "Deprecated: use toggle/focus-ring-focus (OD-243). Border focus of the toggle.",
-          "$deprecated": "Use component.toggle.focus-ring-focus. Removed in the next minor release."
-        },
-        "disabled-opacity-disabled": {
-          "$value": "{opacity.disabled}",
-          "$description": "Deprecated: use toggle/disabled/label (OD-297). Disabled opacity disabled of the toggle.",
-          "$deprecated": "Use component.toggle.disabled.label. Removed in the next minor release."
-        },
-        "focus-ring-invalid": {
-          "$value": "{color.status.danger.@}",
-          "$description": "Deprecated: use toggle/border-invalid (OD-243). Focus ring invalid of the toggle.",
-          "$deprecated": "Use component.toggle.border-invalid. Removed in the next minor release."
-        },
-        "label-on": {
-          "$value": "{color.text.primary}",
-          "$description": "Deprecated: use toggle/label (OD-243). Label on of the toggle.",
-          "$deprecated": "Use component.toggle.label. Removed in the next minor release."
-        },
-        "outline": {
-          "label-hover": {
-            "$value": "{color.text.primary}",
-            "$description": "Deprecated: use toggle/label (OD-243). Outline label hover of the toggle.",
-            "$deprecated": "Use component.toggle.label. Removed in the next minor release."
-          }
         }
       }
     },

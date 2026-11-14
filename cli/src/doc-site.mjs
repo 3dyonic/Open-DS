@@ -1,4 +1,4 @@
-// The parts of a docs site that draw the pages' composites (OD-284), for a created project. A page's
+// The parts of a docs site that draw the pages' composites, for a created project. A page's
 // directive (::token-table{component="field"}) becomes a composite through the remark plugin; the
 // composites are built from the project's own ui components; Tailwind compiles the classes they use.
 // One source: the files the Open DS docs use, with their import paths pointed at the project.
@@ -63,7 +63,7 @@ export function docSiteFiles(roots, { ui = "../../../src/components/ui", compone
     .replace(/^@source "\.\.\/\.\.\/\.\.\/ui\/src\/components[^"]*";$/m, `@source "${sourced}";`)
     .replace(/^@source "\.\.\/components";\n/m, "")
     .replace(/^@source "\.\.\/\.\.\/\.\.\/doc-composites\/src";$/m, `@source "../composites";`)
-    // The icon stroke rule (OD-285) is written in, since a project's docs sit apart from the ui folder.
+    // The icon stroke rule is written in, since a project's docs sit apart from the ui folder.
     .replace(/^@import "\.\.\/\.\.\/\.\.\/ui\/src\/icons\.css";\n/m, () => readFileSync(join(roots.ui, "icons.css"), "utf8"));
   return files;
 }

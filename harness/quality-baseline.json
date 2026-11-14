@@ -469,28 +469,24 @@
       "parts": {}
     },
     "curves.min-gap": {
-      "value": 25,
+      "value": 26,
       "direction": "down",
       "gated": true,
       "parts": {
-        "dense-data/slate.light": 2,
+        "dense-data/slate.light": 4,
         "dense-data/slate.dark": 2,
         "dense-data/red.light": 1,
         "content-first/stone.light": 1,
-        "content-first/stone.dark": 1,
-        "content-first/red.light": 1,
+        "content-first/stone.dark": 2,
         "accessible-first/gray.light": 1,
         "accessible-first/gray.dark": 1,
-        "accessible-first/red.light": 1,
-        "brand-expressive/taupe.light": 2,
+        "brand-expressive/taupe.light": 4,
         "brand-expressive/taupe.dark": 2,
-        "brand-expressive/pink.light": 2,
-        "brand-expressive/red.light": 1,
-        "multi-brand/slate-deep.light": 2,
-        "multi-brand/slate-deep.dark": 3,
-        "multi-brand/orange.light": 1,
-        "multi-brand/red.light": 1
-      }
+        "brand-expressive/pink.light": 1,
+        "multi-brand/slate-deep.light": 4,
+        "multi-brand/slate-deep.dark": 3
+      },
+      "why": "A 150 step on every neutral ramp sits between 100 and 200, which are close on the light grays, so those pairs fall under the 0.03 lightness gap. Up for review."
     },
     "curves.grades": {
       "value": 119,

@@ -1,4 +1,4 @@
-// Every option of a question, with the scheme's choice marked and highlighted (OD-151).
+// Every option of a question, with the scheme's choice marked and highlighted.
 // "list" shows each option on its own row with its description; "inline" is a short row of pills.
 import { Check } from "lucide-react";
 import type { Option } from "@/lib/schemes";

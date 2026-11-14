@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // The hosted Open DS server: the MCP (Streamable HTTP) at /mcp, health at /health, and, when SITE_DIR
 // points at the built site (site/out), the website on every other path. One engine with the CLI.
-// PORT and HOST come from the environment (Fly sets PORT). No authentication yet (OD-145).
+// PORT and HOST come from the environment (Fly sets PORT). No authentication yet.
 import { createReadStream, existsSync, statSync } from "node:fs";
 import { createServer } from "node:http";
 import { extname, join, normalize, resolve } from "node:path";

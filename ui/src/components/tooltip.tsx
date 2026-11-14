@@ -14,7 +14,7 @@ export const TooltipTrigger = TooltipPrimitive.Trigger;
 
 export function TooltipContent({
   className,
-  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to (OD-243)
+  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Content>) {
   return (

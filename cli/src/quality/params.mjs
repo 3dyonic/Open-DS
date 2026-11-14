@@ -1,4 +1,4 @@
-// The quality gate's parameters (OD-298), in one place. Each has the owner's starting value; a run
+// The quality gate's parameters, in one place. Each has its starting value; a run
 // passes its own with open-ds compare --params <file.json>, and only the keys it names change.
 
 export const DEFAULT_PARAMS = {
@@ -23,7 +23,7 @@ export const DEFAULT_PARAMS = {
   curves: {
     // Neighbouring steps of a color scale differ by at least this much OKLab lightness.
     minGap: 0.03,
-    // Steps this far apart reach this WCAG contrast. Reported only, until OD-299 lands.
+    // Steps this far apart reach this WCAG contrast. Reported only, while gradesGated is false.
     grades: [
       { apart: 400, ratio: 3 },
       { apart: 500, ratio: 4.5 },

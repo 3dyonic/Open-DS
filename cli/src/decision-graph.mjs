@@ -1,4 +1,4 @@
-// The decision graph (OD-304), one engine for every scope that records roles. A token inherits its
+// The decision graph, one engine for every scope that records roles. A token inherits its
 // explanation down a chain, so nothing here is typed per token: its role (from its mapping entry), the
 // role's jobs, its rule, the connections it takes part in and its value. Color is a hue scale, a slot on
 // it, a pair and the connections between colors. Type is one base and one ratio, a step per text role and
@@ -77,8 +77,8 @@ function ownerOf(g, name) {
 }
 
 /**
- * The token groups that play roles (color, type, space, size.row, radius): the owner of every role's token
- * pattern. A group inside another listed group adds nothing, so it is left out.
+ * The token groups that play roles (color, type, space, size.row, radius): the group that holds every role's
+ * token pattern. A group inside another listed group adds nothing, so it is left out.
  */
 export function graphGroups(g) {
   const all = [...new Set((g.mapping ?? []).flatMap((e) => (e.roles ?? []).flatMap((r) => r.tokens.map((t) => ownerOf(g, t)))))];

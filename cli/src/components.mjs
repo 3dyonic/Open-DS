@@ -69,7 +69,7 @@ export function packagesFor(names, roots) {
   return Object.fromEntries([...used].sort().map((p) => [p, PACKAGES[p]]));
 }
 
-/** The ui base styles, with the files they import written in (OD-285: icons.css), for a project that
+/** The ui base styles, with the files they import written in (icons.css), for a project that
  * gets them as one file. */
 export function baseCss(uiRoot) {
   return readFileSync(join(uiRoot, "styles.css"), "utf8").replace(/^@import "\.\/([a-z-]+\.css)";\n/gm, (_, f) =>

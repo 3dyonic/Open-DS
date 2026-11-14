@@ -1,9 +1,9 @@
 // Reads the grammar and the five schemes from schemes/ at build time.
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-// A scheme file stores key colors and the spacing rhythm; the scales and steps come from them (OD-292).
+// A scheme file stores key colors and the spacing rhythm; the scales and steps come from them.
 import { withGenerated } from "../../../cli/src/scheme-generated.mjs";
-// The type and spacing values come from their records (OD-301).
+// The type and spacing values come from their records.
 import { withTypeAndSpace } from "../../../cli/src/type-space-generated.mjs";
 
 const dir = join(process.cwd(), "..", "schemes");

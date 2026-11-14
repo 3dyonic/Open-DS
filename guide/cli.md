@@ -31,7 +31,7 @@ node cli/bin/open-ds.js add dialog --dir ./my-app
 
 ## Tools for the skills
 
-These commands do the steps the agent skills would otherwise judge by eye (OD-202). The MCP server has the same tools.
+These commands do the steps the agent skills would otherwise judge by eye. The MCP server has the same tools.
 
 | Command                       | MCP tool      | What it does                                                                                                               |
 | ----------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------- |

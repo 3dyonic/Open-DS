@@ -1,4 +1,4 @@
-// Ask for a key (OD-168). Open DS is in Beta and invitations are limited, so every request is read by
+// Ask for a key. Open DS is in Beta and invitations are limited, so every request is read by
 // a person. The form posts to the hosted service (/api/key-requests); approved people get a one-time
 // link by email that shows their key once.
 import type { Metadata } from "next";

@@ -162,7 +162,7 @@ export function ComponentKeys() {
   );
 }
 
-// The docs site (OD-210): http://localhost:3000 next to `pnpm --dir docs start`, /docs on open-ds.dev.
+// The docs site: http://localhost:3000 next to `pnpm --dir docs start`, /docs on open-ds.dev.
 const DOCS = (
   (import.meta as unknown as { env?: Record<string, string> }).env?.STORYBOOK_DOCS_URL ?? "http://localhost:3000"
 ).replace(/\/$/, "");

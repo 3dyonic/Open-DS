@@ -193,7 +193,7 @@ export function deploy(
       files,
     );
   // The scheme's inventory, plus the components those import. With the docs, also the components
-  // the docs' composites draw with (OD-284).
+  // the docs' composites draw with.
   const components = componentsFor(scheme, roots);
   const written = docs
     ? withImports([...new Set([...components, ...compositeComponents(roots)])], roots)
@@ -519,7 +519,7 @@ export async function run(argv) {
       );
       return 0;
     }
-    // The decision reference (OD-239): the same data as the docs page and get_decision_reference.
+    // The decision reference: the same data as the docs page and get_decision_reference.
     if (cmd === "decisions") {
       const { decisionReference, decisionText } =
         await import("./decisions.mjs");
@@ -545,7 +545,7 @@ export async function run(argv) {
       out(data, () => console.log(decisionText(data)));
       return 0;
     }
-    // The Anatomy reference (OD-229): one engine with the docs page and get_anatomy.
+    // The Anatomy reference: one engine with the docs page and get_anatomy.
     if (cmd === "anatomy") {
       const { anatomyReference, anatomyText } = await import("./anatomy.mjs");
       const s = loadScheme(args[0] ?? "");
@@ -558,7 +558,7 @@ export async function run(argv) {
       out(ref, () => console.log(anatomyText(ref)));
       return 0;
     }
-    // The gap ledger (OD-243): every place where the decision trace breaks, generated.
+    // The gap ledger: every place where the decision trace breaks, generated.
     if (cmd === "gaps") {
       const { gapLedger, gapText } = await import("./gaps.mjs");
       const s = loadScheme(args[0] ?? "");
@@ -571,7 +571,7 @@ export async function run(argv) {
       out(ledger, () => console.log(gapText(ledger)));
       return 0;
     }
-    // The spacing a scheme decides (OD-235): its roles and its component spacing map, with the rule.
+    // The spacing a scheme decides: its roles and its component spacing map, with the rule.
     if (cmd === "component-spacing-map" || cmd === "spacing") {
       const { spacingGuide, spacingText } = await import("./spacing-map.mjs");
       const { tokenIndex, aliasChain } = await import("./lands.mjs");
@@ -587,7 +587,7 @@ export async function run(argv) {
       out(data, () => console.log(spacingText(data)));
       return 0;
     }
-    // Which tokens land on each color step (OD-223), the map the docs and Storybook draw.
+    // Which tokens land on each color step, the map the docs and Storybook draw.
     if (cmd === "scales") {
       const { scales } = await import("./scale-map.mjs");
       const [id] = args;
@@ -627,7 +627,7 @@ export async function run(argv) {
       return 0;
     }
     if (cmd === "context") {
-      // Short Markdown by default (OD-205); --section for one part, --json for the full answer.
+      // Short Markdown by default; --section for one part, --json for the full answer.
       const brief = await import("./brief.mjs");
       const { context, TASKS } = await import("./context.mjs");
       const g = grammar();
@@ -692,7 +692,7 @@ export async function run(argv) {
       process.stdout.write(text.endsWith("\n") ? text : `${text}\n`);
       return 0;
     }
-    // The tools behind the skills (OD-202), one engine with the MCP server.
+    // The tools behind the skills, one engine with the MCP server.
     if (["check", "copy", "change", "token", "fit"].includes(cmd)) {
       const tools = await import("./tools.mjs");
       const g = grammar();
@@ -734,7 +734,7 @@ export async function run(argv) {
         };
         walk("");
         const result = tools.checkUi(loadScheme(id), g, files);
-        // context/ must match what the engine prints for this scheme (OD-205).
+        // context/ must match what the engine prints for this scheme.
         const { contextDrift, projectComponents } = await import("./brief.mjs");
         for (const d of contextDrift(
           dir,

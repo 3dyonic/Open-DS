@@ -35,7 +35,7 @@
   --font-mono: "DM Mono", ui-monospace, monospace;
 }
 
-/* Follow the device, like Orchestra and 3dyonic.com. The switch in the nav can override it. */
+/* Follow the device. The switch in the nav can override it. */
 :root {
   color-scheme: light dark;
 }

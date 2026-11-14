@@ -1,4 +1,4 @@
-// Motion (OD-298): reduced-motion CSS keeps no transform, translate, scale or rotate, and every
+// Motion: reduced-motion CSS keeps no transform, translate, scale or rotate, and every
 // duration stays within its family's cap.
 import { RELATION_LIST } from "../relations.mjs";
 import { relationMeasure } from "./invariants.mjs";

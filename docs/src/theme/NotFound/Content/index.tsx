@@ -3,7 +3,7 @@ import Link from "@docusaurus/Link";
 import Heading from "@theme/Heading";
 import { Robot } from "../../../components/Robot";
 
-// Page not found (OD-209): Slumber, the sleeping robot from the Open DS site, as on the site's 404.
+// Page not found: Slumber, the sleeping robot from the Open DS site, as on the site's 404.
 export default function NotFoundContent({ className }: { className?: string }) {
   return (
     <main className={`container margin-vert--xl ${className ?? ""}`}>
