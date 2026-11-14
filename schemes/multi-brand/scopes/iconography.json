@@ -85,16 +85,18 @@
     "semantic": {
       "size": {
         "icon": {
-          "$type": "dimension",
-          "$value": "{size.16}",
-          "$description": "Icon size next to text.",
-          "$extensions": {
-            "open-ds": {
-              "why": "16px matches the 16px body text an icon sits beside, so one icon size serves every brand and every label.",
-              "because": [
-                "iconography.values",
-                "iconography.count"
-              ]
+          "@": {
+            "$type": "dimension",
+            "$value": "{size.16}",
+            "$description": "Icon size next to text.",
+            "$extensions": {
+              "open-ds": {
+                "why": "16px matches the 16px body text an icon sits beside, so one icon size serves every brand and every label.",
+                "because": [
+                  "iconography.values",
+                  "iconography.count"
+                ]
+              }
             }
           }
         }
