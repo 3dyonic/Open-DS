@@ -165,12 +165,6 @@
           "$value": "{color.status.danger.@}",
           "$description": "Focus ring invalid of the textarea."
         }
-      },
-      "icon": {
-        "size-large": {
-          "$value": "{size.28}",
-          "$description": "Size of the large icon, where the scheme has two sizes."
-        }
       }
     }
   }

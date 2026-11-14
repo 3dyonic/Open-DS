@@ -1,7 +1,8 @@
 // A scheme stores only the component values it decides (ADR-002 step 2). Every other
 // component key takes the grammar's default and description. withDefaults fills them in, in the
-// grammar's order; withoutDefaults takes out each token that equals its fill exactly. No file access,
-// so the loader, the build and the bundled apps (Storybook) share it.
+// grammar's order; withoutDefaults takes out each token that equals its fill exactly. A key with
+// created_by exists only in a scheme whose answer creates it, so no scheme ships a choice it did not
+// make. No file access, so the loader, the build and the bundled apps (Storybook) share it.
 
 /** A key's token path in a scheme: its id's segments; a key that is also a group keeps its token at "@". */
 function pathsOf(g) {
@@ -18,6 +19,16 @@ const isFill = (token, key) =>
   token.$description === key.description;
 const at = (tree, path) => path.reduce((node, k) => node?.[k], tree);
 
+/** True when the scheme has the key: the key has no created_by, or the scheme's answer is one of its options. */
+export function keyCreated(key, scheme) {
+  if (!key.created_by) return true;
+  const answer = (scheme?.answers ?? []).find((a) => a.question === key.created_by.question);
+  return key.created_by.options.includes(answer?.option);
+}
+
+/** The grammar's component keys the scheme has, in the grammar's order. */
+export const keysOf = (g, scheme) => g.component_keys.filter((key) => keyCreated(key, scheme));
+
 /** The scheme with every component key present, in the grammar's order. Does not change its input. */
 export function withDefaults(scheme, g) {
   const stored = scheme?.tokens?.component ?? {};
@@ -25,9 +36,12 @@ export function withDefaults(scheme, g) {
   const component = {};
   for (const key of g.component_keys) {
     const path = paths.get(key.id);
+    // A key the answers do not create gets no fill. A stored token stays, so the checks can name it.
+    const token = at(stored, path) ?? (keyCreated(key, scheme) ? fillOf(key) : undefined);
+    if (!token) continue;
     let node = component;
     for (const k of path.slice(0, -1)) node = node[k] ??= {};
-    node[path.at(-1)] = at(stored, path) ?? fillOf(key);
+    node[path.at(-1)] = token;
   }
   // A stored token the grammar does not name stays, after the grammar's keys.
   const known = new Set([...paths.values()].map((p) => p.join(".")));
@@ -53,6 +67,7 @@ export function withoutDefaults(scheme, g) {
   const component = structuredClone(scheme?.tokens?.component ?? {});
   for (const [id, path] of pathsOf(g)) {
     const key = g.component_keys.find((k) => k.id === id);
+    if (!keyCreated(key, scheme)) continue;
     const parent = at(component, path.slice(0, -1));
     if (parent && isFill(parent[path.at(-1)], key)) delete parent[path.at(-1)];
   }

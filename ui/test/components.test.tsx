@@ -10,16 +10,17 @@ import { grammar } from "../../cli/src/schemes.mjs";
 const here = join(import.meta.dirname, "..");
 const files: string[] = readdirSync(join(here, "src", "components")).filter((f: string) => f.endsWith(".tsx"));
 // A deprecated key (replaced_by) stays only so old code keeps working; no component reads it.
-const keys = grammar()
-  .component_keys.filter((k: { replaced_by?: string }) => !k.replaced_by)
-  .map(
-    // The CSS name drops a base (@): button/primary/background/@ is --button-primary-background.
-    (k: { id: string }) =>
-      `--${k.id
-        .split("/")
-        .filter((p) => p !== "@")
-        .join("-")}`,
-  );
+type Key = { id: string; replaced_by?: string; created_by?: object };
+// The CSS name drops a base (@): button/primary/background/@ is --button-primary-background.
+const cssName = (k: Key) =>
+  `--${k.id
+    .split("/")
+    .filter((p) => p !== "@")
+    .join("-")}`;
+const live: Key[] = grammar().component_keys.filter((k: Key) => !k.replaced_by);
+const keys = live.map(cssName);
+// A key an answer creates ships only in the schemes that give that answer.
+const created = new Set(live.filter((k) => k.created_by).map(cssName));
 
 test("every component file explains itself to people and agents", () => {
   for (const f of files) {
@@ -46,14 +47,23 @@ test("components use tokens, never raw colors or palette classes", () => {
 });
 
 test("every variable a component reads exists in the token output", () => {
-  const dist = join(here, "..", "tokens", "dist", "dense-data");
-  const css = ["tokens.css", "theme.css", "shadcn.css"].map((f) => readFileSync(join(dist, f), "utf8")).join("\n");
+  const output = (scheme: string) =>
+    ["tokens.css", "theme.css", "shadcn.css"]
+      .map((f) => readFileSync(join(here, "..", "tokens", "dist", scheme, f), "utf8"))
+      .join("\n");
+  const dense = output("dense-data");
+  // A key an answer creates can be missing from dense-data, so it is looked up in every scheme.
+  const every = readdirSync(join(here, "..", "tokens", "dist"), { withFileTypes: true })
+    .filter((e) => e.isDirectory())
+    .map((e) => output(e.name))
+    .join("\n");
   // Variables that libraries set at run time, or that a component sets itself, are not tokens.
   const runtime = /^--(radix-|anchor-|available-|spacing$|gap$|sidebar-width)/;
   for (const f of files) {
     const src = readFileSync(join(here, "src", "components", f), "utf8");
     for (const [, name] of src.matchAll(/var\((--[a-z0-9-]+)/g)) {
       if (runtime.test(name) || src.includes(`"${name}"`)) continue;
+      const css = created.has(name) ? every : dense;
       assert.ok(css.includes(`${name}:`), `${f} reads ${name}, which no scheme defines`);
     }
   }

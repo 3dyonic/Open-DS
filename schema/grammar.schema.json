@@ -219,7 +219,7 @@
     },
     "component_keys": {
       "type": "array",
-      "description": "The shared component API. Every scheme defines a value for every key.",
+      "description": "The shared component API. Every scheme defines a value for every key its answers create.",
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -248,6 +248,29 @@
             "type": "string",
             "description": "The semantic token path the key points to by default.",
             "examples": ["color.action.primary"]
+          },
+          "created_by": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["question", "options"],
+            "description": "Marks a key that an answer creates. A scheme has the key only when its answer to question is one of options; any other scheme ships no value for it.",
+            "properties": {
+              "question": {
+                "type": "string",
+                "pattern": "^[a-z]+\\.[a-z0-9]+$",
+                "description": "The question id whose answer creates the key."
+              },
+              "options": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$"
+                },
+                "description": "The option ids that create the key."
+              }
+            }
           },
           "replaced_by": {
             "type": "string",

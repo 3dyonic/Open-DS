@@ -3,7 +3,7 @@
   "id": "open-ds-grammar",
   "version": "0.1.0",
   "status": "draft",
-  "description": "The Open DS grammar: a finite set of questions a design system must answer. Reasons come first (business, people, content, tasks, human factors, outcomes, brand, use scenarios, team). Scopes follow, from typography to voice and tone. Every scope answers the same five method questions (roles, how many, how defined, values, lands in) and has the same parts: the tokens it owns, the components it lands in and its situations. Each scheme answers every question, and each answer says why and which earlier answers it follows from. Situations are the moments where people need to know what to use; each scheme answers them too. Component keys are the shared component API every scheme fills.",
+  "description": "The Open DS grammar: a finite set of questions a design system must answer. Reasons come first (business, people, content, tasks, human factors, outcomes, brand, use scenarios, team). Scopes follow, from typography to voice and tone. Every scope answers the same five method questions (roles, how many, how defined, values, lands in) and has the same parts: the tokens it owns, the components it lands in and its situations. Each scheme answers every question, and each answer says why and which earlier answers it follows from. Situations are the moments where people need to know what to use; each scheme answers them too. Component keys are the shared component API: every scheme fills every key its answers create.",
   "scheme_order": {
     "order": [
       "dense-data",
@@ -33,7 +33,7 @@
     },
     {
       "id": "component-api",
-      "description": "One key per component element, variant and state. Every scheme fills every key."
+      "description": "One key per component element, variant and state. Every scheme fills every key its answers create."
     }
   ],
   "options": {
@@ -4050,8 +4050,8 @@
       "title": "Icon size",
       "scope": "iconography",
       "question": "iconography.values",
-      "tokens": ["size.icon"],
-      "rule": "icon size = a size the icon set is drawn for (16, 20 or 24px), at least one label line tall",
+      "tokens": ["size.icon", "size.icon-large"],
+      "rule": "icon size = a size the icon set is drawn for (16, 20 or 24px), at least one label line tall; large icon size = larger than size.icon, where the scheme has two sizes",
       "jobs": [
         {
           "id": "match-the-label",
@@ -4067,6 +4067,11 @@
           "id": "meaningful-icon",
           "title": "Meaningful icon",
           "how": "follows color-step (edge): a meaningful icon takes a 3:1 step"
+        },
+        {
+          "id": "lead",
+          "title": "Lead a card",
+          "how": "follows size.icon: large icon > size.icon, so it leads a card and never sits beside text"
         }
       ],
       "roles": [
@@ -4077,6 +4082,14 @@
           "jobs": ["match-the-label", "recognize", "meaningful-icon"],
           "to": "set an icon on the same line as its label",
           "gets": "an icon and its word read as one item"
+        },
+        {
+          "id": "icon-large",
+          "role": "the large icon size",
+          "tokens": ["size.icon-large"],
+          "jobs": ["lead"],
+          "to": "let an icon lead a card, a size above the icon beside text",
+          "gets": "the icon that leads a card stands apart from the icons beside words"
         }
       ]
     },

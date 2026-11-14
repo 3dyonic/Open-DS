@@ -10362,7 +10362,11 @@
       "id": "icon/size-large",
       "component": "icon",
       "description": "Size of the large icon, where the scheme has two sizes.",
-      "default": "size.icon"
+      "default": "size.icon-large",
+      "created_by": {
+        "question": "iconography.count",
+        "options": ["two"]
+      }
     },
     {
       "id": "icon/contained/padding",

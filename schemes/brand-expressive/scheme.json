@@ -1861,6 +1861,9 @@
         "icon": {
           "$ref": "scopes/iconography.json#/tokens/semantic/size/icon"
         },
+        "icon-large": {
+          "$ref": "scopes/iconography.json#/tokens/semantic/size/icon-large"
+        },
         "hit-area": {
           "$ref": "scopes/accessibility.json#/tokens/semantic/size/hit-area"
         }

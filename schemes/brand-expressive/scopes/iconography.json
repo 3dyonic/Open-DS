@@ -99,6 +99,22 @@
               ]
             }
           }
+        },
+        "icon-large": {
+          "$type": "dimension",
+          "$value": "{size.28}",
+          "$description": "The large icon size, for the icon that leads a card.",
+          "$extensions": {
+            "open-ds": {
+              "why": "We use 28px for the icon that leads a feature card in order to lead the card with its icon, a size above the 20px icon beside text. The large icon size does this by staying larger than size.icon, so it never sits on a line of text. So the card's subject reads at a glance, because icons also decorate campaign pages (iconography.roles), the scheme has a second size for them (iconography.count), and the icon beside text is already larger than the text (iconography.values).",
+              "because": [
+                "iconography.values",
+                "iconography.count",
+                "iconography.roles",
+                "brand.q2"
+              ]
+            }
+          }
         }
       },
       "icon": {
@@ -124,6 +140,10 @@
     "size.icon": {
       "headline": "Icons beside words.",
       "line": "Icons sized to the text they sit with."
+    },
+    "size.icon-large": {
+      "headline": "Icons that lead a card.",
+      "line": "One size above the icon beside text."
     }
   }
 }
