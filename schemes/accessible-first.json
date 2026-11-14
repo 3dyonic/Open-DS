@@ -2442,6 +2442,10 @@
             "100": {
               "$value": "#EDEDED"
             },
+            "150": {
+              "$value": "#E1E1E1",
+              "$description": "Derived: the step between 100 and 200 on the scheme's step curve (linear), even in contrast. Added so a floating layer sits one step above raised in dark."
+            },
             "200": {
               "$value": "#D6D6D6"
             },
@@ -2481,6 +2485,10 @@
             },
             "100": {
               "$value": "#222222"
+            },
+            "150": {
+              "$value": "#2B2B2B",
+              "$description": "Derived: the step between 100 and 200 on the scheme's step curve (linear), even in contrast. Added so a floating layer sits one step above raised in dark."
             },
             "200": {
               "$value": "#333333"
@@ -3240,6 +3248,18 @@
                     }
                   }
                 },
+                "150": {
+                  "$type": "color",
+                  "$value": "{color.gray.light.150}",
+                  "$extensions": {
+                    "open-ds": {
+                      "because": [
+                        "color.definition"
+                      ],
+                      "why": "gray.light.150: We use the step between 100 and 200 of the gray ramp in light, in order to keep one step set on every ramp in both modes. The step does this by sitting even in contrast between its neighbours, on the scheme's linear step curve. So light and dark offer the same steps, because the gray ramp sets the steps (color.definition)."
+                    }
+                  }
+                },
                 "200": {
                   "$type": "color",
                   "$value": "{color.gray.light.200}",
@@ -3399,6 +3419,19 @@
                         "elevation.roles"
                       ],
                       "generated": true
+                    }
+                  }
+                },
+                "floating": {
+                  "$type": "color",
+                  "$value": "{color.neutral.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "neutral.0: We use white, as raised, for menus, dialogs, sheets and toasts in light, in order to keep a floating layer as plain as the content it covers. The fill does this by staying white while its edge sets it off the page. So people see what floats without a tint of its own, because the roles answer names the layers that rise (elevation.roles).",
+                      "because": [
+                        "elevation.roles"
+                      ]
                     }
                   }
                 },
@@ -4136,6 +4169,18 @@
                     }
                   }
                 },
+                "150": {
+                  "$type": "color",
+                  "$value": "{color.gray.dark.150}",
+                  "$extensions": {
+                    "open-ds": {
+                      "because": [
+                        "color.definition"
+                      ],
+                      "why": "gray.dark.150: We use the step between 100 and 200 of the gray ramp for the raised surface in dark, in order to put a layer one step above the one below it. The step does this by its place on the scheme's linear curve, which spaces the dark steps by contrast. So text and lines on it keep their contrast, because the gray ramp sets the steps (color.definition)."
+                    }
+                  }
+                },
                 "200": {
                   "$type": "color",
                   "$value": "{color.gray.dark.200}",
@@ -4275,7 +4320,7 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.100: We use the step above the page for content in dark in order to leave a darker step free for wells, as the gray's two darkest steps are too close to tell apart. The fill does this by moving content one step up: sunken reads 1.16:1 below it and raised 1.26:1 above it. So people tell wells and menus from content, and body text still reads 14.85:1, because dark ships as standard (theming.values), text keeps the AAA floor (accessibility.definition) and depth reads from tone and lines (elevation.definition).",
+                      "why": "neutral.100: We use the step above the page for content in dark in order to leave a darker step free for wells, as the gray's two darkest steps are too close to tell apart. The fill does this by moving content one step up: sunken reads 1.16:1 below it and raised 1.12:1 above it. So people tell wells and menus from content, and body text still reads 14.85:1, because dark ships as standard (theming.values), text keeps the AAA floor (accessibility.definition) and depth reads from tone and lines (elevation.definition).",
                       "because": [
                         "theming.values",
                         "accessibility.definition",
@@ -4286,15 +4331,29 @@
                 },
                 "raised": {
                   "$type": "color",
-                  "$value": "{color.neutral.200}",
+                  "$value": "{color.neutral.150}",
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.200: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, 1.26:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So people see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
+                      "why": "neutral.150: We use one step lighter than content for parts that rise inside the page in dark, in order to show height by tone, 1.12:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. Menus, dialogs and other floating layers take the next step up (surface.floating). So people see what rises inside the page by its tone, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
                       "because": [
                         "theming.values",
                         "elevation.roles",
                         "elevation.definition"
+                      ]
+                    }
+                  }
+                },
+                "floating": {
+                  "$type": "color",
+                  "$value": "{color.neutral.200}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "neutral.200: We use one step lighter than raised for menus, dialogs, sheets and toasts in dark, in order to show that they float above everything else, 1.12:1 on surface.raised. The lighter fill does this by the dark-mode depth rule, and keeps what sits on it readable: body text reads 11.79:1, muted text 6.09:1, and dividers and the ring stay lighter at 1.8:1. So people read a menu as well as the page under it, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
+                      "because": [
+                        "theming.values",
+                        "elevation.roles"
                       ]
                     }
                   }
@@ -4319,7 +4378,7 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.50: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.16:1 on surface.default and 1.46:1 on surface.raised. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 8.89:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
+                      "why": "neutral.50: We use a step darker than content for the item under the pointer or the keyboard in dark, in order to mark it as a band on the surfaces it meets: 1.16:1 on surface.default, 1.3:1 on surface.raised and 1.46:1 on surface.floating. The fill does this by stepping darker, as raised and floating layers took the lighter step; muted text still reads 8.89:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
                       "because": [
                         "accessibility.roles",
                         "color.definition",
@@ -4334,7 +4393,7 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.200: We use the raised layer's step for a pressed sidebar item in dark in order to show a press as a change of its own, apart from the hover band and from the page. The fill does this by stepping lighter while the hover band steps darker: 1.46:1 from the highlight, 1.26:1 from content and 1.57:1 from the canvas, which keeps the darkest step. A pressed item never sits on a raised layer, so sharing that step hides nothing. So a press reads under the finger, because every state, loading included, gets its own value (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
+                      "why": "neutral.200: We use the floating layer's step for a pressed sidebar item in dark in order to show a press as a change of its own, apart from the hover band and from the page. The fill does this by stepping lighter while the hover band steps darker: 1.46:1 from the highlight, 1.26:1 from content and 1.57:1 from the canvas, which keeps the darkest step. A pressed item never sits on a floating layer, so sharing that step hides nothing. So a press reads under the finger, because every state, loading included, gets its own value (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
                       "because": [
                         "theming.values",
                         "accessibility.roles",
@@ -4420,7 +4479,7 @@
                   "$value": "{color.neutral.600}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading 7.67:1 on surface.default and 6.09:1 on surface.raised, the lightest surface it meets. Raised layers fall under 7:1 by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition).",
+                      "why": "neutral.600: We use the quietest readable gray for hints and captions in dark in order to keep muted text a step below secondary text (neutral.700). The step does this by reading 7.67:1 on surface.default and 6.09:1 on surface.floating, the lightest surface it meets. Floating layers fall under 7:1 by the owner's recorded exception for muted text, the one light mode takes too, as the next gray up is secondary's own step. So people read a hint in a menu as well as on the page, because text keeps the AAA floor (accessibility.definition) and the neutral ramp has no step between muted and secondary (color.definition).",
                       "because": [
                         "accessibility.definition",
                         "color.definition"
@@ -4491,7 +4550,7 @@
                   "$value": "{color.neutral.300}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.300: We use the step above the raised surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest 1.8:1, on surface.raised. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values).",
+                      "why": "neutral.300: We use the step above the floating surface for dividers and card borders in dark in order to give separation on every surface a line meets, menus included. The line does this by staying lighter than each surface, lowest 1.8:1, on surface.floating. So rows and cards stay apart on content and in menus, because lines separate groups (elevation.definition) and dark ships as standard (theming.values).",
                       "because": [
                         "elevation.definition",
                         "theming.values"
@@ -4504,7 +4563,7 @@
                   "$value": "{color.neutral.300}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.300: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 1.8:1 on surface.raised (#595959, no alpha), so its contrast can be checked. So people see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+                      "why": "neutral.300: We use the step above the floating surface for a 1px ring around raised and floating layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 2.02:1 on surface.raised and 1.8:1 on surface.floating (#595959, no alpha), so its contrast can be checked. So people see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
                       "because": [
                         "theming.values",
                         "elevation.definition",
@@ -4518,7 +4577,7 @@
                   "$value": "{color.neutral.600}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.600: We use the muted text's gray for the edge of inputs and other controls in dark in order to keep that edge at its level inside menus and dialogs. The edge does this by reading 7.67:1 on surface.default and 6.09:1 on surface.raised, where neutral.500 gave only 4.17:1 on the raised layer. So people find a field in a dialog as easily as on the page, because controls keep the AAA non-text floor of 3:1 with room to spare (accessibility.definition) and dark ships as standard (theming.values).",
+                      "why": "neutral.600: We use the muted text's gray for the edge of inputs and other controls in dark in order to keep that edge at its level inside menus and dialogs. The edge does this by reading 7.67:1 on surface.default and 6.09:1 on surface.floating, where neutral.500 gave only 4.17:1 on the floating layer. So people find a field in a dialog as easily as on the page, because controls keep the AAA non-text floor of 3:1 with room to spare (accessibility.definition) and dark ships as standard (theming.values).",
                       "because": [
                         "accessibility.definition",
                         "theming.values"
@@ -4531,7 +4590,7 @@
                   "$value": "{color.blue.dark.700}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at 7:1 where focus moves through menus and dialogs. The ring does this by reading 9.33:1 on surface.default and 7.41:1 on surface.raised, where the key step (blue.dark.600) gave 6.0:1 on the raised layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition).",
+                      "why": "blue.dark.700: We use the brand blue one step above its key for the focus ring in dark in order to hold the ring at 7:1 where focus moves through menus and dialogs. The ring does this by reading 9.33:1 on surface.default and 7.41:1 on surface.floating, where the key step (blue.dark.600) gave 6.0:1 on the floating layer. So keyboard users never lose their place inside a dialog, because the focus ring keeps the AAA level on every surface (accessibility.definition) and the brand ramp sets its hue (color.definition).",
                       "because": [
                         "accessibility.roles",
                         "accessibility.definition",
@@ -4755,7 +4814,7 @@
                     "$value": "{color.red.dark.900}",
                     "$extensions": {
                       "open-ds": {
-                        "why": "red.dark.900: We use the palest red but one for danger in dark in order to keep error labels at 7:1 in alerts on content and in destructive menu items, and apart from info for every eye. The step does this by reading 12.39:1 on surface.default and 9.84:1 on surface.raised. Below it, the key (red.dark.600) gives 5.32:1 and red.dark.700 6.8:1 on the raised layer, and red.dark.800 sits within 0.02 of status.info under protanopia. The danger button keeps the key as its fill, and danger text on dark fills is as pale already. So people read an error or a destructive action at full strength in every layer, because text keeps the AAA floor (accessibility.definition) and danger lands in alerts and menus (color.lands).",
+                        "why": "red.dark.900: We use the palest red but one for danger in dark in order to keep error labels at 7:1 in alerts on content and in destructive menu items, and apart from info for every eye. The step does this by reading 12.39:1 on surface.default and 9.84:1 on surface.floating. Below it, the key (red.dark.600) gives 5.32:1 and red.dark.700 6.8:1 on the floating layer, and red.dark.800 sits within 0.02 of status.info under protanopia. The danger button keeps the key as its fill, and danger text on dark fills is as pale already. So people read an error or a destructive action at full strength in every layer, because text keeps the AAA floor (accessibility.definition) and danger lands in alerts and menus (color.lands).",
                         "because": [
                           "accessibility.definition",
                           "color.lands"
@@ -5822,6 +5881,10 @@
             "$type": "color",
             "$value": "{theme.color.neutral.100}"
           },
+          "150": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.150}"
+          },
           "200": {
             "$type": "color",
             "$value": "{theme.color.neutral.200}"
@@ -5873,8 +5936,13 @@
           },
           "raised": {
             "$type": "color",
-            "$description": "Menus, dialogs, toasts.",
+            "$description": "Parts that rise inside the page, such as raised cards.",
             "$value": "{theme.color.surface.raised}"
+          },
+          "floating": {
+            "$type": "color",
+            "$description": "Menus, popovers, dialogs, sheets and toasts: the layers that float above the page.",
+            "$value": "{theme.color.surface.floating}"
           },
           "sunken": {
             "$type": "color",
@@ -6002,7 +6070,7 @@
           },
           "raised": {
             "$type": "color",
-            "$description": "The 1px edge of a raised layer: menus, dialogs and toasts, and raised cards.",
+            "$description": "The 1px edge of a raised or floating layer: menus, dialogs and toasts, and raised cards.",
             "$value": "{theme.color.border.raised}"
           },
           "strong": {

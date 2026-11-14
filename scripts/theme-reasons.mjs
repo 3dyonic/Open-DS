@@ -70,7 +70,7 @@ const RULES = [
   {
     test: /^color\.border\.default$/,
     why: (c) => {
-      const on = ["color.surface.canvas", "color.surface.default", "color.surface.raised"].map((x) => [x, ratio(c.v("color.border.default"), c.v(x))]);
+      const on = ["color.surface.canvas", "color.surface.default", "color.surface.raised", "color.surface.floating"].map((x) => [x, ratio(c.v("color.border.default"), c.v(x))]);
       const [low, r] = on.sort((a, b) => a[1] - b[1])[0];
       return `${c.pick}: a quiet line that stays visible on every surface it meets (lowest ${r1(r)}, on ${short(low)}). It decorates, so it holds no contrast minimum.`;
     },

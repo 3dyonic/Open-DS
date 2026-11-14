@@ -2600,6 +2600,10 @@
             "100": {
               "$value": "#EEF1F5"
             },
+            "150": {
+              "$value": "#E7EAF0",
+              "$description": "Derived: the step between 100 and 200 on the scheme's step curve (strong-ease), even in contrast. Added so a floating layer sits one step above raised in dark."
+            },
             "200": {
               "$value": "#DDE2EA"
             },
@@ -2639,6 +2643,10 @@
             },
             "100": {
               "$value": "#262D38"
+            },
+            "150": {
+              "$value": "#2D3541",
+              "$description": "Derived: the step between 100 and 200 on the scheme's step curve (strong-ease), even in contrast. Added so a floating layer sits one step above raised in dark. Moved 0.015 darker in OKLab lightness, so muted text keeps its 4.5:1 floor on a floating layer, with a 0.1 margin."
             },
             "200": {
               "$value": "#3D4655"
@@ -3448,6 +3456,18 @@
                     }
                   }
                 },
+                "150": {
+                  "$type": "color",
+                  "$value": "{color.slate.light.150}",
+                  "$extensions": {
+                    "open-ds": {
+                      "because": [
+                        "color.definition"
+                      ],
+                      "why": "slate.light.150: We use the step between 100 and 200 of the slate ramp in light, in order to keep one step set on every ramp in both modes. The step does this by sitting even in contrast between its neighbours, on the scheme's strong-ease step curve. So light and dark offer the same steps, because the gray ramp sets the steps (color.definition)."
+                    }
+                  }
+                },
                 "200": {
                   "$type": "color",
                   "$value": "{color.slate.light.200}",
@@ -3620,6 +3640,19 @@
                         "elevation.roles"
                       ],
                       "generated": true
+                    }
+                  }
+                },
+                "floating": {
+                  "$type": "color",
+                  "$value": "{color.neutral.0}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "light",
+                      "why": "neutral.0: We use white, as raised, for menus, dialogs, sheets and toasts in light, in order to keep a floating layer as plain as the content it covers. The fill does this by staying white while its shadow lifts it off the page. So experts see what floats without a tint of its own, because the roles answer names the layers that rise (elevation.roles).",
+                      "because": [
+                        "elevation.roles"
+                      ]
                     }
                   }
                 },
@@ -4360,6 +4393,18 @@
                     }
                   }
                 },
+                "150": {
+                  "$type": "color",
+                  "$value": "{color.slate.dark.150}",
+                  "$extensions": {
+                    "open-ds": {
+                      "because": [
+                        "color.definition"
+                      ],
+                      "why": "slate.dark.150: We use the step between 100 and 200 of the slate ramp for the floating surface in dark, in order to put a layer one step above the one below it. The step does this by its place on the scheme's strong-ease curve, which spaces the dark steps by contrast. So text and lines on it keep their contrast, because the gray ramp sets the steps (color.definition)."
+                    }
+                  }
+                },
                 "200": {
                   "$type": "color",
                   "$value": "{color.slate.dark.200}",
@@ -4527,11 +4572,25 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.100: We use one step lighter than content for menus, dialogs in dark, in order to show height by tone, 1.25:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. So experts see a menu above the page even where its shadow barely shows, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
+                      "why": "neutral.100: We use one step lighter than content for parts that rise inside the page in dark, in order to show height by tone, 1.25:1 on surface.default. The lighter fill does this by the dark-mode depth rule: the higher a layer sits, the lighter its surface. Menus, dialogs and other floating layers take the next step up (surface.floating). So experts see what rises inside the page by its tone, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
                       "because": [
                         "theming.values",
                         "elevation.roles",
                         "elevation.definition"
+                      ]
+                    }
+                  }
+                },
+                "floating": {
+                  "$type": "color",
+                  "$value": "{color.neutral.150}",
+                  "$extensions": {
+                    "open-ds": {
+                      "tone": "dark",
+                      "why": "neutral.150: We use one step lighter than raised for menus, dialogs, sheets and toasts in dark, in order to show that they float above everything else, 1.12:1 on surface.raised. The lighter fill does this by the dark-mode depth rule, and keeps what sits on it readable: body text reads 11.64:1, muted text 4.63:1, and dividers and the ring stay lighter at 1.3:1. So experts read a menu as well as the page under it, because dark ships as standard (theming.values) and the roles answer names the layers that rise (elevation.roles).",
+                      "because": [
+                        "theming.values",
+                        "elevation.roles"
                       ]
                     }
                   }
@@ -4556,7 +4615,7 @@
                   "$extensions": {
                     "open-ds": {
                       "tone": "dark",
-                      "why": "neutral.floor: We use the floor step, below the canvas, for the item under the pointer or the keyboard in dark, in order to mark it as a band on both surfaces it meets: 1.15:1 on surface.default and 1.44:1 on surface.raised, and 1.05:1 off the page. The fill does this by stepping darker, as raised layers took the lighter step; muted text still reads 7.46:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
+                      "why": "neutral.floor: We use the floor step, below the canvas, for the item under the pointer or the keyboard in dark, in order to mark it as a band on the surfaces it meets: 1.15:1 on surface.default, 1.44:1 on surface.raised and 1.61:1 on surface.floating, and 1.05:1 off the page. The fill does this by stepping darker, as raised and floating layers took the lighter step; muted text still reads 7.46:1 on it. So the hovered row or menu item shows on cards and menus alike, because hover and focus have their own look (accessibility.roles) and the neutral ramp sets the steps (color.definition).",
                       "because": [
                         "accessibility.roles",
                         "color.definition",
@@ -4729,7 +4788,7 @@
                   "$value": "{color.neutral.200}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.46:1, on surface.raised). It decorates, so it holds no contrast minimum.",
+                      "why": "neutral.200: a quiet line that stays visible on every surface it meets (lowest 1.3:1, on surface.floating). It decorates, so it holds no contrast minimum.",
                       "because": [
                         "color.definition"
                       ],
@@ -4742,7 +4801,7 @@
                   "$value": "{color.neutral.200}",
                   "$extensions": {
                     "open-ds": {
-                      "why": "neutral.200: We use the step above the raised surface for a 1px ring around raised layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 1.46:1 on surface.raised (#3D4655, no alpha), so its contrast can be checked. So experts see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
+                      "why": "neutral.200: We use the step above the raised surface for a 1px ring around raised and floating layers in dark, in order to give separation where a shadow barely shows. The ring does this by a solid, lighter line, 1.46:1 on surface.raised and 1.3:1 on surface.floating (#3D4655, no alpha), so its contrast can be checked. So experts see a dark menu's edge on any page, because dark ships as standard (theming.values), raised layers keep an edge (elevation.definition) and a decorative line has no contrast floor (accessibility.definition).",
                       "because": [
                         "theming.values",
                         "elevation.definition",
@@ -6087,6 +6146,10 @@
             "$type": "color",
             "$value": "{theme.color.neutral.100}"
           },
+          "150": {
+            "$type": "color",
+            "$value": "{theme.color.neutral.150}"
+          },
           "200": {
             "$type": "color",
             "$value": "{theme.color.neutral.200}"
@@ -6142,8 +6205,13 @@
           },
           "raised": {
             "$type": "color",
-            "$description": "Menus, dialogs, toasts.",
+            "$description": "Parts that rise inside the page, such as raised cards.",
             "$value": "{theme.color.surface.raised}"
+          },
+          "floating": {
+            "$type": "color",
+            "$description": "Menus, popovers, dialogs, sheets and toasts: the layers that float above the page.",
+            "$value": "{theme.color.surface.floating}"
           },
           "sunken": {
             "$type": "color",
@@ -6271,7 +6339,7 @@
           },
           "raised": {
             "$type": "color",
-            "$description": "The 1px edge of a raised layer: menus, dialogs and toasts, and raised cards.",
+            "$description": "The 1px edge of a raised or floating layer: menus, dialogs and toasts, and raised cards.",
             "$value": "{theme.color.border.raised}"
           },
           "strong": {

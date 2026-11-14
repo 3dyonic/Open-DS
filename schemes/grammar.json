@@ -2133,13 +2133,14 @@
           "check": "dark-same-shape",
           "depth": {
             "raised": "color.surface.raised",
+            "floating": "color.surface.floating",
             "base": "color.surface.default",
             "sunken": "color.surface.sunken",
             "ring": "color.border.raised"
           },
           "follows": ["elevation.roles", "elevation.values", "theming.values"],
           "jobs": ["height", "floating"],
-          "says": "Decided: in dark, only floating layers (menus, popovers, dialogs, toasts, tooltips) cast a shade, and it keeps the light shape (offset and blur); only its strength changes with the dark surface it falls on. Every other layer casts none in dark. Height reads by tone: a raised surface is lighter than the base, with a solid ring lighter still; a sunken one is darker. The check reports each break.",
+          "says": "Decided: in dark, only floating layers (menus, popovers, dialogs, toasts, tooltips) cast a shade, and it keeps the light shape (offset and blur); only its strength changes with the dark surface it falls on. Every other layer casts none in dark. Height reads by tone: a raised surface is lighter than the base, a floating one lighter than raised, with a solid ring lighter than both; a sunken one is darker. The check reports each break.",
           "floating": ["elevation.overlay"]
         }
       ]
@@ -6722,8 +6723,8 @@
     {
       "id": "overlay/background",
       "component": "overlay",
-      "description": "Fill of a dialog, menu or toast.",
-      "default": "color.surface.raised"
+      "description": "Fill of a menu, select list or other floating panel: the floating fill.",
+      "default": "color.surface.floating"
     },
     {
       "id": "overlay/radius",
@@ -7038,7 +7039,7 @@
       "id": "alert-dialog/content/background",
       "component": "alert-dialog",
       "description": "Fill of the alert dialog panel: a fill that floats above content.",
-      "default": "color.surface.raised"
+      "default": "color.surface.floating"
     },
     {
       "id": "alert-dialog/content/padding",
@@ -8668,7 +8669,7 @@
       "id": "combobox/content/background",
       "component": "combobox",
       "description": "Content background of the combobox.",
-      "default": "color.surface.raised"
+      "default": "color.surface.floating"
     },
     {
       "id": "combobox/content/label",
@@ -9144,8 +9145,8 @@
     {
       "id": "command/background",
       "component": "command",
-      "description": "Background of the command.",
-      "default": "color.surface.raised"
+      "description": "Fill of the command panel: the floating fill, like every menu's.",
+      "default": "color.surface.floating"
     },
     {
       "id": "command/label",
@@ -9555,7 +9556,7 @@
       "id": "context-menu/sub/content/background",
       "component": "context-menu",
       "description": "Sub content background of the context menu.",
-      "default": "color.surface.raised"
+      "default": "color.surface.floating"
     },
     {
       "id": "context-menu/sub/content/padding",
@@ -9597,7 +9598,7 @@
       "id": "context-menu/content/background",
       "component": "context-menu",
       "description": "Content background of the context menu.",
-      "default": "color.surface.raised"
+      "default": "color.surface.floating"
     },
     {
       "id": "context-menu/content/padding",
@@ -10142,7 +10143,7 @@
       "id": "dialog/content/background",
       "component": "dialog",
       "description": "Fill of the dialog panel: a fill that floats above content.",
-      "default": "color.surface.raised"
+      "default": "color.surface.floating"
     },
     {
       "id": "dialog/border-width",
@@ -10358,8 +10359,8 @@
     {
       "id": "drawer/content/background",
       "component": "drawer",
-      "description": "Content background of the drawer.",
-      "default": "color.surface.canvas"
+      "description": "Fill of the drawer panel: a panel that floats over the page takes the floating fill.",
+      "default": "color.surface.floating"
     },
     {
       "id": "drawer/content/radius",
@@ -11079,7 +11080,7 @@
       "id": "hover-card/content/background",
       "component": "hover-card",
       "description": "Content background of the hover card.",
-      "default": "color.surface.raised"
+      "default": "color.surface.floating"
     },
     {
       "id": "hover-card/content/padding",
@@ -12342,7 +12343,7 @@
       "id": "menubar/content/background",
       "component": "menubar",
       "description": "Content background of the menubar.",
-      "default": "color.surface.raised"
+      "default": "color.surface.floating"
     },
     {
       "id": "menubar/content/padding",
@@ -12815,7 +12816,7 @@
       "id": "menubar/sub/content/background",
       "component": "menubar",
       "description": "Sub content background of the menubar.",
-      "default": "color.surface.raised"
+      "default": "color.surface.floating"
     },
     {
       "id": "menubar/sub/content/padding",
@@ -13383,7 +13384,7 @@
       "id": "navigation-menu/content/background",
       "component": "navigation-menu",
       "description": "Content background of the navigation menu, like every floating panel's.",
-      "default": "color.surface.raised"
+      "default": "color.surface.floating"
     },
     {
       "id": "navigation-menu/content/label",
@@ -13446,7 +13447,7 @@
       "id": "navigation-menu/viewport/background",
       "component": "navigation-menu",
       "description": "Viewport background of the navigation menu.",
-      "default": "color.surface.raised"
+      "default": "color.surface.floating"
     },
     {
       "id": "navigation-menu/viewport/label",
@@ -13868,7 +13869,7 @@
       "id": "popover/content/background",
       "component": "popover",
       "description": "Content background of the popover.",
-      "default": "color.surface.raised"
+      "default": "color.surface.floating"
     },
     {
       "id": "popover/content/padding",
@@ -14475,8 +14476,8 @@
     {
       "id": "sheet/content/background",
       "component": "sheet",
-      "description": "Content background of the sheet.",
-      "default": "color.surface.canvas"
+      "description": "Fill of the sheet panel: a panel that floats over the page takes the floating fill.",
+      "default": "color.surface.floating"
     },
     {
       "id": "sheet/content/shadow",
@@ -16341,8 +16342,8 @@
     {
       "id": "toast/background",
       "component": "toast",
-      "description": "Fill of the toast, like every floating panel's: surface.raised (menus, dialogs, toasts).",
-      "default": "color.surface.raised"
+      "description": "Fill of the toast, like every floating panel's: surface.floating (menus, dialogs, toasts).",
+      "default": "color.surface.floating"
     },
     {
       "id": "toast/radius",
@@ -16671,18 +16672,44 @@
           },
           {
             "when": "Menus and popovers above content",
-            "use": "color.surface.raised"
+            "use": "color.surface.floating"
           }
         ]
       },
       {
         "id": "color.surface.raised",
-        "intent": "Fills that float above content. In dark, one step lighter than content, so height reads by tone.",
-        "use_for": ["Menus", "Popovers", "Dialogs"],
+        "intent": "A fill one step above content, for parts that rise inside the page. In dark, one step lighter than content, so height reads by tone.",
+        "use_for": ["Raised cards", "Panels inside a page"],
         "not_for": [
           {
             "when": "Cards in the page flow",
             "use": "color.surface.default"
+          },
+          {
+            "when": "Menus, popovers, dialogs and sheets",
+            "use": "color.surface.floating"
+          }
+        ]
+      },
+      {
+        "id": "color.surface.floating",
+        "intent": "The fill of layers that float above the page: menus, popovers, dialogs, sheets and toasts. In dark, one step lighter than raised, so text, dividers and the ring on it keep their contrast. In light, white like raised: the shadow lifts it.",
+        "use_for": [
+          "Menus",
+          "Popovers",
+          "Dialogs",
+          "Sheets",
+          "Select lists",
+          "Toasts"
+        ],
+        "not_for": [
+          {
+            "when": "A part that rises inside the page",
+            "use": "color.surface.raised"
+          },
+          {
+            "when": "Tooltips",
+            "use": "color.surface.inverse"
           }
         ]
       },
@@ -17636,6 +17663,18 @@
           ]
         },
         {
+          "id": "color.surface.floating",
+          "carries": [
+            "text.primary",
+            "text.secondary",
+            "text.muted",
+            "link",
+            "icon",
+            "border",
+            "focus"
+          ]
+        },
+        {
           "id": "color.surface.sunken",
           "carries": [
             "text.primary",
@@ -17754,6 +17793,7 @@
             "color.surface.canvas",
             "color.surface.default",
             "color.surface.raised",
+            "color.surface.floating",
             "color.surface.sunken",
             "color.surface.highlight",
             "color.surface.pressed",
@@ -18021,6 +18061,7 @@
         "0",
         "50",
         "100",
+        "150",
         "200",
         "300",
         "400",
@@ -41730,6 +41771,7 @@
         "color.surface.canvas",
         "color.surface.default",
         "color.surface.raised",
+        "color.surface.floating",
         "color.surface.sunken",
         "color.surface.inverse",
         "color.border.raised"
@@ -41762,6 +41804,7 @@
             "color.surface.canvas",
             "color.surface.default",
             "color.surface.raised",
+            "color.surface.floating",
             "color.surface.sunken"
           ],
           "jobs": ["lightness-ladder"],
