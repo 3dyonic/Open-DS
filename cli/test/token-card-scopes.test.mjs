@@ -148,7 +148,9 @@ test("nothing is invented: a scheme with no sentences and no glyph shows the gap
 
 test("a group token's own value is keyed and titled without its @, as color is", () => {
   const scheme = structuredClone(loadScheme("dense-data", roots));
-  scheme.tokens.semantic.size.icon = { "@": scheme.tokens.semantic.size.icon };
+  // size.icon is a group in every scheme (its base at @); wrap it only where a scheme still stores a leaf.
+  if ("$value" in scheme.tokens.semantic.size.icon) scheme.tokens.semantic.size.icon = { "@": scheme.tokens.semantic.size.icon };
+  assert.ok(scheme.tokens.semantic.size.icon["@"], "size.icon keeps its value at @");
   const map = tokenMapView({ scheme, grammar: g, glyph });
   assert.equal(map.shared.decisions["size.icon"].id, "size.icon");
   assert.equal(map.shared.decisions["size.icon"].shorthand.headline, "Small icons.");
