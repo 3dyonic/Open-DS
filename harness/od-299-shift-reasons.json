@@ -81,13 +81,15 @@
       ]
     },
     "brand-expressive": {
-      "reason": "Method: contrast-graded steps, even-ease (easing 0.5). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay. The owner approved the moves over the limit in OD-308, so those steps move too. harness/quality-approvals.json lists each one.",
+      "reason": "Method: contrast-graded steps, even-ease (easing 0.5). The step takes the luminance that keeps steps 400, 500 and 700 apart at 3:1, 4.5:1 and 7:1. Steps 50 and 950 and the key at 600 stay. The owner approved the moves over the limit in OD-308, so those steps move too. harness/quality-approvals.json lists each one. OD-309: the owner moved color.action.secondary to pink 100 and its hover to pink 200, so the secondary action carries the brand.",
       "tokens": [
+        "dark color.action.secondary",
         "dark color.category.1.subtle",
         "dark color.category.2.subtle",
         "dark color.category.4.subtle",
         "dark color.status.info.subtle",
-        "dark color.status.warning.subtle"
+        "dark color.status.warning.subtle",
+        "light color.action.secondary.hover"
       ],
       "steps": [
         "amber.dark.100",
