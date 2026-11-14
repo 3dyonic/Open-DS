@@ -2197,6 +2197,26 @@
         {
           "id": "color.status.success.subtle",
           "carries": ["text.primary", "icon", "text.success"]
+        },
+        {
+          "id": "color.category.1.subtle",
+          "carries": ["text.primary"]
+        },
+        {
+          "id": "color.category.2.subtle",
+          "carries": ["text.primary"]
+        },
+        {
+          "id": "color.category.3.subtle",
+          "carries": ["text.primary"]
+        },
+        {
+          "id": "color.category.4.subtle",
+          "carries": ["text.primary"]
+        },
+        {
+          "id": "color.category.5.subtle",
+          "carries": ["text.primary"]
         }
       ]
     },
