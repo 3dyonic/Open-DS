@@ -895,6 +895,46 @@
         }
       }
     },
+    "shorthand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "tokens"],
+      "description": "The shorthand of each semantic token: a headline and one line that say what the token does for people, in this scheme. The token map card shows it above the trace. It follows the scheme answers and the token why, and does not repeat the why.",
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the shorthand texts are."
+        },
+        "tokens": {
+          "type": "object",
+          "description": "One shorthand per semantic token, by token id (color.status.warning, space.gap.tight).",
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9-]*(\\.[a-z0-9-]+)+$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["headline", "line"],
+            "description": "The shorthand of one token.",
+            "properties": {
+              "headline": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40,
+                "description": "A few plain words: what the token does for people. 40 characters at most."
+              },
+              "line": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 90,
+                "description": "One plain sentence that adds to the headline. 90 characters at most."
+              }
+            }
+          }
+        }
+      }
+    },
     "themes": {
       "type": "array",
       "minItems": 2,
