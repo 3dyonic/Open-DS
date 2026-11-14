@@ -152,6 +152,21 @@ test("findToken: the token for an intent, with its guidance", () => {
   assert.ok(danger.results.some((r) => r.token === "color.status.danger.@"));
 });
 
+test("findToken: no key the answers do not create, names without @, and the layer classes", () => {
+  const brand = loadScheme("brand-expressive");
+  const large = (s) =>
+    findToken(s, g, "large icon size").results.find((r) => r.token === "icon/size-large");
+  assert.equal(large(dense), undefined);
+  assert.equal(large(brand).reads, "size.icon.large");
+  const icon = findToken(dense, g, "icon size").results.find((r) => r.token === "icon/size");
+  assert.equal(icon.reads, "size.icon");
+  const sticky = findToken(dense, g, "sticky header layer").results.find(
+    (r) => r.token === "layer.sticky",
+  );
+  assert.equal(sticky.utility, "z-sticky");
+  assert.equal(sticky.value, 100);
+});
+
 test("fitScheme: ranks the schemes against a product, with the reasons", () => {
   const all = schemeIds().map((id) => loadScheme(id));
   assert.equal(

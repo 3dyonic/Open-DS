@@ -90,6 +90,17 @@ Try another scheme or brand:
 pnpm test:package --keep --scheme multi-brand --brand coral
 ```
 
+### What agents get from the packed CLI and the MCP host
+
+This packs the CLI, unpacks it outside the repository, starts the MCP host (`mcp/server.mjs`) on it, and asks the tools and the CLI the same questions. It checks the icon sizes, the keys an answer creates, the keys that read decisions, the focus ring gap colour, the layer order and the token map against the tools. It needs no network.
+
+```bash
+pnpm test:tools
+pnpm test:tools --skip-build
+```
+
+It prints one row per case: pass or FAIL, the surface, the time and what it found. `--skip-build` reuses `tokens/dist`.
+
 ### MCP server with Claude Code
 
 ```bash

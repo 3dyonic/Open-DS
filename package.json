@@ -35,6 +35,7 @@
     "e2e:quick": "node scripts/e2e.mjs --quick",
     "test:package": "node scripts/test-package.mjs",
     "test:create": "node scripts/test-create.mjs",
+    "test:tools": "node scripts/test-agent-tools.mjs",
     "shots": "node scripts/shots.mjs",
     "figma-kit": "node scripts/figma-kit.mjs",
     "figma-anatomy": "node scripts/figma-anatomy.mjs",

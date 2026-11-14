@@ -1082,6 +1082,7 @@
                     "$value": "{color.teal.light.100}",
                     "$extensions": {
                       "open-ds": {
+                        "tone": "light",
                         "why": "teal.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.46:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
@@ -1111,6 +1112,7 @@
                     "$value": "{color.purple.light.100}",
                     "$extensions": {
                       "open-ds": {
+                        "tone": "light",
                         "why": "purple.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.13:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
@@ -1140,6 +1142,7 @@
                     "$value": "{color.orange.light.100}",
                     "$extensions": {
                       "open-ds": {
+                        "tone": "light",
                         "why": "orange.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.49:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
@@ -1169,6 +1172,7 @@
                     "$value": "{color.blue.light.100}",
                     "$extensions": {
                       "open-ds": {
+                        "tone": "light",
                         "why": "blue.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 13.87:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
@@ -1198,6 +1202,7 @@
                     "$value": "{color.green.light.100}",
                     "$extensions": {
                       "open-ds": {
+                        "tone": "light",
                         "why": "green.light.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.63:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
@@ -2024,6 +2029,7 @@
                     "$value": "{color.teal.dark.100}",
                     "$extensions": {
                       "open-ds": {
+                        "tone": "dark",
                         "why": "teal.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 14.42:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
@@ -2053,6 +2059,7 @@
                     "$value": "{color.purple.dark.100}",
                     "$extensions": {
                       "open-ds": {
+                        "tone": "dark",
                         "why": "purple.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.5:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
@@ -2082,6 +2089,7 @@
                     "$value": "{color.orange.dark.100}",
                     "$extensions": {
                       "open-ds": {
+                        "tone": "dark",
                         "why": "orange.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.04:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
@@ -2111,6 +2119,7 @@
                     "$value": "{color.blue.dark.100}",
                     "$extensions": {
                       "open-ds": {
+                        "tone": "dark",
                         "why": "blue.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 15.1:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
@@ -2140,6 +2149,7 @@
                     "$value": "{color.green.dark.100}",
                     "$extensions": {
                       "open-ds": {
+                        "tone": "dark",
                         "why": "green.dark.100: the soft fill of a category, for tags, labels and blocks that carry no meaning, and its text reads 14.95:1 on it, above the 4.5:1 floor.",
                         "because": [
                           "color.roles",
