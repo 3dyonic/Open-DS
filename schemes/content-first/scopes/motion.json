@@ -215,6 +215,10 @@
     }
   },
   "shorthand": {
+    "motion.duration.exit": {
+      "headline": "A quick goodbye.",
+      "line": "A closing layer takes the feedback time, so reading resumes."
+    },
     "motion.duration.feedback": {
       "headline": "A calm answer.",
       "line": "Controls respond at once, without a jolt."
@@ -223,9 +227,21 @@
       "headline": "Panels arrive calmly.",
       "line": "Menus and dialogs open at a pace the eye can follow."
     },
+    "motion.easing.emphasize": {
+      "headline": "Calm attention.",
+      "line": "A new message shows by its change, never a bounce."
+    },
+    "motion.easing.enter": {
+      "headline": "Arrive and settle.",
+      "line": "A menu is in place fast, then slows to rest."
+    },
     "motion.easing.exit": {
       "headline": "Leave quietly.",
       "line": "A closing layer slows to a stop, so the page stays calm."
+    },
+    "motion.easing.exit-offscreen": {
+      "headline": "Slide away cleanly.",
+      "line": "A closing sheet clears the page with no slow tail."
     },
     "motion.easing.standard": {
       "headline": "Change in place.",
