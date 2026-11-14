@@ -6724,5 +6724,486 @@
         }
       }
     }
+  },
+  "shorthand": {
+    "description": "What each semantic token does for people in this scheme, in a headline and one line. The token map card shows it.",
+    "tokens": {
+      "border-width.default": {
+        "headline": "Thin lines, many rows.",
+        "line": "One-pixel lines split dense rows without noise."
+      },
+      "color.action.danger": {
+        "headline": "This one cannot be undone.",
+        "line": "Red only on the step that deletes a record."
+      },
+      "color.action.danger.hover": {
+        "headline": "Still the delete.",
+        "line": "The fill darkens under the pointer, so the risk stays in view."
+      },
+      "color.action.primary": {
+        "headline": "The next step.",
+        "line": "One fill marks the action among many rows."
+      },
+      "color.action.primary.hover": {
+        "headline": "Ready to act.",
+        "line": "The fill darkens, so the analyst knows it will respond."
+      },
+      "color.action.secondary": {
+        "headline": "Another action.",
+        "line": "Export and filter stay plain beside the main action."
+      },
+      "color.action.secondary.hover": {
+        "headline": "Still optional.",
+        "line": "A soft change under the pointer, quieter than the main action."
+      },
+      "color.border.default": {
+        "headline": "Row lines.",
+        "line": "Lines keep the eye on one row across many columns."
+      },
+      "color.border.focus": {
+        "headline": "You are here.",
+        "line": "Keyboard users keep their place in a long table."
+      },
+      "color.border.raised": {
+        "headline": "The edge of a layer.",
+        "line": "A menu or dialog stays apart from the page under it."
+      },
+      "color.border.selected": {
+        "headline": "This record.",
+        "line": "The edge marks the chosen record, not only its color."
+      },
+      "color.border.strong": {
+        "headline": "Type here.",
+        "line": "Inputs show their edge in a crowded screen."
+      },
+      "color.category.1": {
+        "headline": "The first signal.",
+        "line": "A chart series that means a group, not a state."
+      },
+      "color.category.1.subtle": {
+        "headline": "The first tag fill.",
+        "line": "A soft ground for the tag; its words stay main text."
+      },
+      "color.category.2": {
+        "headline": "The second signal.",
+        "line": "Told apart from the first when signals sit side by side."
+      },
+      "color.category.2.subtle": {
+        "headline": "The second tag fill.",
+        "line": "A soft ground for the tag; its words stay main text."
+      },
+      "color.category.3": {
+        "headline": "The third signal.",
+        "line": "Told apart from the others in a busy chart."
+      },
+      "color.category.3.subtle": {
+        "headline": "The third tag fill.",
+        "line": "A soft ground for the tag; its words stay main text."
+      },
+      "color.category.4": {
+        "headline": "The fourth signal.",
+        "line": "Told apart from the others in a busy chart."
+      },
+      "color.category.4.subtle": {
+        "headline": "The fourth tag fill.",
+        "line": "A soft ground for the tag; its words stay main text."
+      },
+      "color.category.5": {
+        "headline": "The fifth signal.",
+        "line": "Told apart from the others at a glance."
+      },
+      "color.category.5.subtle": {
+        "headline": "The fifth tag fill.",
+        "line": "A soft ground for the tag; its words stay main text."
+      },
+      "color.disabled.border": {
+        "headline": "Not now.",
+        "line": "The edge fades, so people do not try this control."
+      },
+      "color.disabled.surface": {
+        "headline": "Not available.",
+        "line": "A flat fill shows the control is off for now."
+      },
+      "color.disabled.text": {
+        "headline": "Off for now.",
+        "line": "Faded words, still readable, on a control that does nothing yet."
+      },
+      "color.status.danger": {
+        "headline": "Breach.",
+        "line": "Analysts see the worst rows first in a long table."
+      },
+      "color.status.danger.subtle": {
+        "headline": "Breach, in a badge.",
+        "line": "The fill marks the row without turning the table red."
+      },
+      "color.status.info": {
+        "headline": "Under watch.",
+        "line": "A state to know about, with no action yet."
+      },
+      "color.status.info.subtle": {
+        "headline": "Under watch, in a badge.",
+        "line": "The fill tags the row and keeps its text easy to scan."
+      },
+      "color.status.success": {
+        "headline": "Resolved.",
+        "line": "Closed rows read as done at a glance."
+      },
+      "color.status.success.subtle": {
+        "headline": "Resolved, in a badge.",
+        "line": "A quiet fill, so closed rows do not pull the eye."
+      },
+      "color.status.warning": {
+        "headline": "Escalated.",
+        "line": "Analysts spot it in a column before they read the word."
+      },
+      "color.status.warning.subtle": {
+        "headline": "Escalated, in a badge.",
+        "line": "The fill tags the row and keeps its text easy to scan."
+      },
+      "color.surface.canvas": {
+        "headline": "The workspace.",
+        "line": "A cool ground for a screen people use all day."
+      },
+      "color.surface.default": {
+        "headline": "Where the records sit.",
+        "line": "Tables, cards and inputs share one ground."
+      },
+      "color.surface.floating": {
+        "headline": "Floats over it all.",
+        "line": "Menus, dialogs and toasts sit highest, and their text stays easy to read."
+      },
+      "color.surface.highlight": {
+        "headline": "This row.",
+        "line": "The row under the pointer stands out, so the eye keeps its place."
+      },
+      "color.surface.inverse": {
+        "headline": "A short note on top.",
+        "line": "A dark tip that reads against any page."
+      },
+      "color.surface.pressed": {
+        "headline": "Pressed.",
+        "line": "A pointer press shows the same band as the hover."
+      },
+      "color.surface.raised": {
+        "headline": "On top of the page.",
+        "line": "Cards and panels sit one step above the content."
+      },
+      "color.surface.scrim": {
+        "headline": "Look here first.",
+        "line": "The page dims, so the dialog holds the attention."
+      },
+      "color.surface.selected": {
+        "headline": "The chosen record.",
+        "line": "The selected row stays marked while you scan the rest."
+      },
+      "color.surface.sunken": {
+        "headline": "Table headers.",
+        "line": "Headers sit back, so the values lead."
+      },
+      "color.text.danger-on-dark": {
+        "headline": "The problem, on dark.",
+        "line": "Danger words that read on the dark danger fill."
+      },
+      "color.text.danger-on-light": {
+        "headline": "The problem, on light.",
+        "line": "Danger words that read on the light danger fill."
+      },
+      "color.text.info-on-dark": {
+        "headline": "The note, on dark.",
+        "line": "Info words that read on the dark info fill."
+      },
+      "color.text.info-on-light": {
+        "headline": "The note, on light.",
+        "line": "Info words that read on the light info fill."
+      },
+      "color.text.inverse": {
+        "headline": "Words on the dark tip.",
+        "line": "Text that reads on a tooltip."
+      },
+      "color.text.link": {
+        "headline": "Open the record.",
+        "line": "Links stand out in a dense table."
+      },
+      "color.text.muted": {
+        "headline": "A quiet hint.",
+        "line": "Units and placeholders step back from the values."
+      },
+      "color.text.on-action": {
+        "headline": "The words on the button.",
+        "line": "The main action's label reads on its fill."
+      },
+      "color.text.on-danger": {
+        "headline": "The words on the delete.",
+        "line": "The label reads on the red fill."
+      },
+      "color.text.on-dark": {
+        "headline": "Words on a dark fill.",
+        "line": "Light text for any dark ground, in either mode."
+      },
+      "color.text.on-light": {
+        "headline": "Words on a light fill.",
+        "line": "Dark text for any light ground, in either mode."
+      },
+      "color.text.primary": {
+        "headline": "The values.",
+        "line": "Records and numbers at full strength."
+      },
+      "color.text.secondary": {
+        "headline": "The context.",
+        "line": "Labels and timestamps that support the value."
+      },
+      "color.text.success-on-dark": {
+        "headline": "The good news, on dark.",
+        "line": "Success words that read on the dark success fill."
+      },
+      "color.text.success-on-light": {
+        "headline": "The good news, on light.",
+        "line": "Success words that read on the light success fill."
+      },
+      "color.text.warning-on-dark": {
+        "headline": "The caution, on dark.",
+        "line": "Warning words that read on the dark warning fill."
+      },
+      "color.text.warning-on-light": {
+        "headline": "The caution, on light.",
+        "line": "Warning words that read on the light warning fill."
+      },
+      "component-spacing-map.hairline": {
+        "headline": "A tiny nudge.",
+        "line": "Two pixels that line things up by eye."
+      },
+      "component-spacing-map.x1": {
+        "headline": "One step.",
+        "line": "The base step of the compact rhythm inside a component."
+      },
+      "component-spacing-map.x12": {
+        "headline": "Twelve steps.",
+        "line": "Twelve steps of the compact rhythm inside a component."
+      },
+      "component-spacing-map.x2": {
+        "headline": "Two steps.",
+        "line": "Two steps of the compact rhythm inside a component."
+      },
+      "component-spacing-map.x3": {
+        "headline": "Three steps.",
+        "line": "Three steps of the compact rhythm inside a component."
+      },
+      "component-spacing-map.x4": {
+        "headline": "Four steps.",
+        "line": "Four steps of the compact rhythm inside a component."
+      },
+      "component-spacing-map.x6": {
+        "headline": "Six steps.",
+        "line": "Six steps of the compact rhythm inside a component."
+      },
+      "component-spacing-map.x8": {
+        "headline": "Eight steps.",
+        "line": "Eight steps of the compact rhythm inside a component."
+      },
+      "elevation.card": {
+        "headline": "Lines, not shadows.",
+        "line": "Cards sit flat, so a busy screen stays calm."
+      },
+      "elevation.overlay": {
+        "headline": "A faint lift.",
+        "line": "Menus rise just enough to read above the table."
+      },
+      "focus.ring.offset": {
+        "headline": "A gap around the ring.",
+        "line": "The ring never touches the control, so it reads on any fill."
+      },
+      "focus.ring.width": {
+        "headline": "A clear ring.",
+        "line": "Focus stays visible in a dense table."
+      },
+      "motion.duration.feedback": {
+        "headline": "Instant.",
+        "line": "Controls answer at once, so a long day stays fast."
+      },
+      "motion.duration.panels": {
+        "headline": "No waiting.",
+        "line": "Panels open as fast as feedback, for people in a hurry."
+      },
+      "motion.easing.exit": {
+        "headline": "Gone at once.",
+        "line": "A closing layer stops fast and leaves the table clear."
+      },
+      "motion.easing.standard": {
+        "headline": "Quick and settled.",
+        "line": "State changes start fast, so no one waits."
+      },
+      "radius.badge": {
+        "headline": "Square marks.",
+        "line": "Badges stay square, so they line up in a column."
+      },
+      "radius.control": {
+        "headline": "Near-square controls.",
+        "line": "A slight round on a small control, nothing more."
+      },
+      "radius.element": {
+        "headline": "Near-square items.",
+        "line": "Rows and fields keep crisp corners."
+      },
+      "radius.option": {
+        "headline": "Square options.",
+        "line": "Options fill the menu edge to edge."
+      },
+      "radius.surface": {
+        "headline": "Slightly round panels.",
+        "line": "Cards and menus keep a small, fixed corner."
+      },
+      "size.control.compact": {
+        "headline": "A small control.",
+        "line": "For filters in a toolbar, sized for a pointer."
+      },
+      "size.control.default": {
+        "headline": "The usual control.",
+        "line": "Small enough to fit many on one screen."
+      },
+      "size.control.large": {
+        "headline": "Same as the usual.",
+        "line": "One height covers the large case too, so sizes stay few."
+      },
+      "size.hit-area": {
+        "headline": "Sized for a pointer.",
+        "line": "Targets fit a mouse, so more fits on one screen."
+      },
+      "size.icon": {
+        "headline": "Small icons.",
+        "line": "Icons match the small text in rows and toolbars."
+      },
+      "size.row": {
+        "headline": "One compact row.",
+        "line": "More records fit on screen without a scroll."
+      },
+      "space.gap.default": {
+        "headline": "Items in a group.",
+        "line": "A small gap keeps related values close."
+      },
+      "space.gap.group": {
+        "headline": "Between groups.",
+        "line": "A clear break, still small enough to keep data in view."
+      },
+      "space.gap.section": {
+        "headline": "A new section.",
+        "line": "The widest gap, kept small so more fits on screen."
+      },
+      "space.gap.tight": {
+        "headline": "One item.",
+        "line": "An icon and its value read as one."
+      },
+      "space.inset.cell-x": {
+        "headline": "Room in a cell.",
+        "line": "Values clear the column lines and stay dense."
+      },
+      "space.inset.container": {
+        "headline": "Room inside a card.",
+        "line": "Compact padding, so a panel holds more."
+      },
+      "space.inset.control-x": {
+        "headline": "Room inside a control.",
+        "line": "Compact padding beside the label."
+      },
+      "type.body.font-family": {
+        "headline": "A plain sans.",
+        "line": "Labels and notes in a face built for screens."
+      },
+      "type.body.font-size": {
+        "headline": "Small, clear text.",
+        "line": "More fits on screen and still reads at a desk."
+      },
+      "type.body.font-weight": {
+        "headline": "Regular words.",
+        "line": "Body text stays light, so the words lead."
+      },
+      "type.caption.font-family": {
+        "headline": "The small-print face.",
+        "line": "Captions and notes use a clear face."
+      },
+      "type.caption.font-size": {
+        "headline": "Small print.",
+        "line": "Timestamps and units, smaller than the values."
+      },
+      "type.caption.font-weight": {
+        "headline": "Plain small print.",
+        "line": "Captions stay regular, so they do not compete."
+      },
+      "type.data.font-family": {
+        "headline": "Monospace figures.",
+        "line": "Digits line up, so columns compare at a glance."
+      },
+      "type.data.font-size": {
+        "headline": "Figures at body size.",
+        "line": "Numbers match the text around them in a row."
+      },
+      "type.data.font-weight": {
+        "headline": "Plain figures.",
+        "line": "No number looks more urgent than its status says."
+      },
+      "type.display.font-family": {
+        "headline": "The headline face.",
+        "line": "The largest words on the page."
+      },
+      "type.display.font-size": {
+        "headline": "The biggest words.",
+        "line": "Kept small, so the numbers lead."
+      },
+      "type.display.font-weight": {
+        "headline": "Strong and clear.",
+        "line": "The display line carries weight."
+      },
+      "type.display.line-height": {
+        "headline": "Tight big lines.",
+        "line": "Large lines sit close, so they read as one."
+      },
+      "type.heading.font-family": {
+        "headline": "The section face.",
+        "line": "Headings in one typeface."
+      },
+      "type.heading.font-size": {
+        "headline": "A panel heading.",
+        "line": "Just above body size, so it labels without taking room."
+      },
+      "type.heading.font-weight": {
+        "headline": "Strong headings.",
+        "line": "Weight marks where a section starts."
+      },
+      "type.heading.line-height": {
+        "headline": "Close heading lines.",
+        "line": "A heading that wraps still reads as one."
+      },
+      "type.label.font-family": {
+        "headline": "The label face.",
+        "line": "Buttons, fields and tabs in one typeface."
+      },
+      "type.label.font-size": {
+        "headline": "Small labels.",
+        "line": "Column heads and controls in small, clear words."
+      },
+      "type.label.font-weight": {
+        "headline": "Labels that stand out.",
+        "line": "Medium weight sets a label apart from a value."
+      },
+      "type.label.line-height": {
+        "headline": "One line of label.",
+        "line": "A control holds its label on one line."
+      },
+      "type.title.font-family": {
+        "headline": "The title face.",
+        "line": "Page titles in one typeface."
+      },
+      "type.title.font-size": {
+        "headline": "The screen title.",
+        "line": "Clear, and small enough to leave room for data."
+      },
+      "type.title.font-weight": {
+        "headline": "A strong title.",
+        "line": "Weight marks what the page is about."
+      },
+      "type.title.line-height": {
+        "headline": "Close title lines.",
+        "line": "A long title still reads as one."
+      }
+    }
   }
 }
