@@ -217,6 +217,51 @@ export function gradedDarkScale(key, canvas, easing) {
   return gradedRow(darkScale(key, canvas), key, chromaOf, H, easing);
 }
 /**
+ * A step added between two steps of a stored scale, on the contrast-graded curve: even in
+ * ln(luminance + 0.05) between its neighbours, along the eased position of the scheme's step answer.
+ * Chroma follows lightness from one neighbour to the other, and the hue turns the short way. The
+ * neighbours keep their values. row is { step: hex }; step is the new step's number, such as "150".
+ */
+export function stepBetween(row, step, easing) {
+  const numbers = Object.keys(row)
+    .filter((s) => /^\d+$/.test(s))
+    .map(Number)
+    .sort((a, b) => a - b);
+  const below = numbers.filter((n) => n < +step).at(-1);
+  const above = numbers.find((n) => n > +step);
+  if (below === undefined || above === undefined)
+    throw new Error(`Step ${step} needs a step below and a step above it in the scale. The scale has ${numbers.join(", ")}.`);
+  const [lo, hi] = [row[below], row[above]];
+  const z = (h) => Math.log(luminance(h) + 0.05);
+  const t = (easedPosition(step, easing) - easedPosition(below, easing)) / (easedPosition(above, easing) - easedPosition(below, easing));
+  const y = Math.exp(z(lo) + (z(hi) - z(lo)) * t) - 0.05;
+  // Between two pure grays the step stays a pure gray: OKLab rounding would tint it by one channel.
+  const pure = (h) => new Set(rgb(h)).size === 1;
+  if (pure(lo) && pure(hi)) return hex([gam(y), gam(y), gam(y)]);
+  const [L1, C1, H1] = lch(lo);
+  const [L2, C2, H2] = lch(hi);
+  const H = (H1 + ((((H2 - H1 + 540) % 360) - 180) * t) + 360) % 360;
+  const chromaOf = (L) => C1 + (C2 - C1) * Math.min(1, Math.max(0, (L - L1) / (L2 - L1)));
+  const L = lightnessFor(y, chromaOf, H);
+  return colorAt(L, chromaOf, H);
+}
+/**
+ * An added step that text must read on: the step between its neighbours (stepBetween), moved by the
+ * smallest recorded lightness adjustment (nudgeFor) for each text that falls under its floor.
+ * texts is [{ color, need }]. Returns { value, adjust }, adjust null when no text needed a move.
+ */
+export function readableStepBetween(row, step, easing, texts = []) {
+  let value = stepBetween(row, step, easing);
+  let move = 0;
+  for (const { color, need } of texts) {
+    const adj = nudgeFor(value, color, need);
+    if (!adj) continue;
+    value = adjusted(value, adj);
+    move += adj.L;
+  }
+  return { value, adjust: move ? { L: +move.toFixed(3) } : null };
+}
+/**
  * A hue's scale for one mode, with its recorded adjustments. curve is null for the shared curve, or
  * { easing } for the contrast-graded curve. A step the spec holds keeps the shared curve.
  */

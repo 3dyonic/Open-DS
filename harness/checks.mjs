@@ -867,14 +867,14 @@ export const CHECKS = {
           key: "color.surface.highlight",
           job: "highlight fill",
           min: 1.08,
-          on: ["color.surface.default", "color.surface.raised"],
+          on: ["color.surface.default", "color.surface.raised", "color.surface.floating"],
         },
         { key: "color.surface.sunken", job: "well", min: 1.08, on: ["color.surface.default"] },
         {
           key: "color.border.default",
           job: "divider",
           min: 1.15,
-          on: ["color.surface.canvas", "color.surface.default", "color.surface.raised"],
+          on: ["color.surface.canvas", "color.surface.default", "color.surface.raised", "color.surface.floating"],
         },
       ];
       const gaps = [];
@@ -1276,14 +1276,14 @@ export const CHECKS = {
       let n = 0;
       for (const id of SCHEMES)
         for (const x of checkRelations(c.scheme(id), g).results) {
-          const depth = ["color.surface.raised", "color.border.raised"].includes(x.token) || x.says.includes("not a floating layer");
+          const depth = ["color.surface.raised", "color.surface.floating", "color.border.raised"].includes(x.token) || x.says.includes("not a floating layer");
           if (x.relation !== "dark-shade" || x.mode !== "dark" || !depth) continue;
           n++;
           if (!x.holds) gaps.push(`${id}/${x.brand}: ${x.says}`);
         }
       return gaps.length
         ? bad(`${gaps.length}: ${gaps.slice(0, 5).join("; ")}`)
-        : ok(`${n} dark depth results hold: raised lighter with a solid lighter ring, sunken darker, shades on floating layers only`);
+        : ok(`${n} dark depth results hold: raised lighter, floating lighter still, a solid ring lighter than both, sunken darker, shades on floating layers only`);
     },
   },
   "hit-area": {

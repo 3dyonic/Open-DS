@@ -137,11 +137,11 @@ test("a disabled field's label stays readable: 4.5:1 on content in every theme",
 // ---------- Decision 5: dark depth ----------
 
 const DARK = {
-  "dense-data": { default: 50, raised: 100, sunken: "floor", highlight: "floor", pressed: "floor", ring: 200 },
-  "content-first": { default: 50, raised: 100, sunken: "floor", highlight: "floor", pressed: 200, ring: 200 },
-  "accessible-first": { default: 100, raised: 200, sunken: 50, highlight: 50, pressed: 200, ring: 300 },
-  "brand-expressive": { default: 50, raised: 100, sunken: "floor", highlight: "floor", pressed: 200, ring: 200 },
-  "multi-brand": { default: 50, raised: 100, sunken: "floor", highlight: "floor", pressed: 200, ring: 200 },
+  "dense-data": { default: 50, raised: 100, floating: 150, sunken: "floor", highlight: "floor", pressed: "floor", ring: 200 },
+  "content-first": { default: 50, raised: 100, floating: 150, sunken: "floor", highlight: "floor", pressed: 200, ring: 200 },
+  "accessible-first": { default: 100, raised: 150, floating: 200, sunken: 50, highlight: 50, pressed: 200, ring: 300 },
+  "brand-expressive": { default: 50, raised: 100, floating: 150, sunken: "floor", highlight: "floor", pressed: 200, ring: 200 },
+  "multi-brand": { default: 50, raised: 100, floating: 150, sunken: "floor", highlight: "floor", pressed: 200, ring: 200 },
 };
 
 test("in dark, raised is a step lighter than content, sunken a step darker, and the ring a lighter solid step", () => {
@@ -149,16 +149,16 @@ test("in dark, raised is a step lighter than content, sunken a step darker, and 
     const s = loadScheme(id);
     const want = DARK[id];
     for (const brand of Object.keys(s.tokens.brands)) {
-      for (const k of ["default", "raised", "sunken", "highlight", "pressed"])
+      for (const k of ["default", "raised", "floating", "sunken", "highlight", "pressed"])
         assert.equal(pick(s, brand, "dark", `color.surface.${k}`), `{color.neutral.${want[k]}}`, `${id}/${brand} ${k}`);
       assert.equal(pick(s, brand, "dark", "color.border.raised"), `{color.neutral.${want.ring}}`, `${id}/${brand} ring`);
       const t = { brand, mode: "dark" };
       const ring = valueIn(s, t, "color.border.raised");
       assert.match(ring, /^#[0-9A-F]{6}$/i, `${id}/${brand}: the ring is solid`);
-      assert.ok(contrast(ring, valueIn(s, t, "color.surface.raised")) > 1, `${id}/${brand}: the ring shows`);
+      for (const fill of ["raised", "floating"]) assert.ok(contrast(ring, valueIn(s, t, `color.surface.${fill}`)) > 1, `${id}/${brand}: the ring shows on ${fill}`);
     }
     const r = checkRelations(s, g);
-    assert.deepEqual(r.results.filter((x) => ["color.surface.raised", "color.border.raised"].includes(x.token) && !x.holds), [], id);
+    assert.deepEqual(r.results.filter((x) => ["color.surface.raised", "color.surface.floating", "color.border.raised"].includes(x.token) && !x.holds), [], id);
   }
 });
 
@@ -166,12 +166,12 @@ test("Accessible first keeps AAA on its lighter dark raised surface; muted text 
   const s = loadScheme("accessible-first");
   const t = { brand: "default", mode: "dark" };
   const ratio = (fg, bg) => contrast(valueIn(s, t, fg), valueIn(s, t, `color.surface.${bg}`));
-  for (const bg of ["default", "raised"]) {
+  for (const bg of ["default", "raised", "floating"]) {
     for (const fg of ["color.border.focus", "color.status.danger.@"]) assert.ok(ratio(fg, bg) >= 7, `${fg} on ${bg}`);
     assert.ok(ratio("color.border.strong", bg) >= 4.5, `border.strong on ${bg}`);
   }
   assert.ok(ratio("color.text.muted", "default") >= 7, "muted on default");
-  assert.ok(ratio("color.text.muted", "raised") >= 4.5, "muted on raised, under the exception");
+  for (const bg of ["raised", "floating"]) assert.ok(ratio("color.text.muted", bg) >= 4.5, `muted on ${bg}, under the exception`);
   assert.notEqual(valueIn(s, t, "color.surface.pressed"), valueIn(s, t, "color.surface.canvas"), "pressed is not the page");
 });
 
