@@ -1431,7 +1431,10 @@
       {
         "id": "color.text.danger-on-light",
         "intent": "The label on a light danger fill, such as its tint in light mode: a fixed color from the light scale (800).",
-        "use_for": ["The danger badge", "The label of a destructive menu item, on its danger tint"],
+        "use_for": [
+          "The danger badge",
+          "The label of a destructive menu item, on its danger tint"
+        ],
         "not_for": [
           {
             "when": "Danger text on the page",
@@ -1446,7 +1449,10 @@
       {
         "id": "color.text.danger-on-dark",
         "intent": "The label on a dark danger fill, such as its tint in dark mode: a fixed color from the light scale (100, adjusted so its hue shows).",
-        "use_for": ["The danger badge", "The label of a destructive menu item, on its danger tint"],
+        "use_for": [
+          "The danger badge",
+          "The label of a destructive menu item, on its danger tint"
+        ],
         "not_for": [
           {
             "when": "Danger text on the page",
