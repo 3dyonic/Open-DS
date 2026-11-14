@@ -41,6 +41,18 @@ node cli/bin/open-ds.js add dialog --dir ./my-app
 
 Edit `overlay.json`, then run `npx open-ds build` in the project. The build checks the overlay against `schema/overlay.schema.json` and the scheme rules. It writes nothing when one fails. A changed answer moves no value: the build lists each rule, variant, pick and token that cites it. Edit an item in the overlay, or add its id to `reviewed`. `npx open-ds build --strict` exits 1 while any item is open. When `overlay.json` changes after the last build, a reader fails with "Out of date … Run: open-ds build". `npm run tokens` builds the scheme first. In a project, `.` in place of a scheme id reads `build/scheme.json`: `npx open-ds why . typography.definition`.
 
+### Upgrade
+
+`npx open-ds upgrade` moves the source to the installed open-ds version. It reads the old source from the open-ds version in `open-ds.lock`, from npm, and compares three things: the old source, the new source and `overlay.json`.
+
+- A source change that the overlay does not touch applies quietly. The upgrade names the scopes it changed.
+- An overlay entry on a value the source also changed is a conflict. The upgrade shows your value, the old one and the new one, and writes nothing. Run it again with `--keep <id>` to keep yours, or `--take <id>` to take the source's. `--keep all` and `--take all` decide every conflict.
+- A numbered migration rewrites a renamed path in the overlay.
+- A new grammar question takes the source's answer and goes on the review list.
+- A scheme with its own `id` in the overlay takes source changes only with `--accept`.
+
+In a project made before `overlay.json`, `upgrade` reads `scheme.json` and `open-ds.json`. It gets the source from the open-ds version in `package.json` (or `--from-package <version>`) and writes each difference as an overlay entry with the why "carried over from scheme.json". Those entries stay on the review list until you confirm them. The upgrade names each difference an overlay cannot hold, such as the voice. It deletes nothing: point the files that read `scheme.json` at `build/scheme.json`, then delete it.
+
 ## Tools for the skills
 
 These commands do the steps the agent skills would otherwise judge by eye. The MCP server has the same tools.

@@ -1028,10 +1028,12 @@
       "id": "OD-311",
       "title": "ADR-002 steps 4 to 7: the overlay, the lockfile, upgrade, the source split by scope and the package",
       "in": [
-        "the overlay format, its schema, the review list and the lockfile; create writes these in place of a copied scheme.json"
+        "the overlay format, its schema, the review list and the lockfile; create writes these in place of a copied scheme.json",
+        "open-ds upgrade: the three-way compare, migrations on overlays, and the import from old projects"
       ],
       "checks": [
         "overlay-schema-guards",
+        "cli-upgrade-command",
         "cli-create-temp",
         "json-sources-one-layout",
         "llm-schema-descriptions",

@@ -3097,6 +3097,23 @@ export const CHECKS = {
         : ok(`${SCHEMES.length} empty overlays pass the schema; an entry with no because fails it`);
     },
   },
+  // The upgrade command is listed in the help and stops with a plain message outside a project.
+  "cli-upgrade-command": {
+    requires: ["cli/src/upgrade.mjs"],
+    run: (c) => {
+      const help = c.sh("node", ["cli/bin/open-ds.js", "--help"]).out;
+      if (!/open-ds upgrade/.test(help)) return bad("help does not list open-ds upgrade");
+      const dir = mkdtempSync(join(tmpdir(), "ods-upgrade-"));
+      try {
+        const r = c.sh("node", ["cli/bin/open-ds.js", "upgrade", "--dir", dir]);
+        return r.code === 1 && /no overlay\.json and no scheme\.json/.test(r.out)
+          ? ok("help lists upgrade; outside a project it exits 1 and names the files it needs")
+          : bad(`upgrade outside a project: exit ${r.code}, ${tail(r.out)}`);
+      } finally {
+        rmSync(dir, { recursive: true, force: true });
+      }
+    },
+  },
   "cli-commands": {
     requires: ["cli/src/schemes.mjs"],
     run: (c) => {

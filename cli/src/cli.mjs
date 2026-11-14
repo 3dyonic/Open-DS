@@ -68,6 +68,11 @@ const HELP = `open-ds: deploy an Open DS scheme as a full design system.
   open-ds build [--dir .] [--strict]  in a project: join the source and overlay.json, check the result,
                                        write build/scheme.json and open-ds.lock, and list what the changed
                                        answers ask you to review; --strict exits 1 while any item is open
+  open-ds upgrade [--dir .] [--keep <id>|all] [--take <id>|all] [--accept] [--from-package <version>]
+                                       in a project: move the source to the installed version; compare the
+                                       old source, the new source and overlay.json; ask on a conflict; run
+                                       the migrations on the overlay; in an older project, write the
+                                       differences from scheme.json as an overlay
   open-ds build [<scheme>] [--out build/schemes]
                                        fill each scheme's defaults, color scales and spacing map; check
                                        it against the schema and its rules (links, contrast, grid); write
@@ -355,6 +360,38 @@ function printReview(review) {
   }
 }
 
+/** What an upgrade did, or what stops it. */
+function printUpgrade(r) {
+  if (r.status === "current") return console.log(`The source is current (${r.to}). Nothing to upgrade.`);
+  console.log(`Source ${r.from} → ${r.to}. Scopes the source changed: ${r.scopes.join(", ") || "none"}.`);
+  if (r.migrations.length) console.log(`Migrations run on ${PROJECT_FILES.overlay}: ${r.migrations.join(", ")}.`);
+  if (r.carried || r.notCarried.length) console.log(`Carried ${r.carried} differences from scheme.json into ${PROJECT_FILES.overlay}.`);
+  for (const n of r.notCarried) console.log(`  not carried: ${n}`);
+  for (const k of r.kept) console.log(`  kept yours: ${k}`);
+  for (const k of r.taken) console.log(`  took the source: ${k}`);
+  if (r.status === "conflicts") {
+    for (const c of r.conflicts)
+      console.log(`✗ ${c.key}\n    yours:      ${JSON.stringify(c.mine)}\n    old source: ${JSON.stringify(c.old)}\n    new source: ${JSON.stringify(c.new)}`);
+    return console.log(
+      `${r.conflicts.length} conflicts; nothing written. For each, run again with --keep <id> (yours stays) or --take <id> (the new source's value applies). --keep all and --take all decide every one.`,
+    );
+  }
+  if (r.status === "opt-in")
+    return console.log(`This scheme has its own id, so its upgrades are opt in. Nothing written. To take these changes, run: open-ds upgrade --accept`);
+  if (r.status === "build-failed") {
+    for (const f of [...r.build.problems, ...r.build.results.flatMap((x) => x.findings)].slice(0, 20)) console.log(`✗ ${f}`);
+    return console.log(`The upgraded scheme fails its checks; nothing written. Fix ${PROJECT_FILES.overlay} or decide the entries above, then run upgrade again.`);
+  }
+  console.log(`Wrote ${PROJECT_FILES.overlay}, ${PROJECT_FILES.built} and ${PROJECT_FILES.lock}.`);
+  if (r.carried) console.log(`scheme.json stays for the files that still read it. Point them at ${PROJECT_FILES.built}, then delete it.`);
+  printReview(r.build.review);
+  console.log(
+    r.build.review.open
+      ? `${r.build.review.open} review items are open. Edit each in ${PROJECT_FILES.overlay}, or add its id to "reviewed".`
+      : "No review items are open.",
+  );
+}
+
 function printWhy(node, depth = 0) {
   const lead = depth === 0 ? "" : `${"  ".repeat(depth)}because: `;
   console.log(`${lead}${node.text} ${node.answer}. ${node.why}`);
@@ -409,6 +446,21 @@ export async function run(argv) {
         );
       });
       return r.ok && !blocked ? 0 : 1;
+    }
+    if (cmd === "upgrade") {
+      const { upgradeProject } = await import("./upgrade.mjs");
+      const choices = (name) => args.flatMap((a, i) => (a === name && args[i + 1] ? [args[i + 1]] : []));
+      const keep = new Set(choices("--keep"));
+      const take = new Set(choices("--take"));
+      const decide = (key) =>
+        keep.has(key) ? "keep" : take.has(key) ? "take" : keep.has("all") ? "keep" : take.has("all") ? "take" : undefined;
+      const r = upgradeProject(resolve(flag(args, "--dir", ".")), {
+        decide,
+        accept: args.includes("--accept"),
+        fromPackage: flag(args, "--from-package", undefined),
+      });
+      out(r, () => printUpgrade(r));
+      return r.status === "upgraded" || r.status === "current" ? 0 : 1;
     }
     if (cmd === "build") {
       const dir = resolve(flag(args, "--out", "build/schemes"));
