@@ -2311,14 +2311,7 @@
               "contrast": 7
             }
           ],
-          "says": "Every fill pairs with the text on it, by tone, and the pair keeps its contrast floor. A step number makes a promise: steps 400 apart give 3:1, 500 apart give 4.5:1, 700 apart give 7:1, in every hue of a scheme.",
-          "also": [
-            {
-              "fills": ["color.category.*.subtle"],
-              "text": "color.text.primary",
-              "says": "A tag's text on a category tint is the page's own text."
-            }
-          ]
+          "says": "Every fill pairs with the text on it, by tone, and the pair keeps its contrast floor. A step number makes a promise: steps 400 apart give 3:1, 500 apart give 4.5:1, 700 apart give 7:1, in every hue of a scheme."
         },
         {
           "id": "category-apart-from-status",

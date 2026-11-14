@@ -111,7 +111,8 @@ test("a category tint shows its pair and the stays-apart of its @", () => {
   const links = tree.filter((n) => n.level === "connection");
   assert.deepEqual(links.map((n) => n.name), ["subtle-from-hue", "fill-pairs-with-text", "category-apart-from-status"]);
   const pair = links[1].checks;
-  assert.deepEqual(pair.map((x) => x.tokens), [["color.text.primary", "color.category.4.subtle"]]);
+  // A tint carries text by tone, like a status tint: the page's own text and the text made for light fills.
+  assert.deepEqual(pair.map((x) => x.tokens), [["color.text.primary", "color.category.4.subtle"], ["color.text.on-light", "color.category.4.subtle"]]);
   assert.match(pair[0].says, /800 steps apart promise 7:1/);
   const apart = links[2];
   assert.equal(apart.via, "color.category.4");
