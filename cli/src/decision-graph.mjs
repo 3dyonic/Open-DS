@@ -153,8 +153,10 @@ function rulesOf(scheme, g, name, { brand, mode, index }) {
   return family ? [...out, family] : out;
 }
 
-/** The slot a token's last part names (@, subtle, hover), with the step it sits at, or null. */
+/** The slot a colour token's last part names (@, subtle, hover), with the step it sits at, or null. */
 export function slotOf(g, name) {
+  // Slots are colour steps: a size or space group (size.icon.@) also ends in @ but has no step.
+  if (!/^color\./.test(name)) return null;
   const last = name.split(".").at(-1);
   return (g.semantics?.variants?.items ?? []).find((v) => v.id === last && (v.step || v.from)) ?? null;
 }
