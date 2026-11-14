@@ -50,10 +50,12 @@ export function samplesFor(samples = {}, meaning) {
 function textFor(samples = {}, name) {
   const meaning = meaningOf(name);
   if (meaning) return samplesFor(samples, meaning);
-  const category = /^color\.category\.(\d+)$/.exec(name);
+  const category = /^color\.category\.(\d+)(?:\.[a-z-]+)?$/.exec(name);
   if (category) {
     const n = Number(category[1]) - 1;
-    const label = samples.chart?.series?.[n] ?? samples.checkbox?.[n] ?? null;
+    // A tag needs a word on it: the scheme's own sample labels, reused in turn when there are fewer than categories.
+    const words = samples.checkbox ?? samples.chart?.series ?? [];
+    const label = samples.chart?.series?.[n] ?? samples.checkbox?.[n] ?? (words.length ? words[n % words.length] : null);
     return { text: label, label };
   }
   const fixed = {

@@ -217,7 +217,7 @@ hide_table_of_contents: true
 
 import TokenMap from "@site/src/components/TokenMap";
 
-Press an area, then a scale and a step. The step shows what it gives and why it is in the scheme. Press a semantic group to see its decisions, why each one uses this value, and the components that show it.
+Press an area, then choose where to start. From primitives: a scale and a step, then the decisions that use it and their components. From decisions: a semantic group and a decision, then the value it resolves to and the components that show it.
 
 <TokenMap scheme=${JSON.stringify(scheme.id)} files={${JSON.stringify(byBrand)}} />
 `;
