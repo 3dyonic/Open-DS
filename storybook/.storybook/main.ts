@@ -43,9 +43,10 @@ const config: StorybookConfig = {
       codeSplitting: {
         groups: [
           {
-            name: (id: string) => id.match(/schemes\/([a-z-]+)\.json$/)?.[1] ?? null,
+            // A scheme is a folder (schemes/<id>/…) or one file (schemes/<id>.json); the grammar is both.
+            name: (id: string) => id.match(/schemes\/([a-z-]+)(?:\/|\.json$)/)?.[1] ?? null,
             debugName: "schemes",
-            test: /schemes\/[a-z-]+\.json$/,
+            test: /schemes\/[a-z-]+(?:\/.*)?\.json$/,
             priority: 20,
           },
           { name: "libs", test: /node_modules/, maxSize: 400 * 1024, priority: 10 },
