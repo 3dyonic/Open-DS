@@ -4,18 +4,20 @@ import { join } from "node:path";
 import { test } from "node:test";
 import { SHADCN } from "../build.mjs";
 import { grammar, loadScheme } from "../../cli/src/schemes.mjs";
+import { keysOf } from "../../cli/src/scheme-defaults.mjs";
 
 const here = join(import.meta.dirname, "..");
 const root = join(here, "..");
 const read = (...p) => readFileSync(join(here, "dist", ...p), "utf8");
 const index = JSON.parse(read("index.json"));
-const keys = grammar().component_keys.map(
-  (k) =>
-    `--${k.id
-      .split("/")
-      .filter((p) => p !== "@")
-      .join("-")}:`,
-);
+const g = grammar();
+const cssName = (k) =>
+  `--${k.id
+    .split("/")
+    .filter((p) => p !== "@")
+    .join("-")}:`;
+// The keys a scheme ships: every grammar key its answers create.
+const keysIn = (id) => keysOf(g, loadScheme(id)).map(cssName);
 
 test("all five schemes are built", () => {
   assert.deepEqual(index.schemes.map((s) => s.id).sort(), [
@@ -42,13 +44,32 @@ test("every scheme ships light and dark for every brand", () => {
   }
 });
 
-test("every theme block defines every component key", () => {
+test("every theme block defines every component key its answers create, and no other", () => {
   for (const s of index.schemes) {
+    const keys = keysIn(s.id);
+    const absent = g.component_keys.map(cssName).filter((k) => !keys.includes(k));
     const blocks = read(s.id, "tokens.css")
       .split(/\n}\n/)
       .filter((b) => b.includes("{"));
     assert.equal(blocks.length, s.themes.length, `${s.id} has one block per theme`);
-    for (const block of blocks) for (const k of keys) assert.ok(block.includes(k), `${s.id} misses ${k}`);
+    for (const block of blocks) {
+      for (const k of keys) assert.ok(block.includes(k), `${s.id} misses ${k}`);
+      for (const k of absent) assert.ok(!block.includes(k), `${s.id} ships ${k}, which its answers do not create`);
+    }
+  }
+});
+
+test("a key an answer creates ships only where the scheme gives that answer", () => {
+  const created = g.component_keys.filter((k) => k.created_by);
+  assert.ok(created.length, "the grammar has a key that an answer creates");
+  for (const k of created) {
+    const name = cssName(k);
+    for (const s of index.schemes) {
+      const answer = loadScheme(s.id).answers.find((a) => a.question === k.created_by.question)?.option;
+      const css = read(s.id, "tokens.css");
+      if (k.created_by.options.includes(answer)) assert.ok(css.includes(name), `${s.id} answers ${answer} but misses ${name}`);
+      else assert.ok(!css.includes(name), `${s.id} answers ${answer} but ships ${name}`);
+    }
   }
 });
 

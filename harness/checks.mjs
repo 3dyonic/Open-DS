@@ -2091,8 +2091,14 @@ export const CHECKS = {
 
   "scopes-uniform-template": {
     requires: ["schemes/grammar.json", ...SCHEMES.map((s) => `schemes/${s}/scheme.json`)],
-    run: (c) => {
+    run: async (c) => {
+      const { creatorsOf, roleOf } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
       const g = c.grammar();
+      // A token whose role only an answer creates is missing where the scheme gives another answer.
+      const uncreated = (sch, path) => {
+        const role = roleOf(g, path)?.role;
+        return Boolean(role && !role.always_on && !creatorsOf(sch, g, role.id).length);
+      };
       const gaps = [];
       const methods = (g.methods ?? []).map((m) => m.id);
       if (methods.join() !== "roles,count,definition,values,lands")
@@ -2130,7 +2136,7 @@ export const CHECKS = {
             { content: sch.tokens.content },
           ];
           for (const o of sc.owns ?? [])
-            if (!trees.some((t) => has(t, o))) gaps.push(`${sch.id}: ${sc.id} owns ${o}, which is not a token`);
+            if (!trees.some((t) => has(t, o)) && !uncreated(sch, o)) gaps.push(`${sch.id}: ${sc.id} owns ${o}, which is not a token`);
         }
         // lands_in is traced from the components' code (lands-in-traced); here, each is a real component.
         for (const cid of sc.lands_in ?? [])
@@ -2997,23 +3003,30 @@ export const CHECKS = {
   "tokens-component-keys-resolve": {
     requires: ["tokens/package.json"],
     slow: true,
-    run: (c) => {
+    run: async (c) => {
       const err = ensureTokens(c);
       if (err) return bad(tail(err));
-      const keys = c.grammar().component_keys.map(
-        (k) =>
-          `--${k.id
-            .split("/")
-            .filter((p) => p !== "@")
-            .join("-")}`,
-      );
+      // Each scheme defines every key its answers create, and no key its answers do not create.
+      const { keyCreated } = await import(pathToFileURL(c.p("cli/src/scheme-defaults.mjs")).href);
+      const all = c.grammar().component_keys;
+      const name = (k) =>
+        `--${k.id
+          .split("/")
+          .filter((p) => p !== "@")
+          .join("-")}`;
       const gaps = [];
       for (const s of SCHEMES) {
         const css = c.has("tokens", "dist", s, "tokens.css") ? c.read("tokens", "dist", s, "tokens.css") : "";
-        const miss = keys.filter((k) => !css.includes(`${k}:`));
+        const scheme = c.scheme(s);
+        const miss = all.filter((k) => keyCreated(k, scheme) && !css.includes(`${name(k)}:`));
+        const extra = all.filter((k) => !keyCreated(k, scheme) && css.includes(`${name(k)}:`));
         if (miss.length) gaps.push(`${s}: ${miss.length} keys missing`);
+        if (extra.length) gaps.push(`${s}: ships ${extra.map(name).join(", ")}, which its answers do not create`);
       }
-      return gaps.length ? bad(gaps.join("; ")) : ok(`${keys.length} component keys defined in every scheme`);
+      const created = all.filter((k) => k.created_by).length;
+      return gaps.length
+        ? bad(gaps.join("; "))
+        : ok(`every scheme defines each of the ${all.length} component keys its answers create, and no other; ${created} of them exist only where an answer creates them`);
     },
   },
 
@@ -3595,7 +3608,7 @@ export const CHECKS = {
     },
   },
   // OD-285: icons follow each scheme. The style answer names its stroke and icon.stroke-width holds it;
-  // icons.css gives every Lucide icon that stroke; the large size differs only where the scheme answers
+  // icons.css gives every Lucide icon that stroke; the large size exists only where the scheme answers
   // two sizes. The docs' own visuals draw icons through Icon, and an icon-only button has a name.
   "icons-follow-scheme": {
     requires: [...SCHEMES.map((s) => `schemes/${s}/scheme.json`), "ui/src/icons.css", "doc-composites/src", "storybook/stories"],
@@ -3610,10 +3623,24 @@ export const CHECKS = {
         const answer = s.answers.find((a) => a.question === "iconography.definition");
         if (stroke === undefined) gaps.push(`${id}: icon.stroke-width does not resolve to a primitive`);
         else if (!answer?.why?.includes(`${stroke}px`)) gaps.push(`${id}: the style answer does not name its ${stroke}px stroke`);
+        // The large size exists only where the scheme answers two sizes: a decision token larger than
+        // size.icon, read by the large icon key. One size makes neither.
         const two = s.answers.find((a) => a.question === "iconography.count")?.option === "two";
         const large = s.tokens.component.icon?.["size-large"]?.$value;
-        if (two === (large === "{size.icon}"))
-          gaps.push(`${id}: the large icon size ${two ? "matches the default though the scheme answers two sizes" : "differs though the scheme answers one size"}`);
+        const decided = s.tokens.semantic.size?.["icon-large"];
+        if (two) {
+          const px = (name) => {
+            const ref = String(s.tokens.semantic.size?.[name]?.$value ?? "").match(/^\{(.+)\}$/)?.[1];
+            const v = String(ref?.split(".").reduce((n, k) => n?.[k], s.tokens.primitive)?.$value ?? "");
+            return /^[\d.]+rem$/.test(v) ? parseFloat(v) * 16 : /^[\d.]+px$/.test(v) ? parseFloat(v) : null;
+          };
+          if (!decided) gaps.push(`${id}: answers two icon sizes but has no size.icon-large`);
+          else if (!(px("icon-large") > px("icon"))) gaps.push(`${id}: size.icon-large is not larger than size.icon`);
+          if (large !== "{size.icon-large}") gaps.push(`${id}: icon.size-large reads ${large ?? "nothing"}, not {size.icon-large}`);
+        } else {
+          if (decided) gaps.push(`${id}: answers one icon size but has size.icon-large`);
+          if (large !== undefined) gaps.push(`${id}: answers one icon size but has icon.size-large`);
+        }
       }
       // The docs' own visuals draw a Lucide icon only through Icon.
       const walk = (dir) =>

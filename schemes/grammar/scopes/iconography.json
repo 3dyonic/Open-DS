@@ -3,7 +3,7 @@
   "kind": "scope",
   "title": "Iconography",
   "description": "When icons appear and how they look.",
-  "owns": ["size.icon", "icon.stroke-width"],
+  "owns": ["size.icon", "size.icon-large", "icon.stroke-width"],
   "lands_in": [
     "accordion",
     "alert",
@@ -76,7 +76,7 @@
         {
           "id": "two",
           "label": "Two",
-          "creates": []
+          "creates": ["icon-large"]
         }
       ]
     },
