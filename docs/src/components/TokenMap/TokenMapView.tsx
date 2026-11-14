@@ -129,6 +129,8 @@ type Path = {
 type Load = { state: "loading" } | { state: "error"; message: string } | { state: "ready"; map: MapFile };
 
 const NONE: Path = { area: null, hue: null, step: null, group: null, decision: null };
+// Where the route starts: the primitives (family → value → decision) or the decisions (group → decision → value).
+type Start = "primitives" | "decisions";
 // Columns, left to right.
 const X = { area: 0, family: 210, word: 420, group: 850, decision: 1050 };
 const W = { area: 160, family: 160, step: 170, word: 370, group: 160, decision: 370, list: 300 };
@@ -242,6 +244,20 @@ function FamilyNode({ data }: NodeProps<Node<FamilyData>>) {
 }
 
 type StepData = { id: string; name: string; value: string; color: boolean };
+// A decision to pick, in the route that starts from the decisions: its name and its value.
+type PickData = { id: string; value: string | null; color: boolean };
+function PickNode({ data }: NodeProps<Node<PickData>>) {
+  return (
+    <div className={styles.node}>
+      <Hidden type="target" pos={Position.Left} />
+      <div className={styles.swatchRow}>
+        {data.color && data.value && <span className={styles.chip} style={{ background: data.value }} />}
+        <span className={`${styles.title} ${styles.mono}`}>{data.id}</span>
+      </div>
+      {data.value && <div className={styles.mono}>{pxOf(data.value)}</div>}
+    </div>
+  );
+}
 function StepNode({ data }: NodeProps<Node<StepData>>) {
   return (
     <div className={styles.node}>
@@ -405,7 +421,7 @@ function CardFace({ d, theme }: { d: Decision; theme: Theme | null }) {
       )}
       {c && (
         <div>
-          <div className={styles.cap}>Weakest contrast</div>
+          <div className={styles.cap}>Can you see it?</div>
           <div className={styles.meterRow}>
             <div
               className={styles.track}
@@ -477,9 +493,9 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
         <CardFace d={d} theme={null} />
       )}
       {d.via && <div className={styles.line}>Same as {d.via}</div>}
-      {used === 0 && !d.via && !(d.guide && d.guide.useFor.length) && (
-        <div className={styles.line}>No component uses it.</div>
-      )}
+      <div className={styles.line}>
+        {used > 0 ? `Used by ${used} component${used === 1 ? "" : "s"}.` : "No component uses it."}
+      </div>
       {!hasReason(d) && <NoReason />}
       <button
         type="button"
@@ -492,131 +508,24 @@ function DecisionNode({ data }: NodeProps<Node<DecisionData>>) {
       >
         {open ? "▾ Hide the trace" : "▸ Show the trace"}
       </button>
-      {open && (
-        <>
-          {d.meaning && d.meaning.length > 0 && (
-            <>
-              <div className={styles.cap}>What the name means</div>
-              {d.meaning.map((m) => (
-                <div key={m.name} className={styles.qa}>
-                  <b className={styles.mono}>{m.level === "variant" ? `.${m.name}` : m.name}</b>{" "}
-                  <span className={styles.line}>{m.says}</span>
-                </div>
-              ))}
-            </>
-          )}
-          {d.graph?.reason ? (
-            <div className={styles.key}>{d.graph.reason}</div>
-          ) : d.why ? (
-            <div className={styles.key}>{sentence(d.why)}</div>
-          ) : (
-            d.description && <div>{d.description}</div>
-          )}
-          {d.graph?.reason && d.why && <div className={styles.line}>Measured: {sentence(d.why)}</div>}
-          {d.guide?.intent && <div>{d.guide.intent}</div>}
-          {d.guide && d.guide.useFor.length > 0 && (
-            <div className={styles.line}>Use for: {d.guide.useFor.join(", ")}</div>
-          )}
-          {d.guide?.notFor.map((n) => (
-            <div key={n.when} className={styles.line}>
-              Not for {n.when.toLowerCase()}: use {n.use}
-            </div>
-          ))}
-          {d.graph ? (
-            <ColorGraph graph={d.graph} mapping={d.mapping} connections={data.connections} answers={data.answers} />
-          ) : (
-            <>
-              {d.stepWhy && <div>{d.stepWhy}</div>}
-              {d.answers.length > 0 && (
-                <div className={styles.cap}>{d.mapping ? "Decided by" : "The answers behind it"}</div>
-              )}
-              <Answers ids={d.answers} answers={data.answers} />
-            </>
-          )}
-          {d.mapping && !d.graph && (
-            <>
-              {d.mapping.property && <div className={styles.cap}>Property: {d.mapping.property}</div>}
-              {d.mapping.says && <div className={styles.line}>{d.mapping.says}</div>}
-              {d.mapping.jobs.map((j) => (
-                <div key={j.title} className={styles.qa}>
-                  <b>{j.title}</b> <span className={styles.line}>{j.how}</span>
-                </div>
-              ))}
-            </>
-          )}
-        </>
-      )}
+      {open && <Trace ids={d.answers} answers={data.answers} />}
     </div>
   );
 }
 
-// The color decision graph of a token, in the order it inherits its reason: role, jobs, property, the
-// answers that create or shape it, rule, connections and value.
-function ColorGraph({
-  graph,
-  mapping,
-  connections,
-  answers,
-}: {
-  graph: Graph;
-  mapping: Decision["mapping"];
-  connections: Record<string, Connection>;
-  answers: Record<string, Answer>;
-}) {
+// The trace: one line per answer behind the token, "question → answer: why". Nothing else.
+function Trace({ ids, answers }: { ids: string[]; answers: Record<string, Answer> }) {
+  const list = ids.map((id) => answers[id]).filter(Boolean);
+  if (!list.length) return <div className={styles.line}>No answer is recorded for this token.</div>;
   return (
-    <>
-      <div className={styles.cap}>Role</div>
-      <div>
-        {capital(graph.role)}: in order to {graph.to}. So {graph.gets}.
-      </div>
-      <div className={styles.cap}>Jobs</div>
-      {graph.jobs.map((title) => (
-        <div key={title} className={styles.qa}>
-          <b>{title}</b> <span className={styles.line}>{mapping?.jobs.find((j) => j.title === title)?.how}</span>
-        </div>
+    <ol className={styles.trace}>
+      {list.map((a) => (
+        <li key={a.id}>
+          {a.question} → <b>{a.answer}</b>
+          {a.why ? `: ${/^[A-Z][a-z]/.test(a.why) ? a.why.charAt(0).toLowerCase() + a.why.slice(1) : a.why}` : ""}
+        </li>
       ))}
-      {mapping?.property && <div className={styles.cap}>Property: {mapping.property}</div>}
-      {graph.made.always && <div className={styles.line}>Always on: {sentence(graph.made.always)}</div>}
-      {graph.made.creates.length > 0 && <div className={styles.cap}>Created by</div>}
-      <Answers ids={graph.made.creates} answers={answers} />
-      {graph.made.shapes.length > 0 && <div className={styles.cap}>Shaped by</div>}
-      <Answers ids={graph.made.shapes} answers={answers} />
-      {graph.rules.map((r) => (
-        <div key={r.name} className={styles.qa}>
-          <b>Rule</b> <span className={styles.line}>{r.says}</span>
-          {r.holds === false && <span> (this pick differs)</span>}
-        </div>
-      ))}
-      {graph.connections.length > 0 && <div className={styles.cap}>Connections</div>}
-      {graph.connections.map((c) => (
-        <div key={c.id} className={styles.qa}>
-          <b>{connections[c.id]?.kind ?? c.id}</b> <span className={styles.line}>{connections[c.id]?.says}</span>{" "}
-          {c.via && <span className={styles.line}>Through {c.via}. </span>}
-          {c.holds ? (
-            <span>Holds ({c.checks} checks).</span>
-          ) : (
-            <span>
-              {c.checks - c.waits.length - c.off.length} of {c.checks} checks hold.
-            </span>
-          )}
-          {c.pairs.map((p) => (
-            <div key={p} className={styles.line}>
-              {p}
-            </div>
-          ))}
-          {c.waits.map((w) => (
-            <div key={w}>waits: {w}</div>
-          ))}
-          {c.off.length > 0 && <div>Does not hold: {c.off.join("; ")}.</div>}
-        </div>
-      ))}
-      {graph.value && (
-        <div className={styles.qa}>
-          <b>Value</b> <span className={styles.mono}>{graph.value.name}</span>{" "}
-          {graph.value.hex && <span className={styles.line}>{graph.value.hex}</span>}
-        </div>
-      )}
-    </>
+    </ol>
   );
 }
 
@@ -681,6 +590,7 @@ const nodeTypes = {
   semantic: GroupNode,
   decision: DecisionNode,
   list: ListNode,
+  pick: PickNode,
 };
 
 // The scope's general answers, shown once on the family. Color answers per step instead.
@@ -855,6 +765,157 @@ function build(
   return { nodes, edges };
 }
 
+// The value a decision resolves to in this scope: its family and step.
+function stepOf(model: Model, area: string, id: string) {
+  for (const f of model.families.filter((x) => x.area === area))
+    for (const st of f.steps) if (st.decisions.includes(id)) return { family: f, step: st };
+  return null;
+}
+
+// The decisions of a scope, by group, in the order the values list them.
+function groupsOf(model: Model, area: string) {
+  const out = new Map<string, string[]>();
+  for (const f of model.families.filter((x) => x.area === area))
+    for (const st of f.steps)
+      for (const id of st.decisions) {
+        const g = model.decisions[id]?.group;
+        if (!g) continue;
+        const list = out.get(g) ?? [];
+        if (!list.includes(id)) list.push(id);
+        out.set(g, list);
+      }
+  return out;
+}
+
+// The same route reversed: scope → group → decision → the value it resolves to → its components.
+function buildFromDecisions(
+  map: MapFile,
+  model: Model,
+  {
+    path,
+    mode,
+    openComp,
+    toggleComp,
+  }: { path: Path; mode: Mode; openComp: string | null; toggleComp: (k: string) => void },
+) {
+  const nodes: Node[] = [];
+  const edges: Edge[] = [];
+  const at = (x: number, y: number) => ({ x, y });
+  map.areas.forEach((a, i) =>
+    nodes.push({
+      id: `area:${a}`,
+      type: "area",
+      position: at(X.area, i * 100),
+      style: { width: W.area },
+      data: {
+        area: a,
+        selected: a === path.area,
+        count: model.families.filter((f) => f.area === a).reduce((s, f) => s + f.steps.length, 0),
+      },
+    }),
+  );
+  if (!path.area) return { nodes, edges };
+  const groups = groupsOf(model, path.area);
+  let gy = 0;
+  for (const [g, ids] of groups) {
+    nodes.push({
+      id: `g:${g}`,
+      type: "semantic",
+      position: at(X.family, gy),
+      style: { width: W.group },
+      data: { group: g, count: ids.length, valueName: "", selected: path.group === g },
+    });
+    edges.push({
+      id: `e:a:${g}`,
+      source: `area:${path.area}`,
+      target: `g:${g}`,
+      className: path.group === g ? styles.edgeLit : styles.edge,
+    });
+    gy += 110;
+  }
+  if (!path.group) return { nodes, edges };
+  const ids = groups.get(path.group) ?? [];
+  const color = path.area === "Color";
+  let dy = 0;
+  for (const id of ids) {
+    const d = model.decisions[id];
+    if (!d) continue;
+    if (id !== path.decision) {
+      nodes.push({
+        id: `p:${id}`,
+        type: "pick",
+        position: at(X.word, dy),
+        style: { width: 300 },
+        data: { id, value: d.resolves?.value ?? null, color },
+      });
+      edges.push({ id: `e:g:${id}`, source: `g:${path.group}`, target: `p:${id}`, className: styles.edge });
+      dy += 80;
+      continue;
+    }
+    const modes = map.modes[mode].decisions[id]
+      ? [{ mode, d: map.modes[mode].decisions[id], theme: map.modes[mode].theme }]
+      : null;
+    nodes.push({
+      id: `d:${id}`,
+      type: "decision",
+      position: at(X.word, dy),
+      style: { width: W.decision },
+      data: { d, selected: true, answers: map.answers, connections: map.connections ?? {}, modes },
+    });
+    edges.push({ id: `e:g:${id}`, source: `g:${path.group}`, target: `d:${id}`, className: styles.edgeLit });
+    dy += 160;
+    const valueX = X.word + W.decision + 60;
+    const found = stepOf(model, path.area, id);
+    if (found) {
+      nodes.push({
+        id: "word",
+        type: "word",
+        position: at(valueX, 0),
+        style: { width: W.word },
+        data: {
+          step: found.step,
+          family: found.family,
+          ...whyOf(map, model, found.family, found.step),
+          answers: map.answers,
+        },
+      });
+      edges.push({ id: "e:d:word", source: `d:${id}`, target: "word", className: styles.edgeLit });
+    }
+    if (d.components.length) {
+      const listX = valueX + W.word + 60;
+      nodes.push({
+        id: `cl:${id}`,
+        type: "list",
+        position: at(listX, 0),
+        style: { width: W.list },
+        data: { title: "Components", owner: id, items: d.components, open: openComp, onToggle: toggleComp },
+      });
+      edges.push({
+        id: `e:cl:${id}`,
+        source: found ? "word" : `d:${id}`,
+        target: `cl:${id}`,
+        className: styles.edgeLit,
+      });
+    }
+  }
+  return { nodes, edges };
+}
+
+function focusFromDecisions(map: MapFile, model: Model, path: Path, openComp: string | null): string[] {
+  if (openComp) return [`cl:${openComp.split("|")[0]}`];
+  if (!path.area) return map.areas.map((a) => `area:${a}`);
+  const groups = groupsOf(model, path.area);
+  if (!path.group) return [`area:${path.area}`, ...[...groups.keys()].map((g) => `g:${g}`)];
+  const ids = groups.get(path.group) ?? [];
+  if (!path.decision) return [`g:${path.group}`, ...ids.map((id) => `p:${id}`)];
+  const d = model.decisions[path.decision];
+  return [
+    `d:${path.decision}`,
+    stepOf(model, path.area, path.decision) ? "word" : null,
+    d?.components.length ? `cl:${path.decision}` : null,
+  ].filter(Boolean) as string[];
+}
+
 // The boxes to zoom to after a press: the node pressed and what it opened.
 function focusOf(map: MapFile, model: Model, path: Path, openComp: string | null): string[] {
   if (openComp) return [`cl:${openComp.split("|")[0]}`];
@@ -906,6 +967,10 @@ function MapView({ map, mode, onMode }: { map: MapFile; mode: Mode; onMode: (m: 
   }, [map, mode]);
   const [path, setPath] = useState<Path>(NONE);
   const [openComp, setOpenComp] = useState<string | null>(null);
+  // Where the route starts, chosen per scope; the primitives by default.
+  const [starts, setStarts] = useState<Record<string, Start>>({});
+  const start: Start = (path.area && starts[path.area]) || "primitives";
+  const fromDecisions = start === "decisions";
   const flow = useReactFlow();
   const [nodes, setNodes] = useNodesState<Node>([]);
   const isColor = path.area === "Color";
@@ -923,8 +988,14 @@ function MapView({ map, mode, onMode }: { map: MapFile; mode: Mode; onMode: (m: 
   }, [mode]);
 
   const graph = useMemo(
-    () => build(map, model, { path, mode, openComp, toggleComp: (k) => setOpenComp((o) => (o === k ? null : k)) }),
-    [map, model, mode, path, openComp],
+    () =>
+      (fromDecisions ? buildFromDecisions : build)(map, model, {
+        path,
+        mode,
+        openComp,
+        toggleComp: (k) => setOpenComp((o) => (o === k ? null : k)),
+      }),
+    [map, model, mode, path, openComp, fromDecisions],
   );
   useEffect(() => setNodes(graph.nodes), [graph]);
 
@@ -950,7 +1021,10 @@ function MapView({ map, mode, onMode }: { map: MapFile; mode: Mode; onMode: (m: 
 
   // After each press, zoom to the pressed box and what it opened, once those boxes are measured and
   // have stopped moving (the column stacking moves them once).
-  const focus = useMemo(() => focusOf(map, model, path, openComp), [map, model, path, openComp]);
+  const focus = useMemo(
+    () => (fromDecisions ? focusFromDecisions : focusOf)(map, model, path, openComp),
+    [map, model, path, openComp, fromDecisions],
+  );
   const focusKey = focus.join(",");
   useEffect(() => {
     let frame = 0;
@@ -990,6 +1064,10 @@ function MapView({ map, mode, onMode }: { map: MapFile; mode: Mode; onMode: (m: 
       const id = n.id.slice(4);
       return set({ ...NONE, area: path.area, hue: path.hue === id ? null : id });
     }
+    if (n.type === "pick") return set({ ...path, decision: data.id as string });
+    if (fromDecisions && n.type === "word") return;
+    if (fromDecisions && n.type === "semantic")
+      return set({ ...path, group: path.group === data.group ? null : (data.group as string), decision: null });
     if (n.type === "step") return set({ ...path, step: data.id as string, group: null, decision: null });
     if (n.type === "word") return set({ ...path, step: null, group: null, decision: null });
     if (n.type === "semantic")
@@ -1021,6 +1099,26 @@ function MapView({ map, mode, onMode }: { map: MapFile; mode: Mode; onMode: (m: 
       >
         <Background gap={24} size={1} />
         <Controls showInteractive={false} position="bottom-left" className={styles.controls} />
+        {path.area && (
+          <Panel position="top-left">
+            <div className={styles.toggleButtons} role="group" aria-label={`Start ${path.area} from`}>
+              {(["primitives", "decisions"] as const).map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  className={`${styles.toggleButton} ${start === s ? styles.toggleOn : ""}`}
+                  aria-pressed={start === s}
+                  onClick={() => {
+                    setStarts((x) => ({ ...x, [path.area as string]: s }));
+                    set({ ...NONE, area: path.area });
+                  }}
+                >
+                  {s === "primitives" ? "Start from primitives" : "Start from decisions"}
+                </button>
+              ))}
+            </div>
+          </Panel>
+        )}
         {isColor && (
           <Panel position="top-right">
             <div className={styles.toggleButtons} role="group" aria-label="Values in">
