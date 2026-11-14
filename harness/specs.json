@@ -1046,12 +1046,14 @@
       "in": [
         "the overlay format, its schema, the review list and the lockfile; create writes these in place of a copied scheme.json",
         "open-ds upgrade: the three-way compare, migrations on overlays, and the import from old projects",
-        "the source folder split by scope: scheme.json, scopes/<scope>.json, brands/<brand>.json, components.json; the grammar splits the same way; the loader reads both layouts"
+        "the source folder split by scope: scheme.json, scopes/<scope>.json, brands/<brand>.json, components.json; the grammar splits the same way; the loader reads both layouts",
+        "packaging: the npm package carries the split sources and the overlay schema; open-ds export writes a package folder and create --from reads it"
       ],
       "checks": [
         "overlay-schema-guards",
         "cli-upgrade-command",
         "schemes-split-by-scope",
+        "package-folder-round-trip",
         "cli-create-temp",
         "json-sources-one-layout",
         "llm-schema-descriptions",

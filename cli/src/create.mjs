@@ -20,8 +20,10 @@ import { baseCss, componentsFor, packagesFor, withImports } from "./components.m
 import { compositeComponents, compositePackages, docSiteFiles } from "./doc-site.mjs";
 import { docsLlms, docsPages } from "./docs.mjs";
 import { emptyOverlay } from "./overlay.mjs";
-import { buildProject, PROJECT_FILES } from "./project.mjs";
-import { assetRoots, focusedSkills, grammar, loadScheme } from "./schemes.mjs";
+import { schemeValidator } from "./build.mjs";
+import { packageSource, readPackageFolder } from "./package-folder.mjs";
+import { buildProject, joinProject, overlayValidator, PROJECT_FILES } from "./project.mjs";
+import { assetRoots, focusedSkills, grammar, loadScheme, storedScheme } from "./schemes.mjs";
 
 const VERSION = JSON.parse(
   readFileSync(
@@ -114,7 +116,34 @@ function readme(scheme, name, brands) {
   ].join("\n");
 }
 
-/** Writes a design system project for a scheme into dir. Returns what it wrote. */
+/**
+ * The scheme a source and an overlay make, checked, before create writes anything. expectHash is the
+ * built file's hash a package folder recorded; a different result fails.
+ */
+function joinedScheme(source, overlay, g, roots, expectHash) {
+  const r = joinProject({
+    source,
+    overlay,
+    g,
+    stored: storedScheme(source.id, roots),
+    validate: schemeValidator(roots),
+    validateOverlay: overlayValidator(roots),
+  });
+  if (!r.ok)
+    throw new Error(
+      `The ${source.id} scheme with this overlay fails its checks: ${[...r.problems, ...r.results.flatMap((x) => x.findings)].slice(0, 5).join("; ")}`,
+    );
+  if (expectHash && r.hash !== expectHash)
+    throw new Error(
+      `The overlay joins to another scheme than the folder's ${PROJECT_FILES.built}. Export the folder again with this open-ds.`,
+    );
+  return r.scheme;
+}
+
+/**
+ * Writes a design system project for a scheme into dir. Returns what it wrote. overlay is the user's
+ * layer on the source (an empty overlay by default); every generated file comes from the joined scheme.
+ */
 export function createProject(
   schemeId,
   dir,
@@ -123,10 +152,14 @@ export function createProject(
     openDs = `^${VERSION}`,
     overwrite = false,
     roots = assetRoots(),
+    overlay,
+    expectHash,
   } = {},
 ) {
-  const scheme = loadScheme(schemeId, roots);
+  const source = loadScheme(schemeId, roots);
   const g = grammar(roots);
+  const layer = overlay ?? emptyOverlay(source);
+  const scheme = overlay ? joinedScheme(source, layer, g, roots, expectHash) : source;
   const brands = Object.keys(scheme.tokens.brands);
   if (brand && !brands.includes(brand))
     throw new Error(
@@ -330,9 +363,9 @@ export function createProject(
       ),
     );
 
-  // The scheme as layers: an empty overlay the user edits. The build joins it with the source and writes
+  // The scheme as layers: the overlay the user edits. The build joins it with the source and writes
   // build/scheme.json, the file every reader reads, and the lockfile.
-  write(PROJECT_FILES.overlay, json(emptyOverlay(scheme)));
+  write(PROJECT_FILES.overlay, json(layer));
   const built = buildProject(dir, { roots, raised: [], newSource: true });
   if (!built.ok)
     throw new Error(
@@ -366,7 +399,7 @@ export function createProject(
     }),
   ))
     write(`docs/src/${rel}`, text);
-  const pages = docsPages(scheme, g, roots);
+  const pages = docsPages(scheme, g, roots, { tokensId: source.id });
   for (const [rel, text] of Object.entries(pages))
     write(`docs/docs/${rel}`, text);
   write("docs/static/llms.txt", docsLlms(scheme, pages));
@@ -442,4 +475,15 @@ export function createProject(
   };
   writeFileSync(join(dir, "open-ds.json"), json(record));
   return record;
+}
+
+/**
+ * Writes a design system project from a package folder (the folder open-ds export writes). The folder's
+ * lockfile hashes are checked first, and its source must be the installed one. Returns what it wrote.
+ */
+export function createFromFolder(folder, dir, options = {}) {
+  const roots = options.roots ?? assetRoots();
+  const pkg = readPackageFolder(folder);
+  const source = packageSource(pkg, roots);
+  return createProject(source.id, dir, { ...options, roots, overlay: pkg.overlay, expectHash: pkg.lock.built.sha256 });
 }

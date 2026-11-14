@@ -89,6 +89,11 @@ step("Pack the CLI", () => {
     "bin/open-ds.js",
     "src/cli.mjs",
     "assets/schemes/grammar.json",
+    "assets/schemes/grammar/scopes/color.json",
+    "assets/schemes/dense-data/scheme.json",
+    "assets/schemes/dense-data/scopes/color.json",
+    "assets/schema/overlay.schema.json",
+    "src/package-folder.mjs",
     "assets/tokens/index.json",
     "assets/ui/components/button.tsx",
   ])

@@ -53,6 +53,12 @@ Edit `overlay.json`, then run `npx open-ds build` in the project. The build chec
 
 In a project made before `overlay.json`, `upgrade` reads `scheme.json` and `open-ds.json`. It gets the source from the open-ds version in `package.json` (or `--from-package <version>`) and writes each difference as an overlay entry with the why "carried over from scheme.json". Those entries stay on the review list until you confirm them. The upgrade names each difference an overlay cannot hold, such as the voice. It deletes nothing: point the files that read `scheme.json` at `build/scheme.json`, then delete it.
 
+### A package folder
+
+`npx open-ds export --out <folder>` writes a scheme as one folder: `manifest.json`, `overlay.json`, `open-ds.lock` and `build/scheme.json`. In a project it takes the project's files, which must be built. `npx open-ds export <scheme> --out <folder>` takes a scheme as it ships, with an empty overlay.
+
+`npx open-ds create <dir> --from <folder>` makes a project from the folder. It checks the files against the hashes in `open-ds.lock` first, and it needs the source that the lockfile names. A changed file, or another source, stops it before it writes anything.
+
 ## Tools for the skills
 
 These commands do the steps the agent skills would otherwise judge by eye. The MCP server has the same tools.
