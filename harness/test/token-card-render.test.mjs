@@ -93,6 +93,10 @@ test("the color card shows its contrast, its pairs, its components and a closed 
 // The tokens the approved cards show, with the questions their cards answer.
 const CASES = [
   ["type.body.font-size", ["Can you read it?", "Specimen · set at", "What do you read first?"]],
+  ["space.gap.tight", ["What belongs together?", "Specimen ·", "Where it sits"]],
+  ["space.gap.section", ["What belongs together?", "Specimen ·", "Where it sits"]],
+  ["space.inset.container", ["Does the content sit inside its box?", "Specimen ·", "Where it sits"]],
+  ["size.control.default", ["Can you hit it?", "Floor 24px", "Specimen ·", "Where it sits"]],
 ];
 
 for (const [id, asks] of CASES)

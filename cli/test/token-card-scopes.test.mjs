@@ -59,3 +59,24 @@ test("type: small body text meets the 12px desk floor; large body text says the 
   );
 });
 
+test("spacing: a gap is measured against the scheme's own floor; a pair with no rule says so", () => {
+  assert.deepEqual(said(card(dd, "space.gap.section"), "What belongs together?").slice(0, 3), [
+    "24px ÷ 16px",
+    "1.5×",
+    "Holds at the floor: a section reads as a larger break.",
+  ]);
+  assert.deepEqual(said(card(cf, "space.gap.default"), "What belongs together?").slice(0, 3), [
+    "32px ÷ 16px",
+    "2×",
+    "Holds at the floor: groups read as separate.",
+  ]);
+  assert.ok(
+    said(card(cf, "space.gap.tight"), "What belongs together?").includes(
+      "No rule in the scheme sets a floor for this pair.",
+    ),
+  );
+  assert.deepEqual(card(dd, "space.gap.tight").where, ["Inside one component", "Along one line", "1 × 4px base"]);
+  const control = card(cf, "size.control.default");
+  assert.deepEqual(rows(control, "Can you hit it?")[0], { type: "meter", value: 48, floor: 24, max: 56, text: "48px" });
+});
+

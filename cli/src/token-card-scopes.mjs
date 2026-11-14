@@ -189,7 +189,163 @@ function typeCard(ctx, id) {
   };
 }
 
-const BUILDERS = [typeCard];
+// ---------- Spacing ----------
+
+// Plain words for where a space sits: the grammar's use case descriptions, up to the colon.
+const useCaseWord = (ctx, axis, option) => {
+  const uc = ctx.grammar.scopes.find((s) => s.id === "spacing")?.use_cases;
+  if (!uc) return null;
+  if (!option) return axis === "reach" ? "Along a line and between blocks" : null;
+  const d = uc[axis]?.options?.find((o) => o.id === option)?.description;
+  return d ? d.split(":")[0] : null;
+};
+
+// A stays-apart rule between two spaces: { connection, big, small, other }, or null.
+function apartRule(ctx, id) {
+  const rules = ctx.connections.filter(
+    (c) => c.kind === "stays-apart" && c.by === "at-least" && (covers(c.tokens, id) || covers(c.from, id)),
+  );
+  const own = rules.find((c) => covers(c.tokens, id)) ?? rules.find((c) => covers(c.from, id));
+  if (!own) return null;
+  const other = covers(own.tokens, id) ? [].concat(own.from)[0] : [].concat(own.tokens)[0];
+  const [big, small] = covers(own.tokens, id) ? [id, other] : [other, id];
+  return { connection: own, big, small, other };
+}
+
+function spacingCard(ctx, id) {
+  const kind = /^space\.gap\./.test(id)
+    ? "gap"
+    : /^space\.inset\./.test(id)
+      ? "inset"
+      : /^size\.(control\.|hit-area$)/.test(id)
+        ? "target"
+        : id === "size.row"
+          ? "row"
+          : null;
+  if (!kind) return null;
+  const value = ctx.px(id);
+  const useCases = ctx.scheme.tokens.semantic.space?.$extensions?.["open-ds"]?.["use-cases"] ?? {};
+  const uc = useCases[id.replace(/^space\./, "")] ?? null;
+  const where = uc
+    ? [
+        useCaseWord(ctx, "level", uc.level),
+        useCaseWord(ctx, "reach", uc.reach),
+        `${fmt(uc.multiple)} × ${fmt(value / uc.multiple)}px base`,
+      ].filter(Boolean)
+    : null;
+  const sections = [];
+  let hint = null;
+  if (kind === "gap" || kind === "inset") {
+    const rule = apartRule(ctx, id);
+    const rows = [];
+    let draw;
+    if (rule) {
+      const [big, small] = [ctx.px(rule.big), ctx.px(rule.small)];
+      const ratio = big / small;
+      const floor = rule.connection.times ?? 1;
+      const holds = ratio >= floor;
+      rows.push(
+        facts(
+          [`${fmt(big)}px ÷ ${fmt(small)}px`, `${fmt(ratio)}×`],
+          !holds
+            ? "Under the floor: the two read as one."
+            : ratio === floor
+              ? `Holds at the floor: ${soClause(rule.connection.says)?.toLowerCase() ?? "no room to spare."}`
+              : soClause(rule.connection.says),
+        ),
+        note(`Floor ${fmt(floor)}×, against ${rule.other} at ${fmt(ctx.px(rule.other))}px.`),
+      );
+      draw = kind === "inset" ? { kind: "inset", pad: value, next: ctx.px(rule.other) } : null;
+      if (kind === "gap") draw = { kind: uc?.reach === "section" ? "sections" : "groups", inner: small, outer: big };
+    } else {
+      // No rule ties this space to another: the next larger space of its kind is shown beside it, unmeasured.
+      const next = scaleOf(ctx, kind === "gap" ? /^space\.gap\./ : /^space\.inset\./)
+        .filter((v) => v > value)
+        .sort((a, b) => a - b)[0];
+      if (kind === "gap" && next) {
+        rows.push(
+          facts([`${fmt(next)}px ÷ ${fmt(value)}px`, `${fmt(next / value)}×`], "The next gap out is wider."),
+          note("No rule in the scheme sets a floor for this pair."),
+        );
+        draw = { kind: "groups", inner: value, outer: next };
+      } else {
+        rows.push(note("No rule in the scheme measures this space against another."));
+        draw =
+          kind === "inset" ? { kind: "inset", pad: value, next: null } : { kind: "groups", inner: value, outer: value };
+      }
+    }
+    if (kind === "gap" && uc?.reach === "section") {
+      const between = usageOf(ctx, "between-sections")?.use ?? "";
+      draw = { ...draw, hairline: /hairline/.test(between) };
+      if (between)
+        rows.push(note(/hairline/.test(between) ? "A hairline marks the break." : "No line: space alone separates."));
+    }
+    const what = kind === "inset" ? "a box" : draw.kind === "sections" ? "two sections" : "two groups";
+    sections.push({
+      ask: kind === "gap" ? "What belongs together?" : "Does the content sit inside its box?",
+      rows,
+      specimen: {
+        tag: `Specimen · ${fmt(value)}px ${kind === "gap" ? "gap" : "inset"}`,
+        as: `${what} · drawn at ${fmt(value)}px · on surface.canvas`,
+        draw,
+      },
+    });
+    hint = scaleHint(scaleOf(ctx, kind === "gap" ? /^space\.gap\./ : /^space\.inset\./), value, {
+      word: kind === "gap" ? "gap" : "padding",
+    });
+  } else if (kind === "target") {
+    // WCAG 2.5.8, as the grammar's control height job states it.
+    const job = ctx.grammar.scopes.find((s) => s.id === "spacing")?.jobs?.find((j) => j.id === "control-height");
+    const floor = Number(/2\.5\.8: (\d+)px/.exec(job?.how ?? "")?.[1]) || null;
+    const rows = floor
+      ? [
+          meter(value, floor, 56, `${fmt(value)}px`),
+          facts(
+            [`${fmt(value)}px ÷ ${floor}px`, `${fmt(value / floor)}×`],
+            value >= floor ? "Above the WCAG floor: easy to hit." : "Under the WCAG floor: hard to hit.",
+          ),
+          note(`Floor ${floor}px: WCAG 2.5.8 hit area.`),
+        ]
+      : [missing("The grammar names no hit area floor.")];
+    sections.push({
+      ask: "Can you hit it?",
+      rows,
+      specimen: {
+        tag: `Specimen · ${fmt(value)}px tall`,
+        as: `a control · drawn ${fmt(value)}px tall · on surface.canvas`,
+        draw: { kind: "target", px: value, floor },
+      },
+    });
+    if (/^size\.control\./.test(id))
+      hint = scaleHint(scaleOf(ctx, /^size\.control\./), value, { word: "control height" });
+  } else {
+    const rule = connectionOf(ctx, "row-holds-target");
+    const target = rule ? [].concat(rule.from)[0] : null;
+    const floor = target ? ctx.px(target) : null;
+    const rows = floor
+      ? [
+          facts(
+            [`${fmt(value)}px ÷ ${fmt(floor)}px`, `${fmt(value / floor)}×`],
+            value >= floor ? soClause(rule.says) : "Under the target: hard to hit.",
+          ),
+          note(`Floor 1×, against ${target} at ${fmt(floor)}px.`),
+        ]
+      : [missing("The scheme names no smallest target for a row.")];
+    sections.push({
+      ask: "Can the eye follow the row?",
+      rows,
+      specimen: {
+        tag: `Specimen · ${fmt(value)}px row`,
+        as: `three rows · drawn ${fmt(value)}px tall · on surface.canvas`,
+        draw: { kind: "rows", px: value },
+      },
+    });
+  }
+  const swatch = { kind: kind === "gap" ? (uc?.reach === "section" ? "section-gap" : "gap") : kind };
+  return { swatch, where, sections, hint, ...sharesOf(ctx, id) };
+}
+
+const BUILDERS = [typeCard, spacingCard];
 
 /**
  * The card of one decision in one mode, or null for a token no scope card covers. ctx holds
