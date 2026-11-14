@@ -31,9 +31,9 @@ const config: Config = {
   markdown: { format: "detect", hooks: { onBrokenMarkdownLinks: "throw" } },
   i18n: { defaultLocale: "en", locales: ["en"] },
   // Lightning CSS minifies the scheme's CSS: the default minifier cannot read radius.pill's
-  // calc(infinity * 1px) and warns on it (OD-286). The Open DS docs use the same minifier.
+  // calc(infinity * 1px) and warns on it. The Open DS docs use the same minifier.
   future: { faster: { lightningCssMinimizer: true } },
-  // The live Storybook embeds follow the docs theme (OD-213).
+  // The live Storybook embeds follow the docs theme.
   clientModules: [
     "./src/clientModules/embed-mode.ts",
     "./src/clientModules/scales.ts",
@@ -66,8 +66,8 @@ const config: Config = {
   ],
   themeConfig: {
     colorMode: { respectPrefersColorScheme: true },
-    // The top bar wears the design system (OD-182): its name and version, with Storybook and Open DS
-    // on the right. Its sections live in the sidebar, so the top bar does not repeat them (OD-216).
+    // The top bar wears the design system: its name and version, with Storybook and Open DS
+    // on the right. Its sections live in the sidebar, so the top bar does not repeat them.
     navbar: {
       title: scheme.name,
       logo: { src: "logo.svg", srcDark: "logo-dark.svg", alt: scheme.name },

@@ -60,7 +60,7 @@ export function schemeIds(roots = assetRoots()) {
 }
 
 /**
- * The grammar file's one layout (OD-289): two-space indents, and a list of plain values on one line
+ * The grammar file's one layout: two-space indents, and a list of plain values on one line
  * when that line fits in 80 characters. saveGrammar writes it, so an edit changes only its own lines.
  */
 export function formatGrammar(value) {
@@ -88,10 +88,10 @@ export function formatGrammar(value) {
   return `${out(value, "", 0)}\n`;
 }
 
-/** Write the grammar. The one way to change schemes/grammar.json (OD-289). */
+/** Write the grammar. The one way to change schemes/grammar.json. */
 /**
  * The source JSON files not in the one layout (formatGrammar): the grammar and the two schemas. [] when all
- * are. Read here, so every read of schemes/ stays in this module (OD-289).
+ * are. Read here, so every read of schemes/ stays in this module.
  */
 export function layoutGaps(roots = assetRoots()) {
   const files = [join(roots.schemes, "grammar.json"), join(roots.schema, "grammar.schema.json"), join(roots.schema, "scheme.schema.json")];
@@ -105,19 +105,19 @@ export function saveGrammar(g, roots = assetRoots()) {
   writeFileSync(join(roots.schemes, "grammar.json"), formatGrammar(g));
 }
 
-/** Write a scheme, by its id. The one way to change schemes/<id>.json (OD-289). */
+/** Write a scheme, by its id. The one way to change schemes/<id>.json. */
 export function saveScheme(scheme, roots = assetRoots()) {
   if (!scheme?.id) throw new Error("saveScheme needs a scheme with an id. Load it with loadScheme first.");
-  // The file keeps only what the scheme decides: its own component values (OD-291), and the key colors
-  // and spacing rhythm, not the scales and steps they generate (OD-292), and the type and spacing
-  // records, not the values they generate (OD-301). loadScheme fills the rest.
+  // The file keeps only what the scheme decides: its own component values, and the key colors
+  // and spacing rhythm, not the scales and steps they generate, and the type and spacing
+  // records, not the values they generate. loadScheme fills the rest.
   const stored = withoutTypeAndSpace(withoutGenerated(withoutDefaults(scheme, grammar(roots))));
   writeFileSync(join(roots.schemes, `${scheme.id}.json`), `${JSON.stringify(stored, null, 2)}\n`);
 }
 
 /**
  * Write a scheme file exactly as given, defaults and all. For a scratch copy of another checkout's
- * schemes, which its own loader then reads (open-ds compare, OD-298); a scheme of this checkout
+ * schemes, which its own loader then reads (open-ds compare); a scheme of this checkout
  * changes through saveScheme.
  */
 export function saveStoredScheme(stored, roots) {
@@ -130,7 +130,7 @@ export function storedScheme(id, roots = assetRoots()) {
   return readJson(join(roots.schemes, `${id}.json`));
 }
 
-/** A scheme with its defaults and generated values. graded overrides the curve flag (OD-299), for a report that builds both curves. */
+/** A scheme with its defaults and generated values. graded overrides the curve flag, for a report that builds both curves. */
 export function loadScheme(id, roots = assetRoots(), { graded } = {}) {
   const path = join(roots.schemes, `${id}.json`);
   if (!existsSync(path)) {

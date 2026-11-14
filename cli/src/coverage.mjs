@@ -1,8 +1,8 @@
-// Decision coverage (OD-273): every semantic value a scheme designs rests on a decision, an answer to a
+// Decision coverage: every semantic value a scheme designs rests on a decision, an answer to a
 // grammar question. The trace engine (trace.mjs) finds the links: a theme pick, the token's own reason,
 // its group's reason, a usage rule or a grammar trace rule. The owning scope's answers alone do not
-// count: that fallback once tied the button's height to the contrast answer. The harness counts what
-// is left per scheme, and the count may only go down.
+// count: that fallback once tied the button's height to the contrast answer. What is left is counted per
+// scheme, and the count may only go down.
 import { owns } from "./lands.mjs";
 import { traceScheme } from "./trace.mjs";
 

@@ -1,6 +1,6 @@
-// The owner's approvals for the quality gate (OD-298), from harness/quality-approvals.json. An approval
-// clears one flag: one check, in one scheme and mode, on one token or one pair. Only the owner adds an
-// entry. Pure: the caller reads the file.
+// The approvals for the quality gate, from harness/quality-approvals.json. An approval clears one
+// flag: one check, in one scheme and mode, on one token or one pair. Each entry names who approved it.
+// Pure: the caller reads the file.
 //
 //   { scheme, theme, check, token | pair, to?, why, approved_by }
 //
@@ -67,7 +67,7 @@ export function approvalFor(approvals, { scheme, themes, check, tokens }) {
 }
 
 /**
- * Whether the owner approved this color move: an entry with no check (or a shift check) for this scheme,
+ * Whether this color move is approved: an entry with no check (or a shift check) for this scheme,
  * token and theme, whose to is the value the token moved to. A move to any other value is not approved.
  */
 export const approvedMove = (approvals, scheme, token, theme, to) =>

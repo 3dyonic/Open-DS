@@ -1,6 +1,6 @@
-// What shadcn/ui reads, and which of the scheme's tokens each one points at (OD-215). The token build
+// What shadcn/ui reads, and which of the scheme's tokens each one points at. The token build
 // writes theme.css and shadcn.css from these; the docs read them to show each component's tokens.
-// A created project's tokens/build.mjs carries a copy (the harness keeps it equal).
+// A created project's tokens/build.mjs carries a copy, kept equal to this one.
 
 // shadcn reads these variables. Each points at one of our semantic decisions.
 export const SHADCN = {
@@ -16,7 +16,7 @@ export const SHADCN = {
   "secondary-foreground": "color-text-primary",
   muted: "color-surface-sunken",
   "muted-foreground": "color-text-muted",
-  // accent is shadcn's hover and highlight fill: the state semantic, not the depth one (OD-241).
+  // accent is shadcn's hover and highlight fill: the state semantic, not the depth one.
   accent: "color-surface-highlight",
   "accent-foreground": "color-text-primary",
   destructive: "color-status-danger",
@@ -45,7 +45,7 @@ export const SHADCN = {
 // which apps and Storybook load and the Open DS site does not, so the site keeps its own scale.
 export const SHADCN_SCALE = {
   "--radius-xs": "var(--radius-badge)",
-  "--radius-sm": "var(--radius-option)", // shadcn's menu and select items: options (OD-246)
+  "--radius-sm": "var(--radius-option)", // shadcn's menu and select items: options
   "--radius-md": "var(--radius-control)",
   "--radius-lg": "var(--radius-surface)",
   "--radius-xl": "var(--radius-surface)",
@@ -64,7 +64,7 @@ export const SHADCN_SCALE = {
   "--text-lg--line-height": "var(--type-heading-line-height)",
 };
 
-// OD-235: named spacing utilities from the scheme's spacing, so code writes gap-section or p-container
+// Named spacing utilities from the scheme's spacing, so code writes gap-section or p-container
 // and follows the scheme. Tailwind v4 makes p-*, m-*, gap-* and the rest from every --spacing-* theme
 // variable. Layout roles take their last name (gap.section → section, inset.control-x → control); the
 // component spacing map's steps take map-<step> (map-x6, map-hairline).

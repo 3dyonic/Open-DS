@@ -1,4 +1,4 @@
-// Resolved values and their chains, for the quality gate (OD-298). Pure: the caller passes the token
+// Resolved values and their chains, for the quality gate. Pure: the caller passes the token
 // tree of one brand and mode (built by the ref's own themeTokens), so the same code reads any ref.
 
 const REF = /^\{([^}]+)\}$/;

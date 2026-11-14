@@ -1,4 +1,4 @@
-// Where each scope lands (OD-233): every component whose source reads a token the scope owns, traced
+// Where each scope lands: every component whose source reads a token the scope owns, traced
 // from the component's own code. A component reads its component keys (var(--button-padding-x)) and
 // shadcn's utilities (bg-primary, rounded-md); each leads, through the keys and the semantics, to the
 // tokens a scope owns. Copy is read by the stories from the scheme's samples, so the voice scope lands
@@ -152,7 +152,7 @@ export function refPath(index, ref) {
   if (index.byPath.has(ref)) return ref;
   const inTheme = `theme.${ref.replace(/^theme\./, "")}`;
   if (index.byPath.has(inTheme)) return inTheme;
-  // A component key that aliases another (a deprecated key, OD-241) names it without "component.",
+  // A component key that aliases another (a deprecated key) names it without "component.",
   // as the build sees the tree.
   if (index.byPath.has(`component.${ref}`)) return `component.${ref}`;
   return ref;
@@ -178,7 +178,7 @@ export function aliasChain(index, path) {
 }
 
 /**
- * A component's token API (OD-234), for agents (get_component, get_context, open-ds component): every
+ * A component's token API, for agents (get_component, get_context, open-ds component): every
  * token its code reads, the semantic each aliases, its CSS variable, and the primitive and value it ends
  * at in every theme, with whether it changes with the theme. The same data the docs' "Tokens it reads"
  * table shows.

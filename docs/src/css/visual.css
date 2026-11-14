@@ -1,9 +1,8 @@
-/* The visual blocks of the docs (OD-182): the home hero and product screen, answer cards, section
+/* The visual blocks of the docs: the home hero and product screen, answer cards, section
    tiles, live variant cards, do and don't, color bands, surface stacks and primitive ramps. The
    pages come from cli/src/docs.mjs as HTML inside Markdown; these rules dress them in the design
    system's own tokens and component keys, so each scheme's docs look like that scheme. The same file
-   ships in a created project (cli/templates/project/docs/src/css/visual.css); the harness keeps the
-   two the same. */
+   ships in a created project (cli/templates/project/docs/src/css/visual.css); the two stay the same. */
 
 .odv-hero {
   display: grid;
@@ -448,7 +447,7 @@
   }
 }
 
-/* "Built with Open DS" on the right of the top bar (OD-182). */
+/* "Built with Open DS" on the right of the top bar. */
 .ods-built {
   font: 500 11px var(--type-data-font-family);
   color: var(--color-text-muted);
@@ -480,7 +479,7 @@
   font-size: var(--type-label-font-size);
 }
 
-/* Variants: one full-width section per variant (OD-203). */
+/* Variants: one full-width section per variant. */
 .odv-variant {
   background: var(--color-surface-default);
   border: var(--border-width-default) solid var(--color-border-default);
@@ -621,7 +620,7 @@
   padding: 0;
 }
 
-/* Why it works this way: one contained card per answer, three steps inside (OD-203). */
+/* Why it works this way: one contained card per answer, three steps inside. */
 .odv-trail {
   background: var(--color-surface-default);
   border: var(--border-width-default) solid var(--color-border-default);
@@ -741,7 +740,7 @@
   }
 }
 
-/* OD-209: robots, Foundations cards and the inventory. The robots appear in the repo docs only; a
+/* Robots, Foundations cards and the inventory. The robots appear in the repo docs only; a
    created project gets the same cards without pictures. */
 .odv-robot {
   display: block;
@@ -995,7 +994,7 @@ a.odv-icard:hover {
   border-radius: var(--radius-badge);
   padding: 1px 6px;
 }
-/* OD-211: a left-out component looks like any other; only its badge differs. */
+/* A left-out component looks like any other; only its badge differs. */
 .odv-pill-out {
   color: var(--ods-text-on-warning-subtle, var(--color-status-warning));
   background: var(--color-status-warning-subtle);
@@ -1050,7 +1049,7 @@ a.odv-icard:hover {
     height: 80px;
   }
 }
-/* OD-209: the hero's sample card, for a scheme that does not carry a table. */
+/* The hero's sample card, for a scheme that does not carry a table. */
 .odv-samplecard {
   display: grid;
   gap: 10px;
@@ -1102,7 +1101,7 @@ a.odv-icard:hover {
   font-size: var(--type-caption-font-size);
   color: var(--color-text-secondary);
 }
-/* OD-209: hero previews, one per main task. */
+/* Hero previews, one per main task. */
 .odv-preview {
   display: grid;
   gap: 14px;
@@ -1192,7 +1191,7 @@ a.odv-icard:hover {
   }
 }
 
-/* OD-211: the Primitives index. Specimens drawn from raw values, and a bar for how many are in use. */
+/* The Primitives index. Specimens drawn from raw values, and a bar for how many are in use. */
 .odv-spec-cols {
   align-items: flex-end;
 }
@@ -1230,7 +1229,7 @@ a.odv-icard:hover {
   background: var(--color-action-primary);
 }
 
-/* OD-211: the Theming page. A preview per mode in its own colors, the mode table, what stays. */
+/* The Theming page. A preview per mode in its own colors, the mode table, what stays. */
 .odv-theming {
   display: grid;
   gap: 1.25rem;
@@ -1355,7 +1354,7 @@ a.odv-icard:hover {
   color: var(--color-text-secondary);
 }
 
-/* OD-215: "Tokens it reads": each part, from its class to the scheme's token, and the value per theme. */
+/* "Tokens it reads": each part, from its class to the scheme's token, and the value per theme. */
 .odv-reads {
   min-width: 760px;
 }
@@ -1402,12 +1401,12 @@ a.odv-icard:hover {
 }
 
 
-/* OD-220: anything with a hover hint shows the help cursor, so people know there is one. */
+/* Anything with a hover hint shows the help cursor, so people know there is one. */
 .theme-doc-markdown [title]:not(a) {
   cursor: help;
 }
 
-/* The scale view (OD-223): lanes of whole scales, then one row per token. */
+/* The scale view: lanes of whole scales, then one row per token. */
 .odv-scale {
   display: grid;
   gap: 8px;
@@ -1614,7 +1613,7 @@ tr.odv-for td {
   color: var(--color-text-muted);
 }
 
-/* Pairs and tones as pictures (OD-233). */
+/* Pairs and tones as pictures. */
 .odv-pgroup {
   display: grid;
   gap: 8px;
@@ -1951,7 +1950,7 @@ tr.odv-for td {
 .odv-font-stack { font-family: var(--ifm-font-family-monospace); font-size: 12px; color: var(--ifm-color-emphasis-700); }
 .odv-font-roles code { display: inline-block; margin: 2px 4px 2px 0; }
 
-/* Decision reference (OD-239): the intro, the flow, the process trees, the folds, and the menu in
+/* Decision reference: the intro, the flow, the process trees, the folds, and the menu in
    the left sidebar. One section is open at a time (details[name]). */
 .odv-decided { display: grid; gap: 16px; min-width: 0; }
 .odv-intro { display: flex; gap: 24px; align-items: center; padding: 20px 24px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 12px; background: var(--ifm-background-surface-color); }
@@ -2006,7 +2005,7 @@ tr.odv-for td {
 .odv-dmenu-sep { margin: 8px 12px; border: 0; border-top: 1px solid var(--ifm-color-emphasis-300); }
 @media (max-width: 700px) { .odv-intro { flex-direction: column; align-items: flex-start; } .odv-tree li:has(> .odv-go) { flex-direction: column; gap: 0; } }
 
-/* Anatomy reference (OD-229): one card per part, each token a chain from the decision to the value. */
+/* Anatomy reference: one card per part, each token a chain from the decision to the value. */
 .odv-byscheme { display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px 1px 6px; border-radius: 999px; background: var(--color-surface-selected); color: var(--ods-text-on-selected); font-size: 11px; font-weight: 600; line-height: 18px; white-space: nowrap; vertical-align: middle; }
 .odv-anat-parts { width: 100%; font-size: 0.92em; }
 .odv-anat-card { margin: 0 0 16px; padding: 16px 20px; border: 1px solid var(--color-border-default); border-radius: var(--radius-surface, 8px); background: var(--color-surface-default); }
@@ -2022,10 +2021,10 @@ tr.odv-for td {
 .odv-anat-lines b { color: var(--color-text-primary); margin-right: 6px; }
 .odv-surface-swatch { display: inline-block; width: 22px; height: 14px; margin-right: 6px; vertical-align: -2px; border: 1px solid var(--color-border-default); border-radius: 3px; }
 
-/* The Anatomy reference card (OD-229), after a component's variants: a link to the parts layer. */
+/* The Anatomy reference card, after a component's variants: a link to the parts layer. */
 .odv-anatref { display: flex; align-items: center; gap: 16px; padding: 16px 20px; margin: 8px 0 24px; border: var(--border-width-default, 1px) solid var(--color-border-default); border-radius: var(--radius-surface); background: var(--color-surface-default); color: inherit; text-decoration: none; }
 .odv-anatref:hover { background: var(--color-surface-highlight); text-decoration: none; color: inherit; }
-.odv-anatref:focus-visible { outline: var(--border-width-focus, 2px) solid var(--color-border-focus); outline-offset: var(--border-width-focus-offset, 2px); }
+.odv-anatref:focus-visible { outline: var(--focus-ring-width, 2px) solid var(--color-border-focus); outline-offset: var(--focus-ring-offset, 2px); }
 .odv-anatref-b { display: grid; gap: 4px; flex: 1; min-width: 0; }
 .odv-anatref-b b { font-weight: 600; color: var(--color-text-primary); }
 .odv-anatref-b span { color: var(--color-text-secondary); font-size: 0.9em; }

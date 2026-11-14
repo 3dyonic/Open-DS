@@ -1,6 +1,6 @@
-// Curve checks (OD-298): the shape of each color scale. Neighbouring steps differ in OKLab lightness
+// Curve checks: the shape of each color scale. Neighbouring steps differ in OKLab lightness
 // by at least curves.minGap; steps 400, 500 and 700 apart reach 3:1, 4.5:1 and 7:1. The grades are
-// reported, not gated, until OD-299 lands (curves.gradesGated). Each scale is gated on its own.
+// reported, not gated, while curves.gradesGated is false. Each scale is gated on its own.
 import { contrast, oklab } from "../color.mjs";
 import { countBy, measureOf } from "./measure.mjs";
 
@@ -68,7 +68,7 @@ export function measure(snapshot, params) {
       value: misses.length,
       perScheme: countBy(misses, (m) => m.scheme),
       parts: countBy(misses, (m) => `${m.scheme}/${m.hue}.${m.mode}`),
-      notes: params.curves.gradesGated ? [] : ["Contrast grades are reported, not gated (gradesGated: false), by the owner's decision. They gate once OD-299 lands."],
+      notes: params.curves.gradesGated ? [] : ["Contrast grades are reported, not gated (gradesGated: false)."],
       details: misses.map((m) => `${m.scheme}: ${m.hue}.${m.mode} ${m.from} and ${m.to} are ${m.ratio.toFixed(2)}:1, need ${m.need}:1`),
     }),
   ];

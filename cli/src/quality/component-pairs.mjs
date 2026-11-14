@@ -1,4 +1,4 @@
-// The foreground-on-background pairs each component draws (OD-298), read from its source. Pure.
+// The foreground-on-background pairs each component draws, read from its source. Pure.
 //
 // An element is one class string. In it, a foreground (text, an icon's fill or stroke) sits on the
 // element's fill in the same state, or on its resting fill; with no fill of its own it sits on the page.

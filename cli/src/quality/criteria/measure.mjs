@@ -1,4 +1,4 @@
-// The shape every criterion family returns (OD-298). A measure is one number computed from one
+// The shape every criterion family returns. A measure is one number computed from one
 // snapshot; a direction says which way is better: "down" (fewer is better), "up" (more is better) or
 // "report" (shown, never gated).
 import { approvalFor } from "../approvals.mjs";
@@ -37,7 +37,7 @@ export function countBy(list, keyOf) {
 export const sum = (obj) => Object.values(obj).reduce((a, b) => a + (b ?? 0), 0);
 
 /**
- * Flags split by the owner's approvals (harness/quality-approvals.json): { open, cleared }. flags:
+ * Flags split by the approvals (harness/quality-approvals.json): { open, cleared }. flags:
  * [{ scheme, themes, tokens, says }]; check is the criterion id that raised them. cleared holds the
  * approved flags' lines, with who approved each and why.
  */
@@ -52,7 +52,7 @@ export function splitApproved(flags, approvals, check) {
   return { open, cleared };
 }
 
-/** A count of the flags the owner has not approved, gated per scheme and theme. */
+/** A count of the flags with no approval, gated per scheme and theme. */
 export function flagMeasure({ id, family, title, flags, approvals }) {
   const { open, cleared } = splitApproved(flags, approvals, id);
   return measureOf({

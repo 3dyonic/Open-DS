@@ -1,5 +1,5 @@
-// Accessibility (OD-298): every grammar pair keeps its WCAG contrast; APCA Lc below the readability
-// floor is a warning, shown and never gated (the owner's decision); hit areas; and text sizes in rem,
+// Accessibility: every grammar pair keeps its WCAG contrast; APCA Lc below the readability
+// floor is a warning, shown and never gated; hit areas; and text sizes in rem,
 // so text follows the user's setting.
 import { contrast } from "../../ramps.mjs";
 import { apcaContrast, apcaFloor } from "../apca.mjs";
@@ -62,7 +62,7 @@ export function measure(snapshot) {
       title: "Grammar pairs whose APCA Lc is under the readability floor for their role (warning, not gated)",
       direction: "down",
       gated: false,
-      notes: ["APCA Lc is a warning only, by the owner's decision: shown, never gated."],
+      notes: ["APCA Lc is a warning only: shown, never gated."],
       value: sum(Object.fromEntries(Object.entries(pairs).map(([id, l]) => [id, l.filter(weakLc).length]))),
       perScheme: Object.fromEntries(Object.entries(pairs).map(([id, l]) => [id, l.filter(weakLc).length])),
       parts: byTheme(weakLc),

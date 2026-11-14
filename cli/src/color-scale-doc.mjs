@@ -1,4 +1,4 @@
-// The docs page "How the scale is built" (OD-299, OD-307), one per scheme, under Primitives › Color.
+// The docs page "How the scale is built", one per scheme, under Primitives › Color.
 // It shows the scheme's key scale (the hue behind color.action.primary in the first brand, light
 // theme), the curve its steps follow, the answers that chose that curve, three real uses with their
 // contrast, and the same key built with other answers. Every number comes from the built scale. The

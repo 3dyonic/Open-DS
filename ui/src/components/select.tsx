@@ -39,7 +39,7 @@ export function SelectContent({
   className,
   children,
   position = "popper",
-  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to (OD-243)
+  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content>) {
   return (

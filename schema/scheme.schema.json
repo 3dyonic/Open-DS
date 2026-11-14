@@ -155,7 +155,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["description", "follows", "in", "out"],
-      "description": "The components this system carries: an output of the components answers, picked from the grammar catalogue. Every catalogue item is decided (OD-211): in, with why (a limited use says where it fits), or out, with the reason argued from the answers.",
+      "description": "The components this system carries: an output of the components answers, picked from the grammar catalogue. Every catalogue item is decided: in, with why (a limited use says where it fits), or out, with the reason argued from the answers.",
       "properties": {
         "description": {
           "type": "string",
@@ -285,7 +285,7 @@
               }
             }
           },
-          "description": "Every catalogue item not in the in list, each with why this design system leaves it out (OD-211), and what it uses instead."
+          "description": "Every catalogue item not in the in list, each with why this design system leaves it out, and what it uses instead."
         }
       }
     },
@@ -484,14 +484,14 @@
             "value": {
               "type": "string",
               "minLength": 1,
-              "description": "A valid value the person typed, for a filled field (OD-135)."
+              "description": "A valid value the person typed, for a filled field."
             }
           }
         },
         "choices": {
           "type": "array",
           "minItems": 2,
-          "description": "Choice cards (OD-135): options that each have a title and a line that explains them.",
+          "description": "Choice cards: options that each have a title and a line that explains them.",
           "items": {
             "type": "object",
             "additionalProperties": false,
@@ -523,7 +523,7 @@
           "type": "object",
           "additionalProperties": false,
           "required": ["placeholder", "query", "total", "results", "none"],
-          "description": "A search box with a count of results beside it (OD-135).",
+          "description": "A search box with a count of results beside it.",
           "properties": {
             "placeholder": {
               "type": "string",
@@ -556,7 +556,7 @@
           "type": "object",
           "additionalProperties": false,
           "required": ["series", "ticks", "point"],
-          "description": "A bar chart with two series (OD-135): the series names, the axis labels and one point's values.",
+          "description": "A bar chart with two series: the series names, the axis labels and one point's values.",
           "properties": {
             "series": {
               "type": "array",
@@ -723,7 +723,7 @@
             },
             "destroys": {
               "type": "boolean",
-              "description": "True when confirming destroys data, so the confirm is Button danger. False when it can be undone, so the confirm is Button primary (OD-222)."
+              "description": "True when confirming destroys data, so the confirm is Button danger. False when it can be undone, so the confirm is Button primary."
             }
           }
         },
@@ -825,7 +825,7 @@
           "type": "object",
           "additionalProperties": false,
           "required": ["title", "marker", "messages", "attachment"],
-          "description": "A short conversation (OD-214), for the message, bubble, marker, attachment and message-scroller examples.",
+          "description": "A short conversation, for the message, bubble, marker, attachment and message-scroller examples.",
           "properties": {
             "title": {
               "type": "string",
@@ -973,7 +973,7 @@
         "properties": {
           "considers": {
             "type": "object",
-            "description": "For a question that lists what an answer must weigh (OD-245): how this answer meets each one, by its id.",
+            "description": "For a question that lists what an answer must weigh: how this answer meets each one, by its id.",
             "additionalProperties": {
               "type": "string",
               "minLength": 1
@@ -1008,7 +1008,7 @@
     },
     "relations": {
       "type": "array",
-      "description": "Which grammar relation each shape and elevation token follows, with its inputs (OD-294). cli/src/shape-elevation.mjs checks each record against the values in every brand and mode.",
+      "description": "Which grammar relation each shape and elevation token follows, with its inputs. cli/src/shape-elevation.mjs checks each record against the values in every brand and mode.",
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -1156,7 +1156,7 @@
                     "type": "object",
                     "additionalProperties": false,
                     "required": ["gray", "temperature", "why", "because"],
-                    "description": "The decision behind color.neutral (OD-228): which gray from the grammar's menu the neutral scale points at, and why.",
+                    "description": "The decision behind color.neutral: which gray from the grammar's menu the neutral scale points at, and why.",
                     "properties": {
                       "gray": {
                         "type": "string",
@@ -1239,12 +1239,11 @@
                   "type": "object",
                   "additionalProperties": false,
                   "required": ["generated", "light", "dark"],
-                  "description": "On a colored hue: how its scales are generated (OD-223). Each mode has a key color, kept exact at 600, and optional recorded adjustments per step.",
+                  "description": "On a colored hue: how its scales are generated. Each mode has a key color, kept exact at 600, and optional recorded adjustments per step.",
                   "properties": {
                     "generated": {
-                      "type": "string",
-                      "pattern": "^OD-\\d+$",
-                      "description": "The ticket that set the method."
+                      "const": true,
+                      "description": "The hue's scales are generated from its key colors."
                     },
                     "light": {
                       "$ref": "#/$defs/scaleSpec",
@@ -1383,12 +1382,12 @@
             "open-ds": {
               "type": "object",
               "additionalProperties": false,
-              "description": "On a fill in a theme: its tone, which decides the text on it (OD-222, OD-227). On a component key: the fill it sits on, so the build picks its text by that fill's tone (OD-223).",
+              "description": "On a fill in a theme: its tone, which decides the text on it. On a component key: the fill it sits on, so the build picks its text by that fill's tone.",
               "properties": {
                 "why": {
                   "type": "string",
                   "minLength": 1,
-                  "description": "On a theme pick: why this step carries the semantic's rule in this brand and mode (OD-241, OD-243)."
+                  "description": "On a theme pick: why this step carries the semantic's rule in this brand and mode."
                 },
                 "generated": {
                   "const": true,
@@ -1443,7 +1442,7 @@
                   "type": "number",
                   "exclusiveMinimum": 0,
                   "maximum": 1,
-                  "description": "On a font family: its x-height as a share of the em, from the typeface metrics (OD-297). A test computes the x-height of the smallest text from it."
+                  "description": "On a font family: its x-height as a share of the em, from the typeface metrics. A test computes the x-height of the smallest text from it."
                 }
               }
             }
@@ -1485,7 +1484,7 @@
         "follows",
         "why"
       ],
-      "description": "On the type group (OD-294, OD-301): the decision the loader generates each role's size and line height from. A role's size is base × ratio^step, rounded by the rounding rule. Its line height is the ratio of its kind. The scheme file stores no size or line height next to it.",
+      "description": "On the type group: the decision the loader generates each role's size and line height from. A role's size is base × ratio^step, rounded by the rounding rule. Its line height is the ratio of its kind. The scheme file stores no size or line height next to it.",
       "properties": {
         "base": {
           "type": "integer",
@@ -1602,7 +1601,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["rhythm", "fixed", "because", "why"],
-      "description": "On the component spacing map (OD-235): the scheme's rhythm and the steps that hold still. The steps' values are generated from it.",
+      "description": "On the component spacing map: the scheme's rhythm and the steps that hold still. The steps' values are generated from it.",
       "properties": {
         "rhythm": {
           "type": "number",
@@ -1638,7 +1637,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["use-cases", "follows", "why"],
-      "description": "On the space group (OD-294, OD-301): the spacing record the loader generates the gaps and insets from. Each space token has a use case and a multiple; its value is base × multiple. The spacing.definition answer sets the base: 4px for small steps on a 4px grid, 8px for big even steps. The scheme file stores no value next to it.",
+      "description": "On the space group: the spacing record the loader generates the gaps and insets from. Each space token has a use case and a multiple; its value is base × multiple. The spacing.definition answer sets the base: 4px for small steps on a 4px grid, 8px for big even steps. The scheme file stores no value next to it.",
       "properties": {
         "use-cases": {
           "type": "object",
@@ -1698,7 +1697,7 @@
       "type": "object",
       "additionalProperties": false,
       "required": ["default", "step", "steps", "follows", "why"],
-      "description": "On the size group (OD-294, OD-301): the control scale the loader generates the control heights and the row from. A control height is default + step × its step. A row is one default control tall. size.icon is not on it.",
+      "description": "On the size group: the control scale the loader generates the control heights and the row from. A control height is default + step × its step. A row is one default control tall. size.icon is not on it.",
       "properties": {
         "default": {
           "type": "integer",

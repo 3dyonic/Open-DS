@@ -1,4 +1,4 @@
-// Shape and elevation relations (OD-294). Two corners are decisions (control, surface); option,
+// Shape and elevation relations. Two corners are decisions (control, surface); option,
 // element and badge follow them by a relation. The focus ring follows the default line, and the
 // shadows form one scale by layer. The grammar's shape and elevation scopes define each relation;
 // each scheme records which relation each token follows, with its inputs (scheme.relations). This
@@ -77,7 +77,7 @@ export function checkRelations(scheme, g) {
   const records = scheme.relations ?? [];
   const errors = [];
   const results = [];
-  if (!records.length) errors.push(`${scheme.id} records no relations; add scheme.relations (OD-294)`);
+  if (!records.length) errors.push(`${scheme.id} records no relations; add scheme.relations`);
   // Every token a relation names must have a record, so a new corner cannot skip its relation.
   for (const def of defs.values())
     for (const token of def.tokens)
@@ -101,7 +101,7 @@ export function checkRelations(scheme, g) {
 /**
  * The relation results of one brand and mode, for the given records (all of the scheme's by default):
  * { results, errors }, as checkRelations gives them. index is the scheme's token index for this brand
- * and mode. The decision graph (OD-304) reads a relation through this, one token at a time.
+ * and mode. The decision graph reads a relation through this, one token at a time.
  */
 export function relationResults(scheme, g, { brand, mode, index, records = scheme.relations ?? [] }) {
   const defs = grammarRelations(g);
@@ -194,7 +194,7 @@ export function relationResults(scheme, g, { brand, mode, index, records = schem
       }
       case "layer-step": {
         // The scale is set in light. In dark, dark-same-shape decides: floating layers keep the light
-        // shape and every other layer casts none (OD-297).
+        // shape and every other layer casts none.
         if (theme.mode === "dark") break;
         const s = shadowOf(value(rec.token));
         const named = def.by_answer.options[answer[def.by_answer.question]] ?? [];
@@ -219,7 +219,7 @@ export function relationResults(scheme, g, { brand, mode, index, records = schem
       }
       case "dark-same-shape": {
         if (theme.mode !== "dark") break;
-        // In dark, height reads by tone (OD-297): a raised surface lighter than the base, a sunken one
+        // In dark, height reads by tone: a raised surface lighter than the base, a sunken one
         // darker, and the raised layer's ring a solid color lighter than the raised surface.
         if (def.depth) {
           const [raised, base, sunken] = [def.depth.raised, def.depth.base, def.depth.sunken].map((p) => value(p));
@@ -247,7 +247,7 @@ export function relationResults(scheme, g, { brand, mode, index, records = schem
         const layer = rec.token;
         const d = shadowOf(value(layer));
         const l = shadowOf(aliasChain(light(), layer).value);
-        // Only floating layers cast a shade in dark (OD-297); every other layer shows height by tone.
+        // Only floating layers cast a shade in dark; every other layer shows height by tone.
         if (def.floating && !def.floating.includes(layer)) {
           out(!casts(d), `${layer} is not a floating layer, so it ${casts(d) ? `should cast no shade in dark, yet casts ${shapeText(d)}` : "casts no shade in dark"}`);
           break;
@@ -299,7 +299,7 @@ export function elevationScale(schemes, g) {
 }
 
 /**
- * The edge rule (OD-300): a line that is the only cue that you can click or type (a boundary of the
+ * The edge rule: a line that is the only cue that you can click or type (a boundary of the
  * default-line relation) reads the strong border and meets the floor's contrast on surface.default in
  * every brand and mode. The same importance gets the same line, so every boundary reads one semantic.
  * A quiet line reads the faint border. Returns { checked, gaps }, a gap per break, in words.

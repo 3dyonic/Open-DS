@@ -34,7 +34,7 @@ const KEY_GROUP = {
   tooltip: "overlay",
 };
 
-// Every page says it is generated in its front matter, not in an HTML comment (OD-284).
+// Every page says it is generated in its front matter, not in an HTML comment.
 const fm = (o) =>
   `---\n${Object.entries({
     generated: "By open-ds from the scheme. Do not edit by hand.",
@@ -146,7 +146,7 @@ function chain(tree, path) {
 }
 
 /** A small live sample of a primitive or semantic value, drawn from its CSS variable. */
-// The visual blocks (OD-182) are HTML inside Markdown. Docusaurus ends an HTML block at a blank
+// The visual blocks are HTML inside Markdown. Docusaurus ends an HTML block at a blank
 // line, so each block is written on one line; docs/src/css/visual.css dresses them.
 const h = (...parts) => parts.flat().join("");
 const STATUS_CLASS = {
@@ -195,7 +195,7 @@ const primitiveType = (path) =>
       ? "dimension"
       : undefined);
 
-// The Primitives section (OD-195): one page per kind of value, in this order.
+// The Primitives section: one page per kind of value, in this order.
 const PRIMITIVE_PAGES = [
   { id: "color", title: "Color", match: (p) => p.startsWith("color.") },
   {
@@ -221,7 +221,7 @@ const PRIMITIVE_PAGES = [
   },
 ];
 
-// A drawn value as an inline Sample composite (OD-284). Quotes in a value become single quotes, so the
+// A drawn value as an inline Sample composite. Quotes in a value become single quotes, so the
 // directive's attribute stays whole.
 const draw = (kind, v, extra = "") =>
   `:sample{kind="${kind}" value="${String(v).replace(/"/g, "'")}"${extra}}`;
@@ -237,7 +237,7 @@ function sampleFact(path, type, raw) {
     if (/line-height/.test(path)) return "leading";
     if (/letter/.test(path)) return "tracking";
     if (type === "shadow") return "shadow";
-    // Motion plays when you hover it (OD-220): a duration at the standard easing, an easing at a
+    // Motion plays when you hover it: a duration at the standard easing, an easing at a
     // relaxed speed.
     if (type === "duration") return "duration";
     if (type === "cubicBezier") return "easing";
@@ -245,7 +245,7 @@ function sampleFact(path, type, raw) {
     if (type === "dimension") {
       if (/radius/.test(path)) return "radius";
       if (/border-width/.test(path)) return "line";
-      // A type size shows type at that size (OD-217), not a bar.
+      // A type size shows type at that size, not a bar.
       if (/font[.-]size/.test(path)) return "size";
       return "bar";
     }
@@ -253,7 +253,7 @@ function sampleFact(path, type, raw) {
   })();
   if (!kind) return null;
   if (kind !== "leading") return { kind, value };
-  // A line height, as the line box it makes (OD-221), with that height in px.
+  // A line height, as the line box it makes, with that height in px.
   const m = value.match(/^([\d.]+)(rem|px)?$/);
   const px = m ? Math.round(Number(m[1]) * (m[2] === "px" ? 1 : 16)) : "";
   return px ? { kind, value, note: `${px}px` } : { kind, value };
@@ -272,7 +272,7 @@ function sample(path, type, raw) {
 }
 
 /** The specimen at the top of a foundation page: the scope's semantic tokens, drawn live, as composite data. */
-// The type specimen shows each role with its own kind of content (OD-218): headings the screen title,
+// The type specimen shows each role with its own kind of content: headings the screen title,
 // running text the scenario, a label the main action, data a number. Values come from the theme.
 const ROLE_TEXT = {
   display: (x) => x.smp.screen,
@@ -291,7 +291,7 @@ function specimen(tokens, text, x = {}) {
         .filter(Boolean),
     ),
   ];
-  // Each type role as a line set in its own tokens, with its values (OD-284: the TypeRoles composite).
+  // Each type role as a line set in its own tokens, with its values (the TypeRoles composite).
   // Otherwise each token drawn as its value (the TokenSwatches composite). Returns the composite's data.
   if (roles.length)
     return {
@@ -370,7 +370,7 @@ const PRIM_PAGE_OF = {
   motion: { id: "motion", title: "Motion" },
 };
 /**
- * The Themes page's key colors (OD-223): the tokens the grammar names, in every theme, each as the
+ * The Themes page's key colors: the tokens the grammar names, in every theme, each as the
  * primitive it points at, the neutral step it goes through, and its value. The scheme's gray first.
  */
 function themeColors(scheme, g) {
@@ -415,12 +415,12 @@ function themeColors(scheme, g) {
 }
 
 /**
- * The scale view (OD-223): for each hue, a light and a dark tab. Each tab shows the lanes that hue's
+ * The scale view: for each hue, a light and a dark tab. Each tab shows the lanes that hue's
  * tokens paint (backgrounds, edges and rings, text), each as the whole scale, the used steps filled and
  * the rest empty slots, then one row per token: its color, its name, the step and the value. A row and
  * its step light up together on hover (src/clientModules/scales.ts). A row links to the token's guidance.
  */
-// OD-235: the component spacing map on Foundations › Spacing, from the same guide agents read.
+// The component spacing map on Foundations › Spacing, from the same guide agents read.
 function spacingMap(scheme, g) {
   const sg = spacingGuide(scheme, {
     index: tokenIndex(scheme),
@@ -445,9 +445,9 @@ function spacingMap(scheme, g) {
   );
 }
 
-// put(id, data) stores a ColorScale composite's data and returns its directive (OD-284). up is the
+// put(id, data) stores a ColorScale composite's data and returns its directive. up is the
 // path from the page's folder to the scheme's root: "../" for primitives/color.md, "../../" for the
-// folder index primitives/color/index.md, where "../" names primitives/ (OD-307).
+// folder index primitives/color/index.md, where "../" names primitives/.
 function colorScales(scheme, g, fams, put, { up = "../" } = {}) {
   const t = scheme.tokens;
   const brands = Object.keys(t.brands);
@@ -485,7 +485,7 @@ function colorScales(scheme, g, fams, put, { up = "../" } = {}) {
       }
     return [...rows.values()];
   };
-  // One token as facts (OD-284, doc-composites/schemas/color-scale.schema.json).
+  // One token as facts (doc-composites/schemas/color-scale.schema.json).
   const token = (r, own) => {
     const id = `color.${r.token}`;
     return {
@@ -560,7 +560,7 @@ function colorGuidance(g) {
   const keys = s.keys;
   return (
     `\n## Status urgency\n\n${s.urgency.description}\n\n${s.urgency.order.map((id) => `\`${id}\``).join(" → ")}\n` +
-    // Surfaces: when, and for what effect (OD-241). Each surface has one job; the state fills
+    // Surfaces: when, and for what effect. Each surface has one job; the state fills
     // (highlight, pressed, selected) are surfaces too, so the table shows where each one belongs.
     `\n## Surfaces: when, and for what effect\n\nA surface tells people where they are in depth, or which item they are on. Each one has a job; using the wrong one breaks the reading order.\n\n| Surface | Its job | Use it for | Not for |\n| --- | --- | --- | --- |\n` +
     keys
@@ -587,8 +587,8 @@ function colorGuidance(g) {
 }
 
 /**
- * Primitives › Type › How type is built (OD-300): how a scheme's sizes and line heights follow from its
- * type record (base, ratio, steps, rounding and line kinds), in the wording the owner approved. Returns
+ * Primitives › Type › How type is built: how a scheme's sizes and line heights follow from its
+ * type record (base, ratio, steps, rounding and line kinds), in approved wording. Returns
  * { markdown, roles }: the page's body, and each role as the TypeRoles specimen draws it, largest first.
  */
 export function howTypeIsBuilt(scheme) {
@@ -655,9 +655,9 @@ export function docsPages(
     base = "/",
   } = {},
 ) {
-  // The data the page composites draw (OD-284), written to _composites.json beside the pages.
+  // The data the page composites draw, written to _composites.json beside the pages.
   const compositeData = {};
-  // OD-285: the Lucide icons each component draws, read from its own imports, and the stroke every
+  // The Lucide icons each component draws, read from its own imports, and the stroke every
   // Lucide icon takes from the scheme (ui/src/icons.css).
   const lucideIcons = Object.fromEntries(
     readdirSync(join(roots.ui, "components"))
@@ -675,7 +675,7 @@ export function docsPages(
     const ref = String(scheme.tokens.semantic.icon?.["stroke-width"]?.$value ?? "").match(/^\{(.+)\}$/)?.[1];
     return ref?.split(".").reduce((n, k) => n?.[k], scheme.tokens.primitive)?.$value;
   };
-  // The split (OD-285): the components draw Lucide themselves; content uses Icon. Both read the same
+  // The split: the components draw Lucide themselves; content uses Icon. Both read the same
   // tokens, so the page says how to insert an icon and why there are two ways.
   const iconWays = () =>
     `## Two ways to draw an icon\n\nTo keep things simple, Open DS uses one open-source icon set, Lucide, in every scheme. ${esc(scheme.name)} sets each icon's size and its stroke, ${iconStroke()}px; the drawings stay the same. Both ways read the same tokens, so an icon looks the same either way, and a change to the scheme reaches every icon.\n\n` +
@@ -714,13 +714,13 @@ export function docsPages(
     (compositeData.specimen ??= {})[id] = data;
     return `::specimen{id="${id}"}`;
   };
-  // robots: the Open DS robot illustrations (OD-209), in the repo docs only. A scope's robot on its
+  // robots: the Open DS robot illustrations, in the repo docs only. A scope's robot on its
   // Foundations card, the scheme's robot on its home page and in "Not part of" notes, Shelf on the
   // inventory. Day and night editions; the theme picks one. base: the site's base URL, for raw HTML. Created projects get the same layout
   // without the pictures, so the package stays small.
-  // An Intro composite's robot (OD-284): named in the directive, drawn in the repo docs only.
+  // An Intro composite's robot: named in the directive, drawn in the repo docs only.
   const introRobot = (name) => (robots ? `robot="${name}" ` : "");
-  // A robot's day and night pictures, as data for a card (OD-284).
+  // A robot's day and night pictures, as data for a card.
   const robotPics = (name) =>
     robots
       ? {
@@ -733,8 +733,8 @@ export function docsPages(
       ? `<span class="odv-robot ${cls}"><img class="odv-robot-day" src="${base}robots/${name}.webp" alt="" loading="lazy"/><img class="odv-robot-night" src="${base}robots/${name}-dark.webp" alt="" loading="lazy"/></span>`
       : "";
   // all: a page for every built component, the ones the scheme leaves out too, each marked "Not part
-  // of" (OD-207). The repo docs use it so a scheme switch never lands on a missing page, the way the
-  // repo Storybook renders every component in every scheme (OD-192).
+  // of". The repo docs use it so a scheme switch never lands on a missing page, the way the
+  // repo Storybook renders every component in every scheme.
   const qs = questions(g);
   const sits = Object.fromEntries(g.situations.map((s) => [s.id, s]));
   const answer = (id) => scheme.answers.find((a) => a.question === id);
@@ -778,7 +778,7 @@ export function docsPages(
     const { steps } = chain(trees[theme.id], path);
     return steps.length && isPrimitive(steps.at(-1)) ? steps.at(-1) : undefined;
   };
-  // OD-217: in a scheme with several brands, a table that names tokens or values is written once per
+  // In a scheme with several brands, a table that names tokens or values is written once per
   // brand. The brand picked in the top bar shows (generate.mjs hides the other brands' BrandSets); with one brand
   // the table is written once, as before. Headings stay outside, so the page's contents do not repeat.
   const brandList = Object.keys(scheme.tokens.brands ?? {});
@@ -791,7 +791,7 @@ export function docsPages(
       scheme.themes.find((t) => t.brand === b && t.mode === "dark") ?? l,
     ];
   };
-  // One brand's set, in a scheme with several: a BrandSet around the page's own Markdown (OD-284).
+  // One brand's set, in a scheme with several: a BrandSet around the page's own Markdown.
   const brandSet = (b, body) => `::::brand{id="${b}"}\n${body}\n::::`;
   const perBrand = (fn) =>
     brandsOf.length < 2
@@ -802,9 +802,9 @@ export function docsPages(
             return brandSet(b, fn(l, d));
           })
           .join("\n\n");
-  // OD-233: pairs and tones as pictures. For each brand and mode, every fill painted in its color with
+  // Pairs and tones as pictures. For each brand and mode, every fill painted in its color with
   // the text that may sit on it, its step and the contrast it keeps there, grouped by the fill's tone; then
-  // each fill in both modes with the text its tone picks. From pairsIn and toneOf, which the harness checks.
+  // each fill in both modes with the text its tone picks. From pairsIn and toneOf, which are checked.
   const colorBrands = Object.keys(scheme.tokens.brands);
   const prim = (p) =>
     String(
@@ -833,7 +833,7 @@ export function docsPages(
     const fills = tones.fills.map((f) => f.id);
     const own =
       /^color\.surface\.(canvas|default|raised|sunken|highlight|pressed|selected)$/;
-    // One mode's pairs as facts (OD-284): each fill, its primitive and value, and every text that may
+    // One mode's pairs as facts: each fill, its primitive and value, and every text that may
     // sit on it with the contrast it keeps and its floor. PairsChart draws them.
     const FLOOR = Math.min(
       ...colorBrands.flatMap((b) =>
@@ -892,7 +892,7 @@ export function docsPages(
       };
     };
     return (
-      `\n## Pairs at a glance\n\nWhich text may sit on which fill, and the contrast it keeps there. Each fill is shown in its own color, with every text that may sit on it. Fills are grouped by their tone in each mode: light fills take \`color.text.on-light\`, dark fills take \`color.text.on-dark\`. The harness checks every pair.\n\n` +
+      `\n## Pairs at a glance\n\nWhich text may sit on which fill, and the contrast it keeps there. Each fill is shown in its own color, with every text that may sit on it. Fills are grouped by their tone in each mode: light fills take \`color.text.on-light\`, dark fills take \`color.text.on-dark\`. Every pair is checked.\n\n` +
       forBrands((b) => {
         (compositeData["pairs-chart"] ??= {})[b] = {
           floor: FLOOR,
@@ -949,7 +949,7 @@ export function docsPages(
   const RULES = "| Situation | Use | Not | Why |\n| --- | --- | --- | --- |\n";
   const pages = {};
 
-  // About this system: a home that shows the system before it explains it (OD-182). A product screen
+  // About this system: a home that shows the system before it explains it. A product screen
   // built from its own components and sample content, the answers that shape it most, then tiles into
   // every section. The full reasons follow underneath.
   const smp = scheme.samples ?? {};
@@ -969,7 +969,7 @@ export function docsPages(
     .slice(0, 3)
     .map(([q]) => q);
   const primCount = leaves(primitiveTree, "").length;
-  // The hero's sample screen (OD-209, OD-284): the scheme's own sample content as data, drawn by the
+  // The hero's sample screen: the scheme's own sample content as data, drawn by the
   // SampleScreen composite from its real components. Which screen fits comes from the scheme's answer to
   // the main task (tasks.q1) and its brands: compare shows the table, read an article opening, complete a
   // form step (or the same card in every brand), explore a launch sign-up.
@@ -1062,7 +1062,7 @@ export function docsPages(
   const firstRamp = leaves(primitiveTree, "")
     .filter((x) => x.path.startsWith(".color.") && /^#/.test(String(x.ref)))
     .slice(0, 12);
-  // The tiles into every section (OD-284: CardGrid cards, each with a few samples).
+  // The tiles into every section (CardGrid cards, each with a few samples).
   const tiles = [
     {
       href: "primitives/",
@@ -1131,7 +1131,7 @@ export function docsPages(
       hide_table_of_contents: true,
     }) +
     NOTE +
-    // The opening (OD-284): the scheme's name and summary in Markdown inside a Hero, then its sample screen.
+    // The opening: the scheme's name and summary in Markdown inside a Hero, then its sample screen.
     `:::hero{${introRobot(scheme.id)}eyebrow="Design system · built from ${scheme.answers.length} answered questions" action="Explore the foundations" href="foundations/" stats="${(scheme.inventory?.in ?? []).length} components|${primCount} primitives|${scheme.themes.length} themes"}\n` +
     `# ${esc(scheme.name)}\n\n${esc(scheme.summary)}\n:::` +
     (heroSample
@@ -1157,7 +1157,7 @@ export function docsPages(
     `## Use scenarios\n\n${scheme.scenarios.map((s) => `- ${s.text}`).join("\n")}\n\n` +
     `## Every answer\n\nAll ${scheme.answers.length} answers, and the design decisions each one made: [Decision reference](decision-reference).\n`;
 
-  // Decision reference (OD-239): the way in from the questions to the design. Each question, its
+  // Decision reference: the way in from the questions to the design. Each question, its
   // answer, why, the earlier answers it came from, and every design decision it made: a later
   // answer, a usage rule or a component variant, each linked to the page that goes deeper. Generated
   // from the answers, their because links, the usage rules and the components' variants. No
@@ -1214,7 +1214,7 @@ export function docsPages(
         ];
     const n = (q) => (made[q] ?? []).length;
     const total = (r) => r.questions.reduce((t, q) => t + n(q.id), 0);
-    // One answer as the DecisionAnswer composite (OD-284): the question stays the page's heading.
+    // One answer as the DecisionAnswer composite: the question stays the page's heading.
     const GROUP = { Answer: "answers", Rule: "rules", Variant: "variants", Pick: "picks" };
     const answerData = (q, r) => {
       const all = made[q.id] ?? [];
@@ -1317,7 +1317,7 @@ export function docsPages(
     (compositeData["decision-tree"] ??= {}).start = { roots: roots.map((q) => branch(q)) };
     const tree = `::decision-tree{id="start"}`;
     // Every question: one fold per section, one open at a time (src/clientModules/scales.ts).
-    // A group's caption is its data (OD-284): the directive names the entry.
+    // A group's caption is its data: the directive names the entry.
     const groupOf = (grp) => {
       (compositeData.group ??= {})[grp.toLowerCase()] = { title: grp };
       return grp.toLowerCase();
@@ -1421,7 +1421,7 @@ export function docsPages(
       2,
     ) + "\n";
   // The foundations overview: every scope in one compact table, with the answer that sets its values.
-  // The Foundations index (OD-209): a card per scope in three groups, each with its answer for the
+  // The Foundations index: a card per scope in three groups, each with its answer for the
   // values, why, and a small specimen drawn in the scheme's own tokens.
   const SCOPE_ROBOT = {
     color: "swatch",
@@ -1429,7 +1429,7 @@ export function docsPages(
     components: "shelf",
   };
   const scopeRobot = (id) => robotPics(SCOPE_ROBOT[id] ?? `scopes/${id}`);
-  // Each scope card's few samples, as kind and value (OD-284); a scope with no value to draw shows a line.
+  // Each scope card's few samples, as kind and value; a scope with no value to draw shows a line.
   const vars = (list, kind) =>
     list.map((v) => ({ kind, value: `var(--${v})` }));
   const scopeSpecimen = {
@@ -1538,7 +1538,7 @@ export function docsPages(
       )
       .join("\n\n") +
     "\n";
-  // The color page leads with the colors in use (OD-182): the key colors as a band, the surfaces
+  // The color page leads with the colors in use: the key colors as a band, the surfaces
   // as a stack in light and dark, and each status in use with its contrast, computed from the tokens.
   const colorVisuals = () => {
     const band = [
@@ -1597,7 +1597,7 @@ export function docsPages(
       "\n\n"
     );
   };
-  // The Theming page (OD-211): what a mode is, shown not listed. A live preview per mode from its
+  // The Theming page: what a mode is, shown not listed. A live preview per mode from its
   // real colors, then what a mode changes (a table per job group, every mode side by side), then
   // what stays the same in every mode. Multi-brand gets one set per brand; the brand picked in the
   // top bar shows (generate.mjs scopes it), and without that CSS every brand shows.
@@ -1631,7 +1631,7 @@ export function docsPages(
           .replaceAll('"', "");
         if (v) (fams[v] ??= []).push(role);
       }
-      // What stays the same in every mode (OD-284): the corners and the type families, as facts.
+      // What stays the same in every mode: the corners and the type families, as facts.
       (compositeData["mode-constants"] ??= {})[b] = {
         corners: radii.map((r) => {
           const [v, px] = String(radius(th, r)).match(/^(\S+)(?: \((.*)\))?$/)?.slice(1) ?? [String(radius(th, r))];
@@ -1651,7 +1651,7 @@ export function docsPages(
       // Colors group by job (color.surface); any other kind is one group (elevation).
       const groupOf = (p) => p.split(".").slice(0, p.startsWith("color.") ? 2 : 1).join(".");
       const groups = [...new Set(jobs.map(groupOf))];
-      // Every color cell follows its token to the primitive, the way the scale view does (OD-223):
+      // Every color cell follows its token to the primitive, the way the scale view does:
       // the primitive's name, the neutral step it goes through, and a swatch. Never a bare value.
       const cell = (th, p) => {
         const f = p.startsWith("color.")
@@ -1666,7 +1666,7 @@ export function docsPages(
         // The token itself draws the swatch, in its mode; the data names what it reads.
         return { mode: th.mode, primitive: f.prim, ...(f.via && { via: f.via }) };
       };
-      // The mode previews (OD-284): the scheme's own components, shown in each mode. The colors
+      // The mode previews: the scheme's own components, shown in each mode. The colors
       // and corners come from the tokens, so the data holds only the content.
       (compositeData["mode-preview"] ??= {})[b] = {
         name: scheme.name,
@@ -1676,7 +1676,7 @@ export function docsPages(
         ...(brandIds.length > 1 && { brand: { id: b, label: brandLabel(b) } }),
         modes: ths.map((th) => th.mode),
       };
-      // What a mode changes (OD-284): one table, a row per job group, every mode side by side.
+      // What a mode changes: one table, a row per job group, every mode side by side.
       (compositeData["mode-changes"] ??= {})[b] = {
         modes: ths.map((t) => t.mode),
         groups: groups.map((gr) => ({
@@ -1729,7 +1729,7 @@ export function docsPages(
         : "| Token | Points to |\n| --- | --- |\n" +
           semantics.map((t) => `| \`${t.path}\` | ${link(F, key(t.path))} |`).join("\n"));
     const hasPrims = primsOf(first, dark).filter(Boolean).length > 0;
-    // OD-286, OD-287: every foundation but Color shows its tokens as token groups. A group is the thing
+    // Every foundation but Color shows its tokens as token groups. A group is the thing
     // the tokens make (a type role, the focus ring, an icon) or one token, with its value drawn, its token
     // API, and when to use it and when not, from the scheme's usage rules.
     const NAMED = (prim) => prim && !/\.\d[\d_]*$/.test(prim);
@@ -1831,7 +1831,7 @@ export function docsPages(
                     const v = String(value(first, path, ""));
                     return v.match(/\((\d+(?:\.\d+)?px)\)/)?.[1] ?? v;
                   },
-                  // OD-286: what a color resolves to in each mode of the first brand: the neutral step
+                  // What a color resolves to in each mode of the first brand: the neutral step
                   // a gray goes through (rule 15), the primitive, and its hex, which the row prints.
                   color: (path) =>
                     ["light", "dark"]
@@ -1844,7 +1844,7 @@ export function docsPages(
                         return { mode: m, primitive: f.prim, ...(via && { via }), hex: hex.toUpperCase() };
                       })
                       .filter(Boolean),
-                  // OD-286: any other token names the primitive it ends at and that primitive's value.
+                  // Any other token names the primitive it ends at and that primitive's value.
                   prim: (path) => {
                     const prim = primitiveOf(first, path);
                     const v = prim && prim.split(".").reduce((n, k) => n?.[k], scheme.tokens.primitive)?.$value;
@@ -1867,9 +1867,9 @@ export function docsPages(
             `| ${esc(q.text)} | ${esc(label(q.id))} | ${esc(answer(q.id).why)} |`,
         )
         .join("\n") +
-      // Theming shows its tokens as the mode table above (OD-211), so it skips the flat lists.
-      // Theming shows its tokens as the mode table above (OD-211); the component scopes' keys are on
-      // each component's page, as its variables (OD-233).
+      // Theming shows its tokens as the mode table above, so it skips the flat lists.
+      // Theming shows its tokens as the mode table above; the component scopes' keys are on
+      // each component's page, as its variables.
       (sc.id === "theming" || (sc.owns ?? []).includes("component")
         ? ""
         : `\n\n## Tokens\n\n` +
@@ -1877,7 +1877,7 @@ export function docsPages(
             ? `Each token points to another token. Values live only on primitives, below.\n\n` +
               perBrand(tokenTable)
             : "This scope sets primitives directly.") +
-          // The raw values live on the Primitives pages (OD-223), not repeated here.
+          // The raw values live on the Primitives pages, not repeated here.
           (hasPrims
             ? `\n\nThe raw values these tokens end at are on [Primitives › ${PRIM_PAGE_OF[sc.id]?.title ?? "all kinds"}](../primitives/${PRIM_PAGE_OF[sc.id]?.id ?? ""}).`
             : "")) +
@@ -1885,7 +1885,7 @@ export function docsPages(
       (sc.id === "iconography"
         ? `\n\n## The icons\n\nOpen DS draws every icon with one open-source set, Lucide. In ${esc(scheme.name)}:\n\n- **Style:** ${esc(label("iconography.definition"))}\n- **Stroke:** ${iconStroke()}px on Lucide's 24px grid\n- **Size next to text:** ${esc(label("iconography.values"))}\n\nThe components draw their own icons; in content, use [Icon](../components/icon.md).\n\n::preview{${introRobot("slumber")}id="icon/live"}\n\n## Icons in the components\n\n${iconsTable("../components/")}`
         : "") +
-      // What lands where is shown per component, in its anatomy (OD-229), not as a list here.
+      // What lands where is shown per component, in its anatomy, not as a list here.
       `\n\n` +
       `## When to use what\n\n${RULES}${usage.map(rule).join("\n")}\n` +
       (sc.id === "color"
@@ -1893,7 +1893,7 @@ export function docsPages(
         : "");
   });
 
-  // Primitives (OD-184): every raw value, and what points to it in which mode. Unused primitives stay
+  // Primitives: every raw value, and what points to it in which mode. Unused primitives stay
   // listed, so a brand or a changed answer can pick them up without adding a value.
   const usedBy = {};
   const scan = (node, path, where) => {
@@ -1930,7 +1930,7 @@ export function docsPages(
         : p[0];
   };
   const nUsed = prims.filter((x) => usedBy[x.path]).length;
-  // One group of primitives as the PrimitiveTable composite (OD-284): each value drawn, and every
+  // One group of primitives as the PrimitiveTable composite: each value drawn, and every
   // token that uses it, one per line.
   const table = (list, id) => {
     (compositeData["primitive-table"] ??= {})[id] = {
@@ -2010,8 +2010,8 @@ export function docsPages(
   ]
     .map((k) => ({ ...k, list: prims.filter((x) => k.match(x.path)) }))
     .filter((k) => k.list.length);
-  // Type has a sub-page, How type is built (OD-300), so its page is the index of a folder of its own.
-  // So has Color while the graded curve is on: How the scale is built (OD-307).
+  // Type has a sub-page, How type is built, so its page is the index of a folder of its own.
+  // So has Color while the graded curve is on: How the scale is built.
   const typeBuilt = howTypeIsBuilt(scheme);
   const scalePage = colorScalePage(scheme, g, {
     frontMatter: fm,
@@ -2032,7 +2032,7 @@ export function docsPages(
       null,
       2,
     ) + "\n";
-  // The Primitives index (OD-211), in the Foundations style: a card per kind in groups, each with a
+  // The Primitives index, in the Foundations style: a card per kind in groups, each with a
   // robot, a specimen drawn from the raw values, and how many are in use. The table closes the page.
   const PRIM_GROUPS = [
     ["Color", ["color"]],
@@ -2052,7 +2052,7 @@ export function docsPages(
     const m = String(v).match(/^([\d.]+)(rem|px)$/);
     return m ? Number(m[1]) * (m[2] === "rem" ? 16 : 1) : NaN;
   };
-  // Each primitive card's few samples, as kind and value (OD-284).
+  // Each primitive card's few samples, as kind and value.
   const primSpecimen = (k) => {
     const used = k.list.filter((x) => usedBy[x.path]);
     const pick = used.length ? used : k.list;
@@ -2194,7 +2194,7 @@ export function docsPages(
       }) +
       NOTE +
       `# ${k.title}\n\n${k.list.length} primitives, ${k.list.filter((x) => usedBy[x.path]).length} used.\n\n` +
-      // Colors lead with each family as a ramp (OD-182): every step, its value, and how many tokens
+      // Colors lead with each family as a ramp: every step, its value, and how many tokens
       // use it. Hover a step for the list; the table under it has the detail.
       (k.id === "color"
         ? colorScales(scheme, g, fams, (id, data) => {
@@ -2212,7 +2212,7 @@ export function docsPages(
         : table(k.list, k.id)) +
       "\n";
   });
-  // What a component built on shadcn reads (OD-215): each class it uses, the shadcn variable, the
+  // What a component built on shadcn reads: each class it uses, the shadcn variable, the
   // scheme's token behind it, and the primitive and value that token ends at in every theme. Read from
   // the component's own source and the mapping the token build writes, so it cannot drift.
   const tokenPaths = Object.fromEntries(
@@ -2253,7 +2253,7 @@ export function docsPages(
     [/variant=destructive/, "destructive"],
     [/placeholder/, ""],
   ];
-  // A component's own tokens by their CSS name (OD-234): --accordion-trigger-padding-y →
+  // A component's own tokens by their CSS name: --accordion-trigger-padding-y →
   // component.accordion.trigger.padding-y, with what each aliases.
   const compByCss = new Map();
   for (const [p, tok] of flatTokens(scheme.tokens.component ?? {}))
@@ -2423,7 +2423,7 @@ export function docsPages(
     const ch = aliasChain(themeIx[t.id], row.path);
     return { raw: String(cssValue(ch.value) ?? ""), prim: ch.end };
   };
-  // One value cell as data for the TokenTable composite (OD-284): a swatch when the value has one,
+  // One value cell as data for the TokenTable composite: a swatch when the value has one,
   // the primitive an own token ends at, and the value as text.
   const readCell = (row, t) => {
     const own = row.own ? ownEnd(row, t) : null;
@@ -2440,7 +2440,7 @@ export function docsPages(
         : hex
           ? { color: hex }
           : undefined;
-    // an own token's value: the primitive as a token, its raw value as plain text beside it (OD-234)
+    // an own token's value: the primitive as a token, its raw value as plain text beside it
     if (row.own) return { swatch, token: prim || undefined, text: raw };
     return {
       swatch,
@@ -2495,14 +2495,14 @@ export function docsPages(
         : "")
     );
   };
-  // Each table is data in _composites.json; the page holds one directive line (OD-284).
+  // Each table is data in _composites.json; the page holds one directive line.
   const tokenTable = (name, data) => {
     (compositeData["token-table"] ??= {})[name] = data;
     return `::token-table{component="${name}"}`;
   };
-  // A component with its own tokens (OD-234): Part · its token → the semantic, with the CSS variable
+  // A component with its own tokens: Part · its token → the semantic, with the CSS variable
   // under it · one Value column. Colors show each theme side by side; everything else has one value.
-  // the legend (OD-234): the scheme decides what a theme switch changes; the marked rows are the ones it moves
+  // the legend: the scheme decides what a theme switch changes; the marked rows are the ones it moves
   const themeLegend = () => {
     const brands = Object.keys(scheme.tokens.brands).length;
     const lands = answer("theming.lands")
@@ -2589,12 +2589,12 @@ export function docsPages(
   const out = Object.fromEntries(
     (scheme.inventory?.out ?? []).map((i) => [i.id, i.why]),
   );
-  // What to use instead of a left-out component (OD-211), each a component the scheme keeps.
+  // What to use instead of a left-out component, each a component the scheme keeps.
   const instead = Object.fromEntries(
     (scheme.inventory?.out ?? []).map((i) => [i.id, i.instead ?? []]),
   );
   const catalogue = g.catalogue?.items ?? [];
-  // The inventory page (OD-209): what the scheme carries, grouped by family as cards, then what it
+  // The inventory page: what the scheme carries, grouped by family as cards, then what it
   // leaves out and why. Every catalogue item appears once, with whether it is built yet.
   const FAMILY_TEXT = {
     action: "Things people press.",
@@ -2623,7 +2623,7 @@ export function docsPages(
   ];
   // Only a component with a page links to it: built, and in the inventory unless every page is made.
   const hasPage = (id) => built.includes(id) && (all || id in inventory);
-  // An inventory card (OD-284: a CardGrid card). Every card says what the component is (OD-213). The
+  // An inventory card (a CardGrid card). Every card says what the component is. The
   // scheme's rule, or why it leaves the component out, is on the component's page.
   const icard = (c, out) => ({
     title: title(c.id),
@@ -2675,7 +2675,7 @@ export function docsPages(
         )
       : "") +
     "\n";
-  // A page per component that is in the inventory and built (OD-194). It reads the same engine as the
+  // A page per component that is in the inventory and built. It reads the same engine as the
   // CLI's component command and the MCP's get_component, so the docs, Storybook and agents agree, and
   // adds what Storybook cannot: the answers behind each decision and what a change would move.
   const names = built.filter((n) => all || !scheme.inventory || n in inventory);
@@ -2687,7 +2687,7 @@ export function docsPages(
   const pageOf = (id) =>
     names.includes(id) ? `[${title(id)}](./${id}.md)` : title(id);
   const qText = (id) => qs[id]?.text ?? id;
-  // The Anatomy reference (OD-229): the component taken apart, part by part, from the anatomy engine
+  // The Anatomy reference: the component taken apart, part by part, from the anatomy engine
   // that get_component also returns. A part whose value changes between schemes carries a "By scheme"
   // tag; each token follows the decision to the value: the semantic's rule, the pick and its reason in
   // light and dark, what else picks the same step, and the answers it follows from.
@@ -2697,7 +2697,7 @@ export function docsPages(
       ? "The component"
       : p.replace(/-/g, " ").replace(/^./, (c) => c.toUpperCase());
   function anatomyPage(name, i) {
-    // The Anatomy reference (OD-229), as the approved Figma page lays it out: a calm intro, the roles
+    // The Anatomy reference, as the approved Figma page lays it out: a calm intro, the roles
     // a part can play, the drawing with a number on each part beside its legend, then one card per
     // group of parts that follows each decision from the answer through the rule to the token and the
     // value you see. The parts come from the catalogue's parts layer; the words and values from the
@@ -2707,10 +2707,10 @@ export function docsPages(
     const T = title(name);
     // One engine with open-ds anatomy and get_anatomy: the cards' answers, rules and tokens come from it.
     const ref = anatomyReference(scheme, g, roots, name);
-    // Figma assets (OD-229): the drawings are frames in Figma, drawn from this scheme's tokens and
+    // Figma assets: the drawings are frames in Figma, drawn from this scheme's tokens and
     // exported into docs/static/anatomy/<scheme>/<component>/. Each image links back to its frame, so
     // the drawing is seen and changed in Figma.
-    // A tree drawing (OD-229) is drawn in Figma by the Open DS anatomy plugin, bound to the scheme's kit,
+    // A tree drawing is drawn in Figma by the Open DS anatomy plugin, bound to the scheme's kit,
     // and its frames are exported to the same place. Until they are, the page says so in their place.
     const tree = spec.drawing?.kind === "tree";
     const exportedIn = (id, file) =>
@@ -2727,7 +2727,7 @@ export function docsPages(
         ),
       );
     // The plugin's drawings win wherever this scheme has them all: a menu or a table drawn live is
-    // only the stand-in until they are exported (OD-286).
+    // only the stand-in until they are exported.
     const allExported = ["stage", ...(spec.cards ?? []).map((_, k) => `card-${k + 1}`)].every((f) => exportedIn(scheme.id, f));
     const asset = spec.drawing?.kind === "asset" || tree || allExported;
     // Until a scheme's own drawings are exported, its page borrows Dense data's and says so.
@@ -2745,7 +2745,7 @@ export function docsPages(
       node && spec.drawing.figma?.file
         ? `\n\n[Open in Figma](https://www.figma.com/design/${spec.drawing.figma.file}/?node-id=${node.replace(":", "-")})`
         : "";
-    // An exported drawing is a Markdown image, linked to its Figma frame (OD-284).
+    // An exported drawing is a Markdown image, linked to its Figma frame.
     const assetImg = (file, node, alt) =>
       tree && !exported(file)
         ? `Drawn in Figma by the Open DS anatomy plugin; the image is not exported yet.`
@@ -2762,7 +2762,7 @@ export function docsPages(
     const changes = (part) => (part.tokens ?? []).some((t) => tr(t)?.by_scheme);
     const chip = (id) => `:label[${esc(roleOf[id]?.label ?? id)}]`;
     // The drawing, from the scheme's own component variables: what you see is what the scheme decides.
-    // An AnatomyDrawing composite draws it from data beside the page (OD-284).
+    // An AnatomyDrawing composite draws it from data beside the page.
     const drawn = (id, data) => {
       (compositeData["anatomy-drawing"] ??= {})[`${name}/${id}`] = data;
       return `::anatomy-drawing{id="${name}/${id}"}`;
@@ -2825,9 +2825,9 @@ export function docsPages(
     })();
     const D = tr("component.overlay.item-height");
     const caption = `${attr(scheme.name)}, light, drawn from the scheme's tokens: ${px(D?.light.value ?? "")} items, ${px(tr("component.dropdown-menu.item.padding-x")?.light.value ?? "")} side padding, ${px(tr("component.dropdown-menu.item.font-size")?.light.value ?? "")} text, a ${px(tr("component.overlay.radius")?.light.value ?? "")} corner and its shadow.`;
-    // The legend (OD-284): a nested Markdown list, one item per part, with its number, what it needs,
+    // The legend: a nested Markdown list, one item per part, with its number, what it needs,
     // the "By scheme" tag and its roles as Labels.
-    // The legend as a tree (OD-286): an AnatomyLegend composite draws it from data beside the page.
+    // The legend as a tree: an AnatomyLegend composite draws it from data beside the page.
     const legendPart = (p) => ({
       ...(p.n && { n: p.n }),
       label: p.label,
@@ -2842,7 +2842,7 @@ export function docsPages(
       (compositeData["anatomy-legend"] ??= {})[name] = { parts: list.map(legendPart) };
       return `::anatomy-legend{id="${name}"}`;
     };
-    // Each card's steps as data (OD-286): the AnatomySteps composite gives each kind its icon.
+    // Each card's steps as data: the AnatomySteps composite gives each kind its icon.
     const stepData = (d) => [
       ...d.answers.map((a) => ({
         kind: "answer",
@@ -2871,10 +2871,10 @@ export function docsPages(
         shares: t.shares.map((x) => x.replace(/^color\./, "")),
       })),
     ];
-    // One Panel per card (OD-284): its drawing, its parts and roles, and its steps.
+    // One Panel per card: its drawing, its parts and roles, and its steps.
     const card = (c, k) => {
       const nums = new Set(c.parts);
-      // The engine's card k is this card, with its title for this scheme's answers (OD-267).
+      // The engine's card k is this card, with its title for this scheme's answers.
       const d = ref.cards[k];
       (compositeData["anatomy-steps"] ??= {})[`${name}/card-${k + 1}`] = { steps: stepData(d) };
       const steps = [`::anatomy-steps{id="${name}/card-${k + 1}"}`];
@@ -2916,7 +2916,7 @@ export function docsPages(
     const roles = (g.anatomy?.roles ?? [])
       .map((r) => `- **${esc(r.label)}** ${esc(r.ask)}`)
       .join("\n");
-    // The drawing with every part numbered, its caption, then the legend (OD-284).
+    // The drawing with every part numbered, its caption, then the legend.
     const stage = asset
       ? assetImg(
           "stage",
@@ -2934,7 +2934,7 @@ export function docsPages(
         ? esc(tableCaption)
         : esc(caption);
     // The drawing beside its legend, as on RC1: an exported stage is drawn at 2x, so a half-width
-    // column shows it near its own size (OD-286). The caption stays under the drawing.
+    // column shows it near its own size. The caption stays under the drawing.
     const legendBlock =
       `Legend: every part and its roles. The numbers match the drawing; a part without one isn't in this example.\n\n` +
       `${byTag} Its value changes by scheme. The part is the same in every scheme.\n\n` +
@@ -2974,7 +2974,7 @@ export function docsPages(
     const guide = componentGuide(scheme.id, name, roots, g);
     const r = guide?.reference ?? {};
     const parts = [];
-    // OD-229: the Anatomy reference follows the approved Figma page. Only a component whose catalogue
+    // The Anatomy reference follows the approved Figma page. Only a component whose catalogue
     // entry describes its parts (the parts layer) gets one. Its card sits after the variants.
     const anat = anatomyPage(name, i);
     const anatSpec = g.catalogue.items.find((x) => x.id === name)?.anatomy;
@@ -2998,9 +2998,9 @@ export function docsPages(
       : "";
     parts.push(
       `# ${title(name)}\n\n${esc(r.overview ?? componentIntro(roots.ui, name))}\n\n` +
-        // Left out or in, the page is the same (OD-192, OD-211): a left-out component is designed in
+        // Left out or in, the page is the same: a left-out component is designed in
         // the scheme's tokens like any other, and only adds its badge, its reason and what to use.
-        // The status is a Label composite (OD-284): a directive in the Markdown, drawn by the scheme's Badge.
+        // The status is a Label composite: a directive in the Markdown, drawn by the scheme's Badge.
         (leftOut(name)
           ? `:label[Left out of ${esc(scheme.name)}]{tone="warning"} ${esc(out[name] ?? guide?.why ?? "")}` +
             ((instead[name] ?? []).length
@@ -3008,7 +3008,7 @@ export function docsPages(
               : "")
           : `:label[In ${esc(scheme.name)}]{tone="info"}`),
     );
-    // The live component, from Storybook (OD-183), in light and dark: a Preview composite (OD-284).
+    // The live component, from Storybook, in light and dark: a Preview composite.
     // The link works where the embed cannot load.
     (compositeData.preview ??= {})[`${name}/live`] = {
       ...(robots && { robot: robotPics("slumber") }),
@@ -3028,7 +3028,7 @@ export function docsPages(
     };
     if (name === "icon") parts.push(iconWays());
     parts.push(`## See it live\n\n::preview{id="${name}/live"}`);
-    // A kept component's own use leads "When to use it" (OD-211): where this scheme uses it, then
+    // A kept component's own use leads "When to use it": where this scheme uses it, then
     // what it is for in any design system.
     const ownUse = leftOut(name) ? "" : (guide?.why ?? inventory[name] ?? "");
     if (r.apply_when || ownUse)
@@ -3043,14 +3043,14 @@ export function docsPages(
             : ""),
       );
     const variants = guide?.variants ?? [];
-    // Each variant is its own full-width section (OD-203): a live sample, then what it is for, what
+    // Each variant is its own full-width section: a live sample, then what it is for, what
     // this scheme decided, and the answers behind it, each as its own topic.
     // A "Because" answer as a link to its card below (#why-...), or its key when unanswered.
     const answerLink = (b) =>
       answer(b)
         ? `- [${esc(qText(b))} **${esc(label(b))}**](#why-${b.replace(/\./g, "-")}) · \`${b}\``
         : `- \`${b}\``;
-    // Each variant is a Panel around its own Markdown (OD-203, OD-284): a live sample, what it is for,
+    // Each variant is a Panel around its own Markdown: a live sample, what it is for,
     // what this scheme decided, and the answers behind it.
     if (variants.length)
       parts.push(
@@ -3116,7 +3116,7 @@ export function docsPages(
     const cited = [
       ...new Set(variants.flatMap((v) => v.here?.because ?? [])),
     ].filter((q) => answer(q));
-    // Why it works this way (OD-203): one card per answer, three steps inside: the answer, what it
+    // Why it works this way: one card per answer, three steps inside: the answer, what it
     // decided for this component (and what else it shapes), and what would move if it changed.
     if (cited.length)
       parts.push(
@@ -3284,7 +3284,7 @@ export function docsPages(
     `- **The full scheme** in \`.open-ds/scheme.json\`: every answer with its reason.\n` +
     `- **llms.txt** next to these docs: an index of these pages for agents.\n\n` +
     `Ask the open-ds CLI or MCP server:\n\n\`\`\`bash\nopen-ds why ${scheme.id} typography.definition\nopen-ds when ${scheme.id} "a number in a table"\n\`\`\`\n`;
-  // Each page's composite data sits beside it, as <page>.json (OD-284): an agent that reads the raw
+  // Each page's composite data sits beside it, as <page>.json: an agent that reads the raw
   // page finds the rows next to it, and the front matter names the file.
   const KEYS = {
     "token-table": "component",

@@ -1,4 +1,4 @@
-// The Open DS robots (OD-157): a family of tin robots, each doing one design-system job.
+// The Open DS robots: a family of tin robots, each doing one design-system job.
 // Painted with Google Stitch in two editions: a daytime one on paper (<name>.webp) and a nocturnal
 // one (<name>-dark.webp). Both are cut out to transparent WebP in public/robots/, with the ground
 // separated out so shadows and glows stay translucent; the nocturnal ones keep their ground shadow. The site theme picks the edition (CSS

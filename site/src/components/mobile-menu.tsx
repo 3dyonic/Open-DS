@@ -1,5 +1,5 @@
 "use client";
-// The nav on small screens (OD-177): a Menu button that opens the same links in a panel under the
+// The nav on small screens: a Menu button that opens the same links in a panel under the
 // header. A real button with aria-expanded; focus goes to the first link and back to the button;
 // Escape, a tap outside and navigating all close it.
 import Link from "next/link";

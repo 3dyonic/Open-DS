@@ -1,4 +1,4 @@
-// The type scale (OD-294, OD-301). The loader generates every type size and line height from it.
+// The type scale. The loader generates every type size and line height from it.
 //
 // A scheme records its scale on the type group (semantic.type.$extensions["open-ds"]): the body size it
 // grows from, a ratio, each role's step, a rounding rule, and the line height kinds. A role's size is

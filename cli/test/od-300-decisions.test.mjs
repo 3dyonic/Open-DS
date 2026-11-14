@@ -134,8 +134,7 @@ test("the switch track is the thumb plus its offset, twice as wide as it is tall
   assert.ok(src.includes("p-[var(--switch-thumb-offset)]"));
   assert.match(src, /transition-transform/);
   assert.doesNotMatch(src, /var\(--switch-(width|height|padding|thumb-travel)\)/);
-  for (const id of ["switch/width", "switch/height", "switch/thumb/travel"]) assert.equal(keyOf(id).replaced_by, "switch/thumb/size", id);
-  assert.equal(keyOf("switch/padding").replaced_by, "switch/thumb/offset");
+  for (const id of ["switch/width", "switch/height", "switch/thumb/travel", "switch/padding"]) assert.equal(keyOf(id), undefined, id);
   for (const id of schemeIds()) {
     const s = loadScheme(id);
     for (const t of themes(s)) {

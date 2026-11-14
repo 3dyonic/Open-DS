@@ -1,5 +1,5 @@
 /**
- * Icon. One Lucide icon at the scheme's icon size and stroke (OD-285). Use it in content and new UI:
+ * Icon. One Lucide icon at the scheme's icon size and stroke. Use it in content and new UI:
  * an icon beside its word, an icon button (give it a label), the large size, and the contained looks.
  * The shadcn components draw their own Lucide icons directly; both follow the same tokens, and
  * ui/src/icons.css sets the stroke on every Lucide icon.

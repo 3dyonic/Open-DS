@@ -1,4 +1,4 @@
-// The token map's measured effect (OD-274): what a primitive's value does, computed from the value
+// The token map's measured effect: what a primitive's value does, computed from the value
 // itself, in plain words. No Node imports, so the docs page runs the same code in the browser.
 //
 // Color: the WCAG 2.x contrast ratio against the scheme's backgrounds in one mode. Size: the target

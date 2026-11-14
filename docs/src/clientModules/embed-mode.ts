@@ -1,4 +1,4 @@
-// The live Storybook embeds follow the docs theme (OD-213) and brand (OD-217). Each embed's URL names
+// The live Storybook embeds follow the docs theme and brand. Each embed's URL names
 // a mode and, with several brands, a brand; this swaps them for the ones the docs show, now and
 // whenever the theme switch or the brand pick changes them.
 function sync() {

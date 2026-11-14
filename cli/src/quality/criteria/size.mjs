@@ -1,4 +1,4 @@
-// Size (OD-298): how many tokens a scheme ships, how many CSS bytes, and the semantic tokens nothing
+// Size: how many tokens a scheme ships, how many CSS bytes, and the semantic tokens nothing
 // reads. Token count and bytes are shown, not gated: a new decision may need new tokens. An unused
 // semantic is gated: it is a value no component carries.
 import { measureOf, perSchemeOf, sum } from "./measure.mjs";

@@ -1,4 +1,4 @@
-// The token map (OD-274): every token of one scheme, brand and mode as a graph, from the primitives
+// The token map: every token of one scheme, brand and mode as a graph, from the primitives
 // through the semantics to the component tokens. An edge points the way a value flows: from the token
 // a value comes from to the token that reads it. The brand theme is not a tier: a semantic whose value
 // goes through the theme reads the primitive (or semantic) the theme picks, and says so (theme: true).
@@ -163,7 +163,7 @@ export function tokenGraph({ scheme, brand, mode, grammar = readGrammar(), trace
       ...(refs.some(isTheme) && { theme: true }),
       ...(answers.length && { answers }),
       ...(tone && { tone }),
-      // A deprecated alias decides nothing of its own (OD-286); the Token map draws no decision for it.
+      // A deprecated alias decides nothing of its own; the Token map draws no decision for it.
       ...(token.$deprecated && { deprecated: true }),
     });
     for (const from of refs.flatMap((r) => throughTheme(index, r))) {

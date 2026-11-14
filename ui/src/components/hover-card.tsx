@@ -23,7 +23,7 @@ function HoverCardTrigger({ ...props }: React.ComponentProps<typeof HoverCardPri
 function HoverCardContent({
   className,
   align = "center",
-  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to (OD-243)
+  sideOffset = 0, // the gap is overlay/offset, a margin on the side it opens to
   ...props
 }: React.ComponentProps<typeof HoverCardPrimitive.Content>) {
   return (

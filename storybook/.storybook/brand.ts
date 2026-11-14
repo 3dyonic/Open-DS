@@ -1,4 +1,4 @@
-// The Open DS brand, once (OD-216): the site's paper, ink and orange, light and dark. Storybook's frame
+// The Open DS brand, once: the site's paper, ink and orange, light and dark. Storybook's frame
 // (manager.ts) and the Open DS introduction (storybook.css, through --od-* variables that preview.tsx
 // writes) both read it, so a color changes in one place.
 export const BRAND = {

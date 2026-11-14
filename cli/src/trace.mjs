@@ -8,7 +8,7 @@
 //   rule   a usage rule names it and cites answers;
 //   grammar a trace rule in the grammar names which questions decide this kind of token.
 // A grammar trace rule names one kind of token, never a whole scope: a scope-wide fallback once tied
-// the button's height to the contrast answer (OD-273). No file access: the caller passes the scheme
+// the button's height to the contrast answer. No file access: the caller passes the scheme
 // and the grammar.
 import { graphNodes, roleOf } from "./decision-graph.mjs";
 import { curveOf } from "./color-steps.mjs";
@@ -52,7 +52,7 @@ export function traceScheme(scheme, g) {
   // An id that the grammar does not ask, or this scheme does not answer, links nothing.
   const cited = (because) => [...new Set((because ?? []).filter((id) => id in asked && answered.has(id)))];
 
-  // A deprecated alias decides nothing of its own: it points at the token that does (OD-286).
+  // A deprecated alias decides nothing of its own: it points at the token that does.
   const semantics = flatTokens(scheme.tokens.semantic).filter(([, t]) => !t.$deprecated);
   const names = new Set(semantics.map(([p]) => shortName(p)));
 
@@ -117,7 +117,7 @@ export function traceScheme(scheme, g) {
     return null;
   };
 
-  // The grammar's rules for this kind of token: the decision mapping and the trace rules, as one (OD-303).
+  // The grammar's rules for this kind of token: the decision mapping and the trace rules, as one.
   const grammarLink = (name) => {
     const ids = cited(decidersOf(g, name));
     const rule = (g.trace ?? []).find((r) => r.tokens.some((p) => matches(p, name)));
@@ -125,7 +125,7 @@ export function traceScheme(scheme, g) {
     return ids.length ? { by: "grammar", because: ids, why: null, says: rule?.says ?? null, property: entry?.title ?? null } : null;
   };
 
-  // A color on a step the graded curve sets (OD-299) follows the steps answer: the curve is on, and the
+  // A color on a step the graded curve sets follows the steps answer: the curve is on, and the
   // step is not an anchor (50, the key at 600, 950) and not held. Computed from the chain, so it names
   // exactly the tokens the answer moves.
   const curve = curveOf(scheme);
@@ -267,13 +267,13 @@ export function weakReasons(trace) {
   return weak;
 }
 
-// ---------- The reason form (OD-294) ----------
+// ---------- The reason form ----------
 
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const markerOf = (marker) => new RegExp(`(^|[^a-z])${escapeRe(marker)}([^a-z]|$)`, "i");
 
 /** The grammar property (corner, line width, focus ring, shadow) whose tokens include this one, or null. */
-/** The decision mapping entry that covers a token (OD-303): { property, title, question, jobs }, or null. */
+/** The decision mapping entry that covers a token: { property, title, question, jobs }, or null. */
 export function mappingOf(g, name) {
   // A short name ("color.action.primary") also names its default member ("color.action.primary.@"). The
   // most specific pattern wins: "motion.duration.feedback" over "motion.duration.*".
@@ -285,14 +285,14 @@ export function mappingOf(g, name) {
   return best?.entry ?? null;
 }
 
-/** The grammar question that decides a token, from the decision mapping (OD-303); null when no entry covers it. */
+/** The grammar question that decides a token, from the decision mapping; null when no entry covers it. */
 export function decidingQuestion(g, name) {
   return mappingOf(g, name)?.question ?? null;
 }
 
 /**
  * The questions that decide a token: the decision mapping's question first, then the grammar trace
- * rule's questions. One rule set for every scope (OD-303). [] when neither covers the token.
+ * rule's questions. One rule set for every scope. [] when neither covers the token.
  */
 export function decidersOf(g, name) {
   const rule = (g.trace ?? []).find((r) => r.tokens.some((p) => matches(p, name) || matches(p, `${name}.@`)));
@@ -331,7 +331,7 @@ export function allowedCitations(scheme, g, deciders) {
 }
 
 /**
- * A reason's citations as the engine allows them (OD-303): the allowed ids (allowedCitations), and any
+ * A reason's citations as the engine allows them: the allowed ids (allowedCitations), and any
  * other answer only when the reason's text names it in brackets, so a link across scopes is explicit. When none of the token's deciders
  * is cited, the deciders the scheme answers come first. The writers use this; citationGaps checks it.
  */
@@ -347,7 +347,7 @@ export function citationsOf(scheme, g, token, because, why = "") {
 }
 
 /**
- * The reasons whose citations do not follow the engine (OD-303). A reason must cite a question that
+ * The reasons whose citations do not follow the engine. A reason must cite a question that
  * decides its token (missing), may cite only what allowedCitations allows or its text names (stray), and
  * must cite every answer its text names (uncited). [{ token, where, because, deciders, missing, stray }]
  */
@@ -425,12 +425,12 @@ export function writtenReasons(scheme) {
 }
 
 /**
- * A token's decision tree (OD-303): one node per part of its name and per step of its value, each with what
+ * A token's decision tree: one node per part of its name and per step of its value, each with what
  * the grammar and the scheme record for it. Nothing is typed per token: the walk reads the grammar's
  * dictionary (semantics.groups, semantics.variants, semantics.keys), the decision mapping and trace rules
  * (the property and the answers that decide it), the theme pick, and the primitive hue and step.
  * Levels, in order: group (each group of the name), variant (the name's last part), role (a color or type token's
- * role and jobs, OD-304), property (what kind of value, decided_by and jobs), rule (the slot and its step),
+ * role and jobs), property (what kind of value, decided_by and jobs), rule (the slot and its step),
  * connection (each with its checks), value, reason (the sentence written from the grammar's fields),
  * token, pick, hue, step. [{ level, name, says, ... }]. index is the scheme's token index for this brand
  * and mode, when the caller has one.
@@ -459,7 +459,7 @@ export function decisionTree(scheme, g, name, { brand = Object.keys(scheme.token
   // The property: what kind of value this is, the answers that decide it (decidersOf) and the jobs it does.
   const short = name.replace(/\.@$/, "");
   const entry = mappingOf(g, short);
-  // A role's token (color, type) has its role, rule, connections, value and reason (OD-304): the role sits before its property.
+  // A role's token (color, type) has its role, rule, connections, value and reason: the role sits before its property.
   const graph = roleOf(g, short) ? graphNodes(scheme, g, name, { brand, mode, ...(index && { index }) }) : [];
   // A role is decided by the answers that create or shape it (madeBy), the same ones its reason cites.
   const role = graph.find((n) => n.level === "role");

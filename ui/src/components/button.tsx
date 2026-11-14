@@ -4,7 +4,7 @@
  * Variants: primary (the one action that completes the task), secondary (alternatives,
  * cancel, tools), ghost (quiet actions, actions inside rows and text). Sizes: default, compact,
  * icon, large. What each one is for is the grammar's reference (catalogue item button); whether
- * and how a design system uses it is that scheme's decision (inventory button.variants, OD-185).
+ * and how a design system uses it is that scheme's decision (inventory button.variants).
  *
  * Disabled stays focusable and announced (aria-disabled), so keyboard and screen-reader users can
  * still reach it and hear why; the click is blocked instead of dropping it from the tab order.
@@ -19,7 +19,7 @@ import { cn } from "../lib/utils";
 export const buttonVariants = cva(
   [
     "inline-flex items-center justify-center gap-[var(--button-gap)] whitespace-nowrap select-none",
-    // The hit area grows past a smaller drawn box (a compact button on touch) and keeps it (OD-300).
+    // The hit area grows past a smaller drawn box (a compact button on touch) and keeps it.
     "relative after:absolute after:top-1/2 after:left-1/2 after:h-[max(100%,var(--button-hit-area))] after:w-[max(100%,var(--button-hit-area))] after:-translate-x-1/2 after:-translate-y-1/2 after:content-['']",
     "h-[var(--button-height)] px-[var(--button-padding-x)] rounded-[var(--button-radius)]",
     "text-[length:var(--button-font-size)] [font-weight:var(--button-font-weight)] [font-family:var(--button-font-family)]",

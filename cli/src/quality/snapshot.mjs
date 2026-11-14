@@ -1,4 +1,4 @@
-// A snapshot of one scheme for the quality gate (OD-298): its decisions, the resolved value of every
+// A snapshot of one scheme for the quality gate: its decisions, the resolved value of every
 // semantic token in every brand and mode, where each value comes from, its trace and reason, the
 // relations it keeps, and what moves when one answer or one anchor changes. Pure: the caller passes
 // the ref's own token builder (themeTokens) and loader (reload), so a snapshot of any ref reads the
@@ -190,7 +190,7 @@ function referencedNames(scheme) {
  * color scale generator; css is { tokens, theme, shadcn } text or null.
  */
 export function snapshotScheme({ scheme, stored, grammar, themeTokens, reload, generateScale: refScale = rampScale, css = null, uiPairs = [] }) {
-  // The scheme's own curve (OD-299): the shared curve, or the graded one when the flag is on and the
+  // The scheme's own curve: the shared curve, or the graded one when the flag is on and the
   // scheme answers color.definition.steps. A ref whose generator takes no curve ignores it.
   const curve = curveOf(scheme);
   const generateScale = (spec, mode, canvas) => refScale(spec, mode, canvas, curve);

@@ -54,7 +54,7 @@ export function SiteNav() {
         <span className="text-[22px] font-extrabold">{brandName}</span>
         <span aria-hidden className="size-[6px] bg-accent" />
       </Link>
-      {/* Small screens: the theme switch and a Menu button (OD-177). */}
+      {/* Small screens: the theme switch and a Menu button. */}
       <div className="ml-auto flex items-center gap-2 md:hidden">
         <ThemeSwitch />
         <MobileMenu links={LINKS} github={GITHUB} githubLabel="(opens in a new tab)" />

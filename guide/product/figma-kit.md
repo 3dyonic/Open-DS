@@ -5,7 +5,7 @@ description: "What the Figma kit of each scheme holds, and how to generate or up
 
 # The Figma kit
 
-Each scheme has a Figma kit (OD-149). It is generated from the scheme, like the tokens, Storybook and docs, so it never drifts from the code.
+Each scheme has a Figma kit. It is generated from the scheme, like the tokens, Storybook and docs, so it never drifts from the code.
 
 ## What a kit holds
 

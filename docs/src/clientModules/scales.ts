@@ -1,4 +1,4 @@
-// The docs' page behaviour that is not inside a composite (OD-284: the scales' tabs and hover live in
+// The docs' page behaviour that is not inside a composite (the scales' tabs and hover live in
 // their composites now). A link from a color scale row opens its token's guidance on Foundations ›
 // Color and marks the row; the Decision reference opens one section at a time.
 
@@ -27,7 +27,7 @@ export function onRouteDidUpdate() {
   setTimeout(arrive, 120);
 }
 
-// Decision reference (OD-239): one section open at a time. Opening one closes the others without
+// Decision reference: one section open at a time. Opening one closes the others without
 // moving the one you clicked: its header stays where it was on screen. A link to a section or a
 // question opens its section, the address follows the open section, and the section menu in the
 // left sidebar marks it. On any other page that menu folds away.

@@ -26,7 +26,7 @@ export default function ScaleOptions({ data }: { data: ScaleOptionsData }) {
         {data.options.map((o) => (
           <div
             key={o.option}
-            className={`rounded-[var(--radius-surface)] ${o.own ? "outline outline-[length:var(--border-width-focus)] outline-[var(--color-border-selected)]" : ""}`}
+            className={`rounded-[var(--radius-surface)] ${o.own ? "outline outline-[length:var(--focus-ring-width)] outline-[var(--color-border-selected)]" : ""}`}
           >
             <Frame>
               <div className="flex flex-col gap-[var(--space-gap-tight)]">
