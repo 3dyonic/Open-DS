@@ -117,7 +117,7 @@ test("a count is gated per scheme and theme where the mode applies", () => {
 test("the Markdown states what is shown and not gated: APCA, the contrast grades and the floating surface", () => {
   const md = scorecardMarkdown(compareSnapshots(snapshotOf(fixtureScheme()), snapshotOf(fixtureScheme())));
   assert.match(md, /## Notes/);
-  assert.match(md, /- `accessibility\.apca-warnings`: APCA Lc is a warning only, by the owner's decision: shown, never gated\./);
+  assert.match(md, /- `accessibility\.apca-warnings`: APCA Lc is a warning only: shown, never gated\./);
   assert.match(md, /- `curves\.grades`: Contrast grades are reported, not gated \(gradesGated: false\)\./);
   assert.match(md, /- `invariants\.floating-not-defined`: Floating not defined in fixture: no color\.surface\.floating/);
   assert.match(md, /\| `accessibility\.apca-warnings` \| 0 \| 0 \| 0 \| ↓ lower is better, not gated \| — \|/);
