@@ -154,12 +154,19 @@ function rulesOf(scheme, g, name, { brand, mode, index }) {
   return family ? [...out, family] : out;
 }
 
-/** The slot a colour token's last part names (@, subtle, hover), with the step it sits at, or null. */
+/**
+ * The slot a colour token's last part names (@, subtle, hover), with the step it sits at, or null. A
+ * semantic key's own variant (semantics.keys[].variant) comes first, then the variant its last part names.
+ */
 export function slotOf(g, name) {
   // Slots are colour steps: a size or space group (size.icon.@) also ends in @ but has no step.
   if (!/^color\./.test(name)) return null;
   const last = name.split(".").at(-1);
-  return (g.semantics?.variants?.items ?? []).find((v) => v.id === last && (v.step || v.from)) ?? null;
+  const hasRule = (v) => !!(v?.step || v?.from);
+  const own = (g.semantics?.keys ?? []).find((k) => k.id === name || k.id === short(name))?.variant;
+  // The key's own rule keeps the slot's id, so a listed gap of the slot names the same rule.
+  if (hasRule(own)) return { id: last, ...own };
+  return (g.semantics?.variants?.items ?? []).find((v) => v.id === last && hasRule(v)) ?? null;
 }
 
 /**

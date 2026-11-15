@@ -7,9 +7,10 @@ import { themeTokens } from "../cli/src/tokens.mjs";
 import { toneOf } from "../cli/src/tones.mjs";
 import { follow } from "../cli/src/scale-map.mjs";
 import { grammar as loadGrammar, loadScheme, schemeIds as loadSchemeIds, storedScheme as loadStored } from "../cli/src/schemes.mjs";
-import { contrastPairs, flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
+import { contrastPairs, fillPairsIn, flatten, measurePairs, picksCiteAnswers, primitiveReads, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
 import { ownerOf } from "../cli/src/coverage.mjs";
-import { checkedConnections, gapId } from "../cli/src/decision-graph.mjs";
+import { checkedConnections, gapId, gapItem } from "../cli/src/decision-graph.mjs";
+import { defaultsTakenByNone, pathsOf, withOnlyDefaults } from "../cli/src/scheme-defaults.mjs";
 import { againstBaseline } from "../cli/src/quality/difference.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
@@ -408,18 +409,63 @@ export function rawLayerGaps(files, allowed = LOCAL_STACKING) {
   return [...new Set(gaps)];
 }
 
+/** The rules grammar-defaults-hold lists by name. A listed item of one falls in the grammar scope, which is not strict. */
+export const GRAMMAR_DEFAULT_RULES = ["default-taken-by-no-scheme", "default-keeps-contrast", "default-reads-a-decision"];
+
 // The token API: the names a project can read. A new one waits for the owner's approval.
 /**
  * The scopes a listed gap ({ scheme, connection or rule, tokens }) falls in: the grammar scope that owns
  * each of its tokens and each token pattern of its connection (coverage.mjs ownerOf). A label such as
  * "tight lines" names no token, so its connection's patterns give the scope. When no scope owns any path
- * (the component spacing map), the scope is the first part of each path.
+ * (the component spacing map), the scope is the first part of each path. A rule of GRAMMAR_DEFAULT_RULES
+ * falls in the grammar scope.
  */
 export function gapScopes(g, item) {
+  if (GRAMMAR_DEFAULT_RULES.includes(item.rule)) return ["grammar"];
   const connection = checkedConnections(g).find((c) => c.id === (item.connection ?? item.rule));
   const paths = [...item.tokens, ...[connection?.tokens ?? []].flat()];
   const owned = paths.map((p) => ownerOf(p, g)?.scope).filter(Boolean);
   return [...new Set(owned.length ? owned : paths.map((p) => p.split(".")[0]))];
+}
+
+/** True when a listed item falls in the grammar scope: grammar-defaults-hold gates it, not color-connections-hold. */
+export const inGrammarScope = (g, item) => gapScopes(g, item).includes("grammar");
+
+/**
+ * What breaks the grammar's component defaults: { gaps: [{ item, says }], pairs, waiting }. Each scheme is built
+ * with no component value of its own (withOnlyDefaults), so every key takes its default. A default that
+ * names its fill keeps the contrast its grammar pair needs (fillPairsIn) in every brand and mode, unless
+ * the fill waits; a default reads a decision token (primitiveReads). A default every scheme overrides is
+ * a gap of the grammar: default taken by no scheme. schemes: as loadScheme gives them. pairs: how many
+ * fill pairs it measured. waiting: each pair on a fill that waits, as contrastPairs names it.
+ */
+export function grammarDefaultGaps(g, schemes) {
+  const idOf = new Map([...pathsOf(g)].map(([id, path]) => [path.join("."), id]));
+  const byId = new Map();
+  const add = (schemeId, rule, key, says) => {
+    const item = gapItem(schemeId, { kind: "rule", connection: rule, tokens: [idOf.get(key) ?? key] });
+    if (!byId.has(gapId(item))) byId.set(gapId(item), { item, says });
+  };
+  const waiting = new Set();
+  let pairs = 0;
+  for (const scheme of schemes) {
+    const only = withOnlyDefaults(scheme, g);
+    const unpaired = [];
+    const measured = measurePairs(only, (brand, mode) => {
+      const found = fillPairsIn(g, only, brand, mode);
+      unpaired.push(...found.unpaired);
+      return found.pairs;
+    });
+    pairs += measured.pairs;
+    for (const x of unpaired) add(scheme.id, "default-keeps-contrast", x.key, `reads ${x.reads} on ${x.on}, and the grammar pairs no contrast for them`);
+    for (const f of measured.failing)
+      if (f.waits) waiting.add(`${scheme.id}/${f.brand}/${f.mode} ${f.on} (${f.waits.for})`);
+      else add(scheme.id, "default-keeps-contrast", f.key, `${f.brand}/${f.mode}: on ${f.on} is ${f.ratio.toFixed(2)}:1, needs ${f.contrast}:1`);
+    for (const x of primitiveReads(only).reads) add(scheme.id, "default-reads-a-decision", x.key, `reads the primitive ${x.ref}`);
+  }
+  const keys = new Map(g.component_keys.map((k) => [k.id, k]));
+  for (const id of defaultsTakenByNone(g, schemes)) add("grammar", "default-taken-by-no-scheme", id, `default taken by no scheme: each scheme that has the key gives it another value than ${keys.get(id).default}`);
+  return { gaps: [...byId.values()], pairs, waiting: [...waiting] };
 }
 
 /**
@@ -2551,7 +2597,9 @@ export const CHECKS = {
       // a strict scope fails on any gap, listed or not. The gaps are findings: the check changes no value.
       const { connectionGaps, evaluateConnections, gapItem } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
       const g = c.grammar();
-      const baseline = c.json("harness", "connections-baseline.json");
+      // The grammar scope's items are grammar-defaults-hold's to gate.
+      const listed = c.json("harness", "connections-baseline.json");
+      const baseline = { ...listed, failures: listed.failures.filter((item) => !inGrammarScope(g, item)) };
       const failures = [];
       let n = 0;
       for (const id of SCHEMES) {
@@ -2573,6 +2621,28 @@ export const CHECKS = {
         `${n} connection and rule checks in ${SCHEMES.length} schemes hold, wait with approval, or are listed by name (${failures.length} listed gaps: ${failures.slice(0, 3).map(said).join("; ")}; …)` +
           (unapproved.length ? `; ${unapproved.length} listed gaps have a wait with no approval: ${unapproved.map((f) => f.id).join("; ")}` : "") +
           `; strict scopes with no gap: ${baseline.strict.join(", ")}`,
+      );
+    },
+  },
+  "grammar-defaults-hold": {
+    requires: ["cli/src/scheme-defaults.mjs", "schemes/grammar.json", "harness/connections-baseline.json"],
+    run: (c) => {
+      // Each scheme built with only the grammar's defaults keeps the component rules the real schemes
+      // keep (grammarDefaultGaps). A gap passes only when connections-baseline.json lists it in the grammar
+      // scope: a new gap fails, and a listed gap that holds now fails. The check changes no value.
+      const g = c.grammar();
+      const listed = c.json("harness", "connections-baseline.json");
+      const baseline = { ...listed, failures: listed.failures.filter((item) => inGrammarScope(g, item)) };
+      const { gaps, pairs, waiting } = grammarDefaultGaps(g, SCHEMES.map((id) => c.scheme(id)));
+      const failures = gaps.map((x) => ({ id: gapId(x.item), scopes: gapScopes(g, x.item), says: x.says }));
+      const { added, fixed, strict } = connectionsGate(failures, baseline, (item) => gapScopes(g, item));
+      if (strict.length) return bad(`${strict.length} default gaps in a strict scope: ${strict.slice(0, 4).join(" | ")}. Fix the default.`);
+      if (added.length)
+        return bad(`${added.length} default gaps the baseline does not list: ${added.slice(0, 4).map((f) => `${f.id}: ${f.says}`).join(" | ")}. Fix the default, or list it for the owner to decide.`);
+      if (fixed.length) return bad(`${fixed.length} listed default gaps hold now; take them out of harness/connections-baseline.json: ${fixed.slice(0, 6).join(" | ")}`);
+      return ok(
+        `${g.component_keys.length} component defaults built as each of ${SCHEMES.length} schemes read decision tokens; ${g.component_keys.filter((k) => k.on).length} name a fill, ${pairs} fill pairs measured in every brand and mode keep their contrast; ${failures.length} listed default gaps wait for the owner: ${failures.slice(0, 3).map((f) => f.id).join("; ")}; …` +
+          (waiting.length ? `; on fills that wait: ${waiting.join("; ")}` : ""),
       );
     },
   },
@@ -3133,23 +3203,13 @@ export const CHECKS = {
   "component-keys-read-decisions": {
     requires: ["schemes"],
     run: (c) => {
-      // A component key reads a decision token, so its value carries an answer, a reason and a trace.
-      // Only geometry may skip the decision: a circle and a capsule are the same shape in every scheme.
-      const GEOMETRY = new Set(["radius.round", "radius.pill"]);
+      // A component key reads a decision token (primitiveReads); only geometry may skip the decision.
       const offenders = [];
       let geometry = 0;
       for (const s of SCHEMES) {
-        const t = c.scheme(s).tokens;
-        const prim = flatten(t.primitive);
-        const sem = flatten(t.semantic);
-        for (const [key, tok] of Object.entries(flatten(t.component))) {
-          if (typeof tok.$value !== "string") continue;
-          for (const [, ref] of tok.$value.matchAll(/\{([^}]+)\}/g)) {
-            if (!(ref in prim) || ref in sem) continue;
-            if (GEOMETRY.has(ref)) geometry++;
-            else offenders.push(`${s}: ${key} reads the primitive ${ref}`);
-          }
-        }
+        const found = primitiveReads(c.scheme(s));
+        geometry += found.geometry;
+        offenders.push(...found.reads.map((x) => `${s}: ${x.key} reads the primitive ${x.ref}`));
       }
       return offenders.length
         ? bad(`${offenders.slice(0, 8).join("; ")}. Point each at a decision token`)

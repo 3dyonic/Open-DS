@@ -5,6 +5,7 @@ import { assetRoots, grammar, loadScheme, schemeIds, storedScheme } from "../src
 import { withDefaults, withoutDefaults } from "../src/scheme-defaults.mjs";
 import { withGenerated, withoutGenerated } from "../src/scheme-generated.mjs";
 import { withTypeAndSpace, withoutTypeAndSpace } from "../src/type-space-generated.mjs";
+import { pickByTone } from "../src/tokens.mjs";
 
 const roots = assetRoots();
 const g = grammar(roots);
@@ -63,4 +64,34 @@ test("the shared z-index steps join every scheme on load, and no scheme stores t
   assert.deepEqual(withDefaults(scheme, g).tokens.primitive["z-index"], own);
   const plain = { id: "x", tokens: { primitive: {}, component: {} } };
   assert.deepEqual(withoutDefaults(withDefaults(plain, g), g).tokens.primitive, {});
+});
+
+// A grammar default can name the fill it sits on (on), as a scheme's own token does. The fixture grammar
+// gives one key a fill; the real grammar gives none.
+test("a default that names its fill carries it: the build picks its text by the fill's tone, and a token equal to it is not stored", () => {
+  const fixture = structuredClone(g);
+  const key = fixture.component_keys.find((k) => k.id === "badge/success/label");
+  Object.assign(key, { default: "color.text.success-on-light", on: "color.status.success.subtle" });
+  const label = (s) => s.tokens.component.badge?.success?.label;
+  const fill = { $value: "{color.text.success-on-light}", $description: key.description, $extensions: { "open-ds": { on: "color.status.success.subtle" } } };
+
+  const filled = withDefaults({ id: "x", tokens: { component: {} } }, fixture);
+  assert.deepEqual(label(filled), fill);
+  assert.equal(label(withoutDefaults(filled, fixture)), undefined, "the fill is not stored");
+
+  // On a dark fill, the build turns the default's -on-light into -on-dark.
+  const theme = { light: { color: { status: { success: { subtle: { $value: "{x}", $extensions: { "open-ds": { tone: "dark" } } } } } } } };
+  assert.equal(pickByTone(filled.tokens.component, theme, "light").badge.success.label.$value, "{color.text.success-on-dark}");
+
+  // Every scheme stores this exact token today: with the fixture it equals the fill, so it leaves the file.
+  for (const id of schemeIds(roots)) {
+    const stored = storedScheme(id, roots);
+    assert.deepEqual(label(stored), fill, id);
+    assert.equal(label(withoutDefaults(stored, fixture)), undefined, id);
+    assert.deepEqual(label(withoutDefaults(stored, g)), fill, `${id}: the real grammar keeps it`);
+  }
+  // The same value without the fill is another choice, so it stays.
+  const plain = { $value: fill.$value, $description: fill.$description };
+  const own = { id: "x", tokens: { component: { badge: { success: { label: plain } } } } };
+  assert.deepEqual(label(withoutDefaults(own, fixture)), plain);
 });

@@ -5,10 +5,12 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import { connectionGaps, evaluateConnections, gapId, gapItem } from "../../cli/src/decision-graph.mjs";
 import { grammar, loadScheme } from "../../cli/src/schemes.mjs";
-import { SCHEMES, connectionsGate, gapScopes } from "../checks.mjs";
+import { SCHEMES, connectionsGate, gapScopes, inGrammarScope } from "../checks.mjs";
 
 const g = grammar();
-const baseline = JSON.parse(readFileSync(new URL("../connections-baseline.json", import.meta.url), "utf8"));
+const listed = JSON.parse(readFileSync(new URL("../connections-baseline.json", import.meta.url), "utf8"));
+// The grammar scope's items belong to grammar-defaults-hold (grammar-defaults.test.mjs).
+const baseline = { ...listed, failures: listed.failures.filter((item) => !inGrammarScope(g, item)) };
 const failuresOf = (id, scheme = loadScheme(id)) =>
   connectionGaps(evaluateConnections(scheme, g)).map((x) => {
     const item = gapItem(id, x);

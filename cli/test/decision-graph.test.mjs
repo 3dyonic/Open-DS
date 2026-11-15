@@ -2,7 +2,7 @@
 // property, answers, rule and connections. Run on the real schemes and grammar.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { graphReason, connectionChecks, connectionGaps, creatorsOf, evaluateConnections, indexesOf, madeBy, missingLinks, pairFloor, roleOf, storedNumberGaps } from "../src/decision-graph.mjs";
+import { graphReason, connectionChecks, connectionGaps, creatorsOf, evaluateConnections, indexesOf, madeBy, missingLinks, pairFloor, roleOf, ruleNodes, slotOf, storedNumberGaps } from "../src/decision-graph.mjs";
 import { assetRoots, grammar, loadScheme } from "../src/schemes.mjs";
 import { flatTokens } from "../src/tokens.mjs";
 import { decisionTree, formGaps } from "../src/trace.mjs";
@@ -409,4 +409,31 @@ test("a size group has no colour slot rule, and keeps every link", () => {
     assert.ok(!rules.some((r) => r.holds === false), `${id}: a failed rule`);
     assert.deepEqual(missingLinks(scheme, g, "size.icon.@", tree), [], id);
   }
+});
+
+// A semantic key can carry its own variant rule. The fixture grammar gives one key its own rule; the
+// real grammar gives none, so every key keeps the shared rule of its last part.
+test("a semantic key's own variant rule replaces the shared rule of its last part, for that key only", () => {
+  const fixture = structuredClone(g);
+  const keyOf = (id) => fixture.semantics.keys.find((k) => k.id === id);
+  keyOf("color.status.danger.@").variant = { step: "700" };
+  keyOf("color.action.primary.hover").variant = { from: "@", steps: 2 };
+  assert.deepEqual(slotOf(fixture, "color.status.danger.@"), { id: "@", step: "700" });
+  assert.deepEqual(slotOf(fixture, "color.action.primary.hover"), { id: "hover", from: "@", steps: 2 });
+  // The other keys, and the real grammar, keep the shared rule.
+  assert.equal(slotOf(fixture, "color.status.info.@").step, "600");
+  assert.equal(slotOf(g, "color.status.danger.@").step, "600");
+
+  // accessible-first puts its danger @ at step 700 in light and 900 in dark.
+  const scheme = loadScheme("accessible-first", roots);
+  const rule = (grammar, mode) =>
+    ruleNodes(scheme, grammar, "color.status.danger.@", { brand: "default", mode, index: indexesOf(scheme)("default", mode) })[0];
+  assert.deepEqual([rule(g, "light").holds, rule(g, "dark").holds], [false, false]);
+  assert.deepEqual([rule(fixture, "light").holds, rule(fixture, "dark").holds], [true, false]);
+  assert.equal(rule(fixture, "light").says, "@ sits at step 700 of its hue");
+  // The decision tree's rule node, and so the reason the card shows, comes from the rule that applies.
+  const says = (grammar, name) => decisionTree(scheme, grammar, name).find((n) => n.level === "rule").says;
+  assert.equal(says(fixture, "color.status.danger.@"), "@ sits at step 700 of its hue");
+  assert.equal(says(fixture, "color.action.primary.hover"), "hover sits 2 steps from its @");
+  assert.equal(says(g, "color.action.primary.hover"), "hover sits 1 step from its @");
 });

@@ -249,6 +249,11 @@
             "description": "The semantic token path the key points to by default.",
             "examples": ["color.action.primary"]
           },
+          "on": {
+            "type": "string",
+            "pattern": "^color(\\.[a-z0-9-]+)+(\\.@)?$",
+            "description": "The fill the default sits on. The default's token names it, as a scheme's own token does, so the build turns a -on-light or -on-dark default into the one that fill's tone picks in each mode."
+          },
           "created_by": {
             "type": "object",
             "additionalProperties": false,
@@ -737,6 +742,49 @@
                 "type": "string",
                 "minLength": 1,
                 "description": "Why this key has no contrast minimum, when contrast is null."
+              },
+              "variant": {
+                "type": "object",
+                "additionalProperties": false,
+                "description": "The key's own rule for its slot on its hue scale, in the shape of a semantics.variants item: a step, or from and steps. It replaces the rule of the variant its last part names, for this key only.",
+                "oneOf": [
+                  {
+                    "required": ["step"],
+                    "not": {
+                      "anyOf": [
+                        {
+                          "required": ["from"]
+                        },
+                        {
+                          "required": ["steps"]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "required": ["from", "steps"],
+                    "not": {
+                      "required": ["step"]
+                    }
+                  }
+                ],
+                "properties": {
+                  "step": {
+                    "type": "string",
+                    "pattern": "^[0-9]+$",
+                    "description": "The step of its hue scale the part sits at, such as 600."
+                  },
+                  "from": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "The part this one moves from, such as @ for hover."
+                  },
+                  "steps": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "How many steps on from the from part it sits."
+                  }
+                }
               }
             }
           }

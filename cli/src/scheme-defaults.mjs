@@ -6,19 +6,29 @@
 // adds each group, and withoutDefaults leaves out each group that equals the grammar's. No file access, so
 // the loader, the build and the bundled apps (Storybook) share it.
 
-/** A key's token path in a scheme: its id's segments; a key that is also a group keeps its token at "@". */
-function pathsOf(g) {
+/** Each key's token path in a scheme, by id: its id's segments; a key that is also a group keeps its token at "@". */
+export function pathsOf(g) {
   const ids = g.component_keys.map((k) => k.id);
   const groups = new Set(ids.flatMap((id) => id.split("/").slice(0, -1).map((_, i, a) => a.slice(0, i + 1).join("/"))));
   return new Map(ids.map((id) => [id, id.endsWith("/@") || !groups.has(id) ? id.split("/") : [...id.split("/"), "@"]]));
 }
 
-const fillOf = (key) => ({ $value: `{${key.default}}`, $description: key.description });
-const isFill = (token, key) =>
-  token &&
-  Object.keys(token).length === 2 &&
-  token.$value === `{${key.default}}` &&
-  token.$description === key.description;
+/** A key's fill: its default and description, and the fill it sits on when the key names one (on), as a stored token names it. */
+const fillOf = (key) => ({
+  $value: `{${key.default}}`,
+  $description: key.description,
+  ...(key.on && { $extensions: { "open-ds": { on: key.on } } }),
+});
+const isFill = (token, key) => {
+  const fill = fillOf(key);
+  return (
+    !!token &&
+    Object.keys(token).length === Object.keys(fill).length &&
+    token.$value === fill.$value &&
+    token.$description === fill.$description &&
+    JSON.stringify(token.$extensions) === JSON.stringify(fill.$extensions)
+  );
+};
 const at = (tree, path) => path.reduce((node, k) => node?.[k], tree);
 
 /** True when the scheme has the key: the key has no created_by, or the scheme's answer is one of its options. */
@@ -101,4 +111,22 @@ export function withoutDefaults(scheme, g) {
   prune(component);
   const primitive = scheme?.tokens?.primitive;
   return { ...scheme, tokens: { ...scheme.tokens, ...(primitive && { primitive: withoutShared(primitive, g) }), component } };
+}
+
+/** The scheme with no component value of its own: each key its answers create takes the grammar's default. Does not change its input. */
+export const withOnlyDefaults = (scheme, g) => withDefaults({ ...scheme, tokens: { ...scheme.tokens, component: {} } }, g);
+
+/**
+ * The ids of the component keys whose default no scheme takes: at least one scheme has the key, and each
+ * scheme that has it gives it another value. In the grammar's order.
+ */
+export function defaultsTakenByNone(g, schemes) {
+  const paths = pathsOf(g);
+  const filled = schemes.map((s) => withDefaults(s, g));
+  return g.component_keys
+    .filter((key) => {
+      const having = filled.filter((s) => keyCreated(key, s));
+      return having.length > 0 && having.every((s) => at(s.tokens.component, paths.get(key.id))?.$value !== `{${key.default}}`);
+    })
+    .map((key) => key.id);
 }

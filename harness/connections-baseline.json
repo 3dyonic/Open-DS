@@ -1,5 +1,5 @@
 {
-  "$description": "The connections and measured rules that do not hold today, listed by name: each item is a scheme, a connection or a rule, and its tokens. The harness check color-connections-hold fails on a gap this list does not name, and on a listed gap that holds now: take it out. A gap passes without a listing only with an approved wait (a wait that names approved_by). strict lists the scopes where no gap may be listed: a gap there fails even when listed. A scope is the grammar scope whose owns list covers a token, else the token's first part.",
+  "$description": "The connections, measured rules and grammar defaults that do not hold today, listed by name: each item is a scheme, a connection or a rule, and its tokens. The harness check color-connections-hold fails on a gap this list does not name, and on a listed gap that holds now: take it out. A gap passes without a listing only with an approved wait (a wait that names approved_by). strict lists the scopes where no gap may be listed: a gap there fails even when listed. A scope is the grammar scope whose owns list covers a token, else the token's first part. A rule of grammar-defaults-hold (default-taken-by-no-scheme, default-keeps-contrast, default-reads-a-decision) falls in the grammar scope, which is not strict; that check gates those items the same way. Its scheme is grammar for a default no scheme takes, and its tokens are component key ids.",
   "strict": [
     "spacing",
     "component-spacing-map",
@@ -380,6 +380,104 @@
       "tokens": [
         "type.heading.font-size",
         "type.data.font-size"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "badge/danger/label"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "badge/info/label"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "badge/success/label"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "badge/warning/label"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "combobox/chips/focus-ring-invalid"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "context-menu/item/label/destructive-highlight"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "input-group/focus-ring-invalid"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "input-otp/slot/focus-ring-invalid"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "menubar/item/label/destructive-highlight"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "native-select/focus-ring-invalid"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "radio-group/item/radius"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "slider/thumb/radius"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "switch/thumb/radius"
+      ]
+    },
+    {
+      "scheme": "grammar",
+      "rule": "default-taken-by-no-scheme",
+      "tokens": [
+        "textarea/focus-ring-invalid"
       ]
     },
     {

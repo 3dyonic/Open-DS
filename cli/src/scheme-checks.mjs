@@ -1,7 +1,7 @@
 // The rules every scheme keeps (ADR-002 step 3). Each rule takes one scheme and returns what
 // breaks it, so the build, the repository checks and a user's project run the same rules. No file access.
 import { contrast } from "./ramps.mjs";
-import { themeTokens } from "./tokens.mjs";
+import { pickByTone, themeTokens } from "./tokens.mjs";
 import { pairsIn } from "./tones.mjs";
 import { generatedProblems } from "./type-space-generated.mjs";
 
@@ -99,12 +99,12 @@ export function spacingOffGrid(scheme) {
 }
 
 /**
- * Each contrast pair the grammar names keeps its ratio in every brand and mode. A pair on a fill
- * that waits for a recorded fix goes in waiting, not in gaps. { pairs, gaps, waiting }
+ * The ratio of each pair in every brand and mode, with the build's values (themeTokens: tone picks
+ * applied). pairsOf(brand, mode) gives the pairs: [{ key, on, contrast, waits? }]. A pair whose key or
+ * fill has no colour value is not measured. { pairs, failing: [{ brand, mode, key, on, ratio, contrast, waits? }] }
  */
-export function contrastPairs(scheme, g) {
-  const gaps = [];
-  const waiting = new Set();
+export function measurePairs(scheme, pairsOf) {
+  const failing = [];
   let pairs = 0;
   for (const brand of Object.keys(scheme.tokens.brands))
     for (const mode of ["light", "dark"]) {
@@ -113,17 +113,75 @@ export function contrastPairs(scheme, g) {
         const v = resolve(all, p).value;
         return typeof v === "string" && /^#[0-9a-f]{6}$/i.test(v) ? v : null;
       };
-      for (const p of pairsIn(g, scheme, brand, mode)) {
+      for (const p of pairsOf(brand, mode)) {
         const [a, b] = [hex(p.key), hex(p.on)];
         if (!a || !b) continue;
         pairs++;
-        const r = contrast(a, b);
-        if (r >= p.contrast) continue;
-        if (p.waits) waiting.add(`${scheme.id}/${brand}/${mode} ${p.on} (${p.waits.for})`);
-        else gaps.push(`${scheme.id}/${brand}/${mode}: ${p.key} on ${p.on} is ${r.toFixed(2)}:1, needs ${p.contrast}:1`);
+        const ratio = contrast(a, b);
+        if (ratio < p.contrast) failing.push({ brand, mode, key: p.key, on: p.on, ratio, contrast: p.contrast, ...(p.waits && { waits: p.waits }) });
       }
     }
+  return { pairs, failing };
+}
+
+/**
+ * Each contrast pair the grammar names keeps its ratio in every brand and mode. A pair on a fill
+ * that waits for a recorded fix goes in waiting, not in gaps. { pairs, gaps, waiting }
+ */
+export function contrastPairs(scheme, g) {
+  const { pairs, failing } = measurePairs(scheme, (brand, mode) => pairsIn(g, scheme, brand, mode));
+  const gaps = failing
+    .filter((f) => !f.waits)
+    .map((f) => `${scheme.id}/${f.brand}/${f.mode}: ${f.key} on ${f.on} is ${f.ratio.toFixed(2)}:1, needs ${f.contrast}:1`);
+  const waiting = new Set(failing.filter((f) => f.waits).map((f) => `${scheme.id}/${f.brand}/${f.mode} ${f.on} (${f.waits.for})`));
   return { pairs, gaps, waiting: [...waiting] };
+}
+
+/**
+ * The grammar's contrast pair (pairsIn) of each component key that names the fill it sits on
+ * ($extensions["open-ds"].on), in one brand and mode, after the build's tone pick. pairs: [{ key, on,
+ * contrast, waits? }], with key the component token's path. unpaired: [{ key, reads, on }], a key whose
+ * value is not a key the grammar pairs on that fill. { pairs, unpaired }
+ */
+export function fillPairsIn(g, scheme, brand, mode) {
+  const theme = scheme.tokens.brands[brand].theme;
+  const named = pairsIn(g, scheme, brand, mode);
+  const pairs = [];
+  const unpaired = [];
+  for (const [key, token] of Object.entries(flatten(pickByTone(scheme.tokens.component, theme, mode)))) {
+    const on = token.$extensions?.["open-ds"]?.on;
+    if (!on) continue;
+    const reads = (typeof token.$value === "string" && token.$value.match(/^\{([^}]+)\}$/)?.[1]) || null;
+    const pair = named.find((p) => p.key === reads && p.on === on);
+    if (pair) pairs.push({ ...pair, key });
+    else unpaired.push({ key, reads, on });
+  }
+  return { pairs, unpaired };
+}
+
+/** The primitives a component key may read: a circle and a capsule are the same shape in every scheme. */
+export const GEOMETRY = new Set(["radius.round", "radius.pill"]);
+
+/**
+ * A component key reads a decision token, so its value carries an answer, a reason and a trace. The
+ * component keys that read a primitive instead: { reads: [{ key, ref }], geometry }, where geometry
+ * counts the reads of a GEOMETRY primitive, which may skip the decision.
+ */
+export function primitiveReads(scheme) {
+  const t = scheme.tokens;
+  const prim = flatten(t.primitive);
+  const sem = flatten(t.semantic);
+  const reads = [];
+  let geometry = 0;
+  for (const [key, tok] of Object.entries(flatten(t.component))) {
+    if (typeof tok.$value !== "string") continue;
+    for (const [, ref] of tok.$value.matchAll(/\{([^}]+)\}/g)) {
+      if (!(ref in prim) || ref in sem) continue;
+      if (GEOMETRY.has(ref)) geometry++;
+      else reads.push({ key, ref });
+    }
+  }
+  return { reads, geometry };
 }
 
 /** What a compiled JSON Schema validator (Ajv) finds wrong with the scheme, one line per error. */
