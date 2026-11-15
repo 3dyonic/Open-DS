@@ -1,8 +1,8 @@
-// Quality gate, the scorecard and the baseline (OD-298): directions, the comparison, the gate against a
-// recorded baseline and the Markdown people read.
+// Quality gate, the scorecard and the benchmark (OD-298): directions, the comparison, the gate against a
+// recorded benchmark and the Markdown people read.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { baselineOf, compareSnapshots, gateAgainstBaseline, measureAll, passes, scorecardMarkdown } from "../src/quality/scorecard.mjs";
+import { benchmarkOf, compareSnapshots, gateAgainstBenchmark, measureAll, passes, scorecardMarkdown } from "../src/quality/scorecard.mjs";
 import { fixtureScheme, snapshotOf } from "./quality-fixture.mjs";
 
 test("a direction passes when the value holds or moves the right way; report and missing always pass", () => {
@@ -32,30 +32,30 @@ test("a snapshot against itself passes with every delta 0, and every criterion h
   );
 });
 
-test("the gate fails a worse number against the baseline and lists a better one", () => {
+test("the gate fails a worse number against the benchmark and lists a better one", () => {
   const clean = snapshotOf(fixtureScheme());
-  const baseline = baselineOf(clean);
-  assert.equal(baseline.criteria["invariants.failures"].value, 0);
-  assert.equal(baseline.criteria["derived.share"].direction, "up");
-  assert.deepEqual(gateAgainstBaseline(clean, baseline), { ok: true, worse: [], better: [], missing: [] });
+  const benchmark = benchmarkOf(clean);
+  assert.equal(benchmark.criteria["invariants.failures"].value, 0);
+  assert.equal(benchmark.criteria["derived.share"].direction, "up");
+  assert.deepEqual(gateAgainstBenchmark(clean, benchmark), { ok: true, worse: [], better: [], missing: [] });
 
   const broken = fixtureScheme();
   broken.tokens.semantic["component-spacing-map"].x2.$value = "{space.12}";
-  const r = gateAgainstBaseline(snapshotOf(broken), baseline);
+  const r = gateAgainstBenchmark(snapshotOf(broken), benchmark);
   assert.equal(r.ok, false);
   assert.deepEqual(r.worse, ["invariants.failures: 0 → 1", "invariants.spacing-map: 0 → 1"]);
 
-  const before = baselineOf(snapshotOf(broken));
-  const fixed = gateAgainstBaseline(clean, before);
+  const before = benchmarkOf(snapshotOf(broken));
+  const fixed = gateAgainstBenchmark(clean, before);
   assert.equal(fixed.ok, true);
   assert.deepEqual(fixed.better, ["invariants.failures: 1 → 0", "invariants.spacing-map: 1 → 0"]);
 });
 
-test("a measure missing from the baseline is listed, not failed", () => {
+test("a measure missing from the benchmark is listed, not failed", () => {
   const clean = snapshotOf(fixtureScheme());
-  const baseline = baselineOf(clean);
-  delete baseline.criteria["size.unused-semantics"];
-  const r = gateAgainstBaseline(clean, baseline);
+  const benchmark = benchmarkOf(clean);
+  delete benchmark.criteria["size.unused-semantics"];
+  const r = gateAgainstBenchmark(clean, benchmark);
   assert.equal(r.ok, true);
   assert.deepEqual(r.missing, ["size.unused-semantics"]);
 });
@@ -92,14 +92,14 @@ test("a count is gated per scheme: a new breach in one scheme fails though a fix
   assert.ok(card.failed.includes("invariants.focus-ring"));
   assert.match(scorecardMarkdown(card), /\| `invariants\.focus-ring` \| 1 \| 1 \| 0 \| ↓ lower is better \| \*\*fail\*\* in a part \|/);
   assert.match(scorecardMarkdown(card), /Worse in: fixture 0 → 1\./);
-  // the baseline keeps the parts, so the harness gate catches it too
-  const gate = gateAgainstBaseline(cand, baselineOf(base));
+  // the benchmark keeps the parts, so the harness gate catches it too
+  const gate = gateAgainstBenchmark(cand, benchmarkOf(base));
   assert.equal(gate.ok, false);
   assert.ok(gate.worse.includes("invariants.focus-ring in fixture 0 → 1"), gate.worse.join("; "));
-  // a baseline with no parts recorded gates the totals only
-  const old = baselineOf(base);
+  // a benchmark with no parts recorded gates the totals only
+  const old = benchmarkOf(base);
   for (const c of Object.values(old.criteria)) delete c.parts;
-  assert.deepEqual(gateAgainstBaseline(cand, old).worse, []);
+  assert.deepEqual(gateAgainstBenchmark(cand, old).worse, []);
 });
 
 test("a count is gated per scheme and theme where the mode applies", () => {

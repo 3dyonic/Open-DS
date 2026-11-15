@@ -59,20 +59,20 @@ test("compare measures a committed candidate against its parent and fails a brok
   }
 });
 
-test("the candidate defaults to the working tree, and --write-baseline records the base", () => {
+test("the candidate defaults to the working tree, and --write-benchmark records the base", () => {
   const repo = makeRepo();
   try {
     const better = fixtureScheme();
     better.tokens.semantic.size.control.compact.$extensions["open-ds"].why = "Compact control: one step below the 32px default control.";
     writeScheme(repo, better);
-    const { card, files } = compareRefs({ repo, base: "HEAD", out: join(repo, "out"), css: false, blast: false, writeBaseline: true });
+    const { card, files } = compareRefs({ repo, base: "HEAD", out: join(repo, "out"), css: false, blast: false, writeBenchmark: true });
     assert.equal(card.pass, true);
     assert.equal(card.candidate.ref, "working tree");
     assert.equal(card.criteria.find((r) => r.id === "blast-radius.answer-orphans").candidate, null);
-    const baseline = JSON.parse(readFileSync(files.baseline, "utf8"));
-    assert.equal(baseline.ref, "HEAD");
-    assert.equal(baseline.criteria["derived.share"].value, 0.9);
-    assert.deepEqual(baseline.criteria["derived.literal-values"].parts, { "fixture/light": 2, "fixture/dark": 2 });
+    const benchmark = JSON.parse(readFileSync(files.benchmark, "utf8"));
+    assert.equal(benchmark.ref, "HEAD");
+    assert.equal(benchmark.criteria["derived.share"].value, 0.9);
+    assert.deepEqual(benchmark.criteria["derived.literal-values"].parts, { "fixture/light": 2, "fixture/dark": 2 });
   } finally {
     rmSync(repo, { recursive: true, force: true });
   }

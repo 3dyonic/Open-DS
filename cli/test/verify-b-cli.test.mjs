@@ -11,7 +11,7 @@ import { cpSync, symlinkSync } from "node:fs";
 let root;
 before(() => {
   root = sandbox();
-  for (const f of ["package.json", "harness/quality-baseline.json", "cli/bin"]) cpSync(join(REPO, f), join(root, f), { recursive: true });
+  for (const f of ["package.json", "harness/quality-benchmark.json", "cli/bin"]) cpSync(join(REPO, f), join(root, f), { recursive: true });
   // The CLI's build reads its schema checker (ajv) from cli/node_modules; the sandbox copies no packages.
   symlinkSync(join(REPO, "cli", "node_modules"), join(root, "cli", "node_modules"), "dir");
   const git = (...a) => execFileSync("git", a, { cwd: root, stdio: "pipe" });

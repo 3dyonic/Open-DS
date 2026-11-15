@@ -1,6 +1,6 @@
 // The quality scorecard: pure functions over snapshots. measureAll gives one snapshot's
-// numbers; compareSnapshots puts a base and a candidate side by side; gateAgainstBaseline checks a
-// candidate's numbers against the recorded baseline. Each criterion: { id, base, candidate, delta,
+// numbers; compareSnapshots puts a base and a candidate side by side; gateAgainstBenchmark checks a
+// candidate's numbers against the recorded benchmark. Each criterion: { id, base, candidate, delta,
 // direction, pass, details }.
 import * as accessibility from "./criteria/accessibility.mjs";
 import * as blastRadius from "./criteria/blast-radius.mjs";
@@ -119,11 +119,11 @@ export function relationTable(base, candidate) {
   );
 }
 
-/** The baseline file's content from one snapshot: each measure's value and direction. */
-export function baselineOf(snapshot, params = DEFAULT_PARAMS) {
+/** The benchmark file's content from one snapshot: each measure's value and direction. */
+export function benchmarkOf(snapshot, params = DEFAULT_PARAMS) {
   return {
     $description:
-      "The quality gate's baseline: each criterion's value on the ref below, its value per part (scheme, scheme/theme or file), and the way it may move (down: may only go down; up: may only go up; report: not gated). gated: false is shown, not gated. Each part is gated on its own. Refresh on purpose: open-ds compare --base origin/master --write-baseline.",
+      "The quality gate's benchmark: each criterion's value on the ref below, its value per part (scheme, scheme/theme or file), and the way it may move (down: may only go down; up: may only go up; report: not gated). gated: false is shown, not gated. Each part is gated on its own. Refresh on purpose: open-ds compare --base origin/master --write-benchmark.",
     ref: snapshot.ref,
     sha: snapshot.sha,
     criteria: Object.fromEntries(measureAll(snapshot, params).map((m) => [m.id, { value: m.value, direction: m.direction, gated: m.gated, parts: m.parts }])),
@@ -131,16 +131,16 @@ export function baselineOf(snapshot, params = DEFAULT_PARAMS) {
 }
 
 /**
- * A snapshot's numbers against the baseline: { ok, worse, better, missing }. worse lists each gated
+ * A snapshot's numbers against the benchmark: { ok, worse, better, missing }. worse lists each gated
  * criterion, or part of one, that moved the wrong way; better each that moved the right way (lower the
- * baseline).
+ * benchmark).
  */
-export function gateAgainstBaseline(snapshot, baseline, params = DEFAULT_PARAMS) {
+export function gateAgainstBenchmark(snapshot, benchmark, params = DEFAULT_PARAMS) {
   const worse = [];
   const better = [];
   const missing = [];
   for (const m of measureAll(snapshot, params)) {
-    const was = baseline.criteria?.[m.id];
+    const was = benchmark.criteria?.[m.id];
     if (!was) {
       missing.push(m.id);
       continue;
@@ -148,7 +148,7 @@ export function gateAgainstBaseline(snapshot, baseline, params = DEFAULT_PARAMS)
     const direction = was.direction ?? m.direction;
     if (direction === "report" || !m.gated) continue;
     const line = `${m.id}: ${was.value} → ${m.value}`;
-    // A baseline written before parts were recorded gates the total only.
+    // A benchmark written before parts were recorded gates the total only.
     const parts = was.value === null || m.value === null || !was.parts ? [] : partRegressions(direction, was.parts, m.parts);
     if (!passes(direction, was.value, m.value)) worse.push(line);
     else if (parts.length) worse.push(`${m.id} in ${parts.map((p) => `${p.part} ${p.base} → ${p.candidate}`).join(", ")}`);

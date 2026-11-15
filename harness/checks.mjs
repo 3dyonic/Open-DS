@@ -1219,28 +1219,28 @@ export const CHECKS = {
     },
   },
   "scheme-quality": {
-    requires: ["cli/src/quality/extract.mjs", "cli/src/quality/scorecard.mjs", "harness/quality-baseline.json"],
+    requires: ["cli/src/quality/extract.mjs", "cli/src/quality/scorecard.mjs", "harness/quality-benchmark.json"],
     run: async (c) => {
       // OD-298: the scheme quality gate. Every criterion is a number computed by code: traceability,
       // derived against literal values, invariants, blast radius, accessibility, motion, repetition and
-      // size. The baseline holds each number on origin/master with the way it may move; a gated number
+      // size. The benchmark holds each number on origin/master with the way it may move; a gated number
       // that moves the wrong way fails. open-ds compare --base origin/master shows the detail.
       const err = ensureTokens(c);
       if (err) return bad(tail(err));
       const { extractRef } = await import(pathToFileURL(c.p("cli/src/quality/extract.mjs")).href);
-      const { gateAgainstBaseline } = await import(pathToFileURL(c.p("cli/src/quality/scorecard.mjs")).href);
-      const baseline = c.json("harness", "quality-baseline.json");
-      const r = gateAgainstBaseline(await extractRef({ root: c.root }), baseline);
-      const against = `${baseline.ref} (${String(baseline.sha).slice(0, 10)})`;
+      const { gateAgainstBenchmark } = await import(pathToFileURL(c.p("cli/src/quality/scorecard.mjs")).href);
+      const benchmark = c.json("harness", "quality-benchmark.json");
+      const r = gateAgainstBenchmark(await extractRef({ root: c.root }), benchmark);
+      const against = `${benchmark.ref} (${String(benchmark.sha).slice(0, 10)})`;
       if (!r.ok)
         return bad(
-          `${r.worse.length} criteria are worse than ${against}: ${r.worse.slice(0, 6).join("; ")}. Run open-ds compare --base ${baseline.ref} for the detail.`,
+          `${r.worse.length} criteria are worse than ${against}: ${r.worse.slice(0, 6).join("; ")}. Run open-ds compare --base ${benchmark.ref} for the detail.`,
         );
-      const gated = Object.values(baseline.criteria).filter((x) => x.direction !== "report").length;
+      const gated = Object.values(benchmark.criteria).filter((x) => x.direction !== "report").length;
       return ok(
         `${gated} gated criteria hold against ${against}` +
           (r.better.length ? `; better: ${r.better.slice(0, 4).join("; ")}` : "") +
-          (r.missing.length ? `; not in the baseline yet: ${r.missing.join(", ")} (open-ds compare --base ${baseline.ref} --write-baseline)` : ""),
+          (r.missing.length ? `; not in the benchmark yet: ${r.missing.join(", ")} (open-ds compare --base ${benchmark.ref} --write-benchmark)` : ""),
       );
     },
   },
@@ -1503,34 +1503,22 @@ export const CHECKS = {
     },
   },
   "decisions-cover-values": {
-    requires: ["schemes/grammar.json", "cli/src/coverage.mjs", "harness/coverage-baseline.json"],
+    requires: ["schemes/grammar.json", "cli/src/coverage.mjs"],
     run: async (c) => {
       // OD-273: every semantic value rests on a decision, through a theme pick or a usage rule that
-      // cites an answer. The count of values with none, per scheme, may only go down.
+      // cites an answer. A value with none fails.
       const { coverageOfSchemes } = await import(pathToFileURL(c.p("scripts/coverage.mjs")).href);
-      const base = c.json("harness", "coverage-baseline.json").counts;
-      const rose = [];
-      const fell = [];
-      const lines = [];
+      const missing = [];
+      let total = 0;
       for (const cov of coverageOfSchemes()) {
-        const n = cov.unlinked.length;
-        const was = base[cov.scheme];
-        if (was === undefined) rose.push(`${cov.scheme} has ${n}, and the baseline does not list it`);
-        else if (n > was) rose.push(`${cov.scheme} went from ${was} to ${n}`);
-        else if (n < was) fell.push(`${cov.scheme} went from ${was} to ${n}`);
-        const first = cov.unlinked.slice(0, 4).map((u) => u.token);
-        lines.push(`${cov.scheme} ${n} of ${cov.total} (first: ${first.join(", ") || "none"})`);
+        total += cov.total;
+        for (const u of cov.unlinked) missing.push(`${cov.scheme} ${u.token}`);
       }
-      const counts = `Values with no decision: ${lines.join("; ")}`;
-      if (rose.length)
+      if (missing.length)
         return bad(
-          `more values rest on no decision: ${rose.join("; ")}. Cite an answer in the pick or a usage rule; node scripts/coverage.mjs lists them. ${counts}.`,
+          `${missing.length} values rest on no decision: ${missing.slice(0, 6).join("; ")}. Cite an answer in the pick or a usage rule; node scripts/coverage.mjs lists them.`,
         );
-      if (fell.length)
-        return ok(
-          `fewer values rest on no decision (good): ${fell.join("; ")}. Lower the baseline: node scripts/coverage.mjs --baseline. ${counts}.`,
-        );
-      return ok(`${counts}. Each count may only go down.`);
+      return ok(`all ${total} semantic values in every scheme rest on a decision`);
     },
   },
   "scheme-order": {
@@ -4160,7 +4148,7 @@ export const CHECKS = {
   // The docs pages are semantic Markdown (OD-284): visuals are directives, and their data sits in
   // <page>.json beside them. Every HTML tag left in a page counts; the count only goes down, to zero.
   "docs-no-html": {
-    requires: ["docs/docs", "harness/docs-html-baseline.json"],
+    requires: ["docs/docs"],
     run: (c) => {
       const walk = (dir) =>
         readdirSync(c.p(dir), { withFileTypes: true }).flatMap((e) =>
@@ -4174,15 +4162,9 @@ export const CHECKS = {
           .match(/<\/?[a-zA-Z][^>]*>|<!--/g)?.length ?? 0;
       const pages = walk("docs/docs").map((f) => [f, tags(c.read(f))]);
       const total = pages.reduce((a, [, n]) => a + n, 0);
-      const clean = pages.filter(([, n]) => !n).length;
-      const { tags: baseline } = c.json("harness/docs-html-baseline.json");
-      if (total > baseline)
-        return bad(`${total} HTML tags in the docs pages, up from ${baseline}; write a directive and its data instead`);
-      return total
-        ? ok(
-            `${total} HTML tags left in the docs pages (baseline ${baseline}); ${clean} of ${pages.length} pages have none`,
-          )
-        : ok(`no HTML in the ${pages.length} docs pages`);
+      if (total)
+        return bad(`${total} HTML tags in the docs pages; write a directive and its data instead. ${pages.filter(([, n]) => n).slice(0, 4).map(([f, n]) => `${f} (${n})`).join("; ")}`);
+      return ok(`no HTML in the ${pages.length} docs pages`);
     },
   },
   // Each docs page's data (<page>.json, OD-284) matches the schema of the composite it feeds

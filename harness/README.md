@@ -33,8 +33,8 @@ The exit code is 1 only when something fails.
 ## Counts that may only go down
 
 - `gaps-only-go-down`: the gap ledger's count per scheme and kind. After a fix, run `node scripts/gaps.mjs --baseline`.
-- `decisions-cover-values`: the semantic values per scheme that rest on no decision. A value is linked when its theme pick, or a usage rule that names it, cites an answer. After a fix, run `node scripts/coverage.mjs --baseline`.
-- `scheme-quality`: the scheme quality gate (OD-298). Each criterion in `quality-baseline.json` has a value on `origin/master`, a value per part (scheme, scheme and theme, or file) and a direction: down, up or report (not gated). A gated criterion that moves the wrong way fails. Refresh the baseline on purpose: `open-ds compare --base origin/master --write-baseline`.
+- `decisions-cover-values`: the semantic values per scheme that rest on no decision. A value is linked when its theme pick, or a usage rule that names it, cites an answer. A value with none fails.
+- `scheme-quality`: the scheme quality gate (OD-298). Each criterion in `quality-benchmark.json` has a value on `origin/master`, a value per part (scheme, scheme and theme, or file) and a direction: down, up or report (not gated). A gated criterion that moves the wrong way fails. Refresh the benchmark on purpose at each release: `open-ds compare --base origin/master --write-benchmark`.
 
 ## Ticket statuses
 

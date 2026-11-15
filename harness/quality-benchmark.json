@@ -1,5 +1,5 @@
 {
-  "$description": "The quality gate's baseline (OD-298): each criterion's value on the ref below, its value per part (scheme, scheme/theme or file), and the way it may move (down: may only go down; up: may only go up; report: not gated). gated: false is shown, not gated. Each part is gated on its own. Refresh on purpose: open-ds compare --base origin/master --write-baseline.",
+  "$description": "The quality gate's benchmark (OD-298): each criterion's value on the ref below, its value per part (scheme, scheme/theme or file), and the way it may move (down: may only go down; up: may only go up; report: not gated). gated: false is shown, not gated. Each part is gated on its own. Refresh on purpose: open-ds compare --base origin/master --write-benchmark.",
   "ref": "origin/master",
   "sha": "48ded0add08ced52e4dd24076a799156578bd449",
   "criteria": {

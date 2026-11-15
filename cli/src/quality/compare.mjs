@@ -9,12 +9,12 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { componentPairsSheet } from "./criteria/component-pairs.mjs";
 import { DEFAULT_PARAMS } from "./params.mjs";
-import { baselineOf, compareSnapshots, scorecardMarkdown } from "./scorecard.mjs";
+import { benchmarkOf, compareSnapshots, scorecardMarkdown } from "./scorecard.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const EXTRACT = join(here, "extract.mjs");
-/** Where the baseline lives, from the repository root. */
-export const BASELINE = join("harness", "quality-baseline.json");
+/** Where the benchmark lives, from the repository root. */
+export const BENCHMARK = join("harness", "quality-benchmark.json");
 
 function git(repo, args) {
   const r = spawnSync("git", ["-C", repo, ...args], { encoding: "utf8" });
@@ -92,10 +92,10 @@ export function snapshotSide({ repo, ref, scratch, css = true, blast = true, log
 /**
  * Compare a candidate (a ref, or the working tree) with a base ref. Writes scorecard.json,
  * scorecard.md, component-pairs.md (the flagged pairs) and both snapshots into out; with
- * writeBaseline, writes the base's numbers to
- * harness/quality-baseline.json. Returns { card, files }.
+ * writeBenchmark, writes the base's numbers to
+ * harness/quality-benchmark.json. Returns { card, files }.
  */
-export function compareRefs({ repo, base, candidate = null, out, writeBaseline = false, css = true, blast = true, params = DEFAULT_PARAMS, log = () => {} }) {
+export function compareRefs({ repo, base, candidate = null, out, writeBenchmark = false, css = true, blast = true, params = DEFAULT_PARAMS, log = () => {} }) {
   if (!base) throw new Error("compare needs a base: open-ds compare --base origin/master.");
   const outDir = resolve(out);
   mkdirSync(join(outDir, "snapshots"), { recursive: true });
@@ -107,10 +107,10 @@ export function compareRefs({ repo, base, candidate = null, out, writeBaseline =
   writeFileSync(files.json, `${JSON.stringify(card, null, 2)}\n`);
   writeFileSync(files.md, scorecardMarkdown(card));
   writeFileSync(files.pairs, componentPairsSheet(card.componentPairs.flagged, { base: card.base.ref, candidate: card.candidate.ref, compared: card.componentPairs.compared }));
-  if (writeBaseline) {
-    files.baseline = join(repo, BASELINE);
-    mkdirSync(dirname(files.baseline), { recursive: true });
-    writeFileSync(files.baseline, `${JSON.stringify(baselineOf(b.snapshot, params), null, 2)}\n`);
+  if (writeBenchmark) {
+    files.benchmark = join(repo, BENCHMARK);
+    mkdirSync(dirname(files.benchmark), { recursive: true });
+    writeFileSync(files.benchmark, `${JSON.stringify(benchmarkOf(b.snapshot, params), null, 2)}\n`);
   }
   return { card, files };
 }
