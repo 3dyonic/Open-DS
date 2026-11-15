@@ -11,6 +11,7 @@
 // No file access: the caller passes the scheme and the grammar.
 import { aliasChain, owns, tokenIndex } from "./lands.mjs";
 import { oklab, oklabDistance } from "./quality/color.mjs";
+import { MUTED_FLOOR, textFloorOf } from "./quality/relations.mjs";
 import { checkMotion, familyOf, ms } from "./motion.mjs";
 import { questions } from "./schemes.mjs";
 import { grammarRelations, relationResults } from "./shape-elevation.mjs";
@@ -186,6 +187,21 @@ export function connectionsOf(g, name) {
   return [...own, ...inherited];
 }
 
+// The grammar floors text at the AA text floor (4.5:1) and icons, edges and marks at 3:1
+// (semantics.tones.sets). A pair floored below the AA text floor is not text.
+const AA_TEXT_FLOOR = textFloorOf({});
+
+/**
+ * The floor one pair keeps in a scheme. A text pair takes the scheme's text floor (textFloorOf, from its
+ * accessibility answer), or its own floor when that is higher. Muted text keeps AA (MUTED_FLOOR), so it
+ * still looks secondary. A pair that is not text keeps its own floor.
+ */
+export function pairFloor(scheme, { key, contrast }) {
+  if (contrast < AA_TEXT_FLOOR) return contrast;
+  const answers = Object.fromEntries((scheme.answers ?? []).map((a) => [a.question, a.option]));
+  return Math.max(contrast, key === "color.text.muted" ? MUTED_FLOOR : textFloorOf(answers));
+}
+
 /** The pairs an also list adds in one brand and mode: [{ key, on, contrast }]. The contrast is the text's own pair floor. */
 function alsoPairs(g, c, names) {
   const keys = new Map((g.semantics?.keys ?? []).map((k) => [k.id, k]));
@@ -297,8 +313,9 @@ function colorChecks(scheme, g, c, { brand, mode, index, name }) {
       const apart = sa !== null && sb !== null && a.side === b.side ? Math.abs(sa - sb) : null;
       const promise = apart === null ? null : promised(c.promise, apart);
       const rule = apart === null ? "" : `; ${apart} steps apart${promise ? ` promise ${promise}:1` : " promise no floor"}`;
-      add([short(p.key), short(p.on)], ratio >= p.contrast, `${short(p.key)} on ${short(p.on)} is ${r2(ratio)}, floor ${p.contrast}:1${rule}`, p.waits);
-      out.at(-1).floor = p.contrast;
+      const floor = pairFloor(scheme, p);
+      add([short(p.key), short(p.on)], ratio >= floor, `${short(p.key)} on ${short(p.on)} is ${r2(ratio)}, floor ${floor}:1${rule}`, p.waits);
+      out.at(-1).floor = floor;
     }
   } else if (c.kind === "stays-apart" && c.by === "order") {
     const rungs = c.tokens.filter((t) => has.has(t) && typeof place(t).value === "string");

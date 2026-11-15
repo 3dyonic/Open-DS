@@ -24,6 +24,7 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
 
 ### Changed
 
+- The decision engine measures each text pair against the scheme's text floor from its accessibility answer, not only the key's own floor (OD-341). Text is a pair the grammar floors at 4.5:1; muted text keeps AA, and icons, edges and marks keep 3:1. Accessible first's warning and success on the canvas and on content read 5.02–6.16:1 against 7:1, so the connections baseline lists four new gaps (61 in all).
 - A wait has one shape on any semantic token or theme pick, base or mode: `$extensions["open-ds"].waits` with `for`, `why` and `approved_by` (OD-343). It covers the token's connections and its rule. Only a wait that names `approved_by` lets a break pass; a wait without it is a listed failure. `for` says what the wait is for in plain words, and the scheme schema rejects a ticket key in it. The three waits on record now say "a brand decision: the primary moves away from the danger red, or danger may differ per brand"; none is approved.
 - The type gate checks every role against every role one step below it, the same pairs the token cards show (OD-339). It finds 10 more pairs that are less than one ratio step apart.
 - A colour slot rule or a measured rule that does not hold is a gap, unless the token has an approved wait (OD-340). Twelve rules break today.

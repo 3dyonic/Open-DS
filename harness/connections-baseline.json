@@ -62,6 +62,38 @@
     },
     {
       "scheme": "accessible-first",
+      "connection": "fill-pairs-with-text",
+      "tokens": [
+        "color.status.success",
+        "color.surface.canvas"
+      ]
+    },
+    {
+      "scheme": "accessible-first",
+      "connection": "fill-pairs-with-text",
+      "tokens": [
+        "color.status.success",
+        "color.surface.default"
+      ]
+    },
+    {
+      "scheme": "accessible-first",
+      "connection": "fill-pairs-with-text",
+      "tokens": [
+        "color.status.warning",
+        "color.surface.canvas"
+      ]
+    },
+    {
+      "scheme": "accessible-first",
+      "connection": "fill-pairs-with-text",
+      "tokens": [
+        "color.status.warning",
+        "color.surface.default"
+      ]
+    },
+    {
+      "scheme": "accessible-first",
       "connection": "hover-from-fill",
       "tokens": [
         "color.action.secondary.hover",
