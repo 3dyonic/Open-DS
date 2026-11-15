@@ -128,7 +128,7 @@ Open http://localhost:3000. The pages follow the Figma frames:
 - /schemes/dense-data/moves/: change one answer and see what moves.
 - /compare/, /take/, /contribute/ and /questions/.
 
-`pnpm harness:full` also runs the design check (`harness/design/fidelity.cjs`). It compares each page with the Figma reference images in `harness/design/`. It needs Playwright with Chromium.
+The website's design check runs outside the harness: `pnpm test:site-fidelity`. It builds the site, then compares each page with the Figma reference images in `harness/design/` (`harness/design/fidelity.cjs`). It needs Playwright with Chromium.
 
 ### Storybook
 

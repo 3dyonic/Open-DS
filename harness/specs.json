@@ -210,11 +210,10 @@
         "home, scheme, scope, what moves, compare, take, contribute, questions pages from frames 115:900 to 130:900",
         "one scope page template for all 11 scopes, voice included",
         "reference screenshots in harness/design",
-        "design check: texts in order, fold, palette, height"
+        "design check (texts in order, fold, palette, height) runs outside the harness: pnpm test:site-fidelity"
       ],
       "checks": [
         "site-routes",
-        "site-design-fidelity",
         "site-build",
         "content-no-real-names"
       ]

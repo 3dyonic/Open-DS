@@ -3644,30 +3644,6 @@ export const CHECKS = {
     },
   },
 
-  "site-design-fidelity": {
-    requires: ["site/package.json", "harness/design/pages.json"],
-    slow: true,
-    run: (c) => {
-      // Build every time, so the check never reads a stale site/out.
-      const b = c.sh("pnpm", ["--dir", "site", "build"]);
-      if (b.code !== 0) return bad(tail(b.out));
-      const r = c.sh("node", ["harness/design/fidelity.cjs"]);
-      let res;
-      try {
-        res = JSON.parse(r.out.trim().split("\n").pop());
-      } catch {
-        return bad(tail(r.out));
-      }
-      if (res.missing)
-        return pending("Playwright is not installed: npm i -g playwright && npx playwright install chromium");
-      if (res.error) return bad(res.error);
-      const failed = res.pages.filter((p) => !p.ok);
-      return failed.length
-        ? bad(failed.map((p) => `${p.route} (${p.frame}): ${p.problems.slice(0, 3).join("; ")}`).join(" | "))
-        : ok(`${res.pages.length} pages match their Figma frames: texts in order, fold, palette and height`);
-    },
-  },
-
   // Docs
   "site-docs-storybook": {
     requires: ["site/src/lib/places.ts", "storybook/.storybook/component-docs.mdx", "docs/docusaurus.config.ts"],

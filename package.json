@@ -36,6 +36,7 @@
     "test:package": "node scripts/test-package.mjs",
     "test:create": "node scripts/test-create.mjs",
     "test:tools": "node scripts/test-agent-tools.mjs",
+    "test:site-fidelity": "pnpm --dir site build && node harness/design/fidelity.cjs",
     "shots": "node scripts/shots.mjs",
     "figma-kit": "node scripts/figma-kit.mjs",
     "figma-anatomy": "node scripts/figma-anatomy.mjs",
