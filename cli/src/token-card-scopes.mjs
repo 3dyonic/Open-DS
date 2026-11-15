@@ -1013,7 +1013,9 @@ export function scopeCard(context, id) {
     const card = build(ctx, id);
     // The value in this mode: a shadow can differ in dark, while the map's step holds the light one.
     const value = ctx.value(id);
-    if (card) return { value: typeof value === "string" ? value : JSON.stringify(value), ...card };
+    // The token's wait, from its decision graph: what it waits for and whether it is approved.
+    const wait = ctx.decisions[id]?.graph?.wait;
+    if (card) return { value: typeof value === "string" ? value : JSON.stringify(value), ...card, ...(wait && { wait }) };
   }
   return null;
 }

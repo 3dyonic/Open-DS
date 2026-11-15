@@ -171,8 +171,11 @@ test("each size comes from base × ratio^step; a planted size breaks it", () => 
 test("adjacent sizes stay one ratio step apart and line kinds 0.2 apart: today's gaps are the baseline's", () => {
   assert.deepEqual(typeGaps(loadScheme("dense-data", roots), "line-kinds-apart").map((x) => x.tokens), [["tight lines", "snug lines"], ["snug lines", "open lines"]]);
   assert.deepEqual(typeGaps(loadScheme("content-first", roots), "sizes-step-apart"), []);
+  // Every role against every role one step below: body, label and data share a step, so each meets caption.
   assert.deepEqual(typeGaps(loadScheme("accessible-first", roots), "sizes-step-apart").map((x) => x.tokens), [
     ["type.body.font-size", "type.caption.font-size"],
+    ["type.label.font-size", "type.caption.font-size"],
+    ["type.data.font-size", "type.caption.font-size"],
     ["type.title.font-size", "type.heading.font-size"],
   ]);
 });

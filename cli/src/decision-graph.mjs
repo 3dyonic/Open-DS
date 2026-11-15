@@ -18,7 +18,7 @@ import { MULTIPLIERS, steps as mapSteps } from "./spacing-map.mjs";
 import { baseOf, controlHeights } from "./spacing-use-cases.mjs";
 import { contrastRatio } from "./token-measure.mjs";
 import { flatTokens } from "./tokens.mjs";
-import { pairsIn, toneOf, toneRole } from "./tones.mjs";
+import { pairsIn, toneRole } from "./tones.mjs";
 import { decidersOf, mappingOf, matches, writtenReasons } from "./trace.mjs";
 import { KINDS, lineHeights, plain, sizeOf } from "./type-scale.mjs";
 import { recordsOf } from "./type-space-generated.mjs";
@@ -107,8 +107,8 @@ const ruleRelations = (g, name) => [...grammarRelations(g).values()].filter((r) 
 
 /**
  * The rules that measure a value, besides a mapping entry's rule: each scope relation without a kind, and
- * the motion family (its limit per duration and its curves per move). The baseline counts their breaks as it
- * counts a connection's. [{ id, kind: "rule", by: "rule", tokens }]
+ * the motion family (its limit per duration and its curves per move). The baseline lists their breaks as it
+ * lists a connection's. [{ id, kind: "rule", by: "rule", tokens }]
  */
 function measuredRules(g) {
   const relations = [...grammarRelations(g).values()].filter((r) => !r.kind).map((r) => ({ id: r.id, kind: "rule", by: "rule", tokens: r.tokens }));
@@ -117,7 +117,7 @@ function measuredRules(g) {
   return [...relations, ...family];
 }
 
-/** Every connection and measured rule, as the baseline counts them: allConnections, then measuredRules. */
+/** Every connection and measured rule, as the gate checks them: allConnections, then measuredRules. */
 export const checkedConnections = (g) => [...allConnections(g), ...measuredRules(g)];
 
 /**
@@ -219,14 +219,44 @@ const stepNumber = (p) => (/^\d+$/.test(p.step ?? "") ? Number(p.step) : null);
 const lightness = (hex) => (/^#[0-9a-f]{6}/i.test(hex ?? "") ? oklab(String(hex).slice(0, 7))[0] : null);
 
 /**
- * The checks of one connection in one brand and mode, for every token it holds or only for name.
- * [{ connection, kind, theme, tokens: [a, b], holds, waits, says }]
+ * The wait a scheme records on one of these tokens in a brand and mode: $extensions["open-ds"].waits on the
+ * semantic token itself, or on its theme pick (the mode's, else the base's). { for, why, approved_by }, or
+ * null. A wait covers every connection and rule of its token; only one with approved_by lets a break pass.
+ */
+export function waitsOf(index, tokens) {
+  const waitOn = (token) => token?.$extensions?.["open-ds"]?.waits ?? null;
+  const pickOf = (token) => {
+    const path = String(token?.$value ?? "").match(/^\{(theme\..+)\}$/)?.[1];
+    return path ? index.byPath.get(path) : undefined;
+  };
+  for (const t of tokens) {
+    const token = index.byPath.get(t) ?? index.byPath.get(`${t}.@`);
+    const wait = waitOn(token) ?? waitOn(pickOf(token));
+    if (wait) return wait;
+  }
+  return null;
+}
+
+/** True when a wait names who approved it: a person or a role. */
+export const approvedWait = (wait) => typeof wait?.approved_by === "string" && wait.approved_by.trim() !== "";
+
+/**
+ * The checks of one connection in one brand and mode, for every token it holds or only for name. A check
+ * that does not hold carries the wait of its tokens (waitsOf). [{ connection, kind, theme, tokens: [a, b], holds, waits, says }]
  */
 export function connectionChecks(scheme, g, c, { brand, mode, index, name = null }) {
   if (c.modes && !c.modes.includes(mode)) return [];
-  const theme = `${brand}/${mode}`;
   const measure = MEASURES[c.match ?? c.by];
-  if (measure) return measure(scheme, g, c, { brand, mode, theme, index, name });
+  const checks = measure ? measure(scheme, g, c, { brand, mode, theme: `${brand}/${mode}`, index, name }) : colorChecks(scheme, g, c, { brand, mode, index, name });
+  return checks.map((x) => {
+    const waits = x.holds || x.waits ? null : waitsOf(index, x.tokens);
+    return waits ? { ...x, waits } : x;
+  });
+}
+
+/** The checks of one color connection: comes-from, pairs-with and stays-apart, in connectionChecks' shape. */
+function colorChecks(scheme, g, c, { brand, mode, index, name }) {
+  const theme = `${brand}/${mode}`;
   const names = flatTokens(scheme.tokens.semantic)
     .filter(([, t]) => !t.$deprecated)
     .map(([p]) => p);
@@ -237,8 +267,6 @@ export function connectionChecks(scheme, g, c, { brand, mode, index, name = null
   const place = (n) => placeOf(index, n);
   // Every step of a scale in order, 0 to 950: the neutral steps hold every step a hue has.
   const order = g.semantics?.neutral?.steps ?? [];
-  // A fix the scheme records as waiting, on either token's pick.
-  const waitsOf = (...tokens) => tokens.map((t) => toneOf(scheme.tokens.brands[brand]?.theme, mode, t)?.waits).find(Boolean) ?? null;
 
   if (c.kind === "comes-from") {
     for (const n of names.filter((x) => covers(c.tokens, x) && mine(x))) {
@@ -289,11 +317,11 @@ export function connectionChecks(scheme, g, c, { brand, mode, index, name = null
         const [pa, pb] = [place(a), place(b)];
         if (c.by === "hue") {
           const same = pa.hue !== null && pa.hue === pb.hue;
-          add([short(a), short(b)], !same, same ? `${short(a)} and ${short(b)} share the ${pa.hue} hue` : `${short(a)} is ${pa.hue}, ${short(b)} is ${pb.hue}`, waitsOf(a, b));
+          add([short(a), short(b)], !same, same ? `${short(a)} and ${short(b)} share the ${pa.hue} hue` : `${short(a)} is ${pa.hue}, ${short(b)} is ${pb.hue}`);
           if (same) out.at(-1).hue = pa.hue;
         } else if (c.by === "delta-e") {
           const d = oklabDistance(String(pa.value).slice(0, 7), String(pb.value).slice(0, 7)) * 100;
-          add([short(a), short(b)], d >= c.min_delta_e, `${short(a)} and ${short(b)} are ΔE ${d.toFixed(1)} apart, need ${c.min_delta_e}`, waitsOf(a, b));
+          add([short(a), short(b)], d >= c.min_delta_e, `${short(a)} and ${short(b)} are ΔE ${d.toFixed(1)} apart, need ${c.min_delta_e}`);
         }
       }
   }
@@ -341,17 +369,16 @@ function typeChecks(scheme, g, c, { theme, index, name }) {
       add([t], holds, `${t} is ${typeof v === "number" ? v : `${plain(pxOf(v))}px`}; its ${kind} line kind gives ${want}`);
     }
   else if (m === "ratio-step") {
-    // Each step against the step below it, once: roles that share a step share a size by design. The pair
-    // names the first role of each step, or the asked token's own role.
+    // Each role against every role one step below it. Every pair counts, with or without an asked token, so
+    // the gate and a token's card see the same pairs: two roles on one step can still resolve to two sizes.
     const steps = [...new Set(held.map((r) => spec.steps[r]))].sort((a, b) => a - b);
     for (let i = 1; i < steps.length; i++) {
       const pairs = held.filter((r) => spec.steps[r] === steps[i]).flatMap((hi) => held.filter((r) => spec.steps[r] === steps[i - 1]).map((lo) => [tokenOf(lo, "font-size"), tokenOf(hi, "font-size")]));
-      const pair = pairs.find(([a, b]) => mine(a, b));
-      if (!pair) continue;
-      const [a, b] = pair;
-      const [pa, pb] = [pxOf(value(a)), pxOf(value(b))];
-      const times = pb / pa;
-      add([b, a], times >= spec.ratio - 1e-9, `${b} ${plain(pb)}px is ${times.toFixed(3)} × ${a} ${plain(pa)}px; one ${spec.ratio} step needs ${plain(pa * spec.ratio)}px`);
+      for (const [a, b] of pairs.filter((p) => mine(...p))) {
+        const [pa, pb] = [pxOf(value(a)), pxOf(value(b))];
+        const times = pb / pa;
+        add([b, a], times >= spec.ratio - 1e-9, `${b} ${plain(pb)}px is ${times.toFixed(3)} × ${a} ${plain(pa)}px; one ${spec.ratio} step needs ${plain(pa * spec.ratio)}px`);
+      }
     }
   } else if (m === "kind-gap") {
     const kinds = KINDS.filter((k) => spec["line-height"][k]);
@@ -523,30 +550,49 @@ const MEASURES = {
 };
 
 /**
- * Every connection of a scheme in every brand and mode, merged by subject: [{ connection, kind,
- * tokens, holds, waits, themes, says }]. A subject fails when it fails in any theme; themes lists them.
+ * Every connection and rule of a scheme in every brand and mode, merged by subject: [{ connection, kind,
+ * tokens, holds, waits, themes, says }]. A rule is a rule node that measures (ruleNodes) of a token a role
+ * covers: connection names the rule, tokens holds the token, kind is "rule". A measured rule the
+ * connections already check (checkedConnections) is the same subject. A subject fails when it fails in any
+ * theme; themes lists them. Its wait comes from a theme where it fails, and an unapproved or missing wait
+ * wins, so an approved wait in one theme excuses no other theme.
  */
 export function evaluateConnections(scheme, g) {
   const indexOf = indexesOf(scheme);
+  const roled = flatTokens(scheme.tokens.semantic)
+    .filter(([p, t]) => !t.$deprecated && roleOf(g, p))
+    .map(([p]) => p);
   const bySubject = new Map();
+  const merge = (x) => {
+    const key = `${x.connection} ${x.tokens.join(" | ")}`;
+    const prev = bySubject.get(key);
+    if (!prev) return void bySubject.set(key, { ...x, themes: x.holds ? [] : [x.theme] });
+    if (x.holds) return;
+    if (!prev.themes.includes(x.theme)) prev.themes.push(x.theme);
+    if (prev.holds) Object.assign(prev, { holds: false, says: x.says, waits: x.waits });
+    else if (approvedWait(prev.waits) && !approvedWait(x.waits)) prev.waits = x.waits;
+  };
   for (const brand of Object.keys(scheme.tokens.brands))
-    for (const mode of MODES)
-      for (const c of checkedConnections(g))
-        for (const x of connectionChecks(scheme, g, c, { brand, mode, index: indexOf(brand, mode) })) {
-          const key = `${x.connection} ${x.tokens.join(" | ")}`;
-          const prev = bySubject.get(key);
-          const failed = x.holds ? [] : [x.theme];
-          if (!prev) bySubject.set(key, { ...x, themes: failed });
-          else {
-            prev.themes.push(...failed);
-            if (prev.holds && !x.holds) Object.assign(prev, { holds: false, says: x.says, waits: x.waits });
-          }
+    for (const mode of MODES) {
+      const index = indexOf(brand, mode);
+      for (const c of checkedConnections(g)) for (const x of connectionChecks(scheme, g, c, { brand, mode, index })) merge(x);
+      for (const name of roled)
+        for (const r of ruleNodes(scheme, g, name, { brand, mode, index }).filter((n) => n.holds !== null)) {
+          const at = r.picked ? `; it sits at step ${r.picked}` : "";
+          merge({ connection: r.name, kind: "rule", theme: `${brand}/${mode}`, tokens: [short(name)], holds: r.holds, ...(r.waits && { waits: r.waits }), says: `${short(name)}: ${r.says}${at}` });
         }
+    }
   return [...bySubject.values()].map(({ theme, ...rest }) => rest);
 }
 
-/** The connections that do not hold and wait for no recorded fix: the gaps a scheme owes. */
-export const connectionGaps = (checks) => checks.filter((x) => !x.holds && !x.waits);
+/** The connections and rules that do not hold and wait for no approved fix: the gaps a scheme owes. */
+export const connectionGaps = (checks) => checks.filter((x) => !x.holds && !approvedWait(x.waits));
+
+/** A gap of a scheme as the connections baseline lists it: { scheme, connection, tokens }, or { scheme, rule, tokens } for a rule. */
+export const gapItem = (schemeId, x) => ({ scheme: schemeId, [x.kind === "rule" ? "rule" : "connection"]: x.connection, tokens: x.tokens });
+
+/** The one-line id of a listed gap: "<scheme> <connection or rule> <tokens>". */
+export const gapId = (item) => `${item.scheme} ${item.connection ?? item.rule} ${item.tokens.join(" | ")}`;
 
 // A job's how as the part after "does this by": "Luminance contrast → Text steps are …" becomes
 // "luminance contrast: text steps are …"; "follows X: …" becomes "following X: …".
@@ -632,6 +678,43 @@ function valueName(at, place) {
 }
 
 /**
+ * The rules of a token in one brand and mode, as decision tree nodes: its color slot and the step it sits
+ * at, the rule its mapping entry states, each measured rule with its checks, and a neutral scale step.
+ * holds is true or false for a rule that measures, null for one that only states. A rule that does not
+ * hold carries the token's wait (waitsOf). [{ level: "rule", name, says, step, picked, holds, waits?, checks? }]
+ */
+export function ruleNodes(scheme, g, name, { brand, mode, index = tokenIndex(scheme, { brand, mode }) }) {
+  const at = placeOf(index, name);
+  const nodes = [];
+  const slot = slotOf(g, name);
+  if (slot) {
+    const want = slot.step ?? null;
+    const says = want ? `${slot.id} sits at step ${want} of its hue` : `${slot.id} sits ${slot.steps} step${slot.steps === 1 ? "" : "s"} from its ${slot.from}`;
+    nodes.push({ level: "rule", name: slot.id, says, step: want, picked: at.step, holds: want ? at.step === want : null });
+  }
+  // The rule the token's mapping entry states: how a type size or line height is made.
+  const entry = mappingOf(g, short(name));
+  if (!slot && entry?.rule) nodes.push({ level: "rule", name: entry.property, says: entry.rule, step: null, picked: null, holds: null });
+  // A measured rule (a decided corner, the default line, the motion family), with the checks it runs.
+  for (const rule of slot ? [] : rulesOf(scheme, g, name, { brand, mode, index }))
+    nodes.push({ level: "rule", name: rule.id, says: rule.says, step: null, picked: null, holds: rule.checks.length ? rule.checks.every((x) => x.holds) : null, checks: rule.checks.map((x) => x.says) });
+  // A step of the neutral scale is its own rule: the step the scale's curve sets, or the floor below 0.
+  const neutral = g.semantics?.neutral;
+  const step = name.split(".").at(-1);
+  if (name.startsWith("color.neutral.") && [...(neutral?.steps ?? []), neutral?.floor?.step].includes(step))
+    nodes.push({
+      level: "rule",
+      name: "scale-step",
+      says: step === neutral.floor?.step ? neutral.floor.description : `step ${step} of the neutral ramp, set by the scale's step curve`,
+      step,
+      picked: at.step,
+      holds: null,
+    });
+  const waits = waitsOf(index, [short(name)]);
+  return nodes.map((n) => (n.holds === false && waits ? { ...n, waits } : n));
+}
+
+/**
  * The graph part of a token's decision tree, in one brand and mode: role (with its jobs), rule (a color
  * slot and its step, a neutral step, or the rule its mapping entry states), each connection with its
  * checks, the value and the reason sentence. [] for a token no role covers.
@@ -657,31 +740,8 @@ export function graphNodes(scheme, g, name, { brand, mode, index = tokenIndex(sc
     },
   ];
   const slot = slotOf(g, name);
-  const connections = connectionsOf(g, name);
-  if (slot) {
-    const want = slot.step ?? null;
-    const says = want ? `${slot.id} sits at step ${want} of its hue` : `${slot.id} sits ${slot.steps} step${slot.steps === 1 ? "" : "s"} from its ${slot.from}`;
-    nodes.push({ level: "rule", name: slot.id, says, step: want, picked: at.step, holds: want ? at.step === want : null });
-  }
-  // The rule the token's mapping entry states: how a type size or line height is made.
-  const entry = mappingOf(g, short(name));
-  if (!slot && entry?.rule) nodes.push({ level: "rule", name: entry.property, says: entry.rule, step: null, picked: null, holds: null });
-  // A measured rule (a decided corner, the default line, the motion family), with the checks it runs.
-  for (const rule of slot ? [] : rulesOf(scheme, g, name, { brand, mode, index }))
-    nodes.push({ level: "rule", name: rule.id, says: rule.says, step: null, picked: null, holds: rule.checks.length ? rule.checks.every((x) => x.holds) : null, checks: rule.checks.map((x) => x.says) });
-  // A step of the neutral scale is its own rule: the step the scale's curve sets, or the floor below 0.
-  const neutral = g.semantics?.neutral;
-  const step = name.split(".").at(-1);
-  if (name.startsWith("color.neutral.") && [...(neutral?.steps ?? []), neutral?.floor?.step].includes(step))
-    nodes.push({
-      level: "rule",
-      name: "scale-step",
-      says: step === neutral.floor?.step ? neutral.floor.description : `step ${step} of the neutral ramp, set by the scale's step curve`,
-      step,
-      picked: at.step,
-      holds: null,
-    });
-  for (const c of connections) {
+  nodes.push(...ruleNodes(scheme, g, name, { brand, mode, index }));
+  for (const c of connectionsOf(g, name)) {
     if (!slot && c.kind === "pairs-with" && c.promise)
       nodes.push({ level: "rule", name: "step-promise", says: c.promise.map((p) => `${p.apart} steps apart give ${p.contrast}:1`).join(", "), step: null, picked: at.step, holds: null });
     const checks = connectionChecks(scheme, g, c, { brand, mode, index, name: c.via ?? name });

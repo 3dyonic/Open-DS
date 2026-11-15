@@ -861,7 +861,7 @@
                       "open-ds": {
                         "tone": "dark",
                         "waits": {
-                          "for": "OD-225",
+                          "for": "a brand decision: the primary moves away from the danger red, or danger may differ per brand",
                           "why": "Coral's primary is almost the shared danger red (under 10 apart); which one moves is a brand decision."
                         },
                         "why": "orange.light.600: the primary action's fill, and its label reads 5.18:1 on it, above the 4.5:1 floor.",
@@ -1835,7 +1835,7 @@
                       "open-ds": {
                         "tone": "light",
                         "waits": {
-                          "for": "OD-225",
+                          "for": "a brand decision: the primary moves away from the danger red, or danger may differ per brand",
                           "why": "Coral's primary is almost the shared danger red (under 10 apart); which one moves is a brand decision."
                         },
                         "why": "orange.dark.600: the primary action's fill, and its label reads 9.11:1 on it, above the 4.5:1 floor.",
