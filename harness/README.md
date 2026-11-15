@@ -30,9 +30,17 @@ The exit code is 1 only when something fails.
 2. Name it in a spec. A check no spec names still runs, under "Other checks".
 3. `pnpm --dir harness test` fails if a spec names a check that does not exist.
 
+## Failures listed by name
+
+Each check compares today's failures with its list (`againstBaseline` in `cli/src/quality/difference.mjs`). A failure the list does not name fails. A listed failure that is fixed now fails until the same change takes it out.
+
+- `gaps-only-go-down`: `gaps-baseline.json` names each gap of the gap ledger by scheme, kind and place (component, key or token, state, property, brand and mode). After a fix, run `node scripts/gaps.mjs --baseline`.
+- `reasons-say-why`: `reason-form-baseline.json` names each semantic value whose reason is not in the reason form, as `<scheme> <token>`. After a round of reasons, run `node scripts/reason-form.mjs --baseline`.
+- `color-difference`: `color-difference-baseline.json` names each color pair under its scheme's difference threshold. The file says how to write it.
+- `grammar-defaults-hold`: builds each scheme with only the grammar's component defaults. A default resolves in every brand and mode (`tokensResolve`), reads a decision token, and keeps its fill's contrast. Its failures are listed in `connections-baseline.json`, in the grammar scope.
+
 ## Counts that may only go down
 
-- `gaps-only-go-down`: the gap ledger's count per scheme and kind. After a fix, run `node scripts/gaps.mjs --baseline`.
 - `decisions-cover-values`: the semantic values per scheme that rest on no decision. A value is linked when its theme pick, or a usage rule that names it, cites an answer. A value with none fails.
 - `scheme-quality`: the scheme quality gate (OD-298). Each criterion in `quality-benchmark.json` has a value on `origin/master`, a value per part (scheme, scheme and theme, or file) and a direction: down, up or report (not gated). A gated criterion that moves the wrong way fails. Refresh the benchmark on purpose at each release: `open-ds compare --base origin/master --write-benchmark`.
 
