@@ -410,7 +410,7 @@ export function rawLayerGaps(files, allowed = LOCAL_STACKING) {
 }
 
 /** The rules grammar-defaults-hold lists by name. A listed item of one falls in the grammar scope, which is not strict. */
-export const GRAMMAR_DEFAULT_RULES = ["default-taken-by-no-scheme", "default-keeps-contrast", "default-reads-a-decision"];
+export const GRAMMAR_DEFAULT_RULES = ["default-taken-by-no-scheme", "default-keeps-contrast", "default-reads-a-decision", "default-resolves"];
 
 // The token API: the names a project can read. A new one waits for the owner's approval.
 /**
@@ -435,7 +435,8 @@ export const inGrammarScope = (g, item) => gapScopes(g, item).includes("grammar"
  * What breaks the grammar's component defaults: { gaps: [{ item, says }], pairs, waiting }. Each scheme is built
  * with no component value of its own (withOnlyDefaults), so every key takes its default. A default that
  * names its fill keeps the contrast its grammar pair needs (fillPairsIn) in every brand and mode, unless
- * the fill waits; a default reads a decision token (primitiveReads). A default every scheme overrides is
+ * the fill waits; a default reads a decision token (primitiveReads); a default resolves in every brand and
+ * mode (tokensResolve), so a reference the scheme lacks is a gap, not a skip. A default every scheme overrides is
  * a gap of the grammar: default taken by no scheme. schemes: as loadScheme gives them. pairs: how many
  * fill pairs it measured. waiting: each pair on a fill that waits, as contrastPairs names it.
  */
@@ -462,6 +463,12 @@ export function grammarDefaultGaps(g, schemes) {
       if (f.waits) waiting.add(`${scheme.id}/${f.brand}/${f.mode} ${f.on} (${f.waits.for})`);
       else add(scheme.id, "default-keeps-contrast", f.key, `${f.brand}/${f.mode}: on ${f.on} is ${f.ratio.toFixed(2)}:1, needs ${f.contrast}:1`);
     for (const x of primitiveReads(only).reads) add(scheme.id, "default-reads-a-decision", x.key, `reads the primitive ${x.ref}`);
+    // tokensResolve says "<scheme>/<brand>/<mode>: <path> <error>". A path that is no component key is the
+    // scheme's own token: schemes-tokens-resolve gates it.
+    for (const problem of tokensResolve(only)) {
+      const path = problem.match(/^\S+: (\S+) /)?.[1];
+      if (idOf.has(path)) add(scheme.id, "default-resolves", path, problem);
+    }
   }
   const keys = new Map(g.component_keys.map((k) => [k.id, k]));
   for (const id of defaultsTakenByNone(g, schemes)) add("grammar", "default-taken-by-no-scheme", id, `default taken by no scheme: each scheme that has the key gives it another value than ${keys.get(id).default}`);
@@ -1216,29 +1223,20 @@ export const CHECKS = {
   },
 
   "gaps-only-go-down": {
-    requires: ["schemes/grammar.json", "cli/src/gaps.mjs", "harness/gaps-baseline.json"],
+    requires: ["schemes/grammar.json", "cli/src/gaps.mjs", "scripts/gaps.mjs", "harness/gaps-baseline.json"],
     run: async (c) => {
-      // OD-243: the gap ledger is the measured baseline of where the decision trace breaks. Each count,
-      // per scheme and kind, may only go down. A fix lowers the baseline in the same change (node
-      // scripts/gaps.mjs --baseline), so every drop is on record; a new gap fails here.
-      const { gapCounts } = await import(pathToFileURL(c.p("scripts/gaps.mjs")).href);
-      const base = c.json("harness", "gaps-baseline.json").counts;
-      const now = gapCounts();
-      const rose = [];
-      const fell = [];
-      let total = 0;
-      for (const [s, kinds] of Object.entries(now))
-        for (const [k, n] of Object.entries(kinds)) {
-          total += n;
-          const was = base[s]?.[k];
-          if (was === undefined) rose.push(`${s} ${k}: ${n}, not in the baseline`);
-          else if (n > was) rose.push(`${s} ${k}: ${was} → ${n}`);
-          else if (n < was) fell.push(`${s} ${k}: ${was} → ${n}`);
-        }
-      if (rose.length) return bad(`new gaps: ${rose.slice(0, 6).join("; ")}. open-ds gaps <scheme> lists them.`);
-      if (fell.length)
-        return bad(`gaps fell (good): ${fell.slice(0, 6).join("; ")}. Record it: node scripts/gaps.mjs --baseline.`);
-      return ok(`${total} gaps across ${Object.keys(now).length} schemes, none new; each count may only go down`);
+      // The gap ledger is the measured list of where the decision trace breaks. Each gap is listed by name
+      // (scheme, kind, and where it is). A gap the list does not name fails; a listed gap that is fixed fails
+      // until the same change takes it out (node scripts/gaps.mjs --baseline), so every drop is on record.
+      const { gapLedgers, namedGaps } = await import(pathToFileURL(c.p("scripts/gaps.mjs")).href);
+      const ledgers = gapLedgers();
+      const gaps = namedGaps(ledgers);
+      const { added, fixed } = againstBaseline(gaps, c.json("harness", "gaps-baseline.json"));
+      if (added.length)
+        return bad(`${added.length} gaps the baseline does not name (open-ds gaps <scheme> lists them): ${added.slice(0, 4).map((x) => `${x.id}: ${x.says}`).join(" | ")}`);
+      if (fixed.length)
+        return bad(`${fixed.length} listed gaps are fixed; take them out of harness/gaps-baseline.json (node scripts/gaps.mjs --baseline): ${fixed.slice(0, 6).join(" | ")}`);
+      return ok(`${gaps.length} gaps across ${ledgers.length} schemes, each listed by name; a new gap and a fixed listed gap fail`);
     },
   },
   "values-traced": {
@@ -1325,23 +1323,15 @@ export const CHECKS = {
     run: async (c) => {
       // OD-294: a reason states its job ("in order to"), how the property does it ("does this by"), what
       // people get ("so") and the decision ("because"), and cites an answer. Scopes convert in rounds:
-      // the count of values not yet in the form, per scheme, may only go down. Shape and elevation are
+      // each value not yet in the form is listed by name; a new one fails, and a listed one in the form now
+      // fails until the same change takes it out. Shape and elevation are
       // converted: every reason they write, in every brand and mode, must be in the form now.
-      const { formOfSchemes } = await import(pathToFileURL(c.p("scripts/reason-form.mjs")).href);
+      const { formOfSchemes, namedOff } = await import(pathToFileURL(c.p("scripts/reason-form.mjs")).href);
       const { formGaps, writtenReasons } = await import(pathToFileURL(c.p("cli/src/trace.mjs")).href);
       const g = c.grammar();
-      const base = c.json("harness", "reason-form-baseline.json").counts;
-      const rose = [];
-      const fell = [];
-      const lines = [];
-      for (const f of formOfSchemes()) {
-        const n = f.off.length;
-        const was = base[f.scheme];
-        if (was === undefined) rose.push(`${f.scheme} has ${n}, and the baseline does not list it`);
-        else if (n > was) rose.push(`${f.scheme} went from ${was} to ${n}`);
-        else if (n < was) fell.push(`${f.scheme} went from ${was} to ${n}`);
-        lines.push(`${f.scheme} ${n} of ${f.total}`);
-      }
+      const schemes = formOfSchemes();
+      const { added, fixed } = againstBaseline(namedOff(schemes), c.json("harness", "reason-form-baseline.json"));
+      const lines = schemes.map((f) => `${f.scheme} ${f.off.length} of ${f.total}`);
       const converted = /^(radius|border-width|elevation)\./;
       const off = [];
       for (const id of SCHEMES)
@@ -1352,11 +1342,11 @@ export const CHECKS = {
           }
       const counts = `Values whose reason is not in the form yet: ${lines.join("; ")}`;
       if (off.length) return bad(`${off.length} shape or elevation reasons are not in the reason form: ${off.slice(0, 4).join("; ")}`);
-      if (rose.length)
-        return bad(`more reasons are out of the form: ${rose.join("; ")}. Write them in the grammar's reason_form; node scripts/reason-form.mjs lists them. ${counts}.`);
-      if (fell.length)
-        return ok(`fewer reasons are out of the form (good): ${fell.join("; ")}. Lower the baseline: node scripts/reason-form.mjs --baseline. ${counts}.`);
-      return ok(`every shape and elevation reason is in the form. ${counts}. Each count may only go down.`);
+      if (added.length)
+        return bad(`${added.length} reasons out of the form that the baseline does not name: ${added.slice(0, 4).map((x) => `${x.id} misses ${x.missing.join(", ")}`).join(" | ")}. Write them in the grammar's reason_form. ${counts}.`);
+      if (fixed.length)
+        return bad(`${fixed.length} listed reasons are in the form now; take them out of harness/reason-form-baseline.json (node scripts/reason-form.mjs --baseline): ${fixed.slice(0, 6).join(" | ")}. ${counts}.`);
+      return ok(`every shape and elevation reason is in the form. ${counts}. Each value out of the form is listed by name.`);
     },
   },
   // OD-297: the design decisions the owner accepted, each checked where it lives.
@@ -2627,8 +2617,8 @@ export const CHECKS = {
   "grammar-defaults-hold": {
     requires: ["cli/src/scheme-defaults.mjs", "schemes/grammar.json", "harness/connections-baseline.json"],
     run: (c) => {
-      // Each scheme built with only the grammar's defaults keeps the component rules the real schemes
-      // keep (grammarDefaultGaps). A gap passes only when connections-baseline.json lists it in the grammar
+      // Each scheme built with only the grammar's defaults resolves, and keeps the component rules the real
+      // schemes keep (grammarDefaultGaps). A gap passes only when connections-baseline.json lists it in the grammar
       // scope: a new gap fails, and a listed gap that holds now fails. The check changes no value.
       const g = c.grammar();
       const listed = c.json("harness", "connections-baseline.json");
@@ -2641,7 +2631,7 @@ export const CHECKS = {
         return bad(`${added.length} default gaps the baseline does not list: ${added.slice(0, 4).map((f) => `${f.id}: ${f.says}`).join(" | ")}. Fix the default, or list it for the owner to decide.`);
       if (fixed.length) return bad(`${fixed.length} listed default gaps hold now; take them out of harness/connections-baseline.json: ${fixed.slice(0, 6).join(" | ")}`);
       return ok(
-        `${g.component_keys.length} component defaults built as each of ${SCHEMES.length} schemes read decision tokens; ${g.component_keys.filter((k) => k.on).length} name a fill, ${pairs} fill pairs measured in every brand and mode keep their contrast; ${failures.length} listed default gaps wait for the owner: ${failures.slice(0, 3).map((f) => f.id).join("; ")}; …` +
+        `${g.component_keys.length} component defaults built as each of ${SCHEMES.length} schemes resolve in every brand and mode and read decision tokens; ${g.component_keys.filter((k) => k.on).length} name a fill, ${pairs} fill pairs measured in every brand and mode keep their contrast; ${failures.length} listed default gaps wait for the owner: ${failures.slice(0, 3).map((f) => f.id).join("; ")}; …` +
           (waiting.length ? `; on fills that wait: ${waiting.join("; ")}` : ""),
       );
     },

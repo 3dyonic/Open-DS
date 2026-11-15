@@ -66,3 +66,16 @@ test("a default that reads a primitive fails; the circle and capsule shapes may"
   assert.deepEqual(reads(added), withStep.map((id) => `${id} default-reads-a-decision button/radius`));
   assert.deepEqual(reads(gate(failuresOf(fixtureWith("button/radius", { default: "radius.pill" }))).added), []);
 });
+
+test("a default that does not resolve in a scheme fails there, by name, in the grammar scope", () => {
+  // radius.4 is a primitive step in some schemes only: where a scheme lacks it, the default resolves to nothing.
+  const fails = (added) => added.filter((f) => f.item.rule === "default-resolves");
+  const added = fails(gate(failuresOf(fixtureWith("button/radius", { default: "radius.4" }))).added);
+  const without = schemes.filter((s) => !("4" in s.tokens.primitive.radius)).map((s) => s.id);
+  assert.ok(without.length > 0);
+  assert.deepEqual(added.map((f) => f.id), without.map((id) => `${id} default-resolves button/radius`));
+  assert.match(added[0].says, /^[a-z-]+\/[a-z-]+\/light: button\.radius → radius\.4 does not exist$/);
+  assert.ok(added.every((f) => f.scopes.length === 1 && f.scopes[0] === "grammar"));
+  // Today every default resolves in every scheme.
+  assert.deepEqual(fails(failuresOf(g)), []);
+});

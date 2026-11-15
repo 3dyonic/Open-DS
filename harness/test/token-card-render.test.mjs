@@ -22,6 +22,12 @@ const glyph = { name: "Filter", nodes: [["path", { d: "M3 3h18l-7 8v6l-4 3v-9z" 
 const maps = Object.fromEntries(
   ["content-first", "dense-data"].map((id) => [id, tokenMapView({ scheme: loadScheme(id, roots), grammar: g, glyph })]),
 );
+// The maps whose primary waits for a brand decision: brand expressive in dark, multi-brand's coral in both modes.
+const waitMaps = {
+  "brand-expressive": tokenMapView({ scheme: loadScheme("brand-expressive", roots), grammar: g, glyph }),
+  "multi-brand/coral": tokenMapView({ scheme: loadScheme("multi-brand", roots), grammar: g, glyph, brand: "coral" }),
+};
+const mapOf = (scheme) => maps[scheme] ?? waitMaps[scheme];
 
 let dir;
 let card;
@@ -53,15 +59,21 @@ before(async () => {
 });
 after(() => rmSync(dir, { recursive: true, force: true }));
 
-// The card of one decision, as text in reading order.
-function render(scheme, id, mode = "light") {
-  const map = maps[scheme];
-  const d = map.modes[mode].decisions[id] ?? map.shared.decisions[id];
-  assert.ok(d, `${scheme} has no decision ${id}`);
+// The card of one decision, as text in reading order. change(d) gives the decision to render instead.
+function render(scheme, id, mode = "light", change = (d) => d) {
+  const map = mapOf(scheme);
+  const found = map.modes[mode].decisions[id] ?? map.shared.decisions[id];
+  assert.ok(found, `${scheme} has no decision ${id}`);
+  const d = change(found);
   const html = server.renderToStaticMarkup(
     React.createElement(card.DecisionCard, { d, mode, theme: map.modes[mode].theme, answers: map.answers }),
   );
-  const text = html
+  return { d, html, text: textOf(html) };
+}
+
+// Markup as text in reading order.
+function textOf(html) {
+  return html
     .replace(/<[^>]+>/g, " ")
     .replace(/&#x27;/g, "'")
     .replace(/&quot;/g, '"')
@@ -69,7 +81,6 @@ function render(scheme, id, mode = "light") {
     .replace(/&gt;/g, ">")
     .replace(/&amp;/g, "&")
     .replace(/\s+/g, " ");
-  return { d, html, text };
 }
 
 // Each text is on the card, in this order.
@@ -160,4 +171,88 @@ test("a layer card names its class and the components that use it", () => {
     [`Used by ${d.components.length} components.`, d.components.map((c) => c.component).join(" · ")],
     "layer",
   );
+});
+
+// The wait line of the brand primaries: what it waits for, why, and that no one approved it.
+const BRAND_WAIT =
+  "Waits for a brand decision: the primary moves away from the danger red, or danger may differ per brand.";
+
+test("a card whose rule waits shows the wait in one line, after its face and again in its trace", () => {
+  for (const [scheme, mode, why] of [
+    [
+      "brand-expressive",
+      "dark",
+      "In dark mode the brand's pink is close to the danger red (under 10 apart); which one moves is a brand decision.",
+    ],
+    [
+      "multi-brand/coral",
+      "light",
+      "Coral's primary is almost the shared danger red (under 10 apart); which one moves is a brand decision.",
+    ],
+    [
+      "multi-brand/coral",
+      "dark",
+      "Coral's primary is almost the shared danger red (under 10 apart); which one moves is a brand decision.",
+    ],
+  ]) {
+    const { d, text } = render(scheme, "color.action.primary", mode);
+    const line = `${BRAND_WAIT} ${why} Not approved.`;
+    assert.deepEqual(d.graph.wait, { for: BRAND_WAIT.slice("Waits for ".length, -1), why, approved: false });
+    inOrder(text, [d.id, "Can you see it?", line, "Used by", "Show the trace"], `${scheme} ${mode}`);
+    assert.equal(text.split(line).length, 2, `${scheme} ${mode}: the closed card shows the wait once`);
+    // The trace, open: its answers, then the same line.
+    const trace = textOf(
+      server.renderToStaticMarkup(
+        React.createElement(card.Trace, { ids: d.answers, answers: mapOf(scheme).answers, wait: d.graph.wait }),
+      ),
+    );
+    const first = mapOf(scheme).answers[d.answers[0]];
+    inOrder(trace, [first.question, line], `${scheme} ${mode} trace`);
+  }
+});
+
+test("a card with no wait shows no wait line, in the card and in its trace", () => {
+  // Brand expressive's primary holds in light; content first's has no wait in either mode.
+  for (const [scheme, mode] of [
+    ["brand-expressive", "light"],
+    ["content-first", "light"],
+    ["content-first", "dark"],
+  ]) {
+    const { d, text } = render(scheme, "color.action.primary", mode);
+    assert.equal(d.graph?.wait, undefined);
+    assert.ok(!text.includes("Waits for"), `${scheme} ${mode}: a wait line with no wait`);
+    const trace = textOf(
+      server.renderToStaticMarkup(
+        React.createElement(card.Trace, { ids: d.answers, answers: mapOf(scheme).answers, wait: null }),
+      ),
+    );
+    assert.ok(!trace.includes("Waits for"));
+  }
+});
+
+test("an approved wait names who approved it; a scope card shows its own mode's wait", () => {
+  // Test data: no wait in the schemes is approved yet, and no scope card waits.
+  const approved = (d) => ({
+    ...d,
+    graph: { ...d.graph, wait: { ...d.graph.wait, approved: true, approved_by: "the brand owner" } },
+  });
+  const { text } = render("brand-expressive", "color.action.primary", "dark", approved);
+  assert.ok(text.includes(" which one moves is a brand decision. Approved by the brand owner."));
+  assert.ok(!text.includes("Not approved."));
+  const wait = { for: "a planted fix", why: "a planted reason", approved: false };
+  const scoped = (d) => ({ ...d, cards: { ...d.cards, dark: { ...d.cards.dark, wait } } });
+  const dark = render("content-first", "radius.control", "dark", scoped).text;
+  const light = render("content-first", "radius.control", "light", scoped).text;
+  inOrder(
+    dark,
+    [
+      "What kind of thing has this corner?",
+      "Waits for a planted fix. A planted reason. Not approved.",
+      "Show the trace",
+    ],
+    "scope dark",
+  );
+  assert.ok(!light.includes("Waits for"), "the light card shows the dark card's wait");
+  // A wait with no reason still says what it waits for and that no one approved it.
+  assert.equal(card.waitLine({ for: "x", why: null, approved: false }), "Waits for x. Not approved.");
 });

@@ -25,7 +25,7 @@ export type Decision = {
   mapping?: { property: string | null; says?: string | null; jobs: { title: string; how: string }[] };
   meaning?: { level: "group" | "variant"; name: string; says: string }[];
   guide?: { intent: string | null; useFor: string[]; notFor: { when: string; use: string }[] };
-  graph?: { reason: string | null } & Record<string, unknown>;
+  graph?: { reason: string | null; wait?: Wait } & Record<string, unknown>;
   // The card: the stored shorthand, the step and value it resolves to; for a color token its weakest
   // contrast, its real pairs on real surfaces and the tokens with the same or a near value; for any
   // other token its scope's card in each mode.
@@ -36,6 +36,8 @@ export type Decision = {
   clashes?: Clash[];
   cards?: Partial<Record<Mode, ScopeCard | null>>;
 };
+// A rule or connection of the token that does not hold yet: what it waits for, why, and who approved it.
+export type Wait = { for: string; why: string | null; approved: boolean; approved_by?: string };
 type Shorthand = { headline: string; line: string };
 type Contrast = { ratio: number; floor: number; kind: "text" | "non-text"; on: string; against: string | null };
 type Pair = {
@@ -87,6 +89,8 @@ export type ScopeCard = {
   hint: Hint | null;
   shared: Note[];
   pointsHere: Note[];
+  // The token's wait in this mode.
+  wait?: Wait;
 };
 
 export const ratio = (r: number) => `${Math.round(r * 10) / 10}:1`;
@@ -103,6 +107,12 @@ const str = (v: unknown) => (typeof v === "string" ? v : "");
 // A decision has a reason when the scheme records one: its own why, the answers behind it, or a measured fact.
 export const hasReason = (d: Decision | undefined) =>
   Boolean(d && (d.graph?.reason || d.why || d.answers.length || d.stepWhy));
+
+// One plain line: what the wait is for, why, and who approved it, or that no one did.
+export const waitLine = (w: Wait) =>
+  `Waits for ${w.for}. ${w.why ? `${sentence(w.why)} ` : ""}${w.approved && w.approved_by ? `Approved by ${w.approved_by}.` : "Not approved."}`;
+
+const WaitNote = ({ wait }: { wait: Wait }) => <div className={styles.note}>{waitLine(wait)}</div>;
 
 export const NoReason = () => (
   <Badge tone="warning" className={styles.gap}>
@@ -907,25 +917,37 @@ export function ScopeFace({ d, card, theme }: { d: Decision; card: ScopeCard; th
   );
 }
 
-// The trace: one line per answer behind the token, "question → answer: why". Nothing else.
-export function Trace({ ids, answers }: { ids: string[]; answers: Record<string, Answer> }) {
+// The trace: one line per answer behind the token, "question → answer: why", then the wait of a rule or
+// connection that does not hold yet.
+export function Trace({ ids, answers, wait }: { ids: string[]; answers: Record<string, Answer>; wait?: Wait | null }) {
   const list = ids.map((id) => answers[id]).filter(Boolean);
-  if (!list.length) return <div className={styles.line}>No answer is recorded for this token.</div>;
+  const waits = wait ? <WaitNote wait={wait} /> : null;
+  if (!list.length)
+    return (
+      <>
+        <div className={styles.line}>No answer is recorded for this token.</div>
+        {waits}
+      </>
+    );
   return (
-    <ol className={styles.trace}>
-      {list.map((a) => (
-        <li key={a.id}>
-          {a.question} → <b>{a.answer}</b>
-          {a.why ? `: ${/^[A-Z][a-z]/.test(a.why) ? a.why.charAt(0).toLowerCase() + a.why.slice(1) : a.why}` : ""}
-        </li>
-      ))}
-    </ol>
+    <>
+      <ol className={styles.trace}>
+        {list.map((a) => (
+          <li key={a.id}>
+            {a.question} → <b>{a.answer}</b>
+            {a.why ? `: ${/^[A-Z][a-z]/.test(a.why) ? a.why.charAt(0).toLowerCase() + a.why.slice(1) : a.why}` : ""}
+          </li>
+        ))}
+      </ol>
+      {waits}
+    </>
   );
 }
 
 /**
- * A whole decision card in one mode: the face (color, or the token's scope card), the decision it
- * copies, "Used by N components", and the trace behind "Show the trace", closed until pressed.
+ * A whole decision card in one mode: the face (color, or the token's scope card), the wait of a rule or
+ * connection that does not hold yet, the decision it copies, "Used by N components", and the trace behind
+ * "Show the trace", closed until pressed.
  */
 export function DecisionCard({
   d,
@@ -941,9 +963,12 @@ export function DecisionCard({
   const [open, setOpen] = useState(false);
   const used = d.components.length;
   const card = d.cards?.[mode] ?? null;
+  // A scope card carries its own mode's wait; a color decision is already this mode's.
+  const wait = (card ? card.wait : d.graph?.wait) ?? null;
   return (
     <>
       {card ? <ScopeFace d={d} card={card} theme={theme} /> : <CardFace d={d} theme={theme} />}
+      {wait && <WaitNote wait={wait} />}
       {d.via && <div className={styles.line}>Same as {d.via}</div>}
       <div className={styles.used}>
         {/* The count traces the component code; a token read only by a stylesheet counts none. */}
@@ -964,7 +989,7 @@ export function DecisionCard({
       >
         {open ? "▾ Hide the trace" : "▸ Show the trace"}
       </button>
-      {open && <Trace ids={d.answers} answers={answers} />}
+      {open && <Trace ids={d.answers} answers={answers} wait={wait} />}
     </>
   );
 }
