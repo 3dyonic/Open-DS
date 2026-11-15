@@ -2,7 +2,7 @@
 // property, answers, rule and connections. Run on the real schemes and grammar.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { graphReason, connectionChecks, connectionGaps, creatorsOf, evaluateConnections, indexesOf, madeBy, missingLinks, roleOf, storedNumberGaps } from "../src/decision-graph.mjs";
+import { graphReason, connectionChecks, connectionGaps, creatorsOf, evaluateConnections, indexesOf, madeBy, missingLinks, pairFloor, roleOf, storedNumberGaps } from "../src/decision-graph.mjs";
 import { assetRoots, grammar, loadScheme } from "../src/schemes.mjs";
 import { flatTokens } from "../src/tokens.mjs";
 import { decisionTree, formGaps } from "../src/trace.mjs";
@@ -54,6 +54,41 @@ test("a fill pairs with its text and states the step promise", () => {
   assert.ok(checks.length > 0);
   assert.ok(checks.every((x) => x.holds));
   assert.ok(checks.some((x) => /steps apart promise/.test(x.says)), checks.map((x) => x.says).join("\n"));
+});
+
+test("a text pair keeps the scheme's text floor; muted text, edges and marks keep their own", () => {
+  const answering = (option) => ({ answers: [{ question: "accessibility.definition", option }] });
+  const aaa = answering("aaa-text");
+  assert.equal(pairFloor(aaa, { key: "color.text.primary", contrast: 4.5 }), 7);
+  assert.equal(pairFloor(aaa, { key: "color.status.warning.@", contrast: 4.5 }), 7);
+  assert.equal(pairFloor(aaa, { key: "color.text.muted", contrast: 4.5 }), 4.5);
+  assert.equal(pairFloor(aaa, { key: "color.border.focus", contrast: 3 }), 3);
+  assert.equal(pairFloor(aaa, { key: "color.category.1.@", contrast: 3 }), 3);
+  assert.equal(pairFloor(aaa, { key: "color.text.primary", contrast: 8 }), 8);
+  assert.equal(pairFloor(answering("aa"), { key: "color.text.primary", contrast: 4.5 }), 4.5);
+  assert.equal(pairFloor({}, { key: "color.text.primary", contrast: 4.5 }), 4.5);
+});
+
+test("the engine measures accessible-first's text at 7:1: warning and success on the page are gaps, and AA lets them hold", () => {
+  const pairsOf = (scheme) =>
+    evaluateConnections(scheme, g).filter((x) => x.connection === "fill-pairs-with-text" && /^color\.status\.(warning|success)$/.test(x.tokens[0]) && /^color\.surface\.(canvas|default)$/.test(x.tokens[1]));
+  const scheme = loadScheme("accessible-first", roots);
+  const aaa = pairsOf(scheme);
+  assert.equal(aaa.length, 4);
+  for (const x of aaa) {
+    assert.equal(x.holds, false, x.says);
+    assert.match(x.says, /floor 7:1/);
+  }
+  assert.deepEqual(
+    connectionGaps(aaa).map((x) => x.tokens.join(" on ")),
+    ["color.status.warning on color.surface.canvas", "color.status.warning on color.surface.default", "color.status.success on color.surface.canvas", "color.status.success on color.surface.default"],
+  );
+  const aa = structuredClone(scheme);
+  aa.answers.find((a) => a.question === "accessibility.definition").option = "aa";
+  for (const x of pairsOf(aa)) {
+    assert.equal(x.holds, true, x.says);
+    assert.match(x.says, /floor 4\.5:1/);
+  }
 });
 
 test("the surface ladder and the danger rule live in the connections, and the gate reads them", () => {
