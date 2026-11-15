@@ -15,10 +15,12 @@ test("process words: a ticket key, the owner, the harness, a ticket and a pull r
   assert.deepEqual(found, ["1 ticket key", "1 ticket key", "2 owner", "3 harness", "4 ticket", "5 pull request"]);
 });
 
-test("process words: identifiers and the known-shortfall field pass", () => {
+test("process words: identifiers pass; a ticket key in a wait is found like any other", () => {
   assert.deepEqual(processWords("cli/src/x.mjs", "const ownerOf = (g) => g; // pr-[var(--x)]"), []);
-  const scheme = JSON.stringify({ tone: "light", waits: { for: "OD-225", why: "A brand decision." } });
-  assert.deepEqual(processWords("fixture/x.json", scheme), []);
+  const plain = JSON.stringify({ tone: "light", waits: { for: "a brand decision", why: "A brand decision." } });
+  assert.deepEqual(processWords("fixture/x.json", plain), []);
+  const keyed = JSON.stringify({ tone: "light", waits: { for: "OD-225", why: "A brand decision." } });
+  assert.deepEqual(processWords("fixture/x.json", keyed).map((x) => x.word), ["ticket key"]);
   assert.equal(processWords("fixture/x.json", JSON.stringify({ why: "Fixed in OD-1." })).length, 1);
 });
 

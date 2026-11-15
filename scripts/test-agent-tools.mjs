@@ -617,7 +617,7 @@ const componentSource = readdirSync(componentDir)
   .sort()
   .map((f) => readFileSync(join(componentDir, f), "utf8"))
   .join("\n");
-const waiting = JSON.parse(readFileSync(join(root, "harness", "connections-baseline.json"), "utf8")).counts;
+const waiting = JSON.parse(readFileSync(join(root, "harness", "connections-baseline.json"), "utf8")).failures;
 const tokenName = (id) => id.replace(/\.@$/, "");
 const same = (a, b) => (typeof a === "object" ? JSON.stringify(a) : String(a)) === String(b);
 const shadowIn = (text, v) => [v.offsetX, v.offsetY, v.blur, v.color].every((x) => String(text).includes(x));

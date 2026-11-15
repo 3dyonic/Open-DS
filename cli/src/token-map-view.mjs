@@ -20,7 +20,7 @@ import {
   rowLabel,
   tokenName,
 } from "./color-map.mjs";
-import { allConnections } from "./decision-graph.mjs";
+import { allConnections, approvedWait, gapId, gapItem, waitsOf } from "./decision-graph.mjs";
 import { aliasChain, tokenIndex } from "./lands.mjs";
 import { differenceThreshold } from "./color-steps.mjs";
 import { clashesOf, pairsOf, shorthandOf, weakestContrast } from "./token-card.mjs";
@@ -154,7 +154,7 @@ const stepOrder = (a, b) => {
  * other area, the same in both modes. Decisions are keyed by token id; a decision's answers are ids
  * into answers.
  */
-export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.tokens.brands)[0], componentSource = "", waiting = {}, glyph = null }) {
+export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.tokens.brands)[0], componentSource = "", waiting = [], glyph = null }) {
   const reasons = reasonsOf(scheme, grammar);
   // A decision without a theme pick says why through its own, its group's or a usage rule's reason
   // (trace.mjs). A grammar trace rule links answers but says no why of the scheme's: none is invented.
@@ -177,13 +177,19 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
   const tokenIndexes = Object.fromEntries(["light", "dark"].map((m) => [m, tokenIndex(scheme, { brand, mode: m })]));
   // A color or type token's decision graph, in the order the card reads it: role → jobs → property → answers →
   // rule → connections → value, and the reason sentence the engine writes from those fields.
-  // A check that does not hold waits when the scheme records a fix for it, or when the connection's
-  // baseline (waiting, the counts in connections-baseline.json) keeps gaps for this scheme.
-  const waits = (n, x) => !x.holds && (!!x.waits || (waiting[n.name]?.[scheme.id] ?? 0) > 0);
+  // A check that does not hold waits when its wait is approved, or when the connections baseline lists it
+  // by name (waiting: the failures in connections-baseline.json, { scheme, connection or rule, tokens }).
+  const listed = new Set(waiting.map(gapId));
+  const waits = (n, x) => !x.holds && (approvedWait(x.waits) || listed.has(gapId(gapItem(scheme.id, x))));
   // A hue clash names the other token: "shares the amber hue with color.status.warning".
   const waitText = (n, x, mine) =>
     x.hue ? `shares the ${x.hue} hue with ${x.tokens.find((t) => t !== mine) ?? x.tokens[1]}` : x.says;
-  const graphOf = (tree, name) => {
+  // The token's own wait in this mode, so a card can show what it waits for and who approved it.
+  const waitOf = (name, mode) => {
+    const w = waitsOf(tokenIndexes[mode], [name]);
+    return w && { for: w.for, why: w.why, approved: approvedWait(w), ...(w.approved_by && { approved_by: w.approved_by }) };
+  };
+  const graphOf = (tree, name, wait) => {
     const role = tree.find((n) => n.level === "role");
     if (!role) return null;
     const reason = tree.find((n) => n.level === "reason")?.says ?? null;
@@ -214,6 +220,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
         }),
       value: value ? { name: value.name, hex: value.says } : null,
       reason,
+      ...(wait && { wait }),
     };
   };
   const chainOf = (index, d, mode = "light") => {
@@ -231,7 +238,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
       .filter((n) => (n.level === "group" || n.level === "variant") && n.says)
       .map((n) => ({ level: n.level, name: n.name, says: n.says }));
     const property = tree.find((n) => n.level === "property");
-    const graph = graphOf(tree, tokenName(d));
+    const graph = graphOf(tree, tokenName(d), waitOf(tokenName(d), mode));
     // the pairs the engine measures this token in (pairs-with): the surfaces it sits on, or the text on it.
     const sits = tree
       .filter((n) => n.level === "connection" && n.kind === "pairs-with")

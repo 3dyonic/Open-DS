@@ -8,6 +8,9 @@ import { toneOf } from "../cli/src/tones.mjs";
 import { follow } from "../cli/src/scale-map.mjs";
 import { grammar as loadGrammar, loadScheme, schemeIds as loadSchemeIds, storedScheme as loadStored } from "../cli/src/schemes.mjs";
 import { contrastPairs, flatten, picksCiteAnswers, rawValues, resolve, spacingOffGrid, tokensResolve } from "../cli/src/scheme-checks.mjs";
+import { ownerOf } from "../cli/src/coverage.mjs";
+import { checkedConnections, gapId } from "../cli/src/decision-graph.mjs";
+import { againstBaseline } from "../cli/src/quality/difference.mjs";
 import { spawnSync } from "node:child_process";
 import { pathToFileURL } from "node:url";
 import { existsSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
@@ -283,8 +286,8 @@ export const PROCESS_WORDS = [
 ];
 
 /**
- * The process words in one text: [{ line, word, text }]. In JSON, a string under a "waits" key is
- * skipped: the known-shortfall field names the ticket that fixes it, and it stays.
+ * The process words in one text: [{ line, word, text }]. In JSON, each key and string value is read on
+ * its own. A wait says what it waits for in plain words, so it is read like any other string.
  */
 export function processWords(file, text) {
   const found = [];
@@ -302,16 +305,15 @@ export function processWords(file, text) {
     if (data !== undefined) {
       const lines = text.split("\n");
       const lineOf = (s) => lines.findIndex((l) => l.includes(JSON.stringify(s).slice(1, 40))) + 1 || 1;
-      const walk = (v, path) => {
-        if (path.includes("waits")) return;
+      const walk = (v) => {
         if (typeof v === "string") scan(lineOf(v), v);
         else if (v && typeof v === "object")
           for (const [k, x] of Object.entries(v)) {
             scan(lineOf(k), k);
-            walk(x, [...path, k]);
+            walk(x);
           }
       };
-      walk(data, []);
+      walk(data);
       return found;
     }
   }
@@ -407,6 +409,34 @@ export function rawLayerGaps(files, allowed = LOCAL_STACKING) {
 }
 
 // The token API: the names a project can read. A new one waits for the owner's approval.
+/**
+ * The scopes a listed gap ({ scheme, connection or rule, tokens }) falls in: the grammar scope that owns
+ * each of its tokens and each token pattern of its connection (coverage.mjs ownerOf). A label such as
+ * "tight lines" names no token, so its connection's patterns give the scope. When no scope owns any path
+ * (the component spacing map), the scope is the first part of each path.
+ */
+export function gapScopes(g, item) {
+  const connection = checkedConnections(g).find((c) => c.id === (item.connection ?? item.rule));
+  const paths = [...item.tokens, ...[connection?.tokens ?? []].flat()];
+  const owned = paths.map((p) => ownerOf(p, g)?.scope).filter(Boolean);
+  return [...new Set(owned.length ? owned : paths.map((p) => p.split(".")[0]))];
+}
+
+/**
+ * The connections gate against its baseline: { added, fixed, strict }. failures: today's gaps, each
+ * { id, scopes, says }; baseline: { strict: [scope], failures: [item] }; scopesOf(item) gives a listed
+ * item's scopes. added: gaps the list does not name. fixed: listed ids that hold now. strict: every gap
+ * and every listed item in a strict scope, by id: a strict scope fails on any gap, listed or not.
+ */
+export function connectionsGate(failures, baseline, scopesOf) {
+  const strict = new Set(baseline.strict ?? []);
+  const inStrict = (scopes) => scopes.some((x) => strict.has(x));
+  const listed = baseline.failures ?? [];
+  const { added, fixed } = againstBaseline(failures, { failures: listed.map(gapId) });
+  const strictIds = [...failures.filter((f) => inStrict(f.scopes)).map((f) => f.id), ...listed.filter((i) => inStrict(scopesOf(i))).map(gapId)];
+  return { added: added.filter((f) => !inStrict(f.scopes)), fixed, strict: [...new Set(strictIds)] };
+}
+
 export const TOKEN_API_FILE = "harness/token-api.json";
 
 /** The variants each cva(...) call in a component file declares: ["<file>/<axis>/<option>"]. */
@@ -1848,7 +1878,8 @@ export const CHECKS = {
             if (v >= rule.min_delta_e) continue;
             const w = toneOf(t.brands[brand].theme, mode, "color.action.primary.@")?.waits;
             const what = `${s}/${brand}/${mode}: primary and danger are ${v.toFixed(1)} apart`;
-            if (w) waiting.push(`${what} (${w.for})`);
+            // An unapproved wait is still a failure: color-connections-hold lists it by name.
+            if (w) waiting.push(`${what} (waits for ${w.for}; ${w.approved_by ? `approved by ${w.approved_by}` : "not approved, a listed failure of color-connections-hold"})`);
             else gaps.push(`${what}, need ${rule.min_delta_e}`);
           }
       }
@@ -2515,32 +2546,33 @@ export const CHECKS = {
   "color-connections-hold": {
     requires: ["cli/src/decision-graph.mjs", "schemes/grammar.json", "harness/connections-baseline.json"],
     run: async (c) => {
-      // Every connection, color and type, holds in every brand and mode, waits for a recorded fix, or is in the baseline.
-      // The count of gaps per connection and scheme may only go down. The gaps are findings for the
-      // owner: the check changes no value.
-      const { checkedConnections, connectionGaps, evaluateConnections } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
+      // Every connection and every measured rule holds in every brand and mode, waits with an approved
+      // wait, or is listed by name in the baseline. A new gap fails, a listed gap that holds now fails, and
+      // a strict scope fails on any gap, listed or not. The gaps are findings: the check changes no value.
+      const { connectionGaps, evaluateConnections, gapItem } = await import(pathToFileURL(c.p("cli/src/decision-graph.mjs")).href);
       const g = c.grammar();
-      const base = c.json("harness", "connections-baseline.json").counts;
-      const rose = [];
-      const fell = [];
-      const known = [];
+      const baseline = c.json("harness", "connections-baseline.json");
+      const failures = [];
       let n = 0;
       for (const id of SCHEMES) {
         const checks = evaluateConnections(c.scheme(id), g);
         n += checks.length;
-        const gaps = connectionGaps(checks);
-        for (const conn of checkedConnections(g)) {
-          const mine = gaps.filter((x) => x.connection === conn.id);
-          const was = base[conn.id]?.[id] ?? 0;
-          if (mine.length > was) rose.push(`${id} ${conn.id} went from ${was} to ${mine.length}: ${mine.map((x) => x.says).join("; ")}`);
-          else if (mine.length < was) fell.push(`${id} ${conn.id} went from ${was} to ${mine.length}`);
-          known.push(...mine.map((x) => `${id}: ${x.says}`));
+        for (const x of connectionGaps(checks)) {
+          const item = gapItem(id, x);
+          failures.push({ id: gapId(item), scopes: gapScopes(g, item), says: x.says, waits: x.waits ?? null });
         }
       }
-      if (rose.length) return bad(`${rose.length} connections break more than the baseline allows: ${rose.slice(0, 4).join(" | ")}`);
+      const { added, fixed, strict } = connectionsGate(failures, baseline, (item) => gapScopes(g, item));
+      const said = (f) => `${f.id}: ${f.says}${f.waits ? ` (waits for ${f.waits.for}, not approved)` : ""}`;
+      if (strict.length)
+        return bad(`${strict.length} gaps in a strict scope (${baseline.strict.join(", ")}), where no gap may be listed: ${strict.slice(0, 4).join(" | ")}. Fix the value, or record an approved wait.`);
+      if (added.length) return bad(`${added.length} gaps the baseline does not list: ${added.slice(0, 4).map(said).join(" | ")}. Fix the value, or record an approved wait.`);
+      if (fixed.length) return bad(`${fixed.length} listed gaps hold now; take them out of harness/connections-baseline.json: ${fixed.slice(0, 6).join(" | ")}`);
+      const unapproved = failures.filter((f) => f.waits);
       return ok(
-        `${n} connection checks in ${SCHEMES.length} schemes hold, wait for a fix, or are in the baseline (${known.length} known gaps: ${known.slice(0, 4).join("; ")}${known.length > 4 ? "; …" : ""})` +
-          (fell.length ? `; fewer gaps now, lower harness/connections-baseline.json: ${fell.join("; ")}` : ""),
+        `${n} connection and rule checks in ${SCHEMES.length} schemes hold, wait with approval, or are listed by name (${failures.length} listed gaps: ${failures.slice(0, 3).map(said).join("; ")}; …)` +
+          (unapproved.length ? `; ${unapproved.length} listed gaps have a wait with no approval: ${unapproved.map((f) => f.id).join("; ")}` : "") +
+          `; strict scopes with no gap: ${baseline.strict.join(", ")}`,
       );
     },
   },

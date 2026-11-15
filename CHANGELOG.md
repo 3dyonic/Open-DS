@@ -24,6 +24,10 @@ The format is based on Keep a Changelog, and this project uses semantic versioni
 
 ### Changed
 
+- A wait has one shape on any semantic token or theme pick, base or mode: `$extensions["open-ds"].waits` with `for`, `why` and `approved_by` (OD-343). It covers the token's connections and its rule. Only a wait that names `approved_by` lets a break pass; a wait without it is a listed failure. `for` says what the wait is for in plain words, and the scheme schema rejects a ticket key in it. The three waits on record now say "a brand decision: the primary moves away from the danger red, or danger may differ per brand"; none is approved.
+- The type gate checks every role against every role one step below it, the same pairs the token cards show (OD-339). It finds 10 more pairs that are less than one ratio step apart.
+- A colour slot rule or a measured rule that does not hold is a gap, unless the token has an approved wait (OD-340). Twelve rules break today.
+- `harness/connections-baseline.json` lists each gap by name (scheme, connection or rule, tokens), not as a count per connection (OD-344). A new gap fails, and a listed gap that holds now fails until it is taken out. Spacing, the component spacing map, elevation, motion and accessibility are strict: a gap there fails even when listed. The list holds 57 gaps today.
 - The tools offer only the keys a scheme's answers create: `find_token`, `get_context` and `get_key` leave out `icon/size-large` in a scheme with one icon size, and `get_key` says which answer creates it.
 - `get_key`, `why`, `get_context` and `find_token` name the token a key reads without its `@`, as the token map and `get_component` do: `size.icon`, not `size.icon.@`.
 - The display line height is 1.1 in Brand expressive and 1.2 in Multi-brand (it was 1.8).

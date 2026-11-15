@@ -1,38 +1,456 @@
 {
-  "$description": "Connections and measured rules per scheme that do not hold today and wait for the owner's decision (OD-304): color, type, shape, elevation and iconography. Each count may only go down. A scheme with no entry has 0 gaps.",
-  "counts": {
-    "category-apart-from-status": {
-      "dense-data": 3,
-      "content-first": 3,
-      "accessible-first": 3,
-      "multi-brand": 2,
-      "brand-expressive": 3
+  "$description": "The connections and measured rules that do not hold today, listed by name: each item is a scheme, a connection or a rule, and its tokens. The harness check color-connections-hold fails on a gap this list does not name, and on a listed gap that holds now: take it out. A gap passes without a listing only with an approved wait (a wait that names approved_by). strict lists the scopes where no gap may be listed: a gap there fails even when listed. A scope is the grammar scope whose owns list covers a token, else the token's first part.",
+  "strict": [
+    "spacing",
+    "component-spacing-map",
+    "elevation",
+    "motion",
+    "accessibility"
+  ],
+  "failures": [
+    {
+      "scheme": "accessible-first",
+      "rule": "@",
+      "tokens": [
+        "color.action.danger"
+      ]
     },
-    "hover-from-fill": {
-      "dense-data": 1,
-      "content-first": 1,
-      "accessible-first": 1,
-      "multi-brand": 1,
-      "brand-expressive": 1
+    {
+      "scheme": "accessible-first",
+      "rule": "@",
+      "tokens": [
+        "color.action.secondary"
+      ]
     },
-    "sizes-step-apart": {
-      "dense-data": 2,
-      "accessible-first": 2,
-      "multi-brand": 3,
-      "brand-expressive": 1
+    {
+      "scheme": "accessible-first",
+      "rule": "@",
+      "tokens": [
+        "color.category.5"
+      ]
     },
-    "line-kinds-apart": {
-      "dense-data": 2
+    {
+      "scheme": "accessible-first",
+      "rule": "@",
+      "tokens": [
+        "color.status.danger"
+      ]
     },
-    "surface-corner": {
-      "multi-brand": 1
+    {
+      "scheme": "accessible-first",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.2",
+        "color.status.info"
+      ]
     },
-    "icon-matches-label": {
-      "content-first": 1,
-      "accessible-first": 1
+    {
+      "scheme": "accessible-first",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.3",
+        "color.status.success"
+      ]
     },
-    "grays-from-neutral": {
-      "brand-expressive": 2
+    {
+      "scheme": "accessible-first",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.4",
+        "color.status.warning"
+      ]
+    },
+    {
+      "scheme": "accessible-first",
+      "connection": "hover-from-fill",
+      "tokens": [
+        "color.action.secondary.hover",
+        "color.action.secondary"
+      ]
+    },
+    {
+      "scheme": "accessible-first",
+      "connection": "icon-matches-label",
+      "tokens": [
+        "size.icon",
+        "type.label"
+      ]
+    },
+    {
+      "scheme": "accessible-first",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.body.font-size",
+        "type.caption.font-size"
+      ]
+    },
+    {
+      "scheme": "accessible-first",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.data.font-size",
+        "type.caption.font-size"
+      ]
+    },
+    {
+      "scheme": "accessible-first",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.label.font-size",
+        "type.caption.font-size"
+      ]
+    },
+    {
+      "scheme": "accessible-first",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.title.font-size",
+        "type.heading.font-size"
+      ]
+    },
+    {
+      "scheme": "brand-expressive",
+      "rule": "@",
+      "tokens": [
+        "color.action.secondary"
+      ]
+    },
+    {
+      "scheme": "brand-expressive",
+      "rule": "@",
+      "tokens": [
+        "color.category.5"
+      ]
+    },
+    {
+      "scheme": "brand-expressive",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.2",
+        "color.status.info"
+      ]
+    },
+    {
+      "scheme": "brand-expressive",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.3",
+        "color.status.success"
+      ]
+    },
+    {
+      "scheme": "brand-expressive",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.4",
+        "color.status.warning"
+      ]
+    },
+    {
+      "scheme": "brand-expressive",
+      "connection": "danger-apart-from-primary",
+      "tokens": [
+        "color.action.danger",
+        "color.action.primary"
+      ]
+    },
+    {
+      "scheme": "brand-expressive",
+      "connection": "grays-from-neutral",
+      "tokens": [
+        "color.action.secondary",
+        "color.neutral.*"
+      ]
+    },
+    {
+      "scheme": "brand-expressive",
+      "connection": "grays-from-neutral",
+      "tokens": [
+        "color.action.secondary.hover",
+        "color.neutral.*"
+      ]
+    },
+    {
+      "scheme": "brand-expressive",
+      "connection": "hover-from-fill",
+      "tokens": [
+        "color.action.secondary.hover",
+        "color.action.secondary"
+      ]
+    },
+    {
+      "scheme": "brand-expressive",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.label.font-size",
+        "type.caption.font-size"
+      ]
+    },
+    {
+      "scheme": "content-first",
+      "rule": "@",
+      "tokens": [
+        "color.action.secondary"
+      ]
+    },
+    {
+      "scheme": "content-first",
+      "rule": "@",
+      "tokens": [
+        "color.category.5"
+      ]
+    },
+    {
+      "scheme": "content-first",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.2",
+        "color.status.info"
+      ]
+    },
+    {
+      "scheme": "content-first",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.3",
+        "color.status.success"
+      ]
+    },
+    {
+      "scheme": "content-first",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.4",
+        "color.status.warning"
+      ]
+    },
+    {
+      "scheme": "content-first",
+      "connection": "hover-from-fill",
+      "tokens": [
+        "color.action.secondary.hover",
+        "color.action.secondary"
+      ]
+    },
+    {
+      "scheme": "content-first",
+      "connection": "icon-matches-label",
+      "tokens": [
+        "size.icon",
+        "type.label"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "rule": "@",
+      "tokens": [
+        "color.action.secondary"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "rule": "@",
+      "tokens": [
+        "color.category.5"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.2",
+        "color.status.info"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.3",
+        "color.status.success"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.4",
+        "color.status.warning"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "connection": "hover-from-fill",
+      "tokens": [
+        "color.action.secondary.hover",
+        "color.action.secondary"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "connection": "line-kinds-apart",
+      "tokens": [
+        "snug lines",
+        "open lines"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "connection": "line-kinds-apart",
+      "tokens": [
+        "tight lines",
+        "snug lines"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.body.font-size",
+        "type.caption.font-size"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.body.font-size",
+        "type.label.font-size"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.data.font-size",
+        "type.caption.font-size"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.data.font-size",
+        "type.label.font-size"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.heading.font-size",
+        "type.body.font-size"
+      ]
+    },
+    {
+      "scheme": "dense-data",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.heading.font-size",
+        "type.data.font-size"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "rule": "@",
+      "tokens": [
+        "color.action.secondary"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.4",
+        "color.status.info"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "connection": "category-apart-from-status",
+      "tokens": [
+        "color.category.5",
+        "color.status.success"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "connection": "danger-apart-from-primary",
+      "tokens": [
+        "color.action.danger",
+        "color.action.primary"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "connection": "hover-from-fill",
+      "tokens": [
+        "color.action.secondary.hover",
+        "color.action.secondary"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.body.font-size",
+        "type.caption.font-size"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.body.font-size",
+        "type.label.font-size"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.data.font-size",
+        "type.caption.font-size"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.data.font-size",
+        "type.label.font-size"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.heading.font-size",
+        "type.body.font-size"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.heading.font-size",
+        "type.data.font-size"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "connection": "sizes-step-apart",
+      "tokens": [
+        "type.title.font-size",
+        "type.heading.font-size"
+      ]
+    },
+    {
+      "scheme": "multi-brand",
+      "rule": "surface-corner",
+      "tokens": [
+        "radius.surface"
+      ]
     }
-  }
+  ]
 }

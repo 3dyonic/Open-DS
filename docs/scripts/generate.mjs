@@ -192,8 +192,8 @@ const componentSource = readdirSync(componentDir)
   .sort()
   .map((f) => readFileSync(join(componentDir, f), "utf8"))
   .join("\n");
-// The color connections that wait for the owner's decision (OD-304): the card shows their gaps as waits.
-const waiting = JSON.parse(readFileSync(join(docs, "..", "harness", "connections-baseline.json"), "utf8")).counts;
+// The connections and rules that fail today, listed by name: the card shows them as waits.
+const waiting = JSON.parse(readFileSync(join(docs, "..", "harness", "connections-baseline.json"), "utf8")).failures;
 // The icon the icon cards draw: the one the Storybook icon button story draws beside the scheme's
 // icon action text (storybook/stories/tooltip.stories.tsx), Lucide Filter. Its outline is read from the
 // lucide-react the components use; with none, the card says the glyph is missing.

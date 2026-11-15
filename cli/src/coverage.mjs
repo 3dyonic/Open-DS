@@ -7,7 +7,7 @@ import { owns } from "./lands.mjs";
 import { traceScheme } from "./trace.mjs";
 
 /** The grammar scope that owns a semantic, the most specific owns entry first; null when none does. */
-function ownerOf(path, g) {
+export function ownerOf(path, g) {
   let best = null;
   for (const scope of g.scopes)
     for (const o of scope.owns ?? [])

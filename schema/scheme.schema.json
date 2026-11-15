@@ -1382,7 +1382,7 @@
             "open-ds": {
               "type": "object",
               "additionalProperties": false,
-              "description": "On a fill in a theme: its tone, which decides the text on it. On a component key: the fill it sits on, so the build picks its text by that fill's tone.",
+              "description": "On a fill in a theme: its tone, which decides the text on it. On a component key: the fill it sits on, so the build picks its text by that fill's tone. On any semantic token or theme pick: a wait.",
               "properties": {
                 "why": {
                   "type": "string",
@@ -1415,17 +1415,26 @@
                   "type": "object",
                   "additionalProperties": false,
                   "required": ["for", "why"],
-                  "description": "A known shortfall on this fill, with the ticket that fixes it. The harness reports it.",
+                  "description": "A known shortfall on this token, on the semantic token or its theme pick, base or mode. It covers the token's connections and its rule. A break passes the gate only when the wait names who approved it; a wait with no approved_by is reported as a failure.",
                   "properties": {
                     "for": {
                       "type": "string",
-                      "pattern": "^OD-\\d+$",
-                      "description": "The ticket."
+                      "minLength": 1,
+                      "not": {
+                        "pattern": "\\b[A-Z][A-Z0-9]*-[0-9]+\\b"
+                      },
+                      "description": "What the wait is for, in plain words: the decision or the change that ends it. A tracker key such as AB-12 does not say it, so it fails."
                     },
                     "why": {
                       "type": "string",
                       "minLength": 1,
                       "description": "What falls short and why."
+                    },
+                    "approved_by": {
+                      "type": "string",
+                      "minLength": 1,
+                      "pattern": "\\S",
+                      "description": "The person, by name or role, who approved the wait. Only an approved wait lets a break pass."
                     }
                   }
                 },
