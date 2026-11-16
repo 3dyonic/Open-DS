@@ -399,7 +399,7 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
               addDecision(d, {
                 via: via[d] ? tokenName(via[d]) : null,
                 stepWhy: lightestFill({ id: hue.id, steps: all }, s, d),
-                resolves: { name: `${hue.id} ${s.step}`, value: s.value },
+                resolves: { name: s.ramp === mode ? `${hue.id} ${s.step}` : `${hue.id} ${s.step} (${s.ramp} ramp)`, value: s.value },
               });
             const low = contrastsOf(index, s.value).reduce((a, b) => (b.ratio < a.ratio ? b : a), { ratio: Infinity });
             const checks = [];
@@ -420,9 +420,13 @@ export function tokenMapView({ scheme, grammar, brand = Object.keys(scheme.token
             return {
               id: s.id,
               step: s.step,
-              name: `${hue.id} ${s.step}`,
+              name: s.ramp === mode ? `${hue.id} ${s.step}` : `${hue.id} ${s.step} · ${s.ramp} ramp, same in both modes`,
               value: s.value,
-              otherMode: other.hues.find((h) => h.id === hue.id)?.steps.find((x) => x.step === s.step)?.value ?? null,
+              // The same step in the other mode's own ramp; a step that is the same in both modes is itself.
+              otherMode:
+                s.ramp === mode
+                  ? (other.hues.find((h) => h.id === hue.id)?.steps.find((x) => x.step === s.step && x.ramp === other.mode)?.value ?? null)
+                  : s.value,
               brand: hue.id === brandHue,
               decisions: found.map(tokenName),
               checks,

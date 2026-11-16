@@ -26,8 +26,9 @@ const isPassThrough = (id) => id.startsWith("color.neutral.");
 
 /**
  * The color index of one graph in one mode: { mode, nodes (id → node), readers (id → reader ids),
- * hues: [{ id, steps: [{ id, step, value }] }] }. A hue lists its steps of this mode only: a ramp
- * never shows as its own family.
+ * hues: [{ id, steps: [{ id, step, value, ramp }] }] }. A hue lists its steps of this mode, plus the
+ * steps of the other mode's ramp that a token of this mode reads: a label on a fill keeps one color in
+ * both modes, so in dark it reads the light ramp. A ramp never shows as its own family.
  */
 export function colorIndex(graph, mode) {
   const nodes = new Map(graph.nodes.map((n) => [n.id, n]));
@@ -39,9 +40,9 @@ export function colorIndex(graph, mode) {
   const byHue = new Map();
   for (const n of graph.nodes) {
     const p = n.tier === "primitive" && primitiveParts(n.id);
-    if (!p || p.mode !== mode) continue;
+    if (!p || (p.mode !== mode && !readers.has(n.id))) continue;
     if (!byHue.has(p.hue)) byHue.set(p.hue, []);
-    byHue.get(p.hue).push({ id: n.id, step: p.step, value: n.value });
+    byHue.get(p.hue).push({ id: n.id, step: p.step, value: n.value, ramp: p.mode });
   }
   const hues = [...byHue]
     .sort(([a], [b]) => a.localeCompare(b))
