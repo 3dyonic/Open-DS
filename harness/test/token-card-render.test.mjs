@@ -9,7 +9,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { after, before, test } from "node:test";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { assetRoots, grammar, loadScheme } from "../../cli/src/schemes.mjs";
+import { assetRoots, grammar, loadScheme, schemeIds } from "../../cli/src/schemes.mjs";
 import { tokenMapView } from "../../cli/src/token-map-view.mjs";
 
 const repo = fileURLToPath(new URL("../..", import.meta.url));
@@ -255,4 +255,61 @@ test("an approved wait names who approved it; a scope card shows its own mode's 
   assert.ok(!light.includes("Waits for"), "the light card shows the dark card's wait");
   // A wait with no reason still says what it waits for and that no one approved it.
   assert.equal(card.waitLine({ for: "x", why: null, approved: false }), "Waits for x. Not approved.");
+});
+
+// Every map: each scheme, each of its brands. A dark reader and a light reader open the same cards.
+const everyMap = schemeIds(roots).flatMap((id) => {
+  const scheme = loadScheme(id, roots);
+  return Object.keys(scheme.tokens.brands).map((brand) => ({
+    label: `${id}/${brand}`,
+    map: tokenMapView({ scheme, grammar: g, glyph, brand }),
+  }));
+});
+
+// What is wrong with a map's cards in one mode: a card that throws, has no shorthand, has a contrast
+// with no meter, or is missing while the other mode has it.
+function cardProblems(map, mode) {
+  const other = mode === "light" ? "dark" : "light";
+  const here = { ...map.shared.decisions, ...map.modes[mode].decisions };
+  const problems = Object.keys(map.modes[other].decisions)
+    .filter((id) => !here[id])
+    .map((id) => `${id}: no card in ${mode}`);
+  for (const d of Object.values(here)) {
+    let html;
+    try {
+      html = server.renderToStaticMarkup(
+        React.createElement(card.DecisionCard, { d, mode, theme: map.modes[mode].theme, answers: map.answers }),
+      );
+    } catch (error) {
+      problems.push(`${d.id}: throws ${error.message}`);
+      continue;
+    }
+    if (!d.shorthand || html.includes("No shorthand recorded yet")) problems.push(`${d.id}: no shorthand`);
+    if (d.contrast && !html.includes('role="meter"')) problems.push(`${d.id}: a contrast with no meter`);
+  }
+  return { count: Object.keys(here).length, problems };
+}
+
+test("every card in every scheme, brand and mode renders with its shorthand and its contrast meter", () => {
+  const counts = [];
+  const problems = [];
+  for (const { label, map } of everyMap)
+    for (const mode of ["light", "dark"]) {
+      const found = cardProblems(map, mode);
+      counts.push(`${label}/${mode} ${found.count}`);
+      problems.push(...found.problems.map((p) => `${label}/${mode} ${p}`));
+    }
+  assert.ok(counts.length >= 14, counts.join(", "));
+  assert.deepEqual(problems, []);
+});
+
+test("the card check fails on a planted defect: a removed shorthand, a missing dark card", () => {
+  const { map } = everyMap[0];
+  const [id, d] = Object.entries(map.modes.light.decisions).find(([, x]) => x.contrast);
+  const planted = (decisions) => ({ ...map, modes: { ...map.modes, light: { ...map.modes.light, decisions } } });
+  const noShorthand = cardProblems(planted({ ...map.modes.light.decisions, [id]: { ...d, shorthand: null } }), "light");
+  assert.ok(noShorthand.problems.includes(`${id}: no shorthand`), noShorthand.problems.join("; "));
+  const { [id]: _gone, ...rest } = map.modes.dark.decisions;
+  const missing = cardProblems({ ...map, modes: { ...map.modes, dark: { ...map.modes.dark, decisions: rest } } }, "dark");
+  assert.ok(missing.problems.includes(`${id}: no card in dark`), missing.problems.join("; "));
 });

@@ -25,12 +25,16 @@ const dark = colorIndex(map.graphs["default/dark"], "dark");
 const BLUE_600 = "color.blue.light.600";
 const valueOf = (id) => light.nodes.get(id).value;
 
-test("a hue lists the steps of the current mode only, so no ramp shows as its own family", () => {
+test("a hue lists its mode's steps, plus the other ramp's steps a token of this mode reads; no ramp is a family", () => {
   const blue = light.hues.find((h) => h.id === "blue");
   assert.equal(blue.steps.length, 11);
-  assert.ok(blue.steps.every((s) => s.id.startsWith("color.blue.light.")));
+  assert.ok(blue.steps.every((s) => s.id.startsWith("color.blue.light.") && s.ramp === "light"));
   assert.deepEqual(blue.steps.slice(0, 3).map((s) => s.step), ["50", "100", "200"]);
-  assert.ok(dark.hues.every((h) => h.steps.every((s) => !s.id.includes(".light."))));
+  // In dark, a label on a fill keeps its light color: those light steps show, marked, and only those.
+  const borrowed = dark.hues.flatMap((h) => h.steps.filter((s) => s.id.includes(".light.")));
+  assert.ok(borrowed.length > 0, "a dark label reads the light ramp");
+  assert.ok(borrowed.every((s) => s.ramp === "light" && dark.readers.has(s.id)));
+  assert.ok(dark.hues.every((h) => !/\.(light|dark)$/.test(h.id) && !["light", "dark"].includes(h.id)));
   assert.equal(plainName(BLUE_600), "blue 600");
 });
 
