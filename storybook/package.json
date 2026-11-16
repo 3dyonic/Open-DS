@@ -16,22 +16,22 @@
   "dependencies": {
     "@open-ds/ui": "workspace:*",
     "@tanstack/react-table": "^8.21.3",
-    "lucide-react": "^1.65.0",
+    "lucide-react": "^1.72.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-hook-form": "^7.91.0",
+    "react-hook-form": "^7.92.0",
     "recharts": "^3.10.1"
   },
   "devDependencies": {
-    "@storybook/addon-docs": "^10.6.5",
-    "@storybook/react-vite": "^10.6.5",
-    "@tailwindcss/vite": "^4.3.3",
+    "@storybook/addon-docs": "^10.6.7",
+    "@storybook/react-vite": "^10.6.7",
+    "@tailwindcss/vite": "^4.3.5",
     "@types/react": "^19.1.13",
-    "@vitejs/plugin-react": "^6.1.2",
-    "prettier": "^3.6.2",
-    "storybook": "^10.6.5",
-    "tailwindcss": "^4.3.3",
+    "@vitejs/plugin-react": "^6.3.0",
+    "prettier": "^3.10.1",
+    "storybook": "^10.6.7",
+    "tailwindcss": "^4.3.5",
     "typescript": "^5.9.2",
-    "vite": "^8.3.5"
+    "vite": "^8.3.8"
   }
 }
